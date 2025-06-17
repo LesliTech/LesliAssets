@@ -1,0 +1,11 @@
+
+@config "./tailwind.config.js";
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "emerald";
+  default: true;
+  prefersdark: true;
+  color-scheme: "light";
+  --color-primary: "#3b82f6";
+}
