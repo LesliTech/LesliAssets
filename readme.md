@@ -1,7 +1,7 @@
 
 <div align="center">
-    <img width="100" alt="LesliSystem logo" src="./docs/images/system-logo.svg" />
-    <h3 align="center">Static system metadata helper.</h3>
+    <img width="100" alt="LesliAssets logo" src="./app/assets/images/assets-logo.svg" />
+    <h3 align="center">Shared Frontend Assets for The Lesli Framework.</h3>
 </div>
 
 <br />
@@ -19,8 +19,6 @@
     </a>
 </p>
 
-This engine provides compiled Tailwind CSS and DaisyUI styles, along with Lesli's shared design tokens and utility classes.
-
 <hr/>
 <br />
 
@@ -28,20 +26,20 @@ This engine provides compiled Tailwind CSS and DaisyUI styles, along with Lesli'
 
 ```shell
 # Add LesliAdmin engine gem
-bundle add lesli_system
+bundle add lesli_assets
 ```
 
 ### Documentation
 * [website](https://www.lesli.dev/)
 * [database](./docs/database.md)
-* [documentation](https://www.lesli.dev/gems/gems/)
+* [documentation](https://www.lesli.dev/gems/assets/)
 
 
 ### Get in touch with Lesli
 
 * [Email: hello@lesli.tech](hello@lesli.tech)
-* [Website: https://www.lesli.tech](https://www.lesli.tech)
 * [Twitter: @LesliTech](https://twitter.com/LesliTech)
+* [Website: https://www.lesli.tech](https://www.lesli.tech)
 
 
 ### License

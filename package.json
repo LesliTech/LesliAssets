@@ -1,19 +1,18 @@
 {
-  "name": "lesli_assets",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose",
-    "build": "npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose"
-  },
+  "name": "lesli-assets",
   "devDependencies": {
-    "lesli-css":"2.1.0",
+    "lesli-js": "0.5.0",
+    "lesli-css": "2.1.0",
+
     "daisyui": "5.0.43",
     "tailwindcss": "4.1.10",
     "@tailwindcss/cli":"4.1.10",
+
+    "dayjs": "1.11.13",
+    "apexcharts": "4.7.0",
     "alpinejs": "3.14.9",
     "esbuild": "0.25.5",
-    "svgo":"3.3.2",
-    "apexcharts": "4.7.0"
+
+    "svgo":"3.3.2"
   }
 }

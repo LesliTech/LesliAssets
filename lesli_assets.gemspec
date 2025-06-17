@@ -2,7 +2,7 @@
 
 Lesli
 
-Copyright (c) 2023, Lesli Technologies, S. A.
+Copyright (c) 2025, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ along with this program. If not, see http://www.gnu.org/licenses/.
 
 Lesli · Ruby on Rails SaaS Development Framework.
 
-Made with ♥ by https://www.lesli.tech
+Made with ♥ by LesliTech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
@@ -40,11 +40,12 @@ Gem::Specification.new do |spec|
     spec.authors     = ["The Lesli Development Team"]
     spec.email       = ["hello@lesli.tech"]
     spec.homepage    = "https://www.lesli.dev/"
-    spec.summary     = "Core CSS styles and asset pipeline"
+    spec.summary     = "Shared Frontend Assets for The Lesli Framework"
     spec.description = <<~DESC
-        LesliAssets delivers a consistent and extensible set of stylesheets for The Lesli Framework. 
-        It supports SCSS, custom themes, and a configurable build pipeline to manage and distribute 
-        visual styles across engines and applications.
+        LesliAssets provides shared frontend assets for the Lesli Framework, 
+        including stylesheets, JavaScript, images, icons, and reusable 
+        view partials. Designed to ensure consistent UI and simplify asset management 
+        across all Lesli-based applications and modules.
     DESC
 
     # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
