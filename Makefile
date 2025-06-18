@@ -31,7 +31,7 @@
 
 # Build view partial to render svg icons
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-icons.build:
+build.icons:
 	svgo -f ./app/assets/icons/lesli_assets -o ./app/assets/icons/lesli_assets
 	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets --destination ./app/views/lesli_assets/partials/_application-lesli-icons.svg
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons.svg ./app/views/lesli_assets/partials/_application-lesli-icons.html.erb
@@ -40,11 +40,11 @@ icons.build:
 
 # Build javascript
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-alpine.build:
-	npx esbuild ./lib/lesli_assets_alpine/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js
+build.js:
+	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js
 
-alpine.production:
-	npx esbuild ./lib/lesli_assets_alpine/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --minify
+production.js:
+	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --minify
 
 
 
@@ -53,27 +53,27 @@ alpine.production:
 
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
-	./lib/lesli_assets_bulma/templates/application.scss:./app/assets/stylesheets/lesli_assets/templates/application.css \
-	./lib/lesli_assets_bulma/templates/public.scss:./app/assets/stylesheets/lesli_assets/templates/public.css \
-	./lib/lesli_assets_bulma/templates/start.scss:./app/assets/stylesheets/lesli_assets/templates/start.css
+	./lib/lesli_assets_css/templates/application.scss:./app/assets/stylesheets/lesli_assets/templates/application.css \
+	./lib/lesli_assets_css/templates/public.scss:./app/assets/stylesheets/lesli_assets/templates/public.css \
+	./lib/lesli_assets_css/templates/start.scss:./app/assets/stylesheets/lesli_assets/templates/start.css
 
 # Define common SASS options
 SASS_OPTS = --no-source-map --load-path=node_modules --load-path=../
 
 # Development
-bulma.build:
+build.css:
 	npx sass $(SASS_FILES) $(SASS_OPTS)
 
 # Watch mode for development
-bulma.watch:
+watch.css:
 	npx sass $(SASS_FILES) --watch $(SASS_OPTS)
 
 # Production build (compressed output)
-bulma.production:
+production.css:
 	npx sass $(SASS_FILES) --style=compressed $(SASS_OPTS)
 
 # Clean generated CSS files
-bulma.clean:
+clean.css:
 	rm -f ./app/assets/stylesheets/lesli_assets/bulma.*.css
 	rm -f ./app/assets/stylesheets/lesli_assets/bulma.*.css.map
 
@@ -86,6 +86,10 @@ tailwind.build:
 
 tailwind.production:
     #npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
+
+
+build: build.js build.css
+
 
 # Default target
 #.PHONY: bulma-build bulma-watch bulma-production bulma-clean icon-build alpine.build
