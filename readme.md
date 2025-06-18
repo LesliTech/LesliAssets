@@ -66,4 +66,3 @@ along with this program. If not, see http://www.gnu.org/licenses/.
     <img width="200" alt="Lesli logo" src="https://cdn.lesli.tech/lesli/brand/app-logo.svg" />
     <h4 align="center">Ruby on Rails SaaS Development Framework.</h4>
 </p>
-

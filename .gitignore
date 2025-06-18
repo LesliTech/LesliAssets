@@ -4,3 +4,7 @@ node_modules
 /log/*.log
 /pkg/
 /tmp/
+
+
+# Ignore Lesli gems
+lesli*.gem
