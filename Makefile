@@ -32,9 +32,17 @@
 # Build view partial to render svg icons
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 build.icons:
-	svgo -f ./app/assets/icons/lesli_assets -o ./app/assets/icons/lesli_assets
-	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets --destination ./app/views/lesli_assets/partials/_application-lesli-icons.svg
-	mv ./app/views/lesli_assets/partials/_application-lesli-icons.svg ./app/views/lesli_assets/partials/_application-lesli-icons.html.erb
+	svgo -f ./app/assets/icons/lesli_assets/engines -o ./app/assets/icons/lesli_assets/engines
+	svgo -f ./app/assets/icons/lesli_assets/flags -o ./app/assets/icons/lesli_assets/flags
+	svgo -f ./app/assets/icons/lesli_assets/gems -o ./app/assets/icons/lesli_assets/gems
+	
+	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/engines --destination ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg
+	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/flags --destination ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg
+	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/gems --destination ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg
+
+	mv ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg ./app/views/lesli_assets/partials/_application-lesli-icons-engines.html.erb
+	mv ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg ./app/views/lesli_assets/partials/_application-lesli-icons-flags.html.erb
+	mv ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg ./app/views/lesli_assets/partials/_application-lesli-icons-gems.html.erb
 
 
 
