@@ -50,6 +50,7 @@ build.icons:
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 build.js:
 	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js
+	npx esbuild ./lib/lesli_assets_js/calendar.js --bundle --outfile=./app/assets/javascripts/lesli_assets/calendar.js
 
 production.js:
 	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --minify
