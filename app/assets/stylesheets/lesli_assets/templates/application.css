@@ -16080,6 +16080,39 @@ Building a better future, one line of code at a time.
     justify-content: center !important;
   }
 }
+section.lesli-panel div.lesli-panel-background {
+  position: fixed;
+  z-index: 38;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+section.lesli-panel div.lesli-panel-background.overlay {
+  background: rgba(230, 230, 230, 0.5);
+}
+section.lesli-panel div.lesli-panel-container {
+  background-color: white;
+  position: fixed;
+  z-index: 40;
+  right: 0;
+  top: 0;
+  width: 600px;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #ffffff;
+  scrollbar-width: none;
+}
+section.lesli-panel div.lesli-panel-container::-webkit-scrollbar {
+  width: 0px;
+  background-color: #ffffff;
+}
+section.lesli-panel div.lesli-panel-container .lesli-panel-header {
+  padding: 1rem 1rem 0.6rem;
+  border-bottom: 1px solid #485a6c;
+}
+
 /*
 
 Lesli
@@ -29267,4 +29300,8 @@ body {
 
 h1, h2, h3, h4, h5, h6, a {
   font-family: "Domine", "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+[x-cloak] {
+  display: none !important;
 }

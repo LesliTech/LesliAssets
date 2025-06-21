@@ -44,6 +44,7 @@ Building a better future, one line of code at a time.
 @import "LesliView/lib/lesli_view/components/timeline";
 @import "LesliView/lib/lesli_view/components/toolbar";
 @import "LesliView/lib/lesli_view/components/header";
+@import "LesliView/lib/lesli_view/components/panel";
 @import "LesliView/lib/lesli_view/elements/avatar";
 @import "LesliView/lib/lesli_view/elements/table";
 @import "LesliView/lib/lesli_view/forms/form";
@@ -85,4 +86,10 @@ body {
 // · headings and links
 h1, h2, h3, h4, h5, h6, a {
     font-family: "Domine", $family-primary;
+}
+
+
+// · 
+[x-cloak] { 
+    display: none !important; 
 }
