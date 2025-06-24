@@ -32,44 +32,44 @@ Building a better future, one line of code at a time.
 
 
 // · 
-@import "lesli-css";
-@import "lesli-css/source/vendor/bulma";
+@use "lesli-css";
+@use "lesli-css/sass/vendor/bulma";
 
 
 // · Configuration & variables
-@import "../settings/variables";
+@use "../settings/variables";
 
 
 // · LesliView components & elements 
-@import "LesliView/lib/lesli_view/components/timeline";
-@import "LesliView/lib/lesli_view/components/toolbar";
-@import "LesliView/lib/lesli_view/components/header";
-@import "LesliView/lib/lesli_view/components/panel";
-@import "LesliView/lib/lesli_view/elements/avatar";
-@import "LesliView/lib/lesli_view/elements/table";
-@import "LesliView/lib/lesli_view/forms/form";
+@use "LesliView/lib/lesli_view/components/timeline";
+@use "LesliView/lib/lesli_view/components/toolbar";
+@use "LesliView/lib/lesli_view/components/header";
+@use "LesliView/lib/lesli_view/components/panel";
+@use "LesliView/lib/lesli_view/elements/avatar";
+@use "LesliView/lib/lesli_view/elements/table";
+@use "LesliView/lib/lesli_view/forms/form";
 
 
 // · Font families and icons
-@import "../fonts/remixicons";
-@import "../fonts/families";
-@import "../fonts/mdicons";
+@use "../fonts/remixicons";
+@use "../fonts/families";
+@use "../fonts/mdicons";
 
 
 // · Lesli application layout 
-@import "../layouts/application-notification";
-@import "../layouts/application-navigation";
-@import "../layouts/application-component";
-@import "../layouts/application-container";
-@import "../layouts/application-engines";
-@import "../layouts/application-sidebar";
-@import "../layouts/application-header";
-@import "../layouts/application-app";
+@use "../layouts/application-notification";
+@use "../layouts/application-navigation";
+@use "../layouts/application-component";
+@use "../layouts/application-container";
+@use "../layouts/application-engines";
+@use "../layouts/application-sidebar";
+@use "../layouts/application-header";
+@use "../layouts/application-app";
 
 
 // · Some home made helpers
-@import "../helpers/display";
-@import "../helpers/tooltip";
+@use "../helpers/display";
+@use "../helpers/tooltip";
 
 
 // · 
@@ -85,7 +85,7 @@ body {
 
 // · headings and links
 h1, h2, h3, h4, h5, h6, a {
-    font-family: "Domine", $family-primary;
+    font-family: "Domine", variables.$family-primary;
 }
 
 

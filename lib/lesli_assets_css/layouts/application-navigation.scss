@@ -30,6 +30,9 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+@use "lesli-css/sass/functions/color/color";
+
+
 .navbar {
     position: static;
 }
@@ -68,8 +71,8 @@ nav.lesli-application-navigation {
             &:hover {
                 // color: lesli-css-color(slate, 100);
                 // text-shadow: 0 0px 10px rgba(lesli-css-color(slate, 900), 0.8);
-                color: lesli-css-color(slate, 700);
-                text-shadow: 0 2px 6px rgba(lesli-css-color(slate, 700), 0.25);
+                color: color.lesli-css-color(slate, 700);
+                text-shadow: 0 2px 6px rgba(color.lesli-css-color(slate, 700), 0.25);
             }
 
             // highlight active link

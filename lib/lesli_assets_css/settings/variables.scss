@@ -29,6 +29,7 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+@use "lesli-css/sass/helpers/breakpoint/breakpoint" as mixin;
 
 // · Layout
 $lesli-font-size: 16px !default;
@@ -103,7 +104,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Mobile Up to 768px
-@include lesli-css-breakpoint-mobile {
+@include mixin.lesli-css-breakpoint-mobile {
     :root {
         --lesli-sidebar-width: 50px;
     }
@@ -111,7 +112,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Tablet Between 769px and 1023px
-@include lesli-css-breakpoint-tablet {
+@include mixin.lesli-css-breakpoint-tablet {
     :root {
         --lesli-sidebar-width: 100px;
     }   
@@ -119,7 +120,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Desktop Between 1024px and 1215px
-@include lesli-css-breakpoint-desktop {
+@include mixin.lesli-css-breakpoint-desktop {
     :root {
         --lesli-sidebar-width: 200px;
     }   
@@ -127,7 +128,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Widescreen Between 1216px and 1407px
-@include lesli-css-breakpoint-widescreen {
+@include mixin.lesli-css-breakpoint-widescreen {
     :root {
         --lesli-sidebar-width: 225px;
     }   
@@ -135,7 +136,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Widescreen Between 1216px and 1407px
-@include lesli-css-breakpoint-fullhd {
+@include mixin.lesli-css-breakpoint-fullhd {
     :root {
         --lesli-sidebar-width: 328px;
     }   

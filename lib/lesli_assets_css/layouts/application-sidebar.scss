@@ -29,20 +29,24 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+@use "sass:color";
+@use "lesli-css/sass/layout/scrollbar/scrollbar";
+@use "../settings/variables";
+
 
 // use the default background color so we can use bulma functions to find the rest of colors
-@if $lesli-sidebar-color == "transparent" {
+@if variables.$lesli-sidebar-color == "transparent" {
     $lesli-sidebar-color: $lesli-color-background;
 }
 
 
 // · text color white or black depending in the luminance of the selected color
-$lesli-sidebar-color-text: findColorInvert($lesli-sidebar-color) !default;
+$lesli-sidebar-color-text: findColorInvert(variables.$lesli-sidebar-color) !default;
 
 
 // · find exactly the inverted background color to use as text color, so we have contrast
-$lesli-sidebar-hover-text: findColorInvert($lesli-sidebar-hover) !default;
-$lesli-sidebar-hover: darken($lesli-color-background, 8);
+$lesli-sidebar-hover-text: findColorInvert(variables.$lesli-sidebar-hover) !default;
+$lesli-sidebar-hover: color.adjust(variables.$lesli-color-background, $lightness: -8%);
 
 
 
@@ -56,7 +60,7 @@ aside.lesli-application-sidebar {
 
     // allow the container to scroll over the navigation items
     nav {
-        @include lesli-css-scrollbar(hide);
+        @include scrollbar.lesli-css-scrollbar(hide);
         overflow-y: scroll;
         background-color: white;
         border-radius: 8px;

@@ -30,6 +30,10 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+
+@use "lesli-css/sass/helpers/breakpoint/breakpoint";
+
+
 .lesli-application-engines {
 
     .engines-container {
@@ -51,7 +55,7 @@ Building a better future, one line of code at a time.
                 margin-bottom: 2rem;
                 border-radius: .5rem;
                 border: transparent 1px solid;
-                box-shadow: $lesli-box-shadow;
+                //box-shadow: $lesli-box-shadow;
                 background-color: lesli-css-color(silver, 100);
                 background-color: #FFFFFF;
                 transition: all ease-in-out .4s;
@@ -97,7 +101,7 @@ Building a better future, one line of code at a time.
 }
 
 
-@include lesli-css-breakpoint-tablet() {
+@include breakpoint.lesli-css-breakpoint-tablet() {
     .lesli-application-engines .engines-container .engines {
         flex-direction: row;
         a {
