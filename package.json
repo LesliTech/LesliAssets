@@ -1,21 +1,21 @@
 {
-  "name": "lesli-assets",
-  "devDependencies": {
-    "lesli-js": "0.5.0",
-    "lesli-css": "2.2.0",
+    "name": "lesli-assets",
+    "devDependencies": {
+        "lesli-js": "0.5.0",
+        "lesli-css": "3.0.0",
 
-    "daisyui": "5.0.43",
-    "tailwindcss": "4.1.10",
-    "@tailwindcss/cli":"4.1.10",
+        "daisyui": "5.0.43",
+        "tailwindcss": "4.1.10",
+        "@tailwindcss/cli":"4.1.10",
 
-    "dayjs": "1.11.13",
-    "apexcharts": "4.7.0",
-    "alpinejs": "3.14.9",
+        "dayjs": "1.11.13",
+        "alpinejs": "3.14.9",
+        "apexcharts": "4.7.0",
 
-    "@fullcalendar/core":"6.1.17",
-    "@fullcalendar/daygrid":"6.1.17",
+        "@fullcalendar/core":"6.1.17",
+        "@fullcalendar/daygrid":"6.1.17",
 
-    "esbuild": "0.25.5",
-    "svgo":"3.3.2"
-  }
+        "esbuild": "0.25.5",
+        "svgo":"3.3.2"
+    }
 }

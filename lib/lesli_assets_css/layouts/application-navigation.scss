@@ -30,13 +30,18 @@ Building a better future, one line of code at a time.
 // · 
 */
 
-@use "lesli-css/sass/functions/color/color";
+
+// · 
+@use "lesli-css/sass/color";
 
 
+// · 
 .navbar {
     position: static;
 }
 
+
+// · 
 nav.lesli-application-navigation {
     background-color: var(--lesli-navbar-color);
     border-bottom: 1px solid rgba(172,179,194,.5);
@@ -71,8 +76,8 @@ nav.lesli-application-navigation {
             &:hover {
                 // color: lesli-css-color(slate, 100);
                 // text-shadow: 0 0px 10px rgba(lesli-css-color(slate, 900), 0.8);
-                color: color.lesli-css-color(slate, 700);
-                text-shadow: 0 2px 6px rgba(color.lesli-css-color(slate, 700), 0.25);
+                color: color.lesli-color(slate, 700);
+                text-shadow: 0 2px 6px rgba(color.lesli-color(slate, 700), 0.25);
             }
 
             // highlight active link

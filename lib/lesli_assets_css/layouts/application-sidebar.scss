@@ -29,8 +29,10 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+
+// · 
 @use "sass:color";
-@use "lesli-css/sass/layout/scrollbar/scrollbar";
+@use "lesli-css/sass/layout/scrollbar";
 @use "../settings/variables";
 
 
@@ -60,7 +62,7 @@ aside.lesli-application-sidebar {
 
     // allow the container to scroll over the navigation items
     nav {
-        @include scrollbar.lesli-css-scrollbar(hide);
+        @include scrollbar.lesli-scrollbar(hide);
         overflow-y: scroll;
         background-color: white;
         border-radius: 8px;
