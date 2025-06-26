@@ -61,13 +61,8 @@ production.js:
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 
 # Define source SCSS files and their corresponding CSS output paths
-#SASS_SRCS := $(wildcard engines/*/lib/scss/*.scss)
 SASS_FILES = \
-	./lib/lesli_assets_css/templates/application.scss:./app/assets/stylesheets/lesli_assets/templates/application.css \
-	./lib/lesli_assets_css/templates/public.scss:./app/assets/stylesheets/lesli_assets/templates/public.css \
-	./lib/lesli_assets_css/templates/start.scss:./app/assets/stylesheets/lesli_assets/templates/start.css
-
-SASS_FILES = \
+	./lib/lesli_assets_css/templates:./app/assets/stylesheets/lesli_assets/templates/ \
 	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield
 
 # Define common SASS options
