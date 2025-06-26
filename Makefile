@@ -66,7 +66,7 @@ SASS_FILES = \
 	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield
 
 # Define common SASS options
-SASS_OPTS = --no-source-map --load-path=node_modules --load-path=../ --load-path=../../engines
+SASS_OPTS = --no-source-map --load-path=node_modules --load-path=../ --load-path=../../engines --style=compressed
 
 # Development
 build.css:

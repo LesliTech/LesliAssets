@@ -32,6 +32,9 @@ Building a better future, one line of code at a time.
 
 
 // ·
+@use "lesli-css" as lesli;
+
+// ·
 header.lesli-application-header {
     background-color: var(--lesli-header-color);
     height: var(--lesli-header-height);
@@ -53,7 +56,7 @@ header.lesli-application-header {
             // navigation icons
             [class^="ri-"] {
                 font-size: 20px;
-                color: lesli-css-color(black, 700);
+                color: lesli.lesli-color(black, 700);
             }
         }
 
@@ -67,7 +70,7 @@ header.lesli-application-header {
             [class^="ri-"] {
                 font-size: 25px;
                 padding: 0 0.6rem;
-                color: lesli-css-color(black, 700);
+                color: lesli.lesli-color(black, 700);
             }
 
             // Notification icon & count
