@@ -30,25 +30,24 @@ Building a better future, one line of code at a time.
 // · 
 */
 
-/*
+
 // · 
-@import "lesli-css";
-@import "lesli-css/source/vendor/bulma";
+@use "lesli-css";
+@use "lesli-css/sass/vendor/bulma";
 
 
 // · Configuration & variables
-@import "../settings/variables";
+@use "../settings/variables";
 
 
 // · LesliView components & elements 
-@import "LesliView/lib/lesli_view/forms/form";
+@use "LesliView/lib/lesli_view/forms/form";
 
 
 // · Font families and icons
-@import "../fonts/families";
-@import "../fonts/mdicons";
+@use "../fonts/families";
+@use "../fonts/mdicons";
 
 
 // · Some home made helpers
-@import "../helpers/display";
-*/
+@use "../helpers/display";

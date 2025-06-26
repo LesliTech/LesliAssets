@@ -9668,7 +9668,7 @@
 
   // lib/lesli_assets_js/calendar.js
   document.addEventListener("turbo:load", () => {
-    let calendarEl = document.getElementById("calendar");
+    let calendarEl = document.getElementById("lesli-calendar-engine");
     let calendar = new Calendar(calendarEl, {
       plugins: [index],
       firstDay: 1,

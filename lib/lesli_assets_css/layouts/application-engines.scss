@@ -31,9 +31,12 @@ Building a better future, one line of code at a time.
 */
 
 
+// · 
+@use "lesli-css/sass/helpers/shadow";
 @use "lesli-css/sass/helpers/breakpoint";
 
 
+// · 
 .lesli-application-engines {
 
     .engines-container {
@@ -55,10 +58,10 @@ Building a better future, one line of code at a time.
                 margin-bottom: 2rem;
                 border-radius: .5rem;
                 border: transparent 1px solid;
-                //box-shadow: $lesli-box-shadow;
                 background-color: lesli-css-color(silver, 100);
                 background-color: #FFFFFF;
                 transition: all ease-in-out .4s;
+                @include shadow.lesli-shadow();
 
                 &:hover {
                     border-color: var(--lesli-color-primary);
