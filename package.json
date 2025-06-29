@@ -8,6 +8,7 @@
         "tailwindcss": "4.1.10",
         "@tailwindcss/cli":"4.1.10",
 
+        "trix":"2.1.15",
         "dayjs": "1.11.13",
         "alpinejs": "3.14.9",
         "apexcharts": "4.7.0",

@@ -36,6 +36,10 @@ Building a better future, one line of code at a time.
 @use "lesli-css/sass/vendor/bulma";
 
 
+// · Vendor
+@use "trix/dist/trix.css";
+
+
 // · Configuration & variables
 @use "../settings/variables";
 

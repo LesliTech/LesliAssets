@@ -1,4 +1,4 @@
 module LesliAssets
-  VERSION = "0.1.0"
-  BUILD = ""
+    VERSION = "1.0.0"
+    BUILD = "1751159092"
 end
