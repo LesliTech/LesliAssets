@@ -1,13 +1,12 @@
-
-<div align="center">
-    <img width="100" alt="LesliAssets logo" src="./app/assets/images/assets-logo.svg" />
+<div align="center" class="documentation-header">
+    <img width="100" alt="LesliAssets logo" src="./docs/images/assets-logo.svg" />
     <h3 align="center">Shared Frontend Assets for The Lesli Framework.</h3>
 </div>
 
 <br />
 <hr/>
 
-<p align="center" class="is-flex is-justify-content-center">
+<div align="center" class="documentation-statics">
     <a target="blank" href="https://rubygems.org/gems/lesli">
         <img height="22" alt="Gem Version" src="https://badge.fury.io/rb/lesli.svg"/>
     </a>
@@ -17,29 +16,35 @@
     <a href="https://codecov.io/github/LesliTech/LesliBabel"> 
         <img height="22" src="https://sonarcloud.io/api/project_badges/measure?project=LesliTech_LesliBabel&metric=sqale_rating"/> 
     </a>
-</p>
+</div>
 
 <hr/>
 <br />
 
+
 ### Quick start
 
 ```shell
-# Add LesliAdmin engine gem
+# Add LesliAssets gem
 bundle add lesli_assets
 ```
 
+
 ### Documentation
+- **Components:**
+    - [Header](https://www.lesli.dev/gems/view/component-header)
+
+
+### Lesli Documentation
 * [website](https://www.lesli.dev/)
-* [database](./docs/database.md)
-* [documentation](https://www.lesli.dev/gems/assets/)
+* [documentation](https://www.lesli.dev/gems/view/)
 
 
 ### Get in touch with Lesli
 
 * [Email: hello@lesli.tech](hello@lesli.tech)
-* [Twitter: @LesliTech](https://twitter.com/LesliTech)
 * [Website: https://www.lesli.tech](https://www.lesli.tech)
+* [Twitter: @LesliTech](https://twitter.com/LesliTech)
 
 
 ### License
@@ -62,7 +67,7 @@ along with this program. If not, see http://www.gnu.org/licenses/.
 <hr />
 <br />
 
-<p align="center">
+<div align="center" class="has-text-centered">
     <img width="200" alt="Lesli logo" src="https://cdn.lesli.tech/lesli/brand/app-logo.svg" />
-    <h4 align="center">Ruby on Rails SaaS Development Framework.</h4>
-</p>
+    <h4 align="center" class="mt-0">Ruby on Rails SaaS Development Framework.</h4>
+</div>
