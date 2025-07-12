@@ -47,6 +47,13 @@ header.lesli-application-header {
             }
         }
 
+        .navbar-menu {
+            &.is-active {
+                z-index: 99;
+                position: relative;
+            }
+        }       
+
         .navbar-item {
 
             .icon {
