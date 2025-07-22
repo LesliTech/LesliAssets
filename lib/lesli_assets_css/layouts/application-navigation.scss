@@ -36,62 +36,29 @@ Building a better future, one line of code at a time.
 
 
 // · 
-.navbar {
-    position: static;
-}
-
-
-// · 
 nav.lesli-application-navigation {
     background-color: var(--lesli-navbar-color);
     border-bottom: 1px solid rgba(172,179,194,.5);
-    border-top: 1px solid rgba(172,179,194,.5);
-    width: 100%;
 
-    .navbar-menu {
-        justify-content: center;
-    }
-
-    .navbar-end {
-        margin-inline-start: unset;
-    }
-
-    li {
-        padding-top: 0;
-        padding-bottom: 0;
+    .navbar-item {
+        padding: 0;
 
         a {
-            gap: 6px;
+            height: 100%;
             display: flex;
-            padding: 1.2rem 1.1rem 0.8rem;
             align-items: center;
-            border-bottom: 2px solid transparent;
-            color: lesli-css-color(black, 700);
+            padding-left: 2rem;
+            padding-right: 2rem;
             transition: all linear .2s;
 
             &:hover {
-                // color: lesli-css-color(slate, 100);
-                // text-shadow: 0 0px 10px rgba(lesli-css-color(slate, 900), 0.8);
                 color: color.lesli-color(slate, 700);
-                text-shadow: 0 2px 6px rgba(color.lesli-color(slate, 700), 0.25);
             }
+        }
 
-            // highlight active link
-            &.navigation-link-active {
-                border-bottom-color: lesli-css-color(lesli, primary);
-            }
-            
-            // link label
-            span.text {
-                flex-grow: 1;
-                font-size: 1rem;
-                text-align: left;
-                display: inline-block;
-            }
-
-            [class^="ri-"] {
-                font-size: 20px;
-            }
+        [class^="ri-"] {
+            font-size: 20px;
+            margin-right: 6px;
         }
     }
 }

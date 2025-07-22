@@ -34,71 +34,34 @@ Building a better future, one line of code at a time.
 // ·
 @use "lesli-css" as lesli;
 
+
+// Override bulma navbar height
+:root {
+    --bulma-navbar-height: var(--lesli-header-height)
+}
+
+
 // ·
 header.lesli-application-header {
     background-color: var(--lesli-header-color);
-    height: var(--lesli-header-height);
+    border-bottom: 1px solid rgba(172,179,194,.5);
 
-    nav.lesli-navbar {
+    // Fix the size of the main logo 
+    .navbar-brand img {
+        height: 100px;
+        max-height: 50px;
+    }
 
-        .navbar-brand {
-            img {
-                height: var(--lesli-header-height);
-            }
+    // navigation icons
+    .navbar-item {
+        [class^="ri-"] {
+            font-size: 24px;
+            padding: 0 0.6rem;
+            color: lesli.lesli-color(slate, 900);
         }
 
-        .navbar-menu {
-            &.is-active {
-                z-index: 99;
-                position: relative;
-            }
-        }       
-
-        .navbar-item {
-
-            .icon {
-                padding: 0;
-            }
-
-            // navigation icons
-            [class^="ri-"] {
-                font-size: 20px;
-                color: lesli.lesli-color(black, 700);
-            }
-        }
-
-        .header-icons {
-
-            a {
-                position: relative;
-            }
-
-            // navigation icons
-            [class^="ri-"] {
-                font-size: 25px;
-                padding: 0 0.6rem;
-                color: lesli.lesli-color(black, 700);
-            }
-
-            // Notification icon & count
-            .header-indicator {
-                .count {
-                    top: -8px;
-                    right: 10px;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background-color: lesli-css-color(berry, 300);
-                    position: absolute;
-                }
-            }
-
-            .lesli-header-notifications {
-                .dropdown-content {
-                    box-shadow: none;
-                    background-color: transparent;
-                }
-            }
+        a:hover span {
+            color: var(--lesli-color-primary);
         }
     }
 }
