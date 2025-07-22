@@ -36,6 +36,7 @@ Building a better future, one line of code at a time.
     src: url("lesli_assets/MaterialDesign/symbols.woff") format('woff');
 }
 
+.material-symbols,
 .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
@@ -51,3 +52,9 @@ Building a better future, one line of code at a time.
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
 }
+
+
+.material-symbols.md-18 { font-size: 18px; }
+.material-symbols.md-24 { font-size: 24px; }
+.material-symbols.md-36 { font-size: 36px; }
+.material-symbols.md-48 { font-size: 48px; }

@@ -18442,10 +18442,9 @@ Building a better future, one line of code at a time.
   font-display: swap;
 }
 /*
-
 Lesli
 
-Copyright (c) 2023, Lesli Technologies, S. A.
+Copyright (c) 2025, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18462,7 +18461,7 @@ along with this program. If not, see http://www.gnu.org/licenses/.
 
 Lesli · Ruby on Rails SaaS Development Framework.
 
-Made with ♥ by https://www.lesli.tech
+Made with ♥ by LesliTech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
@@ -18473,65 +18472,42 @@ Building a better future, one line of code at a time.
 // · 
 */
 @font-face {
-  font-family: "Material Icons";
+  font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 400;
-  src: url("lesli_assets/MaterialDesign/icons.woff2") format("woff2");
+  src: url("lesli_assets/MaterialDesign/symbols.woff") format("woff");
 }
-.material-icons {
-  font-family: "Material Icons";
+.material-symbols,
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
-  font-size: 20px; /* Preferred icon size */
-  display: inline-block;
-  text-transform: none;
+  font-size: 24px;
+  line-height: 1;
   letter-spacing: normal;
-  word-wrap: normal;
+  text-transform: none;
+  display: inline-block;
   white-space: nowrap;
+  word-wrap: normal;
   direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
+  -moz-font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
 }
 
-/* Rules for sizing the icon. */
-.material-icons.md-18 {
+.material-symbols.md-18 {
   font-size: 18px;
 }
 
-.material-icons.md-24 {
+.material-symbols.md-24 {
   font-size: 24px;
 }
 
-.material-icons.md-36 {
+.material-symbols.md-36 {
   font-size: 36px;
 }
 
-.material-icons.md-48 {
+.material-symbols.md-48 {
   font-size: 48px;
-}
-
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
-}
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light {
-  color: rgb(255, 255, 255);
-}
-
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
 }
 
 /*

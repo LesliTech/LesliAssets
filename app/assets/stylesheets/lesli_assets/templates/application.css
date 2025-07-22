@@ -19235,7 +19235,7 @@ section.lesli-panel div.lesli-panel-container .lesli-panel-header {
   justify-content: flex-start;
   padding: 0.75em 1em;
   border-bottom: none;
-  border-right: 3px solid transparent;
+  border-right: 2px solid transparent;
 }
 .lesli-tabs.is-vertical .tabs li.is-active a {
   border-right-color: var(--color-primary);
@@ -31807,6 +31807,7 @@ Building a better future, one line of code at a time.
   font-weight: 400;
   src: url("lesli_assets/MaterialDesign/symbols.woff") format("woff");
 }
+.material-symbols,
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
@@ -31821,6 +31822,22 @@ Building a better future, one line of code at a time.
   direction: ltr;
   -moz-font-feature-settings: "liga";
   -moz-osx-font-smoothing: grayscale;
+}
+
+.material-symbols.md-18 {
+  font-size: 18px;
+}
+
+.material-symbols.md-24 {
+  font-size: 24px;
+}
+
+.material-symbols.md-36 {
+  font-size: 36px;
+}
+
+.material-symbols.md-48 {
+  font-size: 48px;
 }
 
 /*
@@ -31864,99 +31881,6 @@ Building a better future, one line of code at a time.
   src: url("lesli_assets/OpenSans/OpenSans-Variable.ttf") format("truetype");
   font-display: swap;
 }
-/*
-
-Lesli
-
-Copyright (c) 2023, Lesli Technologies, S. A.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see http://www.gnu.org/licenses/.
-
-Lesli · Ruby on Rails SaaS Development Framework.
-
-Made with ♥ by https://www.lesli.tech
-Building a better future, one line of code at a time.
-
-@contact  hello@lesli.tech
-@website  https://www.lesli.tech
-@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
-
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-// · 
-*/
-@font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  src: url("lesli_assets/MaterialDesign/icons.woff2") format("woff2");
-}
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 20px; /* Preferred icon size */
-  display: inline-block;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
-}
-
-/* Rules for sizing the icon. */
-.material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
-}
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light {
-  color: rgb(255, 255, 255);
-}
-
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
-}
-
 section.application-lesli-notifications {
   max-width: 600px;
   margin: 0 auto;
@@ -32294,7 +32218,7 @@ Building a better future, one line of code at a time.
 
 Lesli
 
-Copyright (c) 2023, Lesli Technologies, S. A.
+Copyright (c) 2025, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
