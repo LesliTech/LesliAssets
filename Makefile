@@ -74,7 +74,7 @@ watch.css:
 	npx sass $(SASS_FILES) --watch $(SASS_OPTS)
 
 # Production build (compressed output)
-production.css:
+prod.css:
 	npx sass $(SASS_FILES) --style=compressed $(SASS_OPTS)
 
 # Clean generated CSS files
