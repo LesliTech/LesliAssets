@@ -59,7 +59,7 @@ build.js:
 
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
-	./lib/lesli_assets_css/templates:./app/assets/stylesheets/lesli_assets/templates/ \
+	./lib/lesli_assets_styles/templates:./app/assets/stylesheets/lesli_assets/templates/ \
 	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield
 
 # Define common SASS options
