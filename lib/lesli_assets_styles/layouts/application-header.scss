@@ -47,9 +47,14 @@ header.lesli-application-header {
     border-bottom: 1px solid rgba(172,179,194,.5);
 
     // Fix the size of the main logo 
-    .navbar-brand img {
-        height: 100px;
-        max-height: 50px;
+    .navbar-brand {
+        .navbar-item:hover {
+            background-color: transparent;
+        }
+        img {
+            height: 100px;
+            max-height: 50px;
+        }
     }
 
     // navigation icons

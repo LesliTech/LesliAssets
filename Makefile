@@ -73,6 +73,7 @@ prod.js:
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
 	./lib/lesli_assets_styles/templates:./app/assets/stylesheets/lesli_assets/templates/ \
+	../../engines/Lesli/lib/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
 	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
 	../../engines/LesliCalendar/lib/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
 
