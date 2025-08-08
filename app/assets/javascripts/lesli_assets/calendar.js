@@ -9667,6 +9667,11 @@
   });
 
   // lib/lesli_assets_js/calendar.js
+  function getCalendarInitialView() {
+    if (window.innerWidth < 768) return "dayGridDay";
+    if (window.innerWidth < 1024) return "dayGridWeek";
+    return "dayGridMonth";
+  }
   function buildCalendar() {
     console.log("buildCalendar");
     let calendarEl = document.getElementById("lesli-calendar-engine");
@@ -9676,7 +9681,7 @@
       plugins: [index],
       firstDay: 1,
       headerToolbar: false,
-      initialView: "dayGridMonth",
+      initialView: getCalendarInitialView(),
       showNonCurrentDates: true,
       dayMaxEvents: true,
       editable: true,
@@ -9695,6 +9700,12 @@
     });
     console.log("renderCalendar");
     calendar.render();
+    window.addEventListener("resize", () => {
+      const newView = getCalendarInitialView();
+      if (calendar.view.type !== newView) {
+        calendar.changeView(newView);
+      }
+    });
   }
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOMContentLoaded");

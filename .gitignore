@@ -8,3 +8,4 @@ node_modules
 
 # Ignore Lesli gems
 lesli*.gem
+.DS_Store
