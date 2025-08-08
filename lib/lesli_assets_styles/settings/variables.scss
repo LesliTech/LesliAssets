@@ -1,7 +1,7 @@
 /*
 Lesli
 
-Copyright (c) 2023, Lesli Technologies, S. A.
+Copyright (c) 2025, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ along with this program. If not, see http://www.gnu.org/licenses/.
 
 Lesli · Ruby on Rails SaaS Development Framework.
 
-Made with ♥ by https://www.lesli.tech
+Made with ♥ by LesliTech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
@@ -29,7 +29,10 @@ Building a better future, one line of code at a time.
 // · 
 */
 
-@use "lesli-css/sass/helpers/breakpoint";
+
+// · 
+@use "lesli-css" as lesli;
+
 
 // · Layout
 $lesli-font-size: 16px !default;
@@ -50,7 +53,7 @@ $lesli-color-background: #f8f4f4 !default;
 
 
 // · To understand more about customization go to:
-// · https://www.lesli.dev/documentation/design/20-theme
+// · https://www.lesli.dev/engines/lesli/theming/
 
 
 
@@ -102,7 +105,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Mobile Up to 768px
-@include breakpoint.lesli-breakpoint-mobile {
+@include lesli.lesli-breakpoint-mobile {
     :root {
         --lesli-sidebar-width: 50px;
     }
@@ -110,7 +113,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Tablet Between 769px and 1023px
-@include breakpoint.lesli-breakpoint-tablet {
+@include lesli.lesli-breakpoint-tablet {
     :root {
         --lesli-sidebar-width: 100px;
     }   
@@ -118,7 +121,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Desktop Between 1024px and 1215px
-@include breakpoint.lesli-breakpoint-desktop {
+@include lesli.lesli-breakpoint-desktop {
     :root {
         --lesli-sidebar-width: 200px;
     }   
@@ -126,7 +129,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Widescreen Between 1216px and 1407px
-@include breakpoint.lesli-breakpoint-widescreen {
+@include lesli.lesli-breakpoint-widescreen {
     :root {
         --lesli-sidebar-width: 225px;
     }   
@@ -134,7 +137,7 @@ $family-primary: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", s
 
 
 // Widescreen Between 1216px and 1407px
-@include breakpoint.lesli-breakpoint-fullhd {
+@include lesli.lesli-breakpoint-fullhd {
     :root {
         --lesli-sidebar-width: 328px;
     }   

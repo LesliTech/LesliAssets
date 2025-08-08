@@ -30,7 +30,23 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+
+// · 
+@use "lesli-css" as lesli;
+
+
+// · 
 section.lesli-application-container,
 turbo-frame.lesli-application-container {
     padding: 1rem;
+}
+
+
+// · 
+@include lesli.lesli-breakpoint-desktop {
+    section.lesli-application-container,
+    turbo-frame.lesli-application-container {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
 }
