@@ -9,11 +9,11 @@
 * Date: 2024-12-17
 */
 
-// @font-face {
-//     font-family: "remixicon";
-//     src: font-url("lesli_assets/Remix/remixicon.ttf") format("truetype");
-//     font-display: swap;
-// }
+@font-face {
+    font-family: "remixicon";
+    src: url("/lesli_assets/Remix/remixicon.ttf") format("truetype");
+    font-display: swap;
+}
 
 [class^="ri-"], [class*=" ri-"] {
     font-family: "Remixicon" !important;

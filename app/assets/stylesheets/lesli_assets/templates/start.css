@@ -5483,6 +5483,16 @@ Building a better future, one line of code at a time.
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
 */
+@font-face {
+  font-family: "Domine";
+  src: url("/lesli_assets/Domine/Domine-Variable.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("/lesli_assets/OpenSans/OpenSans-Variable.ttf") format("truetype");
+  font-display: swap;
+}
 /*
 
 Lesli

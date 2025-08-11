@@ -29,13 +29,17 @@ Building a better future, one line of code at a time.
 // · 
 */
 
-// @font-face {
-//     font-family: 'Material Symbols Outlined';
-//     font-style: normal;
-//     font-weight: 400;
-//     src: url("lesli_assets/MaterialDesign/symbols.woff") format('woff');
-// }
 
+// · 
+@font-face {
+    font-family: "MaterialSymbols";
+    src: url("/lesli_assets/MaterialDesign/symbols.woff") format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+// · 
 .material-symbols,
 .material-symbols-outlined {
     font-family: "MaterialSymbols";
@@ -54,6 +58,7 @@ Building a better future, one line of code at a time.
 }
 
 
+// · 
 .material-symbols.md-18 { font-size: 18px; }
 .material-symbols.md-24 { font-size: 24px; }
 .material-symbols.md-36 { font-size: 36px; }

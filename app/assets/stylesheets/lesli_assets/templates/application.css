@@ -19794,6 +19794,11 @@ form fieldset.is-danger h5 {
 *
 * Date: 2024-12-17
 */
+@font-face {
+  font-family: "remixicon";
+  src: url("/lesli_assets/Remix/remixicon.ttf") format("truetype");
+  font-display: swap;
+}
 [class^=ri-], [class*=" ri-"] {
   font-family: "Remixicon" !important;
   font-style: normal;
@@ -19915,6 +19920,12 @@ Building a better future, one line of code at a time.
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
 */
+@font-face {
+  font-family: "MaterialSymbols";
+  src: url("/lesli_assets/MaterialDesign/symbols.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
 .material-symbols,
 .material-symbols-outlined {
   font-family: "MaterialSymbols";
@@ -19979,6 +19990,16 @@ Building a better future, one line of code at a time.
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
 */
+@font-face {
+  font-family: "Domine";
+  src: url("/lesli_assets/Domine/Domine-Variable.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("/lesli_assets/OpenSans/OpenSans-Variable.ttf") format("truetype");
+  font-display: swap;
+}
 section.application-lesli-notifications {
   max-width: 600px;
   margin: 0 auto;

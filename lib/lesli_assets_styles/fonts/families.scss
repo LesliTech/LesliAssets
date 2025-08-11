@@ -31,17 +31,17 @@ Building a better future, one line of code at a time.
 */
 
 
-// // · Font family for titles
-// @font-face {
-//     font-family: "Domine";
-//     src: url("lesli_assets/Domine/Domine-Variable.ttf") format("truetype");
-//     font-display: swap;
-// }
+// · Font family for titles
+@font-face {
+    font-family: "Domine";
+    src: url("/lesli_assets/Domine/Domine-Variable.ttf") format("truetype");
+    font-display: swap;
+}
 
 
-// // · Font family for the body
-// @font-face {
-//     font-family: "OpenSans";
-//     src: url("lesli_assets/OpenSans/OpenSans-Variable.ttf") format("truetype");
-//     font-display: swap;
-// }
+// · Font family for the body
+@font-face {
+    font-family: "OpenSans";
+    src: url("/lesli_assets/OpenSans/OpenSans-Variable.ttf") format("truetype");
+    font-display: swap;
+}
