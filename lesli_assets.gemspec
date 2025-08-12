@@ -36,27 +36,31 @@ Gem::Specification.new do |spec|
     spec.name        = "lesli_assets"
     spec.version     = LesliAssets::VERSION
     spec.platform    = Gem::Platform::RUBY
-    spec.license     = "GPL-3.0"
+    spec.license     = "GPL-3.0-or-later"
     spec.authors     = ["The Lesli Development Team"]
     spec.email       = ["hello@lesli.tech"]
     spec.homepage    = "https://www.lesli.dev/"
     spec.summary     = "Shared Frontend Assets for The Lesli Framework"
     spec.description = <<~DESC
         LesliAssets provides shared frontend assets for the Lesli Framework, 
-        including stylesheets, JavaScript, images, icons, and reusable 
-        view partials. Designed to ensure consistent UI and simplify asset management 
-        across all Lesli-based applications and modules.
+        including stylesheets, JavaScript, images, icons, and reusable view partials.
     DESC
 
     # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
     # to allow pushing to a single host or delete this section to allow pushing to any host.
-    #spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
-    spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["changelog_uri"] = "https://github.com/LesliTech/LesliAssets"
-    spec.metadata["source_code_uri"] = "https://github.com/LesliTech/LesliAssets"
+    spec.metadata["homepage_uri"]       = spec.homepage
+    spec.metadata["changelog_uri"]      = "https://github.com/LesliTech/LesliAssets/releases"
+    spec.metadata["source_code_uri"]    = "https://github.com/LesliTech/LesliAssets"
+    spec.metadata["bug_tracker_uri"]    = "https://github.com/LesliTech/LesliAssets/issues"
+    spec.metadata["documentation_uri"]  = "https://www.lesli.dev/gems/assets/"
 
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
-        Dir["{app,config,db,lib,vendor}/**/*", "license", "Rakefile", "readme.md"]
+        Dir["{app,config,db,lib}/**/*", "license", "Rakefile", "readme.md"]
     end
+
+
+    # Ruby version
+    spec.required_ruby_version = ">= 3.2"
 end
