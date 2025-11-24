@@ -53,6 +53,7 @@ Building a better future, one line of code at a time.
 @use "LesliView/lib/lesli_view/elements/avatar";
 @use "LesliView/lib/lesli_view/elements/table";
 @use "LesliView/lib/lesli_view/forms/form";
+@use "LesliView/lib/lesli_view/items/discussions";
 
 
 // · Font families and icons
@@ -83,7 +84,6 @@ body {
     scrollbar-color: var(--lesli-color-primary) transparent;
     scrollbar-width: thin;
     font-weight: normal;
-    line-height: 158%;
 }
 
 

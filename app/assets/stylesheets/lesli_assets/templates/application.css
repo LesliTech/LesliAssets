@@ -19095,7 +19095,7 @@ Building a better future, one line of code at a time.
 */
 :root {
   --lesli-color-primary: var(--lesli-theme-color-primary, #193d8d);
-  --lesli-color-background: var(--lesli-theme-color-background, #f8f4f4);
+  --lesli-color-background: var(--lesli-theme-color-background, #f9f5f3);
   --lesli-header-color: var(--lesli-theme-header-color, white);
   --lesli-header-height: var(--lesli-theme-header-height, 65px);
   --lesli-footer-color: var(--lesli-theme-footer-color, white);
@@ -19782,6 +19782,79 @@ form fieldset.is-danger {
 form fieldset.is-danger h5 {
   color: var(--bulma-danger-bold);
   font-weight: 600;
+}
+
+/*
+
+Lesli
+
+Copyright (c) 2025, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+/*
+
+Lesli
+
+Copyright (c) 2025, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+.lesli-items-discussions {
+  background-color: white;
+  padding: 2rem;
+}
+.lesli-items-discussions-form {
+  padding: 1rem;
+}
+.lesli-items-discussions-comments {
+  padding: 1rem;
 }
 
 /*
@@ -20504,7 +20577,6 @@ body {
   scrollbar-color: var(--lesli-color-primary) transparent;
   scrollbar-width: thin;
   font-weight: normal;
-  line-height: 158%;
 }
 
 h1, h2, h3, h4, h5, h6, a {

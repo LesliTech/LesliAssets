@@ -33,14 +33,17 @@
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 build.icons:
 	svgo -f ./app/assets/icons/lesli_assets/engines -o ./app/assets/icons/lesli_assets/engines
+	svgo -f ./app/assets/icons/lesli_assets/social -o ./app/assets/icons/lesli_assets/social
 	svgo -f ./app/assets/icons/lesli_assets/flags -o ./app/assets/icons/lesli_assets/flags
 	svgo -f ./app/assets/icons/lesli_assets/gems -o ./app/assets/icons/lesli_assets/gems
 	
 	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/engines --destination ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg
+	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/social --destination ./app/views/lesli_assets/partials/_application-lesli-icons-social.svg
 	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/flags --destination ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg
 	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/gems --destination ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg
 
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg ./app/views/lesli_assets/partials/_application-lesli-icons-engines.html.erb
+	mv ./app/views/lesli_assets/partials/_application-lesli-icons-social.svg ./app/views/lesli_assets/partials/_application-lesli-icons-social.html.erb
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg ./app/views/lesli_assets/partials/_application-lesli-icons-flags.html.erb
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg ./app/views/lesli_assets/partials/_application-lesli-icons-gems.html.erb
 
@@ -56,7 +59,7 @@ build.js:
 # Build javascript
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 watch.js:
-	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js 
+	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --watch 
 	npx esbuild ./lib/lesli_assets_js/calendar.js --bundle --outfile=./app/assets/javascripts/lesli_assets/calendar.js --watch
 
 
