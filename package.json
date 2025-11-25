@@ -2,7 +2,7 @@
     "name": "lesli-assets",
     "devDependencies": {
         "lesli-js": "0.5.0",
-        "lesli-css": "3.0.0",
+        "lesli-css": "3.1.0",
 
         "daisyui": "5.0.43",
         "tailwindcss": "4.1.10",
