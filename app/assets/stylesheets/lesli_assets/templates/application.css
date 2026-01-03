@@ -19671,6 +19671,10 @@ Building a better future, one line of code at a time.
   content: "\ec7a";
 }
 
+.ri-heavy-showers-line:before {
+  content: "\ee15";
+}
+
 .ri-lock-line:before {
   content: "\eece";
 }
@@ -19701,6 +19705,14 @@ Building a better future, one line of code at a time.
 
 .ri-shield-user-line:before {
   content: "\f10c";
+}
+
+.ri-showers-line:before {
+  content: "\f122";
+}
+
+.ri-sun-line:before {
+  content: "\f1bf";
 }
 
 .ri-team-line:before {
