@@ -19727,6 +19727,10 @@ Building a better future, one line of code at a time.
   content: "\f217";
 }
 
+.ri-user-add-line:before {
+  content: "\f25e";
+}
+
 .ri-user-line:before {
   content: "\f264";
 }
