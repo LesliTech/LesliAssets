@@ -19667,12 +19667,20 @@ Building a better future, one line of code at a time.
   content: "\ec12";
 }
 
+.ri-device-line:before {
+  content: "\ec2e";
+}
+
 .ri-earth-line:before {
   content: "\ec7a";
 }
 
 .ri-heavy-showers-line:before {
   content: "\ee15";
+}
+
+.ri-history-line:before {
+  content: "\ee17";
 }
 
 .ri-lock-line:before {
