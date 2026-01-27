@@ -322,24 +322,11 @@
         constructor(config) {
           const container = document.getElementById(config.id);
           if (!container) return;
+          const hasMultipleDatasets = config.datasets.length > 1;
           container.innerHTML = "";
           const canvas = document.createElement("canvas");
           container.appendChild(canvas);
           const ctx = canvas.getContext("2d");
-          const datasets = config.series.map((serie) => ({
-            // Dataset label (used in legend and tooltips)
-            label: serie.name,
-            // Actual data values
-            data: serie.data,
-            // Smooth curves for line charts (0 = straight lines)
-            tension: config.type === "line" ? 0.4 : 0,
-            // Rounded corners for bar charts
-            borderRadius: config.type === "bar" ? 6 : 0,
-            // Prevent bars from being clipped
-            borderSkipped: false,
-            // Disable area fill (line charts only show the line)
-            fill: false
-          }));
           const chartConfig = {
             // Chart type: "bar" or "line"
             type: config.type,
@@ -348,10 +335,18 @@
               // X-axis labels
               labels: config.labels,
               // Series data
-              datasets
+              datasets: config.datasets
             },
             // Chart behavior and appearance options
             options: {
+              layout: {
+                padding: {
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                  bottom: 20
+                }
+              },
               // Automatically resize with container
               responsive: true,
               // Allow manual height control via CSS
@@ -360,7 +355,7 @@
               plugins: {
                 // Legend configuration
                 legend: {
-                  display: true,
+                  display: hasMultipleDatasets,
                   position: "top",
                   align: "center"
                 },
@@ -377,7 +372,6 @@
                   // X-axis label styling
                   ticks: {
                     maxRotation: 65,
-                    minRotation: 65,
                     font: { size: 15 }
                   },
                   // Hide vertical grid lines
@@ -409,12 +403,22 @@
             chartConfig.options.plugins.legend.display = false;
             chartConfig.options.scales.x.display = false;
             chartConfig.options.scales.y.display = false;
+            chartConfig.options.layout.padding.top = 8;
+            chartConfig.options.layout.padding.left = 0;
+            chartConfig.options.layout.padding.right = 0;
+            chartConfig.options.layout.padding.bottom = 6;
             if (config.type === "line") {
-              chartConfig.options.layout = {
-                padding: { top: 14, right: 0, bottom: 6, left: 0 }
-              };
+              chartConfig.options.layout.padding.top = 10;
+              chartConfig.options.layout.padding.bottom = 6;
             }
           }
+          ChartJs.defaults.elements.line.tension = 0.4;
+          ChartJs.defaults.elements.line.borderCapStyle = "round";
+          ChartJs.defaults.elements.bar.borderRadius = 6;
+          ChartJs.defaults.elements.bar.borderSkipped = false;
+          ChartJs.defaults.font.family = "'Source Sans 3', system-ui, sans-serif";
+          ChartJs.defaults.font.size = 14;
+          ChartJs.defaults.color = "#4a4a4a";
           new ChartJs(ctx, chartConfig);
         }
       };
