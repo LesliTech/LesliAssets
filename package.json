@@ -9,8 +9,8 @@
 
         "trix": "2.1.15",
         "dayjs": "1.11.13",
+        "chart.js": "4.5.1",
         "alpinejs": "3.14.9",
-        "apexcharts": "4.7.0",
 
         "@fullcalendar/core": "6.1.17",
         "@fullcalendar/daygrid": "6.1.17",
