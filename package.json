@@ -8,6 +8,8 @@
         "@tailwindcss/cli":"4.1.10",
 
         "trix": "2.1.15",
+        "@37signals/lexxy":"0.7.3-beta",
+        "@rails/activestorage":"7.1.600",
         "dayjs": "1.11.13",
         "chart.js": "4.5.1",
         "alpinejs": "3.14.9",
