@@ -648,8 +648,8 @@
           let fontsize = "14px;";
           let padding = "2px;";
           let info = "background-color:#3498db;color:#ffffff;";
-          let warn = "background-color:#f1c40f;color:#000000;";
-          let error = "background-color:#e74c3c;color:#ffffff;";
+          let warn2 = "background-color:#f1c40f;color:#000000;";
+          let error2 = "background-color:#e74c3c;color:#ffffff;";
           let fatal = "background-color:#c0392b;color:#fff394;";
           let success = "background-color:##48c774;color:#000000;";
           let style = "";
@@ -658,10 +658,10 @@
               style = info;
               break;
             case "warn":
-              style = warn;
+              style = warn2;
               break;
             case "error":
-              style = error;
+              style = error2;
               break;
             case "fatal":
               style = fatal;
@@ -676,8 +676,8 @@
           return style;
         }
         // · 
-        print_r(data, level = 1) {
-          let isArray2 = Array.isArray(data);
+        print_r(data2, level = 1) {
+          let isArray3 = Array.isArray(data2);
           let comma = ",";
           let string = "";
           let padding_key = "";
@@ -689,24 +689,24 @@
           if (level > 1) {
             padding_key = padding_prop.slice(0, padding_prop.length - 4);
           }
-          if (typeof data == "object" && !Array.isArray(data)) {
+          if (typeof data2 == "object" && !Array.isArray(data2)) {
             string += padding_key + "{" + newline;
-            for (let property in data) {
-              if (typeof data[property] == "object") {
-                string += padding_prop + property + ": " + this.print_r(data[property], level + 1) + comma + newline;
+            for (let property in data2) {
+              if (typeof data2[property] == "object") {
+                string += padding_prop + property + ": " + this.print_r(data2[property], level + 1) + comma + newline;
               } else {
-                string += padding_prop + property + ": " + data[property] + comma + newline;
+                string += padding_prop + property + ": " + data2[property] + comma + newline;
               }
             }
             string += padding_key + "}";
           }
-          if (typeof data == "object" && Array.isArray(data)) {
+          if (typeof data2 == "object" && Array.isArray(data2)) {
             string += "[" + newline;
-            for (let property in data) {
-              if (typeof data[property] == "object") {
-                string += this.print_r(data[property], level + 1) + comma + newline;
+            for (let property in data2) {
+              if (typeof data2[property] == "object") {
+                string += this.print_r(data2[property], level + 1) + comma + newline;
               } else {
-                string += padding_prop + data[property] + newline;
+                string += padding_prop + data2[property] + newline;
               }
             }
             string += padding_key + "]";
@@ -895,7 +895,7 @@
              */
             clone: function deepClone(o2, visited) {
               visited = visited || {};
-              var clone4;
+              var clone5;
               var id2;
               switch (_3.util.type(o2)) {
                 case "Object":
@@ -903,33 +903,33 @@
                   if (visited[id2]) {
                     return visited[id2];
                   }
-                  clone4 = /** @type {Record<string, any>} */
+                  clone5 = /** @type {Record<string, any>} */
                   {};
-                  visited[id2] = clone4;
+                  visited[id2] = clone5;
                   for (var key in o2) {
                     if (o2.hasOwnProperty(key)) {
-                      clone4[key] = deepClone(o2[key], visited);
+                      clone5[key] = deepClone(o2[key], visited);
                     }
                   }
                   return (
                     /** @type {any} */
-                    clone4
+                    clone5
                   );
                 case "Array":
                   id2 = _3.util.objId(o2);
                   if (visited[id2]) {
                     return visited[id2];
                   }
-                  clone4 = [];
-                  visited[id2] = clone4;
+                  clone5 = [];
+                  visited[id2] = clone5;
                   /** @type {Array} */
                   /** @type {any} */
                   o2.forEach(function(v3, i2) {
-                    clone4[i2] = deepClone(v3, visited);
+                    clone5[i2] = deepClone(v3, visited);
                   });
                   return (
                     /** @type {any} */
-                    clone4
+                    clone5
                   );
                 default:
                   return o2;
@@ -2111,7 +2111,7 @@
         var STATUS_LOADED = "loaded";
         var STATUS_FAILED = "failed";
         var SELECTOR = "pre[data-src]:not([" + STATUS_ATTR + '="' + STATUS_LOADED + '"]):not([' + STATUS_ATTR + '="' + STATUS_LOADING + '"])';
-        function loadFile(src, success, error) {
+        function loadFile(src, success, error2) {
           var xhr = new XMLHttpRequest();
           xhr.open("GET", src, true);
           xhr.onreadystatechange = function() {
@@ -2120,9 +2120,9 @@
                 success(xhr.responseText);
               } else {
                 if (xhr.status >= 400) {
-                  error(FAILURE_MESSAGE(xhr.status, xhr.statusText));
+                  error2(FAILURE_MESSAGE(xhr.status, xhr.statusText));
                 } else {
-                  error(FAILURE_EMPTY_MESSAGE);
+                  error2(FAILURE_EMPTY_MESSAGE);
                 }
               }
             }
@@ -2132,16 +2132,16 @@
         function parseRange(range2) {
           var m2 = /^\s*(\d+)\s*(?:(,)\s*(?:(\d+)\s*)?)?$/.exec(range2 || "");
           if (m2) {
-            var start2 = Number(m2[1]);
+            var start3 = Number(m2[1]);
             var comma = m2[2];
             var end = m2[3];
             if (!comma) {
-              return [start2, start2];
+              return [start3, start3];
             }
             if (!end) {
-              return [start2, void 0];
+              return [start3, void 0];
             }
-            return [start2, Number(end)];
+            return [start3, Number(end)];
           }
           return void 0;
         }
@@ -2177,27 +2177,27 @@
                 var range2 = parseRange(pre.getAttribute("data-range"));
                 if (range2) {
                   var lines = text2.split(/\r\n?|\n/g);
-                  var start2 = range2[0];
+                  var start3 = range2[0];
                   var end = range2[1] == null ? lines.length : range2[1];
-                  if (start2 < 0) {
-                    start2 += lines.length;
+                  if (start3 < 0) {
+                    start3 += lines.length;
                   }
-                  start2 = Math.max(0, Math.min(start2 - 1, lines.length));
+                  start3 = Math.max(0, Math.min(start3 - 1, lines.length));
                   if (end < 0) {
                     end += lines.length;
                   }
                   end = Math.max(0, Math.min(end, lines.length));
-                  text2 = lines.slice(start2, end).join("\n");
+                  text2 = lines.slice(start3, end).join("\n");
                   if (!pre.hasAttribute("data-start")) {
-                    pre.setAttribute("data-start", String(start2 + 1));
+                    pre.setAttribute("data-start", String(start3 + 1));
                   }
                 }
                 code.textContent = text2;
                 Prism3.highlightElement(code);
               },
-              function(error) {
+              function(error2) {
                 pre.setAttribute(STATUS_ATTR, STATUS_FAILED);
-                code.textContent = error;
+                code.textContent = error2;
               }
             );
           }
@@ -2235,7 +2235,7 @@
     DirectUpload: () => DirectUpload,
     DirectUploadController: () => DirectUploadController,
     DirectUploadsController: () => DirectUploadsController,
-    start: () => start
+    start: () => start2
   });
   function getMetaValue(name) {
     const element = findElement(document.head, `meta[name="${name}"]`);
@@ -2286,9 +2286,9 @@
       return object[methodName](...messages);
     }
   }
-  function start() {
-    if (!started) {
-      started = true;
+  function start2() {
+    if (!started2) {
+      started2 = true;
       document.addEventListener("click", didClick, true);
       document.addEventListener("submit", didSubmitForm, true);
       document.addEventListener("ajax:before", didSubmitRemoteElement);
@@ -2320,9 +2320,9 @@
       event.preventDefault();
       form.setAttribute(processingAttribute, "");
       inputs.forEach(disable);
-      controller.start((error) => {
+      controller.start((error2) => {
         form.removeAttribute(processingAttribute);
-        if (error) {
+        if (error2) {
           inputs.forEach(enable);
         } else {
           submitForm(form);
@@ -2356,10 +2356,10 @@
   }
   function autostart() {
     if (window.ActiveStorage) {
-      start();
+      start2();
     }
   }
-  var sparkMd5, SparkMD5, fileSlice, FileChecksum, BlobRecord, BlobUpload, id, DirectUpload, DirectUploadController, inputSelector, DirectUploadsController, processingAttribute, submitButtonsByForm, started;
+  var sparkMd5, SparkMD5, fileSlice, FileChecksum, BlobRecord, BlobUpload, id, DirectUpload, DirectUploadController, inputSelector, DirectUploadsController, processingAttribute, submitButtonsByForm, started2;
   var init_activestorage_esm = __esm({
     "node_modules/@rails/activestorage/app/assets/javascripts/activestorage.esm.js"() {
       sparkMd5 = {
@@ -2662,14 +2662,14 @@
             this._buff = this._buff.substring(i2 - 64);
             return this;
           };
-          SparkMD52.prototype.end = function(raw) {
+          SparkMD52.prototype.end = function(raw2) {
             var buff = this._buff, length = buff.length, i2, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], ret;
             for (i2 = 0; i2 < length; i2 += 1) {
               tail[i2 >> 2] |= buff.charCodeAt(i2) << (i2 % 4 << 3);
             }
             this._finish(tail, length);
             ret = hex2(this._hash);
-            if (raw) {
+            if (raw2) {
               ret = hexToBinaryString(ret);
             }
             this.reset();
@@ -2716,12 +2716,12 @@
             tail[15] = hi;
             md5cycle(this._hash, tail);
           };
-          SparkMD52.hash = function(str, raw) {
-            return SparkMD52.hashBinary(toUtf8(str), raw);
+          SparkMD52.hash = function(str, raw2) {
+            return SparkMD52.hashBinary(toUtf8(str), raw2);
           };
-          SparkMD52.hashBinary = function(content, raw) {
+          SparkMD52.hashBinary = function(content, raw2) {
             var hash = md51(content), ret = hex2(hash);
-            return raw ? hexToBinaryString(ret) : ret;
+            return raw2 ? hexToBinaryString(ret) : ret;
           };
           SparkMD52.ArrayBuffer = function() {
             this.reset();
@@ -2735,14 +2735,14 @@
             this._buff = i2 - 64 < length ? new Uint8Array(buff.buffer.slice(i2 - 64)) : new Uint8Array(0);
             return this;
           };
-          SparkMD52.ArrayBuffer.prototype.end = function(raw) {
+          SparkMD52.ArrayBuffer.prototype.end = function(raw2) {
             var buff = this._buff, length = buff.length, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], i2, ret;
             for (i2 = 0; i2 < length; i2 += 1) {
               tail[i2 >> 2] |= buff[i2] << (i2 % 4 << 3);
             }
             this._finish(tail, length);
             ret = hex2(this._hash);
-            if (raw) {
+            if (raw2) {
               ret = hexToBinaryString(ret);
             }
             this.reset();
@@ -2765,9 +2765,9 @@
           };
           SparkMD52.ArrayBuffer.prototype.destroy = SparkMD52.prototype.destroy;
           SparkMD52.ArrayBuffer.prototype._finish = SparkMD52.prototype._finish;
-          SparkMD52.ArrayBuffer.hash = function(arr, raw) {
+          SparkMD52.ArrayBuffer.hash = function(arr, raw2) {
             var hash = md51_array(new Uint8Array(arr)), ret = hex2(hash);
-            return raw ? hexToBinaryString(ret) : ret;
+            return raw2 ? hexToBinaryString(ret) : ret;
           };
           return SparkMD52;
         });
@@ -2806,9 +2806,9 @@
         }
         readNextChunk() {
           if (this.chunkIndex < this.chunkCount || this.chunkIndex == 0 && this.chunkCount == 0) {
-            const start2 = this.chunkIndex * this.chunkSize;
-            const end = Math.min(start2 + this.chunkSize, this.file.size);
-            const bytes = fileSlice.call(this.file, start2, end);
+            const start3 = this.chunkIndex * this.chunkSize;
+            const end = Math.min(start3 + this.chunkSize, this.file.size);
+            const bytes = fileSlice.call(this.file, start3, end);
             this.fileReader.readAsArrayBuffer(bytes);
             this.chunkIndex++;
             return true;
@@ -2922,22 +2922,22 @@
           this.customHeaders = customHeaders;
         }
         create(callback2) {
-          FileChecksum.create(this.file, (error, checksum) => {
-            if (error) {
-              callback2(error);
+          FileChecksum.create(this.file, (error2, checksum) => {
+            if (error2) {
+              callback2(error2);
               return;
             }
             const blob = new BlobRecord(this.file, checksum, this.url, this.customHeaders);
             notify(this.delegate, "directUploadWillCreateBlobWithXHR", blob.xhr);
-            blob.create((error2) => {
-              if (error2) {
-                callback2(error2);
+            blob.create((error3) => {
+              if (error3) {
+                callback2(error3);
               } else {
                 const upload = new BlobUpload(blob);
                 notify(this.delegate, "directUploadWillStoreFileWithXHR", upload.xhr);
-                upload.create((error3) => {
-                  if (error3) {
-                    callback2(error3);
+                upload.create((error4) => {
+                  if (error4) {
+                    callback2(error4);
                   } else {
                     callback2(null, blob.toJSON());
                   }
@@ -2960,15 +2960,15 @@
           hiddenInput.name = this.input.name;
           this.input.insertAdjacentElement("beforebegin", hiddenInput);
           this.dispatch("start");
-          this.directUpload.create((error, attributes) => {
-            if (error) {
+          this.directUpload.create((error2, attributes) => {
+            if (error2) {
               hiddenInput.parentNode.removeChild(hiddenInput);
-              this.dispatchError(error);
+              this.dispatchError(error2);
             } else {
               hiddenInput.value = attributes.signed_id;
             }
             this.dispatch("end");
-            callback2(error);
+            callback2(error2);
           });
         }
         uploadRequestDidProgress(event) {
@@ -2989,12 +2989,12 @@
             detail
           });
         }
-        dispatchError(error) {
+        dispatchError(error2) {
           const event = this.dispatch("error", {
-            error
+            error: error2
           });
           if (!event.defaultPrevented) {
-            alert(error);
+            alert(error2);
           }
         }
         directUploadWillCreateBlobWithXHR(xhr) {
@@ -3020,9 +3020,9 @@
           const startNextController = () => {
             const controller = controllers2.shift();
             if (controller) {
-              controller.start((error) => {
-                if (error) {
-                  callback2(error);
+              controller.start((error2) => {
+                if (error2) {
+                  callback2(error2);
                   this.dispatch("end");
                 } else {
                   startNextController();
@@ -3054,13 +3054,3295 @@
       };
       processingAttribute = "data-direct-uploads-processing";
       submitButtonsByForm = /* @__PURE__ */ new WeakMap();
-      started = false;
+      started2 = false;
       setTimeout(autostart, 1);
     }
   });
 
   // lib/lesli_assets_js/application.js
   var import_dayjs = __toESM(require_dayjs_min());
+
+  // node_modules/alpinejs/dist/module.esm.js
+  var flushPending = false;
+  var flushing = false;
+  var queue = [];
+  var lastFlushedIndex = -1;
+  function scheduler(callback2) {
+    queueJob(callback2);
+  }
+  function queueJob(job) {
+    if (!queue.includes(job))
+      queue.push(job);
+    queueFlush();
+  }
+  function dequeueJob(job) {
+    let index2 = queue.indexOf(job);
+    if (index2 !== -1 && index2 > lastFlushedIndex)
+      queue.splice(index2, 1);
+  }
+  function queueFlush() {
+    if (!flushing && !flushPending) {
+      flushPending = true;
+      queueMicrotask(flushJobs);
+    }
+  }
+  function flushJobs() {
+    flushPending = false;
+    flushing = true;
+    for (let i2 = 0; i2 < queue.length; i2++) {
+      queue[i2]();
+      lastFlushedIndex = i2;
+    }
+    queue.length = 0;
+    lastFlushedIndex = -1;
+    flushing = false;
+  }
+  var reactive;
+  var effect;
+  var release;
+  var raw;
+  var shouldSchedule = true;
+  function disableEffectScheduling(callback2) {
+    shouldSchedule = false;
+    callback2();
+    shouldSchedule = true;
+  }
+  function setReactivityEngine(engine) {
+    reactive = engine.reactive;
+    release = engine.release;
+    effect = (callback2) => engine.effect(callback2, { scheduler: (task) => {
+      if (shouldSchedule) {
+        scheduler(task);
+      } else {
+        task();
+      }
+    } });
+    raw = engine.raw;
+  }
+  function overrideEffect(override) {
+    effect = override;
+  }
+  function elementBoundEffect(el) {
+    let cleanup2 = () => {
+    };
+    let wrappedEffect = (callback2) => {
+      let effectReference = effect(callback2);
+      if (!el._x_effects) {
+        el._x_effects = /* @__PURE__ */ new Set();
+        el._x_runEffects = () => {
+          el._x_effects.forEach((i2) => i2());
+        };
+      }
+      el._x_effects.add(effectReference);
+      cleanup2 = () => {
+        if (effectReference === void 0)
+          return;
+        el._x_effects.delete(effectReference);
+        release(effectReference);
+      };
+      return effectReference;
+    };
+    return [wrappedEffect, () => {
+      cleanup2();
+    }];
+  }
+  function watch(getter, callback2) {
+    let firstTime = true;
+    let oldValue;
+    let effectReference = effect(() => {
+      let value = getter();
+      JSON.stringify(value);
+      if (!firstTime) {
+        queueMicrotask(() => {
+          callback2(value, oldValue);
+          oldValue = value;
+        });
+      } else {
+        oldValue = value;
+      }
+      firstTime = false;
+    });
+    return () => release(effectReference);
+  }
+  var onAttributeAddeds = [];
+  var onElRemoveds = [];
+  var onElAddeds = [];
+  function onElAdded(callback2) {
+    onElAddeds.push(callback2);
+  }
+  function onElRemoved(el, callback2) {
+    if (typeof callback2 === "function") {
+      if (!el._x_cleanups)
+        el._x_cleanups = [];
+      el._x_cleanups.push(callback2);
+    } else {
+      callback2 = el;
+      onElRemoveds.push(callback2);
+    }
+  }
+  function onAttributesAdded(callback2) {
+    onAttributeAddeds.push(callback2);
+  }
+  function onAttributeRemoved(el, name, callback2) {
+    if (!el._x_attributeCleanups)
+      el._x_attributeCleanups = {};
+    if (!el._x_attributeCleanups[name])
+      el._x_attributeCleanups[name] = [];
+    el._x_attributeCleanups[name].push(callback2);
+  }
+  function cleanupAttributes(el, names2) {
+    if (!el._x_attributeCleanups)
+      return;
+    Object.entries(el._x_attributeCleanups).forEach(([name, value]) => {
+      if (names2 === void 0 || names2.includes(name)) {
+        value.forEach((i2) => i2());
+        delete el._x_attributeCleanups[name];
+      }
+    });
+  }
+  function cleanupElement(el) {
+    el._x_effects?.forEach(dequeueJob);
+    while (el._x_cleanups?.length)
+      el._x_cleanups.pop()();
+  }
+  var observer = new MutationObserver(onMutate);
+  var currentlyObserving = false;
+  function startObservingMutations() {
+    observer.observe(document, { subtree: true, childList: true, attributes: true, attributeOldValue: true });
+    currentlyObserving = true;
+  }
+  function stopObservingMutations() {
+    flushObserver();
+    observer.disconnect();
+    currentlyObserving = false;
+  }
+  var queuedMutations = [];
+  function flushObserver() {
+    let records = observer.takeRecords();
+    queuedMutations.push(() => records.length > 0 && onMutate(records));
+    let queueLengthWhenTriggered = queuedMutations.length;
+    queueMicrotask(() => {
+      if (queuedMutations.length === queueLengthWhenTriggered) {
+        while (queuedMutations.length > 0)
+          queuedMutations.shift()();
+      }
+    });
+  }
+  function mutateDom(callback2) {
+    if (!currentlyObserving)
+      return callback2();
+    stopObservingMutations();
+    let result = callback2();
+    startObservingMutations();
+    return result;
+  }
+  var isCollecting = false;
+  var deferredMutations = [];
+  function deferMutations() {
+    isCollecting = true;
+  }
+  function flushAndStopDeferringMutations() {
+    isCollecting = false;
+    onMutate(deferredMutations);
+    deferredMutations = [];
+  }
+  function onMutate(mutations) {
+    if (isCollecting) {
+      deferredMutations = deferredMutations.concat(mutations);
+      return;
+    }
+    let addedNodes = [];
+    let removedNodes = /* @__PURE__ */ new Set();
+    let addedAttributes = /* @__PURE__ */ new Map();
+    let removedAttributes = /* @__PURE__ */ new Map();
+    for (let i2 = 0; i2 < mutations.length; i2++) {
+      if (mutations[i2].target._x_ignoreMutationObserver)
+        continue;
+      if (mutations[i2].type === "childList") {
+        mutations[i2].removedNodes.forEach((node) => {
+          if (node.nodeType !== 1)
+            return;
+          if (!node._x_marker)
+            return;
+          removedNodes.add(node);
+        });
+        mutations[i2].addedNodes.forEach((node) => {
+          if (node.nodeType !== 1)
+            return;
+          if (removedNodes.has(node)) {
+            removedNodes.delete(node);
+            return;
+          }
+          if (node._x_marker)
+            return;
+          addedNodes.push(node);
+        });
+      }
+      if (mutations[i2].type === "attributes") {
+        let el = mutations[i2].target;
+        let name = mutations[i2].attributeName;
+        let oldValue = mutations[i2].oldValue;
+        let add2 = () => {
+          if (!addedAttributes.has(el))
+            addedAttributes.set(el, []);
+          addedAttributes.get(el).push({ name, value: el.getAttribute(name) });
+        };
+        let remove = () => {
+          if (!removedAttributes.has(el))
+            removedAttributes.set(el, []);
+          removedAttributes.get(el).push(name);
+        };
+        if (el.hasAttribute(name) && oldValue === null) {
+          add2();
+        } else if (el.hasAttribute(name)) {
+          remove();
+          add2();
+        } else {
+          remove();
+        }
+      }
+    }
+    removedAttributes.forEach((attrs, el) => {
+      cleanupAttributes(el, attrs);
+    });
+    addedAttributes.forEach((attrs, el) => {
+      onAttributeAddeds.forEach((i2) => i2(el, attrs));
+    });
+    for (let node of removedNodes) {
+      if (addedNodes.some((i2) => i2.contains(node)))
+        continue;
+      onElRemoveds.forEach((i2) => i2(node));
+    }
+    for (let node of addedNodes) {
+      if (!node.isConnected)
+        continue;
+      onElAddeds.forEach((i2) => i2(node));
+    }
+    addedNodes = null;
+    removedNodes = null;
+    addedAttributes = null;
+    removedAttributes = null;
+  }
+  function scope(node) {
+    return mergeProxies(closestDataStack(node));
+  }
+  function addScopeToNode(node, data2, referenceNode) {
+    node._x_dataStack = [data2, ...closestDataStack(referenceNode || node)];
+    return () => {
+      node._x_dataStack = node._x_dataStack.filter((i2) => i2 !== data2);
+    };
+  }
+  function closestDataStack(node) {
+    if (node._x_dataStack)
+      return node._x_dataStack;
+    if (typeof ShadowRoot === "function" && node instanceof ShadowRoot) {
+      return closestDataStack(node.host);
+    }
+    if (!node.parentNode) {
+      return [];
+    }
+    return closestDataStack(node.parentNode);
+  }
+  function mergeProxies(objects) {
+    return new Proxy({ objects }, mergeProxyTrap);
+  }
+  var mergeProxyTrap = {
+    ownKeys({ objects }) {
+      return Array.from(
+        new Set(objects.flatMap((i2) => Object.keys(i2)))
+      );
+    },
+    has({ objects }, name) {
+      if (name == Symbol.unscopables)
+        return false;
+      return objects.some(
+        (obj) => Object.prototype.hasOwnProperty.call(obj, name) || Reflect.has(obj, name)
+      );
+    },
+    get({ objects }, name, thisProxy) {
+      if (name == "toJSON")
+        return collapseProxies;
+      return Reflect.get(
+        objects.find(
+          (obj) => Reflect.has(obj, name)
+        ) || {},
+        name,
+        thisProxy
+      );
+    },
+    set({ objects }, name, value, thisProxy) {
+      const target = objects.find(
+        (obj) => Object.prototype.hasOwnProperty.call(obj, name)
+      ) || objects[objects.length - 1];
+      const descriptor = Object.getOwnPropertyDescriptor(target, name);
+      if (descriptor?.set && descriptor?.get)
+        return descriptor.set.call(thisProxy, value) || true;
+      return Reflect.set(target, name, value);
+    }
+  };
+  function collapseProxies() {
+    let keys = Reflect.ownKeys(this);
+    return keys.reduce((acc, key) => {
+      acc[key] = Reflect.get(this, key);
+      return acc;
+    }, {});
+  }
+  function initInterceptors(data2) {
+    let isObject22 = (val) => typeof val === "object" && !Array.isArray(val) && val !== null;
+    let recurse = (obj, basePath = "") => {
+      Object.entries(Object.getOwnPropertyDescriptors(obj)).forEach(([key, { value, enumerable }]) => {
+        if (enumerable === false || value === void 0)
+          return;
+        if (typeof value === "object" && value !== null && value.__v_skip)
+          return;
+        let path = basePath === "" ? key : `${basePath}.${key}`;
+        if (typeof value === "object" && value !== null && value._x_interceptor) {
+          obj[key] = value.initialize(data2, path, key);
+        } else {
+          if (isObject22(value) && value !== obj && !(value instanceof Element)) {
+            recurse(value, path);
+          }
+        }
+      });
+    };
+    return recurse(data2);
+  }
+  function interceptor(callback2, mutateObj = () => {
+  }) {
+    let obj = {
+      initialValue: void 0,
+      _x_interceptor: true,
+      initialize(data2, path, key) {
+        return callback2(this.initialValue, () => get(data2, path), (value) => set(data2, path, value), path, key);
+      }
+    };
+    mutateObj(obj);
+    return (initialValue) => {
+      if (typeof initialValue === "object" && initialValue !== null && initialValue._x_interceptor) {
+        let initialize = obj.initialize.bind(obj);
+        obj.initialize = (data2, path, key) => {
+          let innerValue = initialValue.initialize(data2, path, key);
+          obj.initialValue = innerValue;
+          return initialize(data2, path, key);
+        };
+      } else {
+        obj.initialValue = initialValue;
+      }
+      return obj;
+    };
+  }
+  function get(obj, path) {
+    return path.split(".").reduce((carry, segment) => carry[segment], obj);
+  }
+  function set(obj, path, value) {
+    if (typeof path === "string")
+      path = path.split(".");
+    if (path.length === 1)
+      obj[path[0]] = value;
+    else if (path.length === 0)
+      throw error;
+    else {
+      if (obj[path[0]])
+        return set(obj[path[0]], path.slice(1), value);
+      else {
+        obj[path[0]] = {};
+        return set(obj[path[0]], path.slice(1), value);
+      }
+    }
+  }
+  var magics = {};
+  function magic(name, callback2) {
+    magics[name] = callback2;
+  }
+  function injectMagics(obj, el) {
+    let memoizedUtilities = getUtilities(el);
+    Object.entries(magics).forEach(([name, callback2]) => {
+      Object.defineProperty(obj, `$${name}`, {
+        get() {
+          return callback2(el, memoizedUtilities);
+        },
+        enumerable: false
+      });
+    });
+    return obj;
+  }
+  function getUtilities(el) {
+    let [utilities, cleanup2] = getElementBoundUtilities(el);
+    let utils = { interceptor, ...utilities };
+    onElRemoved(el, cleanup2);
+    return utils;
+  }
+  function tryCatch(el, expression, callback2, ...args) {
+    try {
+      return callback2(...args);
+    } catch (e2) {
+      handleError(e2, el, expression);
+    }
+  }
+  function handleError(error2, el, expression = void 0) {
+    error2 = Object.assign(
+      error2 ?? { message: "No error message given." },
+      { el, expression }
+    );
+    console.warn(`Alpine Expression Error: ${error2.message}
+
+${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
+    setTimeout(() => {
+      throw error2;
+    }, 0);
+  }
+  var shouldAutoEvaluateFunctions = true;
+  function dontAutoEvaluateFunctions(callback2) {
+    let cache = shouldAutoEvaluateFunctions;
+    shouldAutoEvaluateFunctions = false;
+    let result = callback2();
+    shouldAutoEvaluateFunctions = cache;
+    return result;
+  }
+  function evaluate(el, expression, extras = {}) {
+    let result;
+    evaluateLater(el, expression)((value) => result = value, extras);
+    return result;
+  }
+  function evaluateLater(...args) {
+    return theEvaluatorFunction(...args);
+  }
+  var theEvaluatorFunction = normalEvaluator;
+  function setEvaluator(newEvaluator) {
+    theEvaluatorFunction = newEvaluator;
+  }
+  function normalEvaluator(el, expression) {
+    let overriddenMagics = {};
+    injectMagics(overriddenMagics, el);
+    let dataStack = [overriddenMagics, ...closestDataStack(el)];
+    let evaluator = typeof expression === "function" ? generateEvaluatorFromFunction(dataStack, expression) : generateEvaluatorFromString(dataStack, expression, el);
+    return tryCatch.bind(null, el, expression, evaluator);
+  }
+  function generateEvaluatorFromFunction(dataStack, func) {
+    return (receiver = () => {
+    }, { scope: scope2 = {}, params = [] } = {}) => {
+      let result = func.apply(mergeProxies([scope2, ...dataStack]), params);
+      runIfTypeOfFunction(receiver, result);
+    };
+  }
+  var evaluatorMemo = {};
+  function generateFunctionFromString(expression, el) {
+    if (evaluatorMemo[expression]) {
+      return evaluatorMemo[expression];
+    }
+    let AsyncFunction = Object.getPrototypeOf(async function() {
+    }).constructor;
+    let rightSideSafeExpression = /^[\n\s]*if.*\(.*\)/.test(expression.trim()) || /^(let|const)\s/.test(expression.trim()) ? `(async()=>{ ${expression} })()` : expression;
+    const safeAsyncFunction = () => {
+      try {
+        let func2 = new AsyncFunction(
+          ["__self", "scope"],
+          `with (scope) { __self.result = ${rightSideSafeExpression} }; __self.finished = true; return __self.result;`
+        );
+        Object.defineProperty(func2, "name", {
+          value: `[Alpine] ${expression}`
+        });
+        return func2;
+      } catch (error2) {
+        handleError(error2, el, expression);
+        return Promise.resolve();
+      }
+    };
+    let func = safeAsyncFunction();
+    evaluatorMemo[expression] = func;
+    return func;
+  }
+  function generateEvaluatorFromString(dataStack, expression, el) {
+    let func = generateFunctionFromString(expression, el);
+    return (receiver = () => {
+    }, { scope: scope2 = {}, params = [] } = {}) => {
+      func.result = void 0;
+      func.finished = false;
+      let completeScope = mergeProxies([scope2, ...dataStack]);
+      if (typeof func === "function") {
+        let promise = func(func, completeScope).catch((error2) => handleError(error2, el, expression));
+        if (func.finished) {
+          runIfTypeOfFunction(receiver, func.result, completeScope, params, el);
+          func.result = void 0;
+        } else {
+          promise.then((result) => {
+            runIfTypeOfFunction(receiver, result, completeScope, params, el);
+          }).catch((error2) => handleError(error2, el, expression)).finally(() => func.result = void 0);
+        }
+      }
+    };
+  }
+  function runIfTypeOfFunction(receiver, value, scope2, params, el) {
+    if (shouldAutoEvaluateFunctions && typeof value === "function") {
+      let result = value.apply(scope2, params);
+      if (result instanceof Promise) {
+        result.then((i2) => runIfTypeOfFunction(receiver, i2, scope2, params)).catch((error2) => handleError(error2, el, value));
+      } else {
+        receiver(result);
+      }
+    } else if (typeof value === "object" && value instanceof Promise) {
+      value.then((i2) => receiver(i2));
+    } else {
+      receiver(value);
+    }
+  }
+  var prefixAsString = "x-";
+  function prefix(subject = "") {
+    return prefixAsString + subject;
+  }
+  function setPrefix(newPrefix) {
+    prefixAsString = newPrefix;
+  }
+  var directiveHandlers = {};
+  function directive(name, callback2) {
+    directiveHandlers[name] = callback2;
+    return {
+      before(directive2) {
+        if (!directiveHandlers[directive2]) {
+          console.warn(String.raw`Cannot find directive \`${directive2}\`. \`${name}\` will use the default order of execution`);
+          return;
+        }
+        const pos = directiveOrder.indexOf(directive2);
+        directiveOrder.splice(pos >= 0 ? pos : directiveOrder.indexOf("DEFAULT"), 0, name);
+      }
+    };
+  }
+  function directiveExists(name) {
+    return Object.keys(directiveHandlers).includes(name);
+  }
+  function directives(el, attributes, originalAttributeOverride) {
+    attributes = Array.from(attributes);
+    if (el._x_virtualDirectives) {
+      let vAttributes = Object.entries(el._x_virtualDirectives).map(([name, value]) => ({ name, value }));
+      let staticAttributes = attributesOnly(vAttributes);
+      vAttributes = vAttributes.map((attribute) => {
+        if (staticAttributes.find((attr) => attr.name === attribute.name)) {
+          return {
+            name: `x-bind:${attribute.name}`,
+            value: `"${attribute.value}"`
+          };
+        }
+        return attribute;
+      });
+      attributes = attributes.concat(vAttributes);
+    }
+    let transformedAttributeMap = {};
+    let directives2 = attributes.map(toTransformedAttributes((newName, oldName) => transformedAttributeMap[newName] = oldName)).filter(outNonAlpineAttributes).map(toParsedDirectives(transformedAttributeMap, originalAttributeOverride)).sort(byPriority);
+    return directives2.map((directive2) => {
+      return getDirectiveHandler(el, directive2);
+    });
+  }
+  function attributesOnly(attributes) {
+    return Array.from(attributes).map(toTransformedAttributes()).filter((attr) => !outNonAlpineAttributes(attr));
+  }
+  var isDeferringHandlers = false;
+  var directiveHandlerStacks = /* @__PURE__ */ new Map();
+  var currentHandlerStackKey = Symbol();
+  function deferHandlingDirectives(callback2) {
+    isDeferringHandlers = true;
+    let key = Symbol();
+    currentHandlerStackKey = key;
+    directiveHandlerStacks.set(key, []);
+    let flushHandlers = () => {
+      while (directiveHandlerStacks.get(key).length)
+        directiveHandlerStacks.get(key).shift()();
+      directiveHandlerStacks.delete(key);
+    };
+    let stopDeferring = () => {
+      isDeferringHandlers = false;
+      flushHandlers();
+    };
+    callback2(flushHandlers);
+    stopDeferring();
+  }
+  function getElementBoundUtilities(el) {
+    let cleanups = [];
+    let cleanup2 = (callback2) => cleanups.push(callback2);
+    let [effect32, cleanupEffect] = elementBoundEffect(el);
+    cleanups.push(cleanupEffect);
+    let utilities = {
+      Alpine: alpine_default,
+      effect: effect32,
+      cleanup: cleanup2,
+      evaluateLater: evaluateLater.bind(evaluateLater, el),
+      evaluate: evaluate.bind(evaluate, el)
+    };
+    let doCleanup = () => cleanups.forEach((i2) => i2());
+    return [utilities, doCleanup];
+  }
+  function getDirectiveHandler(el, directive2) {
+    let noop3 = () => {
+    };
+    let handler4 = directiveHandlers[directive2.type] || noop3;
+    let [utilities, cleanup2] = getElementBoundUtilities(el);
+    onAttributeRemoved(el, directive2.original, cleanup2);
+    let fullHandler = () => {
+      if (el._x_ignore || el._x_ignoreSelf)
+        return;
+      handler4.inline && handler4.inline(el, directive2, utilities);
+      handler4 = handler4.bind(handler4, el, directive2, utilities);
+      isDeferringHandlers ? directiveHandlerStacks.get(currentHandlerStackKey).push(handler4) : handler4();
+    };
+    fullHandler.runCleanups = cleanup2;
+    return fullHandler;
+  }
+  var startingWith = (subject, replacement) => ({ name, value }) => {
+    if (name.startsWith(subject))
+      name = name.replace(subject, replacement);
+    return { name, value };
+  };
+  var into = (i2) => i2;
+  function toTransformedAttributes(callback2 = () => {
+  }) {
+    return ({ name, value }) => {
+      let { name: newName, value: newValue } = attributeTransformers.reduce((carry, transform) => {
+        return transform(carry);
+      }, { name, value });
+      if (newName !== name)
+        callback2(newName, name);
+      return { name: newName, value: newValue };
+    };
+  }
+  var attributeTransformers = [];
+  function mapAttributes(callback2) {
+    attributeTransformers.push(callback2);
+  }
+  function outNonAlpineAttributes({ name }) {
+    return alpineAttributeRegex().test(name);
+  }
+  var alpineAttributeRegex = () => new RegExp(`^${prefixAsString}([^:^.]+)\\b`);
+  function toParsedDirectives(transformedAttributeMap, originalAttributeOverride) {
+    return ({ name, value }) => {
+      let typeMatch = name.match(alpineAttributeRegex());
+      let valueMatch = name.match(/:([a-zA-Z0-9\-_:]+)/);
+      let modifiers = name.match(/\.[^.\]]+(?=[^\]]*$)/g) || [];
+      let original = originalAttributeOverride || transformedAttributeMap[name] || name;
+      return {
+        type: typeMatch ? typeMatch[1] : null,
+        value: valueMatch ? valueMatch[1] : null,
+        modifiers: modifiers.map((i2) => i2.replace(".", "")),
+        expression: value,
+        original
+      };
+    };
+  }
+  var DEFAULT = "DEFAULT";
+  var directiveOrder = [
+    "ignore",
+    "ref",
+    "data",
+    "id",
+    "anchor",
+    "bind",
+    "init",
+    "for",
+    "model",
+    "modelable",
+    "transition",
+    "show",
+    "if",
+    DEFAULT,
+    "teleport"
+  ];
+  function byPriority(a2, b3) {
+    let typeA = directiveOrder.indexOf(a2.type) === -1 ? DEFAULT : a2.type;
+    let typeB = directiveOrder.indexOf(b3.type) === -1 ? DEFAULT : b3.type;
+    return directiveOrder.indexOf(typeA) - directiveOrder.indexOf(typeB);
+  }
+  function dispatch(el, name, detail = {}) {
+    el.dispatchEvent(
+      new CustomEvent(name, {
+        detail,
+        bubbles: true,
+        // Allows events to pass the shadow DOM barrier.
+        composed: true,
+        cancelable: true
+      })
+    );
+  }
+  function walk(el, callback2) {
+    if (typeof ShadowRoot === "function" && el instanceof ShadowRoot) {
+      Array.from(el.children).forEach((el2) => walk(el2, callback2));
+      return;
+    }
+    let skip2 = false;
+    callback2(el, () => skip2 = true);
+    if (skip2)
+      return;
+    let node = el.firstElementChild;
+    while (node) {
+      walk(node, callback2, false);
+      node = node.nextElementSibling;
+    }
+  }
+  function warn(message, ...args) {
+    console.warn(`Alpine Warning: ${message}`, ...args);
+  }
+  var started = false;
+  function start() {
+    if (started)
+      warn("Alpine has already been initialized on this page. Calling Alpine.start() more than once can cause problems.");
+    started = true;
+    if (!document.body)
+      warn("Unable to initialize. Trying to load Alpine before `<body>` is available. Did you forget to add `defer` in Alpine's `<script>` tag?");
+    dispatch(document, "alpine:init");
+    dispatch(document, "alpine:initializing");
+    startObservingMutations();
+    onElAdded((el) => initTree(el, walk));
+    onElRemoved((el) => destroyTree(el));
+    onAttributesAdded((el, attrs) => {
+      directives(el, attrs).forEach((handle) => handle());
+    });
+    let outNestedComponents = (el) => !closestRoot(el.parentElement, true);
+    Array.from(document.querySelectorAll(allSelectors().join(","))).filter(outNestedComponents).forEach((el) => {
+      initTree(el);
+    });
+    dispatch(document, "alpine:initialized");
+    setTimeout(() => {
+      warnAboutMissingPlugins();
+    });
+  }
+  var rootSelectorCallbacks = [];
+  var initSelectorCallbacks = [];
+  function rootSelectors() {
+    return rootSelectorCallbacks.map((fn) => fn());
+  }
+  function allSelectors() {
+    return rootSelectorCallbacks.concat(initSelectorCallbacks).map((fn) => fn());
+  }
+  function addRootSelector(selectorCallback) {
+    rootSelectorCallbacks.push(selectorCallback);
+  }
+  function addInitSelector(selectorCallback) {
+    initSelectorCallbacks.push(selectorCallback);
+  }
+  function closestRoot(el, includeInitSelectors = false) {
+    return findClosest(el, (element) => {
+      const selectors = includeInitSelectors ? allSelectors() : rootSelectors();
+      if (selectors.some((selector) => element.matches(selector)))
+        return true;
+    });
+  }
+  function findClosest(el, callback2) {
+    if (!el)
+      return;
+    if (callback2(el))
+      return el;
+    if (el._x_teleportBack)
+      el = el._x_teleportBack;
+    if (!el.parentElement)
+      return;
+    return findClosest(el.parentElement, callback2);
+  }
+  function isRoot(el) {
+    return rootSelectors().some((selector) => el.matches(selector));
+  }
+  var initInterceptors2 = [];
+  function interceptInit(callback2) {
+    initInterceptors2.push(callback2);
+  }
+  var markerDispenser = 1;
+  function initTree(el, walker = walk, intercept = () => {
+  }) {
+    if (findClosest(el, (i2) => i2._x_ignore))
+      return;
+    deferHandlingDirectives(() => {
+      walker(el, (el2, skip2) => {
+        if (el2._x_marker)
+          return;
+        intercept(el2, skip2);
+        initInterceptors2.forEach((i2) => i2(el2, skip2));
+        directives(el2, el2.attributes).forEach((handle) => handle());
+        if (!el2._x_ignore)
+          el2._x_marker = markerDispenser++;
+        el2._x_ignore && skip2();
+      });
+    });
+  }
+  function destroyTree(root, walker = walk) {
+    walker(root, (el) => {
+      cleanupElement(el);
+      cleanupAttributes(el);
+      delete el._x_marker;
+    });
+  }
+  function warnAboutMissingPlugins() {
+    let pluginDirectives = [
+      ["ui", "dialog", ["[x-dialog], [x-popover]"]],
+      ["anchor", "anchor", ["[x-anchor]"]],
+      ["sort", "sort", ["[x-sort]"]]
+    ];
+    pluginDirectives.forEach(([plugin2, directive2, selectors]) => {
+      if (directiveExists(directive2))
+        return;
+      selectors.some((selector) => {
+        if (document.querySelector(selector)) {
+          warn(`found "${selector}", but missing ${plugin2} plugin`);
+          return true;
+        }
+      });
+    });
+  }
+  var tickStack = [];
+  var isHolding = false;
+  function nextTick(callback2 = () => {
+  }) {
+    queueMicrotask(() => {
+      isHolding || setTimeout(() => {
+        releaseNextTicks();
+      });
+    });
+    return new Promise((res) => {
+      tickStack.push(() => {
+        callback2();
+        res();
+      });
+    });
+  }
+  function releaseNextTicks() {
+    isHolding = false;
+    while (tickStack.length)
+      tickStack.shift()();
+  }
+  function holdNextTicks() {
+    isHolding = true;
+  }
+  function setClasses(el, value) {
+    if (Array.isArray(value)) {
+      return setClassesFromString(el, value.join(" "));
+    } else if (typeof value === "object" && value !== null) {
+      return setClassesFromObject(el, value);
+    } else if (typeof value === "function") {
+      return setClasses(el, value());
+    }
+    return setClassesFromString(el, value);
+  }
+  function setClassesFromString(el, classString) {
+    let split = (classString2) => classString2.split(" ").filter(Boolean);
+    let missingClasses = (classString2) => classString2.split(" ").filter((i2) => !el.classList.contains(i2)).filter(Boolean);
+    let addClassesAndReturnUndo = (classes) => {
+      el.classList.add(...classes);
+      return () => {
+        el.classList.remove(...classes);
+      };
+    };
+    classString = classString === true ? classString = "" : classString || "";
+    return addClassesAndReturnUndo(missingClasses(classString));
+  }
+  function setClassesFromObject(el, classObject) {
+    let split = (classString) => classString.split(" ").filter(Boolean);
+    let forAdd = Object.entries(classObject).flatMap(([classString, bool]) => bool ? split(classString) : false).filter(Boolean);
+    let forRemove = Object.entries(classObject).flatMap(([classString, bool]) => !bool ? split(classString) : false).filter(Boolean);
+    let added = [];
+    let removed = [];
+    forRemove.forEach((i2) => {
+      if (el.classList.contains(i2)) {
+        el.classList.remove(i2);
+        removed.push(i2);
+      }
+    });
+    forAdd.forEach((i2) => {
+      if (!el.classList.contains(i2)) {
+        el.classList.add(i2);
+        added.push(i2);
+      }
+    });
+    return () => {
+      removed.forEach((i2) => el.classList.add(i2));
+      added.forEach((i2) => el.classList.remove(i2));
+    };
+  }
+  function setStyles(el, value) {
+    if (typeof value === "object" && value !== null) {
+      return setStylesFromObject(el, value);
+    }
+    return setStylesFromString(el, value);
+  }
+  function setStylesFromObject(el, value) {
+    let previousStyles = {};
+    Object.entries(value).forEach(([key, value2]) => {
+      previousStyles[key] = el.style[key];
+      if (!key.startsWith("--")) {
+        key = kebabCase(key);
+      }
+      el.style.setProperty(key, value2);
+    });
+    setTimeout(() => {
+      if (el.style.length === 0) {
+        el.removeAttribute("style");
+      }
+    });
+    return () => {
+      setStyles(el, previousStyles);
+    };
+  }
+  function setStylesFromString(el, value) {
+    let cache = el.getAttribute("style", value);
+    el.setAttribute("style", value);
+    return () => {
+      el.setAttribute("style", cache || "");
+    };
+  }
+  function kebabCase(subject) {
+    return subject.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  }
+  function once(callback2, fallback = () => {
+  }) {
+    let called = false;
+    return function() {
+      if (!called) {
+        called = true;
+        callback2.apply(this, arguments);
+      } else {
+        fallback.apply(this, arguments);
+      }
+    };
+  }
+  directive("transition", (el, { value, modifiers, expression }, { evaluate: evaluate2 }) => {
+    if (typeof expression === "function")
+      expression = evaluate2(expression);
+    if (expression === false)
+      return;
+    if (!expression || typeof expression === "boolean") {
+      registerTransitionsFromHelper(el, modifiers, value);
+    } else {
+      registerTransitionsFromClassString(el, expression, value);
+    }
+  });
+  function registerTransitionsFromClassString(el, classString, stage) {
+    registerTransitionObject(el, setClasses, "");
+    let directiveStorageMap = {
+      "enter": (classes) => {
+        el._x_transition.enter.during = classes;
+      },
+      "enter-start": (classes) => {
+        el._x_transition.enter.start = classes;
+      },
+      "enter-end": (classes) => {
+        el._x_transition.enter.end = classes;
+      },
+      "leave": (classes) => {
+        el._x_transition.leave.during = classes;
+      },
+      "leave-start": (classes) => {
+        el._x_transition.leave.start = classes;
+      },
+      "leave-end": (classes) => {
+        el._x_transition.leave.end = classes;
+      }
+    };
+    directiveStorageMap[stage](classString);
+  }
+  function registerTransitionsFromHelper(el, modifiers, stage) {
+    registerTransitionObject(el, setStyles);
+    let doesntSpecify = !modifiers.includes("in") && !modifiers.includes("out") && !stage;
+    let transitioningIn = doesntSpecify || modifiers.includes("in") || ["enter"].includes(stage);
+    let transitioningOut = doesntSpecify || modifiers.includes("out") || ["leave"].includes(stage);
+    if (modifiers.includes("in") && !doesntSpecify) {
+      modifiers = modifiers.filter((i2, index2) => index2 < modifiers.indexOf("out"));
+    }
+    if (modifiers.includes("out") && !doesntSpecify) {
+      modifiers = modifiers.filter((i2, index2) => index2 > modifiers.indexOf("out"));
+    }
+    let wantsAll = !modifiers.includes("opacity") && !modifiers.includes("scale");
+    let wantsOpacity = wantsAll || modifiers.includes("opacity");
+    let wantsScale = wantsAll || modifiers.includes("scale");
+    let opacityValue = wantsOpacity ? 0 : 1;
+    let scaleValue = wantsScale ? modifierValue(modifiers, "scale", 95) / 100 : 1;
+    let delay = modifierValue(modifiers, "delay", 0) / 1e3;
+    let origin = modifierValue(modifiers, "origin", "center");
+    let property = "opacity, transform";
+    let durationIn = modifierValue(modifiers, "duration", 150) / 1e3;
+    let durationOut = modifierValue(modifiers, "duration", 75) / 1e3;
+    let easing = `cubic-bezier(0.4, 0.0, 0.2, 1)`;
+    if (transitioningIn) {
+      el._x_transition.enter.during = {
+        transformOrigin: origin,
+        transitionDelay: `${delay}s`,
+        transitionProperty: property,
+        transitionDuration: `${durationIn}s`,
+        transitionTimingFunction: easing
+      };
+      el._x_transition.enter.start = {
+        opacity: opacityValue,
+        transform: `scale(${scaleValue})`
+      };
+      el._x_transition.enter.end = {
+        opacity: 1,
+        transform: `scale(1)`
+      };
+    }
+    if (transitioningOut) {
+      el._x_transition.leave.during = {
+        transformOrigin: origin,
+        transitionDelay: `${delay}s`,
+        transitionProperty: property,
+        transitionDuration: `${durationOut}s`,
+        transitionTimingFunction: easing
+      };
+      el._x_transition.leave.start = {
+        opacity: 1,
+        transform: `scale(1)`
+      };
+      el._x_transition.leave.end = {
+        opacity: opacityValue,
+        transform: `scale(${scaleValue})`
+      };
+    }
+  }
+  function registerTransitionObject(el, setFunction, defaultValue = {}) {
+    if (!el._x_transition)
+      el._x_transition = {
+        enter: { during: defaultValue, start: defaultValue, end: defaultValue },
+        leave: { during: defaultValue, start: defaultValue, end: defaultValue },
+        in(before = () => {
+        }, after = () => {
+        }) {
+          transition(el, setFunction, {
+            during: this.enter.during,
+            start: this.enter.start,
+            end: this.enter.end
+          }, before, after);
+        },
+        out(before = () => {
+        }, after = () => {
+        }) {
+          transition(el, setFunction, {
+            during: this.leave.during,
+            start: this.leave.start,
+            end: this.leave.end
+          }, before, after);
+        }
+      };
+  }
+  window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
+    const nextTick2 = document.visibilityState === "visible" ? requestAnimationFrame : setTimeout;
+    let clickAwayCompatibleShow = () => nextTick2(show);
+    if (value) {
+      if (el._x_transition && (el._x_transition.enter || el._x_transition.leave)) {
+        el._x_transition.enter && (Object.entries(el._x_transition.enter.during).length || Object.entries(el._x_transition.enter.start).length || Object.entries(el._x_transition.enter.end).length) ? el._x_transition.in(show) : clickAwayCompatibleShow();
+      } else {
+        el._x_transition ? el._x_transition.in(show) : clickAwayCompatibleShow();
+      }
+      return;
+    }
+    el._x_hidePromise = el._x_transition ? new Promise((resolve2, reject) => {
+      el._x_transition.out(() => {
+      }, () => resolve2(hide));
+      el._x_transitioning && el._x_transitioning.beforeCancel(() => reject({ isFromCancelledTransition: true }));
+    }) : Promise.resolve(hide);
+    queueMicrotask(() => {
+      let closest = closestHide(el);
+      if (closest) {
+        if (!closest._x_hideChildren)
+          closest._x_hideChildren = [];
+        closest._x_hideChildren.push(el);
+      } else {
+        nextTick2(() => {
+          let hideAfterChildren = (el2) => {
+            let carry = Promise.all([
+              el2._x_hidePromise,
+              ...(el2._x_hideChildren || []).map(hideAfterChildren)
+            ]).then(([i2]) => i2?.());
+            delete el2._x_hidePromise;
+            delete el2._x_hideChildren;
+            return carry;
+          };
+          hideAfterChildren(el).catch((e2) => {
+            if (!e2.isFromCancelledTransition)
+              throw e2;
+          });
+        });
+      }
+    });
+  };
+  function closestHide(el) {
+    let parent = el.parentNode;
+    if (!parent)
+      return;
+    return parent._x_hidePromise ? parent : closestHide(parent);
+  }
+  function transition(el, setFunction, { during, start: start22, end } = {}, before = () => {
+  }, after = () => {
+  }) {
+    if (el._x_transitioning)
+      el._x_transitioning.cancel();
+    if (Object.keys(during).length === 0 && Object.keys(start22).length === 0 && Object.keys(end).length === 0) {
+      before();
+      after();
+      return;
+    }
+    let undoStart, undoDuring, undoEnd;
+    performTransition(el, {
+      start() {
+        undoStart = setFunction(el, start22);
+      },
+      during() {
+        undoDuring = setFunction(el, during);
+      },
+      before,
+      end() {
+        undoStart();
+        undoEnd = setFunction(el, end);
+      },
+      after,
+      cleanup() {
+        undoDuring();
+        undoEnd();
+      }
+    });
+  }
+  function performTransition(el, stages) {
+    let interrupted, reachedBefore, reachedEnd;
+    let finish = once(() => {
+      mutateDom(() => {
+        interrupted = true;
+        if (!reachedBefore)
+          stages.before();
+        if (!reachedEnd) {
+          stages.end();
+          releaseNextTicks();
+        }
+        stages.after();
+        if (el.isConnected)
+          stages.cleanup();
+        delete el._x_transitioning;
+      });
+    });
+    el._x_transitioning = {
+      beforeCancels: [],
+      beforeCancel(callback2) {
+        this.beforeCancels.push(callback2);
+      },
+      cancel: once(function() {
+        while (this.beforeCancels.length) {
+          this.beforeCancels.shift()();
+        }
+        ;
+        finish();
+      }),
+      finish
+    };
+    mutateDom(() => {
+      stages.start();
+      stages.during();
+    });
+    holdNextTicks();
+    requestAnimationFrame(() => {
+      if (interrupted)
+        return;
+      let duration = Number(getComputedStyle(el).transitionDuration.replace(/,.*/, "").replace("s", "")) * 1e3;
+      let delay = Number(getComputedStyle(el).transitionDelay.replace(/,.*/, "").replace("s", "")) * 1e3;
+      if (duration === 0)
+        duration = Number(getComputedStyle(el).animationDuration.replace("s", "")) * 1e3;
+      mutateDom(() => {
+        stages.before();
+      });
+      reachedBefore = true;
+      requestAnimationFrame(() => {
+        if (interrupted)
+          return;
+        mutateDom(() => {
+          stages.end();
+        });
+        releaseNextTicks();
+        setTimeout(el._x_transitioning.finish, duration + delay);
+        reachedEnd = true;
+      });
+    });
+  }
+  function modifierValue(modifiers, key, fallback) {
+    if (modifiers.indexOf(key) === -1)
+      return fallback;
+    const rawValue = modifiers[modifiers.indexOf(key) + 1];
+    if (!rawValue)
+      return fallback;
+    if (key === "scale") {
+      if (isNaN(rawValue))
+        return fallback;
+    }
+    if (key === "duration" || key === "delay") {
+      let match = rawValue.match(/([0-9]+)ms/);
+      if (match)
+        return match[1];
+    }
+    if (key === "origin") {
+      if (["top", "right", "left", "center", "bottom"].includes(modifiers[modifiers.indexOf(key) + 2])) {
+        return [rawValue, modifiers[modifiers.indexOf(key) + 2]].join(" ");
+      }
+    }
+    return rawValue;
+  }
+  var isCloning = false;
+  function skipDuringClone(callback2, fallback = () => {
+  }) {
+    return (...args) => isCloning ? fallback(...args) : callback2(...args);
+  }
+  function onlyDuringClone(callback2) {
+    return (...args) => isCloning && callback2(...args);
+  }
+  var interceptors = [];
+  function interceptClone(callback2) {
+    interceptors.push(callback2);
+  }
+  function cloneNode(from2, to2) {
+    interceptors.forEach((i2) => i2(from2, to2));
+    isCloning = true;
+    dontRegisterReactiveSideEffects(() => {
+      initTree(to2, (el, callback2) => {
+        callback2(el, () => {
+        });
+      });
+    });
+    isCloning = false;
+  }
+  var isCloningLegacy = false;
+  function clone(oldEl, newEl) {
+    if (!newEl._x_dataStack)
+      newEl._x_dataStack = oldEl._x_dataStack;
+    isCloning = true;
+    isCloningLegacy = true;
+    dontRegisterReactiveSideEffects(() => {
+      cloneTree(newEl);
+    });
+    isCloning = false;
+    isCloningLegacy = false;
+  }
+  function cloneTree(el) {
+    let hasRunThroughFirstEl = false;
+    let shallowWalker = (el2, callback2) => {
+      walk(el2, (el3, skip2) => {
+        if (hasRunThroughFirstEl && isRoot(el3))
+          return skip2();
+        hasRunThroughFirstEl = true;
+        callback2(el3, skip2);
+      });
+    };
+    initTree(el, shallowWalker);
+  }
+  function dontRegisterReactiveSideEffects(callback2) {
+    let cache = effect;
+    overrideEffect((callback22, el) => {
+      let storedEffect = cache(callback22);
+      release(storedEffect);
+      return () => {
+      };
+    });
+    callback2();
+    overrideEffect(cache);
+  }
+  function bind(el, name, value, modifiers = []) {
+    if (!el._x_bindings)
+      el._x_bindings = reactive({});
+    el._x_bindings[name] = value;
+    name = modifiers.includes("camel") ? camelCase(name) : name;
+    switch (name) {
+      case "value":
+        bindInputValue(el, value);
+        break;
+      case "style":
+        bindStyles(el, value);
+        break;
+      case "class":
+        bindClasses(el, value);
+        break;
+      case "selected":
+      case "checked":
+        bindAttributeAndProperty(el, name, value);
+        break;
+      default:
+        bindAttribute(el, name, value);
+        break;
+    }
+  }
+  function bindInputValue(el, value) {
+    if (isRadio(el)) {
+      if (el.attributes.value === void 0) {
+        el.value = value;
+      }
+      if (window.fromModel) {
+        if (typeof value === "boolean") {
+          el.checked = safeParseBoolean(el.value) === value;
+        } else {
+          el.checked = checkedAttrLooseCompare(el.value, value);
+        }
+      }
+    } else if (isCheckbox(el)) {
+      if (Number.isInteger(value)) {
+        el.value = value;
+      } else if (!Array.isArray(value) && typeof value !== "boolean" && ![null, void 0].includes(value)) {
+        el.value = String(value);
+      } else {
+        if (Array.isArray(value)) {
+          el.checked = value.some((val) => checkedAttrLooseCompare(val, el.value));
+        } else {
+          el.checked = !!value;
+        }
+      }
+    } else if (el.tagName === "SELECT") {
+      updateSelect(el, value);
+    } else {
+      if (el.value === value)
+        return;
+      el.value = value === void 0 ? "" : value;
+    }
+  }
+  function bindClasses(el, value) {
+    if (el._x_undoAddedClasses)
+      el._x_undoAddedClasses();
+    el._x_undoAddedClasses = setClasses(el, value);
+  }
+  function bindStyles(el, value) {
+    if (el._x_undoAddedStyles)
+      el._x_undoAddedStyles();
+    el._x_undoAddedStyles = setStyles(el, value);
+  }
+  function bindAttributeAndProperty(el, name, value) {
+    bindAttribute(el, name, value);
+    setPropertyIfChanged(el, name, value);
+  }
+  function bindAttribute(el, name, value) {
+    if ([null, void 0, false].includes(value) && attributeShouldntBePreservedIfFalsy(name)) {
+      el.removeAttribute(name);
+    } else {
+      if (isBooleanAttr(name))
+        value = name;
+      setIfChanged(el, name, value);
+    }
+  }
+  function setIfChanged(el, attrName, value) {
+    if (el.getAttribute(attrName) != value) {
+      el.setAttribute(attrName, value);
+    }
+  }
+  function setPropertyIfChanged(el, propName, value) {
+    if (el[propName] !== value) {
+      el[propName] = value;
+    }
+  }
+  function updateSelect(el, value) {
+    const arrayWrappedValue = [].concat(value).map((value2) => {
+      return value2 + "";
+    });
+    Array.from(el.options).forEach((option) => {
+      option.selected = arrayWrappedValue.includes(option.value);
+    });
+  }
+  function camelCase(subject) {
+    return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
+  }
+  function checkedAttrLooseCompare(valueA, valueB) {
+    return valueA == valueB;
+  }
+  function safeParseBoolean(rawValue) {
+    if ([1, "1", "true", "on", "yes", true].includes(rawValue)) {
+      return true;
+    }
+    if ([0, "0", "false", "off", "no", false].includes(rawValue)) {
+      return false;
+    }
+    return rawValue ? Boolean(rawValue) : null;
+  }
+  var booleanAttributes = /* @__PURE__ */ new Set([
+    "allowfullscreen",
+    "async",
+    "autofocus",
+    "autoplay",
+    "checked",
+    "controls",
+    "default",
+    "defer",
+    "disabled",
+    "formnovalidate",
+    "inert",
+    "ismap",
+    "itemscope",
+    "loop",
+    "multiple",
+    "muted",
+    "nomodule",
+    "novalidate",
+    "open",
+    "playsinline",
+    "readonly",
+    "required",
+    "reversed",
+    "selected",
+    "shadowrootclonable",
+    "shadowrootdelegatesfocus",
+    "shadowrootserializable"
+  ]);
+  function isBooleanAttr(attrName) {
+    return booleanAttributes.has(attrName);
+  }
+  function attributeShouldntBePreservedIfFalsy(name) {
+    return !["aria-pressed", "aria-checked", "aria-expanded", "aria-selected"].includes(name);
+  }
+  function getBinding(el, name, fallback) {
+    if (el._x_bindings && el._x_bindings[name] !== void 0)
+      return el._x_bindings[name];
+    return getAttributeBinding(el, name, fallback);
+  }
+  function extractProp(el, name, fallback, extract = true) {
+    if (el._x_bindings && el._x_bindings[name] !== void 0)
+      return el._x_bindings[name];
+    if (el._x_inlineBindings && el._x_inlineBindings[name] !== void 0) {
+      let binding = el._x_inlineBindings[name];
+      binding.extract = extract;
+      return dontAutoEvaluateFunctions(() => {
+        return evaluate(el, binding.expression);
+      });
+    }
+    return getAttributeBinding(el, name, fallback);
+  }
+  function getAttributeBinding(el, name, fallback) {
+    let attr = el.getAttribute(name);
+    if (attr === null)
+      return typeof fallback === "function" ? fallback() : fallback;
+    if (attr === "")
+      return true;
+    if (isBooleanAttr(name)) {
+      return !![name, "true"].includes(attr);
+    }
+    return attr;
+  }
+  function isCheckbox(el) {
+    return el.type === "checkbox" || el.localName === "ui-checkbox" || el.localName === "ui-switch";
+  }
+  function isRadio(el) {
+    return el.type === "radio" || el.localName === "ui-radio";
+  }
+  function debounce(func, wait) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        func.apply(context, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      let context = this, args = arguments;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+  function entangle({ get: outerGet, set: outerSet }, { get: innerGet, set: innerSet }) {
+    let firstRun = true;
+    let outerHash;
+    let innerHash;
+    let reference = effect(() => {
+      let outer = outerGet();
+      let inner = innerGet();
+      if (firstRun) {
+        innerSet(cloneIfObject(outer));
+        firstRun = false;
+      } else {
+        let outerHashLatest = JSON.stringify(outer);
+        let innerHashLatest = JSON.stringify(inner);
+        if (outerHashLatest !== outerHash) {
+          innerSet(cloneIfObject(outer));
+        } else if (outerHashLatest !== innerHashLatest) {
+          outerSet(cloneIfObject(inner));
+        } else {
+        }
+      }
+      outerHash = JSON.stringify(outerGet());
+      innerHash = JSON.stringify(innerGet());
+    });
+    return () => {
+      release(reference);
+    };
+  }
+  function cloneIfObject(value) {
+    return typeof value === "object" ? JSON.parse(JSON.stringify(value)) : value;
+  }
+  function plugin(callback2) {
+    let callbacks = Array.isArray(callback2) ? callback2 : [callback2];
+    callbacks.forEach((i2) => i2(alpine_default));
+  }
+  var stores = {};
+  var isReactive = false;
+  function store(name, value) {
+    if (!isReactive) {
+      stores = reactive(stores);
+      isReactive = true;
+    }
+    if (value === void 0) {
+      return stores[name];
+    }
+    stores[name] = value;
+    initInterceptors(stores[name]);
+    if (typeof value === "object" && value !== null && value.hasOwnProperty("init") && typeof value.init === "function") {
+      stores[name].init();
+    }
+  }
+  function getStores() {
+    return stores;
+  }
+  var binds = {};
+  function bind2(name, bindings) {
+    let getBindings = typeof bindings !== "function" ? () => bindings : bindings;
+    if (name instanceof Element) {
+      return applyBindingsObject(name, getBindings());
+    } else {
+      binds[name] = getBindings;
+    }
+    return () => {
+    };
+  }
+  function injectBindingProviders(obj) {
+    Object.entries(binds).forEach(([name, callback2]) => {
+      Object.defineProperty(obj, name, {
+        get() {
+          return (...args) => {
+            return callback2(...args);
+          };
+        }
+      });
+    });
+    return obj;
+  }
+  function applyBindingsObject(el, obj, original) {
+    let cleanupRunners = [];
+    while (cleanupRunners.length)
+      cleanupRunners.pop()();
+    let attributes = Object.entries(obj).map(([name, value]) => ({ name, value }));
+    let staticAttributes = attributesOnly(attributes);
+    attributes = attributes.map((attribute) => {
+      if (staticAttributes.find((attr) => attr.name === attribute.name)) {
+        return {
+          name: `x-bind:${attribute.name}`,
+          value: `"${attribute.value}"`
+        };
+      }
+      return attribute;
+    });
+    directives(el, attributes, original).map((handle) => {
+      cleanupRunners.push(handle.runCleanups);
+      handle();
+    });
+    return () => {
+      while (cleanupRunners.length)
+        cleanupRunners.pop()();
+    };
+  }
+  var datas = {};
+  function data(name, callback2) {
+    datas[name] = callback2;
+  }
+  function injectDataProviders(obj, context) {
+    Object.entries(datas).forEach(([name, callback2]) => {
+      Object.defineProperty(obj, name, {
+        get() {
+          return (...args) => {
+            return callback2.bind(context)(...args);
+          };
+        },
+        enumerable: false
+      });
+    });
+    return obj;
+  }
+  var Alpine = {
+    get reactive() {
+      return reactive;
+    },
+    get release() {
+      return release;
+    },
+    get effect() {
+      return effect;
+    },
+    get raw() {
+      return raw;
+    },
+    version: "3.14.9",
+    flushAndStopDeferringMutations,
+    dontAutoEvaluateFunctions,
+    disableEffectScheduling,
+    startObservingMutations,
+    stopObservingMutations,
+    setReactivityEngine,
+    onAttributeRemoved,
+    onAttributesAdded,
+    closestDataStack,
+    skipDuringClone,
+    onlyDuringClone,
+    addRootSelector,
+    addInitSelector,
+    interceptClone,
+    addScopeToNode,
+    deferMutations,
+    mapAttributes,
+    evaluateLater,
+    interceptInit,
+    setEvaluator,
+    mergeProxies,
+    extractProp,
+    findClosest,
+    onElRemoved,
+    closestRoot,
+    destroyTree,
+    interceptor,
+    // INTERNAL: not public API and is subject to change without major release.
+    transition,
+    // INTERNAL
+    setStyles,
+    // INTERNAL
+    mutateDom,
+    directive,
+    entangle,
+    throttle,
+    debounce,
+    evaluate,
+    initTree,
+    nextTick,
+    prefixed: prefix,
+    prefix: setPrefix,
+    plugin,
+    magic,
+    store,
+    start,
+    clone,
+    // INTERNAL
+    cloneNode,
+    // INTERNAL
+    bound: getBinding,
+    $data: scope,
+    watch,
+    walk,
+    data,
+    bind: bind2
+  };
+  var alpine_default = Alpine;
+  function makeMap(str, expectsLowerCase) {
+    const map3 = /* @__PURE__ */ Object.create(null);
+    const list = str.split(",");
+    for (let i2 = 0; i2 < list.length; i2++) {
+      map3[list[i2]] = true;
+    }
+    return expectsLowerCase ? (val) => !!map3[val.toLowerCase()] : (val) => !!map3[val];
+  }
+  var specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`;
+  var isBooleanAttr2 = /* @__PURE__ */ makeMap(specialBooleanAttrs + `,async,autofocus,autoplay,controls,default,defer,disabled,hidden,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected`);
+  var EMPTY_OBJ = true ? Object.freeze({}) : {};
+  var EMPTY_ARR = true ? Object.freeze([]) : [];
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+  var hasOwn = (val, key) => hasOwnProperty.call(val, key);
+  var isArray = Array.isArray;
+  var isMap = (val) => toTypeString(val) === "[object Map]";
+  var isString = (val) => typeof val === "string";
+  var isSymbol = (val) => typeof val === "symbol";
+  var isObject = (val) => val !== null && typeof val === "object";
+  var objectToString = Object.prototype.toString;
+  var toTypeString = (value) => objectToString.call(value);
+  var toRawType = (value) => {
+    return toTypeString(value).slice(8, -1);
+  };
+  var isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+  var cacheStringFunction = (fn) => {
+    const cache = /* @__PURE__ */ Object.create(null);
+    return (str) => {
+      const hit = cache[str];
+      return hit || (cache[str] = fn(str));
+    };
+  };
+  var camelizeRE = /-(\w)/g;
+  var camelize = cacheStringFunction((str) => {
+    return str.replace(camelizeRE, (_3, c2) => c2 ? c2.toUpperCase() : "");
+  });
+  var hyphenateRE = /\B([A-Z])/g;
+  var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+  var capitalize = cacheStringFunction((str) => str.charAt(0).toUpperCase() + str.slice(1));
+  var toHandlerKey = cacheStringFunction((str) => str ? `on${capitalize(str)}` : ``);
+  var hasChanged = (value, oldValue) => value !== oldValue && (value === value || oldValue === oldValue);
+  var targetMap = /* @__PURE__ */ new WeakMap();
+  var effectStack = [];
+  var activeEffect;
+  var ITERATE_KEY = Symbol(true ? "iterate" : "");
+  var MAP_KEY_ITERATE_KEY = Symbol(true ? "Map key iterate" : "");
+  function isEffect(fn) {
+    return fn && fn._isEffect === true;
+  }
+  function effect2(fn, options = EMPTY_OBJ) {
+    if (isEffect(fn)) {
+      fn = fn.raw;
+    }
+    const effect32 = createReactiveEffect(fn, options);
+    if (!options.lazy) {
+      effect32();
+    }
+    return effect32;
+  }
+  function stop(effect32) {
+    if (effect32.active) {
+      cleanup(effect32);
+      if (effect32.options.onStop) {
+        effect32.options.onStop();
+      }
+      effect32.active = false;
+    }
+  }
+  var uid = 0;
+  function createReactiveEffect(fn, options) {
+    const effect32 = function reactiveEffect() {
+      if (!effect32.active) {
+        return fn();
+      }
+      if (!effectStack.includes(effect32)) {
+        cleanup(effect32);
+        try {
+          enableTracking();
+          effectStack.push(effect32);
+          activeEffect = effect32;
+          return fn();
+        } finally {
+          effectStack.pop();
+          resetTracking();
+          activeEffect = effectStack[effectStack.length - 1];
+        }
+      }
+    };
+    effect32.id = uid++;
+    effect32.allowRecurse = !!options.allowRecurse;
+    effect32._isEffect = true;
+    effect32.active = true;
+    effect32.raw = fn;
+    effect32.deps = [];
+    effect32.options = options;
+    return effect32;
+  }
+  function cleanup(effect32) {
+    const { deps } = effect32;
+    if (deps.length) {
+      for (let i2 = 0; i2 < deps.length; i2++) {
+        deps[i2].delete(effect32);
+      }
+      deps.length = 0;
+    }
+  }
+  var shouldTrack = true;
+  var trackStack = [];
+  function pauseTracking() {
+    trackStack.push(shouldTrack);
+    shouldTrack = false;
+  }
+  function enableTracking() {
+    trackStack.push(shouldTrack);
+    shouldTrack = true;
+  }
+  function resetTracking() {
+    const last = trackStack.pop();
+    shouldTrack = last === void 0 ? true : last;
+  }
+  function track(target, type, key) {
+    if (!shouldTrack || activeEffect === void 0) {
+      return;
+    }
+    let depsMap = targetMap.get(target);
+    if (!depsMap) {
+      targetMap.set(target, depsMap = /* @__PURE__ */ new Map());
+    }
+    let dep = depsMap.get(key);
+    if (!dep) {
+      depsMap.set(key, dep = /* @__PURE__ */ new Set());
+    }
+    if (!dep.has(activeEffect)) {
+      dep.add(activeEffect);
+      activeEffect.deps.push(dep);
+      if (activeEffect.options.onTrack) {
+        activeEffect.options.onTrack({
+          effect: activeEffect,
+          target,
+          type,
+          key
+        });
+      }
+    }
+  }
+  function trigger(target, type, key, newValue, oldValue, oldTarget) {
+    const depsMap = targetMap.get(target);
+    if (!depsMap) {
+      return;
+    }
+    const effects2 = /* @__PURE__ */ new Set();
+    const add2 = (effectsToAdd) => {
+      if (effectsToAdd) {
+        effectsToAdd.forEach((effect32) => {
+          if (effect32 !== activeEffect || effect32.allowRecurse) {
+            effects2.add(effect32);
+          }
+        });
+      }
+    };
+    if (type === "clear") {
+      depsMap.forEach(add2);
+    } else if (key === "length" && isArray(target)) {
+      depsMap.forEach((dep, key2) => {
+        if (key2 === "length" || key2 >= newValue) {
+          add2(dep);
+        }
+      });
+    } else {
+      if (key !== void 0) {
+        add2(depsMap.get(key));
+      }
+      switch (type) {
+        case "add":
+          if (!isArray(target)) {
+            add2(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              add2(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          } else if (isIntegerKey(key)) {
+            add2(depsMap.get("length"));
+          }
+          break;
+        case "delete":
+          if (!isArray(target)) {
+            add2(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              add2(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          }
+          break;
+        case "set":
+          if (isMap(target)) {
+            add2(depsMap.get(ITERATE_KEY));
+          }
+          break;
+      }
+    }
+    const run = (effect32) => {
+      if (effect32.options.onTrigger) {
+        effect32.options.onTrigger({
+          effect: effect32,
+          target,
+          key,
+          type,
+          newValue,
+          oldValue,
+          oldTarget
+        });
+      }
+      if (effect32.options.scheduler) {
+        effect32.options.scheduler(effect32);
+      } else {
+        effect32();
+      }
+    };
+    effects2.forEach(run);
+  }
+  var isNonTrackableKeys = /* @__PURE__ */ makeMap(`__proto__,__v_isRef,__isVue`);
+  var builtInSymbols = new Set(Object.getOwnPropertyNames(Symbol).map((key) => Symbol[key]).filter(isSymbol));
+  var get2 = /* @__PURE__ */ createGetter();
+  var readonlyGet = /* @__PURE__ */ createGetter(true);
+  var arrayInstrumentations = /* @__PURE__ */ createArrayInstrumentations();
+  function createArrayInstrumentations() {
+    const instrumentations = {};
+    ["includes", "indexOf", "lastIndexOf"].forEach((key) => {
+      instrumentations[key] = function(...args) {
+        const arr = toRaw(this);
+        for (let i2 = 0, l4 = this.length; i2 < l4; i2++) {
+          track(arr, "get", i2 + "");
+        }
+        const res = arr[key](...args);
+        if (res === -1 || res === false) {
+          return arr[key](...args.map(toRaw));
+        } else {
+          return res;
+        }
+      };
+    });
+    ["push", "pop", "shift", "unshift", "splice"].forEach((key) => {
+      instrumentations[key] = function(...args) {
+        pauseTracking();
+        const res = toRaw(this)[key].apply(this, args);
+        resetTracking();
+        return res;
+      };
+    });
+    return instrumentations;
+  }
+  function createGetter(isReadonly = false, shallow = false) {
+    return function get3(target, key, receiver) {
+      if (key === "__v_isReactive") {
+        return !isReadonly;
+      } else if (key === "__v_isReadonly") {
+        return isReadonly;
+      } else if (key === "__v_raw" && receiver === (isReadonly ? shallow ? shallowReadonlyMap : readonlyMap : shallow ? shallowReactiveMap : reactiveMap).get(target)) {
+        return target;
+      }
+      const targetIsArray = isArray(target);
+      if (!isReadonly && targetIsArray && hasOwn(arrayInstrumentations, key)) {
+        return Reflect.get(arrayInstrumentations, key, receiver);
+      }
+      const res = Reflect.get(target, key, receiver);
+      if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
+        return res;
+      }
+      if (!isReadonly) {
+        track(target, "get", key);
+      }
+      if (shallow) {
+        return res;
+      }
+      if (isRef(res)) {
+        const shouldUnwrap = !targetIsArray || !isIntegerKey(key);
+        return shouldUnwrap ? res.value : res;
+      }
+      if (isObject(res)) {
+        return isReadonly ? readonly(res) : reactive2(res);
+      }
+      return res;
+    };
+  }
+  var set2 = /* @__PURE__ */ createSetter();
+  function createSetter(shallow = false) {
+    return function set32(target, key, value, receiver) {
+      let oldValue = target[key];
+      if (!shallow) {
+        value = toRaw(value);
+        oldValue = toRaw(oldValue);
+        if (!isArray(target) && isRef(oldValue) && !isRef(value)) {
+          oldValue.value = value;
+          return true;
+        }
+      }
+      const hadKey = isArray(target) && isIntegerKey(key) ? Number(key) < target.length : hasOwn(target, key);
+      const result = Reflect.set(target, key, value, receiver);
+      if (target === toRaw(receiver)) {
+        if (!hadKey) {
+          trigger(target, "add", key, value);
+        } else if (hasChanged(value, oldValue)) {
+          trigger(target, "set", key, value, oldValue);
+        }
+      }
+      return result;
+    };
+  }
+  function deleteProperty(target, key) {
+    const hadKey = hasOwn(target, key);
+    const oldValue = target[key];
+    const result = Reflect.deleteProperty(target, key);
+    if (result && hadKey) {
+      trigger(target, "delete", key, void 0, oldValue);
+    }
+    return result;
+  }
+  function has(target, key) {
+    const result = Reflect.has(target, key);
+    if (!isSymbol(key) || !builtInSymbols.has(key)) {
+      track(target, "has", key);
+    }
+    return result;
+  }
+  function ownKeys(target) {
+    track(target, "iterate", isArray(target) ? "length" : ITERATE_KEY);
+    return Reflect.ownKeys(target);
+  }
+  var mutableHandlers = {
+    get: get2,
+    set: set2,
+    deleteProperty,
+    has,
+    ownKeys
+  };
+  var readonlyHandlers = {
+    get: readonlyGet,
+    set(target, key) {
+      if (true) {
+        console.warn(`Set operation on key "${String(key)}" failed: target is readonly.`, target);
+      }
+      return true;
+    },
+    deleteProperty(target, key) {
+      if (true) {
+        console.warn(`Delete operation on key "${String(key)}" failed: target is readonly.`, target);
+      }
+      return true;
+    }
+  };
+  var toReactive = (value) => isObject(value) ? reactive2(value) : value;
+  var toReadonly = (value) => isObject(value) ? readonly(value) : value;
+  var toShallow = (value) => value;
+  var getProto = (v3) => Reflect.getPrototypeOf(v3);
+  function get$1(target, key, isReadonly = false, isShallow = false) {
+    target = target[
+      "__v_raw"
+      /* RAW */
+    ];
+    const rawTarget = toRaw(target);
+    const rawKey = toRaw(key);
+    if (key !== rawKey) {
+      !isReadonly && track(rawTarget, "get", key);
+    }
+    !isReadonly && track(rawTarget, "get", rawKey);
+    const { has: has2 } = getProto(rawTarget);
+    const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
+    if (has2.call(rawTarget, key)) {
+      return wrap(target.get(key));
+    } else if (has2.call(rawTarget, rawKey)) {
+      return wrap(target.get(rawKey));
+    } else if (target !== rawTarget) {
+      target.get(key);
+    }
+  }
+  function has$1(key, isReadonly = false) {
+    const target = this[
+      "__v_raw"
+      /* RAW */
+    ];
+    const rawTarget = toRaw(target);
+    const rawKey = toRaw(key);
+    if (key !== rawKey) {
+      !isReadonly && track(rawTarget, "has", key);
+    }
+    !isReadonly && track(rawTarget, "has", rawKey);
+    return key === rawKey ? target.has(key) : target.has(key) || target.has(rawKey);
+  }
+  function size(target, isReadonly = false) {
+    target = target[
+      "__v_raw"
+      /* RAW */
+    ];
+    !isReadonly && track(toRaw(target), "iterate", ITERATE_KEY);
+    return Reflect.get(target, "size", target);
+  }
+  function add(value) {
+    value = toRaw(value);
+    const target = toRaw(this);
+    const proto = getProto(target);
+    const hadKey = proto.has.call(target, value);
+    if (!hadKey) {
+      target.add(value);
+      trigger(target, "add", value, value);
+    }
+    return this;
+  }
+  function set$1(key, value) {
+    value = toRaw(value);
+    const target = toRaw(this);
+    const { has: has2, get: get3 } = getProto(target);
+    let hadKey = has2.call(target, key);
+    if (!hadKey) {
+      key = toRaw(key);
+      hadKey = has2.call(target, key);
+    } else if (true) {
+      checkIdentityKeys(target, has2, key);
+    }
+    const oldValue = get3.call(target, key);
+    target.set(key, value);
+    if (!hadKey) {
+      trigger(target, "add", key, value);
+    } else if (hasChanged(value, oldValue)) {
+      trigger(target, "set", key, value, oldValue);
+    }
+    return this;
+  }
+  function deleteEntry(key) {
+    const target = toRaw(this);
+    const { has: has2, get: get3 } = getProto(target);
+    let hadKey = has2.call(target, key);
+    if (!hadKey) {
+      key = toRaw(key);
+      hadKey = has2.call(target, key);
+    } else if (true) {
+      checkIdentityKeys(target, has2, key);
+    }
+    const oldValue = get3 ? get3.call(target, key) : void 0;
+    const result = target.delete(key);
+    if (hadKey) {
+      trigger(target, "delete", key, void 0, oldValue);
+    }
+    return result;
+  }
+  function clear() {
+    const target = toRaw(this);
+    const hadItems = target.size !== 0;
+    const oldTarget = true ? isMap(target) ? new Map(target) : new Set(target) : void 0;
+    const result = target.clear();
+    if (hadItems) {
+      trigger(target, "clear", void 0, void 0, oldTarget);
+    }
+    return result;
+  }
+  function createForEach(isReadonly, isShallow) {
+    return function forEach(callback2, thisArg) {
+      const observed = this;
+      const target = observed[
+        "__v_raw"
+        /* RAW */
+      ];
+      const rawTarget = toRaw(target);
+      const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
+      !isReadonly && track(rawTarget, "iterate", ITERATE_KEY);
+      return target.forEach((value, key) => {
+        return callback2.call(thisArg, wrap(value), wrap(key), observed);
+      });
+    };
+  }
+  function createIterableMethod(method, isReadonly, isShallow) {
+    return function(...args) {
+      const target = this[
+        "__v_raw"
+        /* RAW */
+      ];
+      const rawTarget = toRaw(target);
+      const targetIsMap = isMap(rawTarget);
+      const isPair = method === "entries" || method === Symbol.iterator && targetIsMap;
+      const isKeyOnly = method === "keys" && targetIsMap;
+      const innerIterator = target[method](...args);
+      const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
+      !isReadonly && track(rawTarget, "iterate", isKeyOnly ? MAP_KEY_ITERATE_KEY : ITERATE_KEY);
+      return {
+        // iterator protocol
+        next() {
+          const { value, done } = innerIterator.next();
+          return done ? { value, done } : {
+            value: isPair ? [wrap(value[0]), wrap(value[1])] : wrap(value),
+            done
+          };
+        },
+        // iterable protocol
+        [Symbol.iterator]() {
+          return this;
+        }
+      };
+    };
+  }
+  function createReadonlyMethod(type) {
+    return function(...args) {
+      if (true) {
+        const key = args[0] ? `on key "${args[0]}" ` : ``;
+        console.warn(`${capitalize(type)} operation ${key}failed: target is readonly.`, toRaw(this));
+      }
+      return type === "delete" ? false : this;
+    };
+  }
+  function createInstrumentations() {
+    const mutableInstrumentations2 = {
+      get(key) {
+        return get$1(this, key);
+      },
+      get size() {
+        return size(this);
+      },
+      has: has$1,
+      add,
+      set: set$1,
+      delete: deleteEntry,
+      clear,
+      forEach: createForEach(false, false)
+    };
+    const shallowInstrumentations2 = {
+      get(key) {
+        return get$1(this, key, false, true);
+      },
+      get size() {
+        return size(this);
+      },
+      has: has$1,
+      add,
+      set: set$1,
+      delete: deleteEntry,
+      clear,
+      forEach: createForEach(false, true)
+    };
+    const readonlyInstrumentations2 = {
+      get(key) {
+        return get$1(this, key, true);
+      },
+      get size() {
+        return size(this, true);
+      },
+      has(key) {
+        return has$1.call(this, key, true);
+      },
+      add: createReadonlyMethod(
+        "add"
+        /* ADD */
+      ),
+      set: createReadonlyMethod(
+        "set"
+        /* SET */
+      ),
+      delete: createReadonlyMethod(
+        "delete"
+        /* DELETE */
+      ),
+      clear: createReadonlyMethod(
+        "clear"
+        /* CLEAR */
+      ),
+      forEach: createForEach(true, false)
+    };
+    const shallowReadonlyInstrumentations2 = {
+      get(key) {
+        return get$1(this, key, true, true);
+      },
+      get size() {
+        return size(this, true);
+      },
+      has(key) {
+        return has$1.call(this, key, true);
+      },
+      add: createReadonlyMethod(
+        "add"
+        /* ADD */
+      ),
+      set: createReadonlyMethod(
+        "set"
+        /* SET */
+      ),
+      delete: createReadonlyMethod(
+        "delete"
+        /* DELETE */
+      ),
+      clear: createReadonlyMethod(
+        "clear"
+        /* CLEAR */
+      ),
+      forEach: createForEach(true, true)
+    };
+    const iteratorMethods = ["keys", "values", "entries", Symbol.iterator];
+    iteratorMethods.forEach((method) => {
+      mutableInstrumentations2[method] = createIterableMethod(method, false, false);
+      readonlyInstrumentations2[method] = createIterableMethod(method, true, false);
+      shallowInstrumentations2[method] = createIterableMethod(method, false, true);
+      shallowReadonlyInstrumentations2[method] = createIterableMethod(method, true, true);
+    });
+    return [
+      mutableInstrumentations2,
+      readonlyInstrumentations2,
+      shallowInstrumentations2,
+      shallowReadonlyInstrumentations2
+    ];
+  }
+  var [mutableInstrumentations, readonlyInstrumentations, shallowInstrumentations, shallowReadonlyInstrumentations] = /* @__PURE__ */ createInstrumentations();
+  function createInstrumentationGetter(isReadonly, shallow) {
+    const instrumentations = shallow ? isReadonly ? shallowReadonlyInstrumentations : shallowInstrumentations : isReadonly ? readonlyInstrumentations : mutableInstrumentations;
+    return (target, key, receiver) => {
+      if (key === "__v_isReactive") {
+        return !isReadonly;
+      } else if (key === "__v_isReadonly") {
+        return isReadonly;
+      } else if (key === "__v_raw") {
+        return target;
+      }
+      return Reflect.get(hasOwn(instrumentations, key) && key in target ? instrumentations : target, key, receiver);
+    };
+  }
+  var mutableCollectionHandlers = {
+    get: /* @__PURE__ */ createInstrumentationGetter(false, false)
+  };
+  var readonlyCollectionHandlers = {
+    get: /* @__PURE__ */ createInstrumentationGetter(true, false)
+  };
+  function checkIdentityKeys(target, has2, key) {
+    const rawKey = toRaw(key);
+    if (rawKey !== key && has2.call(target, rawKey)) {
+      const type = toRawType(target);
+      console.warn(`Reactive ${type} contains both the raw and reactive versions of the same object${type === `Map` ? ` as keys` : ``}, which can lead to inconsistencies. Avoid differentiating between the raw and reactive versions of an object and only use the reactive version if possible.`);
+    }
+  }
+  var reactiveMap = /* @__PURE__ */ new WeakMap();
+  var shallowReactiveMap = /* @__PURE__ */ new WeakMap();
+  var readonlyMap = /* @__PURE__ */ new WeakMap();
+  var shallowReadonlyMap = /* @__PURE__ */ new WeakMap();
+  function targetTypeMap(rawType) {
+    switch (rawType) {
+      case "Object":
+      case "Array":
+        return 1;
+      case "Map":
+      case "Set":
+      case "WeakMap":
+      case "WeakSet":
+        return 2;
+      default:
+        return 0;
+    }
+  }
+  function getTargetType(value) {
+    return value[
+      "__v_skip"
+      /* SKIP */
+    ] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(value));
+  }
+  function reactive2(target) {
+    if (target && target[
+      "__v_isReadonly"
+      /* IS_READONLY */
+    ]) {
+      return target;
+    }
+    return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
+  }
+  function readonly(target) {
+    return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
+  }
+  function createReactiveObject(target, isReadonly, baseHandlers, collectionHandlers, proxyMap) {
+    if (!isObject(target)) {
+      if (true) {
+        console.warn(`value cannot be made reactive: ${String(target)}`);
+      }
+      return target;
+    }
+    if (target[
+      "__v_raw"
+      /* RAW */
+    ] && !(isReadonly && target[
+      "__v_isReactive"
+      /* IS_REACTIVE */
+    ])) {
+      return target;
+    }
+    const existingProxy = proxyMap.get(target);
+    if (existingProxy) {
+      return existingProxy;
+    }
+    const targetType = getTargetType(target);
+    if (targetType === 0) {
+      return target;
+    }
+    const proxy = new Proxy(target, targetType === 2 ? collectionHandlers : baseHandlers);
+    proxyMap.set(target, proxy);
+    return proxy;
+  }
+  function toRaw(observed) {
+    return observed && toRaw(observed[
+      "__v_raw"
+      /* RAW */
+    ]) || observed;
+  }
+  function isRef(r2) {
+    return Boolean(r2 && r2.__v_isRef === true);
+  }
+  magic("nextTick", () => nextTick);
+  magic("dispatch", (el) => dispatch.bind(dispatch, el));
+  magic("watch", (el, { evaluateLater: evaluateLater2, cleanup: cleanup2 }) => (key, callback2) => {
+    let evaluate2 = evaluateLater2(key);
+    let getter = () => {
+      let value;
+      evaluate2((i2) => value = i2);
+      return value;
+    };
+    let unwatch = watch(getter, callback2);
+    cleanup2(unwatch);
+  });
+  magic("store", getStores);
+  magic("data", (el) => scope(el));
+  magic("root", (el) => closestRoot(el));
+  magic("refs", (el) => {
+    if (el._x_refs_proxy)
+      return el._x_refs_proxy;
+    el._x_refs_proxy = mergeProxies(getArrayOfRefObject(el));
+    return el._x_refs_proxy;
+  });
+  function getArrayOfRefObject(el) {
+    let refObjects = [];
+    findClosest(el, (i2) => {
+      if (i2._x_refs)
+        refObjects.push(i2._x_refs);
+    });
+    return refObjects;
+  }
+  var globalIdMemo = {};
+  function findAndIncrementId(name) {
+    if (!globalIdMemo[name])
+      globalIdMemo[name] = 0;
+    return ++globalIdMemo[name];
+  }
+  function closestIdRoot(el, name) {
+    return findClosest(el, (element) => {
+      if (element._x_ids && element._x_ids[name])
+        return true;
+    });
+  }
+  function setIdRoot(el, name) {
+    if (!el._x_ids)
+      el._x_ids = {};
+    if (!el._x_ids[name])
+      el._x_ids[name] = findAndIncrementId(name);
+  }
+  magic("id", (el, { cleanup: cleanup2 }) => (name, key = null) => {
+    let cacheKey = `${name}${key ? `-${key}` : ""}`;
+    return cacheIdByNameOnElement(el, cacheKey, cleanup2, () => {
+      let root = closestIdRoot(el, name);
+      let id2 = root ? root._x_ids[name] : findAndIncrementId(name);
+      return key ? `${name}-${id2}-${key}` : `${name}-${id2}`;
+    });
+  });
+  interceptClone((from2, to2) => {
+    if (from2._x_id) {
+      to2._x_id = from2._x_id;
+    }
+  });
+  function cacheIdByNameOnElement(el, cacheKey, cleanup2, callback2) {
+    if (!el._x_id)
+      el._x_id = {};
+    if (el._x_id[cacheKey])
+      return el._x_id[cacheKey];
+    let output = callback2();
+    el._x_id[cacheKey] = output;
+    cleanup2(() => {
+      delete el._x_id[cacheKey];
+    });
+    return output;
+  }
+  magic("el", (el) => el);
+  warnMissingPluginMagic("Focus", "focus", "focus");
+  warnMissingPluginMagic("Persist", "persist", "persist");
+  function warnMissingPluginMagic(name, magicName, slug) {
+    magic(magicName, (el) => warn(`You can't use [$${magicName}] without first installing the "${name}" plugin here: https://alpinejs.dev/plugins/${slug}`, el));
+  }
+  directive("modelable", (el, { expression }, { effect: effect32, evaluateLater: evaluateLater2, cleanup: cleanup2 }) => {
+    let func = evaluateLater2(expression);
+    let innerGet = () => {
+      let result;
+      func((i2) => result = i2);
+      return result;
+    };
+    let evaluateInnerSet = evaluateLater2(`${expression} = __placeholder`);
+    let innerSet = (val) => evaluateInnerSet(() => {
+    }, { scope: { "__placeholder": val } });
+    let initialValue = innerGet();
+    innerSet(initialValue);
+    queueMicrotask(() => {
+      if (!el._x_model)
+        return;
+      el._x_removeModelListeners["default"]();
+      let outerGet = el._x_model.get;
+      let outerSet = el._x_model.set;
+      let releaseEntanglement = entangle(
+        {
+          get() {
+            return outerGet();
+          },
+          set(value) {
+            outerSet(value);
+          }
+        },
+        {
+          get() {
+            return innerGet();
+          },
+          set(value) {
+            innerSet(value);
+          }
+        }
+      );
+      cleanup2(releaseEntanglement);
+    });
+  });
+  directive("teleport", (el, { modifiers, expression }, { cleanup: cleanup2 }) => {
+    if (el.tagName.toLowerCase() !== "template")
+      warn("x-teleport can only be used on a <template> tag", el);
+    let target = getTarget(expression);
+    let clone22 = el.content.cloneNode(true).firstElementChild;
+    el._x_teleport = clone22;
+    clone22._x_teleportBack = el;
+    el.setAttribute("data-teleport-template", true);
+    clone22.setAttribute("data-teleport-target", true);
+    if (el._x_forwardEvents) {
+      el._x_forwardEvents.forEach((eventName) => {
+        clone22.addEventListener(eventName, (e2) => {
+          e2.stopPropagation();
+          el.dispatchEvent(new e2.constructor(e2.type, e2));
+        });
+      });
+    }
+    addScopeToNode(clone22, {}, el);
+    let placeInDom = (clone32, target2, modifiers2) => {
+      if (modifiers2.includes("prepend")) {
+        target2.parentNode.insertBefore(clone32, target2);
+      } else if (modifiers2.includes("append")) {
+        target2.parentNode.insertBefore(clone32, target2.nextSibling);
+      } else {
+        target2.appendChild(clone32);
+      }
+    };
+    mutateDom(() => {
+      placeInDom(clone22, target, modifiers);
+      skipDuringClone(() => {
+        initTree(clone22);
+      })();
+    });
+    el._x_teleportPutBack = () => {
+      let target2 = getTarget(expression);
+      mutateDom(() => {
+        placeInDom(el._x_teleport, target2, modifiers);
+      });
+    };
+    cleanup2(
+      () => mutateDom(() => {
+        clone22.remove();
+        destroyTree(clone22);
+      })
+    );
+  });
+  var teleportContainerDuringClone = document.createElement("div");
+  function getTarget(expression) {
+    let target = skipDuringClone(() => {
+      return document.querySelector(expression);
+    }, () => {
+      return teleportContainerDuringClone;
+    })();
+    if (!target)
+      warn(`Cannot find x-teleport element for selector: "${expression}"`);
+    return target;
+  }
+  var handler = () => {
+  };
+  handler.inline = (el, { modifiers }, { cleanup: cleanup2 }) => {
+    modifiers.includes("self") ? el._x_ignoreSelf = true : el._x_ignore = true;
+    cleanup2(() => {
+      modifiers.includes("self") ? delete el._x_ignoreSelf : delete el._x_ignore;
+    });
+  };
+  directive("ignore", handler);
+  directive("effect", skipDuringClone((el, { expression }, { effect: effect32 }) => {
+    effect32(evaluateLater(el, expression));
+  }));
+  function on(el, event, modifiers, callback2) {
+    let listenerTarget = el;
+    let handler4 = (e2) => callback2(e2);
+    let options = {};
+    let wrapHandler = (callback22, wrapper) => (e2) => wrapper(callback22, e2);
+    if (modifiers.includes("dot"))
+      event = dotSyntax(event);
+    if (modifiers.includes("camel"))
+      event = camelCase2(event);
+    if (modifiers.includes("passive"))
+      options.passive = true;
+    if (modifiers.includes("capture"))
+      options.capture = true;
+    if (modifiers.includes("window"))
+      listenerTarget = window;
+    if (modifiers.includes("document"))
+      listenerTarget = document;
+    if (modifiers.includes("debounce")) {
+      let nextModifier = modifiers[modifiers.indexOf("debounce") + 1] || "invalid-wait";
+      let wait = isNumeric(nextModifier.split("ms")[0]) ? Number(nextModifier.split("ms")[0]) : 250;
+      handler4 = debounce(handler4, wait);
+    }
+    if (modifiers.includes("throttle")) {
+      let nextModifier = modifiers[modifiers.indexOf("throttle") + 1] || "invalid-wait";
+      let wait = isNumeric(nextModifier.split("ms")[0]) ? Number(nextModifier.split("ms")[0]) : 250;
+      handler4 = throttle(handler4, wait);
+    }
+    if (modifiers.includes("prevent"))
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        e2.preventDefault();
+        next(e2);
+      });
+    if (modifiers.includes("stop"))
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        e2.stopPropagation();
+        next(e2);
+      });
+    if (modifiers.includes("once")) {
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        next(e2);
+        listenerTarget.removeEventListener(event, handler4, options);
+      });
+    }
+    if (modifiers.includes("away") || modifiers.includes("outside")) {
+      listenerTarget = document;
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        if (el.contains(e2.target))
+          return;
+        if (e2.target.isConnected === false)
+          return;
+        if (el.offsetWidth < 1 && el.offsetHeight < 1)
+          return;
+        if (el._x_isShown === false)
+          return;
+        next(e2);
+      });
+    }
+    if (modifiers.includes("self"))
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        e2.target === el && next(e2);
+      });
+    if (isKeyEvent(event) || isClickEvent(event)) {
+      handler4 = wrapHandler(handler4, (next, e2) => {
+        if (isListeningForASpecificKeyThatHasntBeenPressed(e2, modifiers)) {
+          return;
+        }
+        next(e2);
+      });
+    }
+    listenerTarget.addEventListener(event, handler4, options);
+    return () => {
+      listenerTarget.removeEventListener(event, handler4, options);
+    };
+  }
+  function dotSyntax(subject) {
+    return subject.replace(/-/g, ".");
+  }
+  function camelCase2(subject) {
+    return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
+  }
+  function isNumeric(subject) {
+    return !Array.isArray(subject) && !isNaN(subject);
+  }
+  function kebabCase2(subject) {
+    if ([" ", "_"].includes(
+      subject
+    ))
+      return subject;
+    return subject.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[_\s]/, "-").toLowerCase();
+  }
+  function isKeyEvent(event) {
+    return ["keydown", "keyup"].includes(event);
+  }
+  function isClickEvent(event) {
+    return ["contextmenu", "click", "mouse"].some((i2) => event.includes(i2));
+  }
+  function isListeningForASpecificKeyThatHasntBeenPressed(e2, modifiers) {
+    let keyModifiers = modifiers.filter((i2) => {
+      return !["window", "document", "prevent", "stop", "once", "capture", "self", "away", "outside", "passive"].includes(i2);
+    });
+    if (keyModifiers.includes("debounce")) {
+      let debounceIndex = keyModifiers.indexOf("debounce");
+      keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || "invalid-wait").split("ms")[0]) ? 2 : 1);
+    }
+    if (keyModifiers.includes("throttle")) {
+      let debounceIndex = keyModifiers.indexOf("throttle");
+      keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || "invalid-wait").split("ms")[0]) ? 2 : 1);
+    }
+    if (keyModifiers.length === 0)
+      return false;
+    if (keyModifiers.length === 1 && keyToModifiers(e2.key).includes(keyModifiers[0]))
+      return false;
+    const systemKeyModifiers = ["ctrl", "shift", "alt", "meta", "cmd", "super"];
+    const selectedSystemKeyModifiers = systemKeyModifiers.filter((modifier) => keyModifiers.includes(modifier));
+    keyModifiers = keyModifiers.filter((i2) => !selectedSystemKeyModifiers.includes(i2));
+    if (selectedSystemKeyModifiers.length > 0) {
+      const activelyPressedKeyModifiers = selectedSystemKeyModifiers.filter((modifier) => {
+        if (modifier === "cmd" || modifier === "super")
+          modifier = "meta";
+        return e2[`${modifier}Key`];
+      });
+      if (activelyPressedKeyModifiers.length === selectedSystemKeyModifiers.length) {
+        if (isClickEvent(e2.type))
+          return false;
+        if (keyToModifiers(e2.key).includes(keyModifiers[0]))
+          return false;
+      }
+    }
+    return true;
+  }
+  function keyToModifiers(key) {
+    if (!key)
+      return [];
+    key = kebabCase2(key);
+    let modifierToKeyMap = {
+      "ctrl": "control",
+      "slash": "/",
+      "space": " ",
+      "spacebar": " ",
+      "cmd": "meta",
+      "esc": "escape",
+      "up": "arrow-up",
+      "down": "arrow-down",
+      "left": "arrow-left",
+      "right": "arrow-right",
+      "period": ".",
+      "comma": ",",
+      "equal": "=",
+      "minus": "-",
+      "underscore": "_"
+    };
+    modifierToKeyMap[key] = key;
+    return Object.keys(modifierToKeyMap).map((modifier) => {
+      if (modifierToKeyMap[modifier] === key)
+        return modifier;
+    }).filter((modifier) => modifier);
+  }
+  directive("model", (el, { modifiers, expression }, { effect: effect32, cleanup: cleanup2 }) => {
+    let scopeTarget = el;
+    if (modifiers.includes("parent")) {
+      scopeTarget = el.parentNode;
+    }
+    let evaluateGet = evaluateLater(scopeTarget, expression);
+    let evaluateSet;
+    if (typeof expression === "string") {
+      evaluateSet = evaluateLater(scopeTarget, `${expression} = __placeholder`);
+    } else if (typeof expression === "function" && typeof expression() === "string") {
+      evaluateSet = evaluateLater(scopeTarget, `${expression()} = __placeholder`);
+    } else {
+      evaluateSet = () => {
+      };
+    }
+    let getValue = () => {
+      let result;
+      evaluateGet((value) => result = value);
+      return isGetterSetter(result) ? result.get() : result;
+    };
+    let setValue = (value) => {
+      let result;
+      evaluateGet((value2) => result = value2);
+      if (isGetterSetter(result)) {
+        result.set(value);
+      } else {
+        evaluateSet(() => {
+        }, {
+          scope: { "__placeholder": value }
+        });
+      }
+    };
+    if (typeof expression === "string" && el.type === "radio") {
+      mutateDom(() => {
+        if (!el.hasAttribute("name"))
+          el.setAttribute("name", expression);
+      });
+    }
+    var event = el.tagName.toLowerCase() === "select" || ["checkbox", "radio"].includes(el.type) || modifiers.includes("lazy") ? "change" : "input";
+    let removeListener2 = isCloning ? () => {
+    } : on(el, event, modifiers, (e2) => {
+      setValue(getInputValue(el, modifiers, e2, getValue()));
+    });
+    if (modifiers.includes("fill")) {
+      if ([void 0, null, ""].includes(getValue()) || isCheckbox(el) && Array.isArray(getValue()) || el.tagName.toLowerCase() === "select" && el.multiple) {
+        setValue(
+          getInputValue(el, modifiers, { target: el }, getValue())
+        );
+      }
+    }
+    if (!el._x_removeModelListeners)
+      el._x_removeModelListeners = {};
+    el._x_removeModelListeners["default"] = removeListener2;
+    cleanup2(() => el._x_removeModelListeners["default"]());
+    if (el.form) {
+      let removeResetListener = on(el.form, "reset", [], (e2) => {
+        nextTick(() => el._x_model && el._x_model.set(getInputValue(el, modifiers, { target: el }, getValue())));
+      });
+      cleanup2(() => removeResetListener());
+    }
+    el._x_model = {
+      get() {
+        return getValue();
+      },
+      set(value) {
+        setValue(value);
+      }
+    };
+    el._x_forceModelUpdate = (value) => {
+      if (value === void 0 && typeof expression === "string" && expression.match(/\./))
+        value = "";
+      window.fromModel = true;
+      mutateDom(() => bind(el, "value", value));
+      delete window.fromModel;
+    };
+    effect32(() => {
+      let value = getValue();
+      if (modifiers.includes("unintrusive") && document.activeElement.isSameNode(el))
+        return;
+      el._x_forceModelUpdate(value);
+    });
+  });
+  function getInputValue(el, modifiers, event, currentValue) {
+    return mutateDom(() => {
+      if (event instanceof CustomEvent && event.detail !== void 0)
+        return event.detail !== null && event.detail !== void 0 ? event.detail : event.target.value;
+      else if (isCheckbox(el)) {
+        if (Array.isArray(currentValue)) {
+          let newValue = null;
+          if (modifiers.includes("number")) {
+            newValue = safeParseNumber(event.target.value);
+          } else if (modifiers.includes("boolean")) {
+            newValue = safeParseBoolean(event.target.value);
+          } else {
+            newValue = event.target.value;
+          }
+          return event.target.checked ? currentValue.includes(newValue) ? currentValue : currentValue.concat([newValue]) : currentValue.filter((el2) => !checkedAttrLooseCompare2(el2, newValue));
+        } else {
+          return event.target.checked;
+        }
+      } else if (el.tagName.toLowerCase() === "select" && el.multiple) {
+        if (modifiers.includes("number")) {
+          return Array.from(event.target.selectedOptions).map((option) => {
+            let rawValue = option.value || option.text;
+            return safeParseNumber(rawValue);
+          });
+        } else if (modifiers.includes("boolean")) {
+          return Array.from(event.target.selectedOptions).map((option) => {
+            let rawValue = option.value || option.text;
+            return safeParseBoolean(rawValue);
+          });
+        }
+        return Array.from(event.target.selectedOptions).map((option) => {
+          return option.value || option.text;
+        });
+      } else {
+        let newValue;
+        if (isRadio(el)) {
+          if (event.target.checked) {
+            newValue = event.target.value;
+          } else {
+            newValue = currentValue;
+          }
+        } else {
+          newValue = event.target.value;
+        }
+        if (modifiers.includes("number")) {
+          return safeParseNumber(newValue);
+        } else if (modifiers.includes("boolean")) {
+          return safeParseBoolean(newValue);
+        } else if (modifiers.includes("trim")) {
+          return newValue.trim();
+        } else {
+          return newValue;
+        }
+      }
+    });
+  }
+  function safeParseNumber(rawValue) {
+    let number = rawValue ? parseFloat(rawValue) : null;
+    return isNumeric2(number) ? number : rawValue;
+  }
+  function checkedAttrLooseCompare2(valueA, valueB) {
+    return valueA == valueB;
+  }
+  function isNumeric2(subject) {
+    return !Array.isArray(subject) && !isNaN(subject);
+  }
+  function isGetterSetter(value) {
+    return value !== null && typeof value === "object" && typeof value.get === "function" && typeof value.set === "function";
+  }
+  directive("cloak", (el) => queueMicrotask(() => mutateDom(() => el.removeAttribute(prefix("cloak")))));
+  addInitSelector(() => `[${prefix("init")}]`);
+  directive("init", skipDuringClone((el, { expression }, { evaluate: evaluate2 }) => {
+    if (typeof expression === "string") {
+      return !!expression.trim() && evaluate2(expression, {}, false);
+    }
+    return evaluate2(expression, {}, false);
+  }));
+  directive("text", (el, { expression }, { effect: effect32, evaluateLater: evaluateLater2 }) => {
+    let evaluate2 = evaluateLater2(expression);
+    effect32(() => {
+      evaluate2((value) => {
+        mutateDom(() => {
+          el.textContent = value;
+        });
+      });
+    });
+  });
+  directive("html", (el, { expression }, { effect: effect32, evaluateLater: evaluateLater2 }) => {
+    let evaluate2 = evaluateLater2(expression);
+    effect32(() => {
+      evaluate2((value) => {
+        mutateDom(() => {
+          el.innerHTML = value;
+          el._x_ignoreSelf = true;
+          initTree(el);
+          delete el._x_ignoreSelf;
+        });
+      });
+    });
+  });
+  mapAttributes(startingWith(":", into(prefix("bind:"))));
+  var handler2 = (el, { value, modifiers, expression, original }, { effect: effect32, cleanup: cleanup2 }) => {
+    if (!value) {
+      let bindingProviders = {};
+      injectBindingProviders(bindingProviders);
+      let getBindings = evaluateLater(el, expression);
+      getBindings((bindings) => {
+        applyBindingsObject(el, bindings, original);
+      }, { scope: bindingProviders });
+      return;
+    }
+    if (value === "key")
+      return storeKeyForXFor(el, expression);
+    if (el._x_inlineBindings && el._x_inlineBindings[value] && el._x_inlineBindings[value].extract) {
+      return;
+    }
+    let evaluate2 = evaluateLater(el, expression);
+    effect32(() => evaluate2((result) => {
+      if (result === void 0 && typeof expression === "string" && expression.match(/\./)) {
+        result = "";
+      }
+      mutateDom(() => bind(el, value, result, modifiers));
+    }));
+    cleanup2(() => {
+      el._x_undoAddedClasses && el._x_undoAddedClasses();
+      el._x_undoAddedStyles && el._x_undoAddedStyles();
+    });
+  };
+  handler2.inline = (el, { value, modifiers, expression }) => {
+    if (!value)
+      return;
+    if (!el._x_inlineBindings)
+      el._x_inlineBindings = {};
+    el._x_inlineBindings[value] = { expression, extract: false };
+  };
+  directive("bind", handler2);
+  function storeKeyForXFor(el, expression) {
+    el._x_keyExpression = expression;
+  }
+  addRootSelector(() => `[${prefix("data")}]`);
+  directive("data", (el, { expression }, { cleanup: cleanup2 }) => {
+    if (shouldSkipRegisteringDataDuringClone(el))
+      return;
+    expression = expression === "" ? "{}" : expression;
+    let magicContext = {};
+    injectMagics(magicContext, el);
+    let dataProviderContext = {};
+    injectDataProviders(dataProviderContext, magicContext);
+    let data2 = evaluate(el, expression, { scope: dataProviderContext });
+    if (data2 === void 0 || data2 === true)
+      data2 = {};
+    injectMagics(data2, el);
+    let reactiveData = reactive(data2);
+    initInterceptors(reactiveData);
+    let undo2 = addScopeToNode(el, reactiveData);
+    reactiveData["init"] && evaluate(el, reactiveData["init"]);
+    cleanup2(() => {
+      reactiveData["destroy"] && evaluate(el, reactiveData["destroy"]);
+      undo2();
+    });
+  });
+  interceptClone((from2, to2) => {
+    if (from2._x_dataStack) {
+      to2._x_dataStack = from2._x_dataStack;
+      to2.setAttribute("data-has-alpine-state", true);
+    }
+  });
+  function shouldSkipRegisteringDataDuringClone(el) {
+    if (!isCloning)
+      return false;
+    if (isCloningLegacy)
+      return true;
+    return el.hasAttribute("data-has-alpine-state");
+  }
+  directive("show", (el, { modifiers, expression }, { effect: effect32 }) => {
+    let evaluate2 = evaluateLater(el, expression);
+    if (!el._x_doHide)
+      el._x_doHide = () => {
+        mutateDom(() => {
+          el.style.setProperty("display", "none", modifiers.includes("important") ? "important" : void 0);
+        });
+      };
+    if (!el._x_doShow)
+      el._x_doShow = () => {
+        mutateDom(() => {
+          if (el.style.length === 1 && el.style.display === "none") {
+            el.removeAttribute("style");
+          } else {
+            el.style.removeProperty("display");
+          }
+        });
+      };
+    let hide = () => {
+      el._x_doHide();
+      el._x_isShown = false;
+    };
+    let show = () => {
+      el._x_doShow();
+      el._x_isShown = true;
+    };
+    let clickAwayCompatibleShow = () => setTimeout(show);
+    let toggle = once(
+      (value) => value ? show() : hide(),
+      (value) => {
+        if (typeof el._x_toggleAndCascadeWithTransitions === "function") {
+          el._x_toggleAndCascadeWithTransitions(el, value, show, hide);
+        } else {
+          value ? clickAwayCompatibleShow() : hide();
+        }
+      }
+    );
+    let oldValue;
+    let firstTime = true;
+    effect32(() => evaluate2((value) => {
+      if (!firstTime && value === oldValue)
+        return;
+      if (modifiers.includes("immediate"))
+        value ? clickAwayCompatibleShow() : hide();
+      toggle(value);
+      oldValue = value;
+      firstTime = false;
+    }));
+  });
+  directive("for", (el, { expression }, { effect: effect32, cleanup: cleanup2 }) => {
+    let iteratorNames = parseForExpression(expression);
+    let evaluateItems = evaluateLater(el, iteratorNames.items);
+    let evaluateKey = evaluateLater(
+      el,
+      // the x-bind:key expression is stored for our use instead of evaluated.
+      el._x_keyExpression || "index"
+    );
+    el._x_prevKeys = [];
+    el._x_lookup = {};
+    effect32(() => loop(el, iteratorNames, evaluateItems, evaluateKey));
+    cleanup2(() => {
+      Object.values(el._x_lookup).forEach((el2) => mutateDom(
+        () => {
+          destroyTree(el2);
+          el2.remove();
+        }
+      ));
+      delete el._x_prevKeys;
+      delete el._x_lookup;
+    });
+  });
+  function loop(el, iteratorNames, evaluateItems, evaluateKey) {
+    let isObject22 = (i2) => typeof i2 === "object" && !Array.isArray(i2);
+    let templateEl = el;
+    evaluateItems((items) => {
+      if (isNumeric3(items) && items >= 0) {
+        items = Array.from(Array(items).keys(), (i2) => i2 + 1);
+      }
+      if (items === void 0)
+        items = [];
+      let lookup = el._x_lookup;
+      let prevKeys = el._x_prevKeys;
+      let scopes = [];
+      let keys = [];
+      if (isObject22(items)) {
+        items = Object.entries(items).map(([key, value]) => {
+          let scope2 = getIterationScopeVariables(iteratorNames, value, key, items);
+          evaluateKey((value2) => {
+            if (keys.includes(value2))
+              warn("Duplicate key on x-for", el);
+            keys.push(value2);
+          }, { scope: { index: key, ...scope2 } });
+          scopes.push(scope2);
+        });
+      } else {
+        for (let i2 = 0; i2 < items.length; i2++) {
+          let scope2 = getIterationScopeVariables(iteratorNames, items[i2], i2, items);
+          evaluateKey((value) => {
+            if (keys.includes(value))
+              warn("Duplicate key on x-for", el);
+            keys.push(value);
+          }, { scope: { index: i2, ...scope2 } });
+          scopes.push(scope2);
+        }
+      }
+      let adds = [];
+      let moves = [];
+      let removes = [];
+      let sames = [];
+      for (let i2 = 0; i2 < prevKeys.length; i2++) {
+        let key = prevKeys[i2];
+        if (keys.indexOf(key) === -1)
+          removes.push(key);
+      }
+      prevKeys = prevKeys.filter((key) => !removes.includes(key));
+      let lastKey = "template";
+      for (let i2 = 0; i2 < keys.length; i2++) {
+        let key = keys[i2];
+        let prevIndex = prevKeys.indexOf(key);
+        if (prevIndex === -1) {
+          prevKeys.splice(i2, 0, key);
+          adds.push([lastKey, i2]);
+        } else if (prevIndex !== i2) {
+          let keyInSpot = prevKeys.splice(i2, 1)[0];
+          let keyForSpot = prevKeys.splice(prevIndex - 1, 1)[0];
+          prevKeys.splice(i2, 0, keyForSpot);
+          prevKeys.splice(prevIndex, 0, keyInSpot);
+          moves.push([keyInSpot, keyForSpot]);
+        } else {
+          sames.push(key);
+        }
+        lastKey = key;
+      }
+      for (let i2 = 0; i2 < removes.length; i2++) {
+        let key = removes[i2];
+        if (!(key in lookup))
+          continue;
+        mutateDom(() => {
+          destroyTree(lookup[key]);
+          lookup[key].remove();
+        });
+        delete lookup[key];
+      }
+      for (let i2 = 0; i2 < moves.length; i2++) {
+        let [keyInSpot, keyForSpot] = moves[i2];
+        let elInSpot = lookup[keyInSpot];
+        let elForSpot = lookup[keyForSpot];
+        let marker = document.createElement("div");
+        mutateDom(() => {
+          if (!elForSpot)
+            warn(`x-for ":key" is undefined or invalid`, templateEl, keyForSpot, lookup);
+          elForSpot.after(marker);
+          elInSpot.after(elForSpot);
+          elForSpot._x_currentIfEl && elForSpot.after(elForSpot._x_currentIfEl);
+          marker.before(elInSpot);
+          elInSpot._x_currentIfEl && elInSpot.after(elInSpot._x_currentIfEl);
+          marker.remove();
+        });
+        elForSpot._x_refreshXForScope(scopes[keys.indexOf(keyForSpot)]);
+      }
+      for (let i2 = 0; i2 < adds.length; i2++) {
+        let [lastKey2, index2] = adds[i2];
+        let lastEl = lastKey2 === "template" ? templateEl : lookup[lastKey2];
+        if (lastEl._x_currentIfEl)
+          lastEl = lastEl._x_currentIfEl;
+        let scope2 = scopes[index2];
+        let key = keys[index2];
+        let clone22 = document.importNode(templateEl.content, true).firstElementChild;
+        let reactiveScope = reactive(scope2);
+        addScopeToNode(clone22, reactiveScope, templateEl);
+        clone22._x_refreshXForScope = (newScope) => {
+          Object.entries(newScope).forEach(([key2, value]) => {
+            reactiveScope[key2] = value;
+          });
+        };
+        mutateDom(() => {
+          lastEl.after(clone22);
+          skipDuringClone(() => initTree(clone22))();
+        });
+        if (typeof key === "object") {
+          warn("x-for key cannot be an object, it must be a string or an integer", templateEl);
+        }
+        lookup[key] = clone22;
+      }
+      for (let i2 = 0; i2 < sames.length; i2++) {
+        lookup[sames[i2]]._x_refreshXForScope(scopes[keys.indexOf(sames[i2])]);
+      }
+      templateEl._x_prevKeys = keys;
+    });
+  }
+  function parseForExpression(expression) {
+    let forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/;
+    let stripParensRE = /^\s*\(|\)\s*$/g;
+    let forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/;
+    let inMatch = expression.match(forAliasRE);
+    if (!inMatch)
+      return;
+    let res = {};
+    res.items = inMatch[2].trim();
+    let item = inMatch[1].replace(stripParensRE, "").trim();
+    let iteratorMatch = item.match(forIteratorRE);
+    if (iteratorMatch) {
+      res.item = item.replace(forIteratorRE, "").trim();
+      res.index = iteratorMatch[1].trim();
+      if (iteratorMatch[2]) {
+        res.collection = iteratorMatch[2].trim();
+      }
+    } else {
+      res.item = item;
+    }
+    return res;
+  }
+  function getIterationScopeVariables(iteratorNames, item, index2, items) {
+    let scopeVariables = {};
+    if (/^\[.*\]$/.test(iteratorNames.item) && Array.isArray(item)) {
+      let names2 = iteratorNames.item.replace("[", "").replace("]", "").split(",").map((i2) => i2.trim());
+      names2.forEach((name, i2) => {
+        scopeVariables[name] = item[i2];
+      });
+    } else if (/^\{.*\}$/.test(iteratorNames.item) && !Array.isArray(item) && typeof item === "object") {
+      let names2 = iteratorNames.item.replace("{", "").replace("}", "").split(",").map((i2) => i2.trim());
+      names2.forEach((name) => {
+        scopeVariables[name] = item[name];
+      });
+    } else {
+      scopeVariables[iteratorNames.item] = item;
+    }
+    if (iteratorNames.index)
+      scopeVariables[iteratorNames.index] = index2;
+    if (iteratorNames.collection)
+      scopeVariables[iteratorNames.collection] = items;
+    return scopeVariables;
+  }
+  function isNumeric3(subject) {
+    return !Array.isArray(subject) && !isNaN(subject);
+  }
+  function handler3() {
+  }
+  handler3.inline = (el, { expression }, { cleanup: cleanup2 }) => {
+    let root = closestRoot(el);
+    if (!root._x_refs)
+      root._x_refs = {};
+    root._x_refs[expression] = el;
+    cleanup2(() => delete root._x_refs[expression]);
+  };
+  directive("ref", handler3);
+  directive("if", (el, { expression }, { effect: effect32, cleanup: cleanup2 }) => {
+    if (el.tagName.toLowerCase() !== "template")
+      warn("x-if can only be used on a <template> tag", el);
+    let evaluate2 = evaluateLater(el, expression);
+    let show = () => {
+      if (el._x_currentIfEl)
+        return el._x_currentIfEl;
+      let clone22 = el.content.cloneNode(true).firstElementChild;
+      addScopeToNode(clone22, {}, el);
+      mutateDom(() => {
+        el.after(clone22);
+        skipDuringClone(() => initTree(clone22))();
+      });
+      el._x_currentIfEl = clone22;
+      el._x_undoIf = () => {
+        mutateDom(() => {
+          destroyTree(clone22);
+          clone22.remove();
+        });
+        delete el._x_currentIfEl;
+      };
+      return clone22;
+    };
+    let hide = () => {
+      if (!el._x_undoIf)
+        return;
+      el._x_undoIf();
+      delete el._x_undoIf;
+    };
+    effect32(() => evaluate2((value) => {
+      value ? show() : hide();
+    }));
+    cleanup2(() => el._x_undoIf && el._x_undoIf());
+  });
+  directive("id", (el, { expression }, { evaluate: evaluate2 }) => {
+    let names2 = evaluate2(expression);
+    names2.forEach((name) => setIdRoot(el, name));
+  });
+  interceptClone((from2, to2) => {
+    if (from2._x_ids) {
+      to2._x_ids = from2._x_ids;
+    }
+  });
+  mapAttributes(startingWith("@", into(prefix("on:"))));
+  directive("on", skipDuringClone((el, { value, modifiers, expression }, { cleanup: cleanup2 }) => {
+    let evaluate2 = expression ? evaluateLater(el, expression) : () => {
+    };
+    if (el.tagName.toLowerCase() === "template") {
+      if (!el._x_forwardEvents)
+        el._x_forwardEvents = [];
+      if (!el._x_forwardEvents.includes(value))
+        el._x_forwardEvents.push(value);
+    }
+    let removeListener2 = on(el, value, modifiers, (e2) => {
+      evaluate2(() => {
+      }, { scope: { "$event": e2 }, params: [e2] });
+    });
+    cleanup2(() => removeListener2());
+  }));
+  warnMissingPluginDirective("Collapse", "collapse", "collapse");
+  warnMissingPluginDirective("Intersect", "intersect", "intersect");
+  warnMissingPluginDirective("Focus", "trap", "focus");
+  warnMissingPluginDirective("Mask", "mask", "mask");
+  function warnMissingPluginDirective(name, directiveName, slug) {
+    directive(directiveName, (el) => warn(`You can't use [x-${directiveName}] without first installing the "${name}" plugin here: https://alpinejs.dev/plugins/${slug}`, el));
+  }
+  alpine_default.setEvaluator(normalEvaluator);
+  alpine_default.setReactivityEngine({ reactive: reactive2, effect: effect2, release: stop, raw: toRaw });
+  var src_default = alpine_default;
+  var module_default = src_default;
 
   // node_modules/@kurkle/color/dist/color.esm.js
   function round(v3) {
@@ -3482,7 +6764,7 @@
       v3.b = tmp[2];
     }
   }
-  function clone(v3, proto) {
+  function clone2(v3, proto) {
     return v3 ? Object.assign(proto || {}, v3) : v3;
   }
   function fromObject(input) {
@@ -3495,7 +6777,7 @@
         }
       }
     } else {
-      v3 = clone(input, { r: 0, g: 0, b: 0, a: 1 });
+      v3 = clone2(input, { r: 0, g: 0, b: 0, a: 1 });
       v3.a = n2b(v3.a);
     }
     return v3;
@@ -3525,7 +6807,7 @@
       return this._valid;
     }
     get rgb() {
-      var v3 = clone(this._rgb);
+      var v3 = clone2(this._rgb);
       if (v3) {
         v3.a = b2n(v3.a);
       }
@@ -3622,14 +6904,14 @@
   // node_modules/chart.js/dist/chunks/helpers.dataset.js
   function noop() {
   }
-  var uid = /* @__PURE__ */ (() => {
+  var uid2 = /* @__PURE__ */ (() => {
     let id2 = 0;
     return () => id2++;
   })();
   function isNullOrUndef(value) {
     return value === null || value === void 0;
   }
-  function isArray(value) {
+  function isArray2(value) {
     if (Array.isArray && Array.isArray(value)) {
       return true;
     }
@@ -3639,7 +6921,7 @@
     }
     return false;
   }
-  function isObject(value) {
+  function isObject2(value) {
     return value !== null && Object.prototype.toString.call(value) === "[object Object]";
   }
   function isNumberFinite(value) {
@@ -3660,7 +6942,7 @@
   }
   function each(loopable, fn, thisArg, reverse) {
     let i2, len, keys;
-    if (isArray(loopable)) {
+    if (isArray2(loopable)) {
       len = loopable.length;
       if (reverse) {
         for (i2 = len - 1; i2 >= 0; i2--) {
@@ -3671,7 +6953,7 @@
           fn.call(thisArg, loopable[i2], i2);
         }
       }
-    } else if (isObject(loopable)) {
+    } else if (isObject2(loopable)) {
       keys = Object.keys(loopable);
       len = keys.length;
       for (i2 = 0; i2 < len; i2++) {
@@ -3693,17 +6975,17 @@
     }
     return true;
   }
-  function clone2(source) {
-    if (isArray(source)) {
-      return source.map(clone2);
+  function clone3(source) {
+    if (isArray2(source)) {
+      return source.map(clone3);
     }
-    if (isObject(source)) {
+    if (isObject2(source)) {
       const target = /* @__PURE__ */ Object.create(null);
       const keys = Object.keys(source);
       const klen = keys.length;
       let k2 = 0;
       for (; k2 < klen; ++k2) {
-        target[keys[k2]] = clone2(source[keys[k2]]);
+        target[keys[k2]] = clone3(source[keys[k2]]);
       }
       return target;
     }
@@ -3722,18 +7004,18 @@
     }
     const tval = target[key];
     const sval = source[key];
-    if (isObject(tval) && isObject(sval)) {
+    if (isObject2(tval) && isObject2(sval)) {
       merge(tval, sval, options);
     } else {
-      target[key] = clone2(sval);
+      target[key] = clone3(sval);
     }
   }
   function merge(target, source, options) {
-    const sources = isArray(source) ? source : [
+    const sources = isArray2(source) ? source : [
       source
     ];
     const ilen = sources.length;
-    if (!isObject(target)) {
+    if (!isObject2(target)) {
       return target;
     }
     options = options || {};
@@ -3741,7 +7023,7 @@
     let current;
     for (let i2 = 0; i2 < ilen; ++i2) {
       current = sources[i2];
-      if (!isObject(current)) {
+      if (!isObject2(current)) {
         continue;
       }
       const keys = Object.keys(current);
@@ -3762,10 +7044,10 @@
     }
     const tval = target[key];
     const sval = source[key];
-    if (isObject(tval) && isObject(sval)) {
+    if (isObject2(tval) && isObject2(sval)) {
       mergeIf(tval, sval);
     } else if (!Object.prototype.hasOwnProperty.call(target, key)) {
-      target[key] = clone2(sval);
+      target[key] = clone3(sval);
     }
   }
   var keyResolvers = {
@@ -3922,9 +7204,9 @@
   function _normalizeAngle(a2) {
     return (a2 % TAU + TAU) % TAU;
   }
-  function _angleBetween(angle, start2, end, sameAngleIsFullCircle) {
+  function _angleBetween(angle, start3, end, sameAngleIsFullCircle) {
     const a2 = _normalizeAngle(angle);
-    const s2 = _normalizeAngle(start2);
+    const s2 = _normalizeAngle(start3);
     const e2 = _normalizeAngle(end);
     const angleToStart = _normalizeAngle(s2 - a2);
     const angleToEnd = _normalizeAngle(e2 - a2);
@@ -3938,8 +7220,8 @@
   function _int16Range(value) {
     return _limitValue(value, -32768, 32767);
   }
-  function _isBetween(value, start2, end, epsilon = 1e-6) {
-    return value >= Math.min(start2, end) - epsilon && value <= Math.max(start2, end) + epsilon;
+  function _isBetween(value, start3, end, epsilon = 1e-6) {
+    return value >= Math.min(start3, end) - epsilon && value <= Math.max(start3, end) + epsilon;
   }
   function _lookup(table, value, cmp) {
     cmp = cmp || ((index2) => table[index2] < value);
@@ -3965,15 +7247,15 @@
   } : (index2) => table[index2][key] < value);
   var _rlookupByKey = (table, key, value) => _lookup(table, value, (index2) => table[index2][key] >= value);
   function _filterBetween(values, min, max) {
-    let start2 = 0;
+    let start3 = 0;
     let end = values.length;
-    while (start2 < end && values[start2] < min) {
-      start2++;
+    while (start3 < end && values[start3] < min) {
+      start3++;
     }
-    while (end > start2 && values[end - 1] > max) {
+    while (end > start3 && values[end - 1] > max) {
       end--;
     }
-    return start2 > 0 || end < values.length ? values.slice(start2, end) : values;
+    return start3 > 0 || end < values.length ? values.slice(start3, end) : values;
   }
   var arrayEvents = [
     "push",
@@ -4033,11 +7315,11 @@
     delete array._chartjs;
   }
   function _arrayUnique(items) {
-    const set2 = new Set(items);
-    if (set2.size === items.length) {
+    const set4 = new Set(items);
+    if (set4.size === items.length) {
       return items;
     }
-    return Array.from(set2);
+    return Array.from(set4);
   }
   var requestAnimFrame = function() {
     if (typeof window === "undefined") {
@@ -4061,7 +7343,7 @@
       }
     };
   }
-  function debounce(fn, delay) {
+  function debounce2(fn, delay) {
     let timeout;
     return function(...args) {
       if (delay) {
@@ -4074,14 +7356,14 @@
     };
   }
   var _toLeftRightCenter = (align) => align === "start" ? "left" : align === "end" ? "right" : "center";
-  var _alignStartEnd = (align, start2, end) => align === "start" ? start2 : align === "end" ? end : (start2 + end) / 2;
+  var _alignStartEnd = (align, start3, end) => align === "start" ? start3 : align === "end" ? end : (start3 + end) / 2;
   var _textX = (align, left, right, rtl) => {
     const check = rtl ? "left" : "right";
     return align === check ? right : align === "center" ? (left + right) / 2 : left;
   };
   function _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled) {
     const pointCount = points.length;
-    let start2 = 0;
+    let start3 = 0;
     let count = pointCount;
     if (meta._sorted) {
       const { iScale, vScale, _parsed } = meta;
@@ -4089,17 +7371,17 @@
       const axis = iScale.axis;
       const { min, max, minDefined, maxDefined } = iScale.getUserBounds();
       if (minDefined) {
-        start2 = Math.min(
+        start3 = Math.min(
           // @ts-expect-error Need to type _parsed
           _lookupByKey(_parsed, axis, min).lo,
           // @ts-expect-error Need to fix types on _lookupByKey
           animationsDisabled ? pointCount : _lookupByKey(points, axis, iScale.getPixelForValue(min)).lo
         );
         if (spanGaps) {
-          const distanceToDefinedLo = _parsed.slice(0, start2 + 1).reverse().findIndex((point) => !isNullOrUndef(point[vScale.axis]));
-          start2 -= Math.max(0, distanceToDefinedLo);
+          const distanceToDefinedLo = _parsed.slice(0, start3 + 1).reverse().findIndex((point) => !isNullOrUndef(point[vScale.axis]));
+          start3 -= Math.max(0, distanceToDefinedLo);
         }
-        start2 = _limitValue(start2, 0, pointCount - 1);
+        start3 = _limitValue(start3, 0, pointCount - 1);
       }
       if (maxDefined) {
         let end = Math.max(
@@ -4112,13 +7394,13 @@
           const distanceToDefinedHi = _parsed.slice(end - 1).findIndex((point) => !isNullOrUndef(point[vScale.axis]));
           end += Math.max(0, distanceToDefinedHi);
         }
-        count = _limitValue(end, start2, pointCount) - start2;
+        count = _limitValue(end, start3, pointCount) - start3;
       } else {
-        count = pointCount - start2;
+        count = pointCount - start3;
       }
     }
     return {
-      start: start2,
+      start: start3,
       count
     };
   }
@@ -4320,7 +7602,7 @@
   }
   var formatters = {
     values(value) {
-      return isArray(value) ? value : "" + value;
+      return isArray2(value) ? value : "" + value;
     },
     numeric(tickValue, index2, ticks) {
       if (tickValue === 0) {
@@ -4458,11 +7740,11 @@
     }
     return node;
   }
-  function set(root, scope, values) {
-    if (typeof scope === "string") {
-      return merge(getScope$1(root, scope), values);
+  function set3(root, scope2, values) {
+    if (typeof scope2 === "string") {
+      return merge(getScope$1(root, scope2), values);
     }
-    return merge(getScope$1(root, ""), scope);
+    return merge(getScope$1(root, ""), scope2);
   }
   var Defaults = class {
     constructor(_descriptors2, _appliers) {
@@ -4510,20 +7792,20 @@
       this.describe(_descriptors2);
       this.apply(_appliers);
     }
-    set(scope, values) {
-      return set(this, scope, values);
+    set(scope2, values) {
+      return set3(this, scope2, values);
     }
-    get(scope) {
-      return getScope$1(this, scope);
+    get(scope2) {
+      return getScope$1(this, scope2);
     }
-    describe(scope, values) {
-      return set(descriptors, scope, values);
+    describe(scope2, values) {
+      return set3(descriptors, scope2, values);
     }
-    override(scope, values) {
-      return set(overrides, scope, values);
+    override(scope2, values) {
+      return set3(overrides, scope2, values);
     }
-    route(scope, name, targetScope, targetName) {
-      const scopeObject = getScope$1(this, scope);
+    route(scope2, name, targetScope, targetName) {
+      const scopeObject = getScope$1(this, scope2);
       const targetScopeObject = getScope$1(this, targetScope);
       const privateName = "_" + name;
       Object.defineProperties(scopeObject, {
@@ -4536,7 +7818,7 @@
           get() {
             const local = this[privateName];
             const target = targetScopeObject[targetName];
-            if (isObject(local)) {
+            if (isObject2(local)) {
               return Object.assign({}, target, local);
             }
             return valueOrDefault(local, target);
@@ -4572,10 +7854,10 @@
     }
     return (font.style ? font.style + " " : "") + (font.weight ? font.weight + " " : "") + font.size + "px " + font.family;
   }
-  function _measureText(ctx, data, gc, longest, string) {
-    let textWidth = data[string];
+  function _measureText(ctx, data2, gc, longest, string) {
+    let textWidth = data2[string];
     if (!textWidth) {
-      textWidth = data[string] = ctx.measureText(string).width;
+      textWidth = data2[string] = ctx.measureText(string).width;
       gc.push(string);
     }
     if (textWidth > longest) {
@@ -4585,10 +7867,10 @@
   }
   function _longestText(ctx, font, arrayOfThings, cache) {
     cache = cache || {};
-    let data = cache.data = cache.data || {};
+    let data2 = cache.data = cache.data || {};
     let gc = cache.garbageCollect = cache.garbageCollect || [];
     if (cache.font !== font) {
-      data = cache.data = {};
+      data2 = cache.data = {};
       gc = cache.garbageCollect = [];
       cache.font = font;
     }
@@ -4599,13 +7881,13 @@
     let i2, j2, jlen, thing, nestedThing;
     for (i2 = 0; i2 < ilen; i2++) {
       thing = arrayOfThings[i2];
-      if (thing !== void 0 && thing !== null && !isArray(thing)) {
-        longest = _measureText(ctx, data, gc, longest, thing);
-      } else if (isArray(thing)) {
+      if (thing !== void 0 && thing !== null && !isArray2(thing)) {
+        longest = _measureText(ctx, data2, gc, longest, thing);
+      } else if (isArray2(thing)) {
         for (j2 = 0, jlen = thing.length; j2 < jlen; j2++) {
           nestedThing = thing[j2];
-          if (nestedThing !== void 0 && nestedThing !== null && !isArray(nestedThing)) {
-            longest = _measureText(ctx, data, gc, longest, nestedThing);
+          if (nestedThing !== void 0 && nestedThing !== null && !isArray2(nestedThing)) {
+            longest = _measureText(ctx, data2, gc, longest, nestedThing);
           }
         }
       }
@@ -4614,7 +7896,7 @@
     const gcLen = gc.length / 2;
     if (gcLen > arrayOfThings.length) {
       for (i2 = 0; i2 < gcLen; i2++) {
-        delete data[gc[i2]];
+        delete data2[gc[i2]];
       }
       gc.splice(0, gcLen);
     }
@@ -4639,7 +7921,7 @@
     drawPointLegend(ctx, options, x2, y3, null);
   }
   function drawPointLegend(ctx, options, x2, y3, w3) {
-    let type, xOffset, yOffset, size, cornerRadius, width, xOffsetW, yOffsetW;
+    let type, xOffset, yOffset, size2, cornerRadius, width, xOffsetW, yOffsetW;
     const style = options.pointStyle;
     const rotation = options.rotation;
     const radius = options.radius;
@@ -4680,11 +7962,11 @@
         break;
       case "rectRounded":
         cornerRadius = radius * 0.516;
-        size = radius - cornerRadius;
-        xOffset = Math.cos(rad + QUARTER_PI) * size;
-        xOffsetW = Math.cos(rad + QUARTER_PI) * (w3 ? w3 / 2 - cornerRadius : size);
-        yOffset = Math.sin(rad + QUARTER_PI) * size;
-        yOffsetW = Math.sin(rad + QUARTER_PI) * (w3 ? w3 / 2 - cornerRadius : size);
+        size2 = radius - cornerRadius;
+        xOffset = Math.cos(rad + QUARTER_PI) * size2;
+        xOffsetW = Math.cos(rad + QUARTER_PI) * (w3 ? w3 / 2 - cornerRadius : size2);
+        yOffset = Math.sin(rad + QUARTER_PI) * size2;
+        yOffsetW = Math.sin(rad + QUARTER_PI) * (w3 ? w3 / 2 - cornerRadius : size2);
         ctx.arc(x2 - xOffsetW, y3 - yOffset, cornerRadius, rad - PI, rad - HALF_PI);
         ctx.arc(x2 + yOffsetW, y3 - xOffset, cornerRadius, rad - HALF_PI, rad);
         ctx.arc(x2 + xOffsetW, y3 + yOffset, cornerRadius, rad, rad + HALF_PI);
@@ -4693,9 +7975,9 @@
         break;
       case "rect":
         if (!rotation) {
-          size = Math.SQRT1_2 * radius;
-          width = w3 ? w3 / 2 : size;
-          ctx.rect(x2 - width, y3 - size, 2 * width, 2 * size);
+          size2 = Math.SQRT1_2 * radius;
+          width = w3 ? w3 / 2 : size2;
+          ctx.rect(x2 - width, y3 - size2, 2 * width, 2 * size2);
           break;
         }
         rad += QUARTER_PI;
@@ -4836,7 +8118,7 @@
     ctx.fillStyle = oldColor;
   }
   function renderText(ctx, text2, x2, y3, font, opts = {}) {
-    const lines = isArray(text2) ? text2 : [
+    const lines = isArray2(text2) ? text2 : [
       text2
     ];
     const stroke = opts.strokeWidth > 0 && opts.strokeColor !== "";
@@ -4877,10 +8159,10 @@
   }
   var LINE_HEIGHT = /^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/;
   var FONT_STYLE = /^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/;
-  function toLineHeight(value, size) {
+  function toLineHeight(value, size2) {
     const matches = ("" + value).match(LINE_HEIGHT);
     if (!matches || matches[1] === "normal") {
-      return size * 1.2;
+      return size2 * 1.2;
     }
     value = +matches[2];
     switch (matches[3]) {
@@ -4890,14 +8172,14 @@
         value /= 100;
         break;
     }
-    return size * value;
+    return size2 * value;
   }
   var numberOrZero = (v3) => +v3 || 0;
   function _readValueToProps(value, props) {
     const ret = {};
-    const objProps = isObject(props);
+    const objProps = isObject2(props);
     const keys = objProps ? Object.keys(props) : props;
-    const read = isObject(value) ? objProps ? (prop) => valueOrDefault(value[prop], value[props[prop]]) : (prop) => value[prop] : () => value;
+    const read = isObject2(value) ? objProps ? (prop) => valueOrDefault(value[prop], value[props[prop]]) : (prop) => value[prop] : () => value;
     for (const prop of keys) {
       ret[prop] = numberOrZero(read(prop));
     }
@@ -4928,9 +8210,9 @@
   function toFont(options, fallback) {
     options = options || {};
     fallback = fallback || defaults.font;
-    let size = valueOrDefault(options.size, fallback.size);
-    if (typeof size === "string") {
-      size = parseInt(size, 10);
+    let size2 = valueOrDefault(options.size, fallback.size);
+    if (typeof size2 === "string") {
+      size2 = parseInt(size2, 10);
     }
     let style = valueOrDefault(options.style, fallback.style);
     if (style && !("" + style).match(FONT_STYLE)) {
@@ -4939,8 +8221,8 @@
     }
     const font = {
       family: valueOrDefault(options.family, fallback.family),
-      lineHeight: toLineHeight(valueOrDefault(options.lineHeight, fallback.lineHeight), size),
-      size,
+      lineHeight: toLineHeight(valueOrDefault(options.lineHeight, fallback.lineHeight), size2),
+      size: size2,
       style,
       weight: valueOrDefault(options.weight, fallback.weight),
       string: ""
@@ -4960,7 +8242,7 @@
         value = value(context);
         cacheable = false;
       }
-      if (index2 !== void 0 && isArray(value)) {
+      if (index2 !== void 0 && isArray2(value)) {
         value = value[index2 % value.length];
         cacheable = false;
       }
@@ -4975,7 +8257,7 @@
   function _addGrace(minmax, grace, beginAtZero) {
     const { min, max } = minmax;
     const change = toDimension(grace, (max - min) / 2);
-    const keepZero = (value, add) => beginAtZero && value === 0 ? 0 : value + add;
+    const keepZero = (value, add2) => beginAtZero && value === 0 ? 0 : value + add2;
     return {
       min: keepZero(min, -Math.abs(change)),
       max: keepZero(max, change)
@@ -4986,7 +8268,7 @@
   }
   function _createResolver(scopes, prefixes = [
     ""
-  ], rootScopes, fallback, getTarget = () => scopes[0]) {
+  ], rootScopes, fallback, getTarget2 = () => scopes[0]) {
     const finalRootScopes = rootScopes || scopes;
     if (typeof fallback === "undefined") {
       fallback = _resolve("_fallback", scopes);
@@ -4997,9 +8279,9 @@
       _scopes: scopes,
       _rootScopes: finalRootScopes,
       _fallback: fallback,
-      _getTarget: getTarget,
-      override: (scope) => _createResolver([
-        scope,
+      _getTarget: getTarget2,
+      override: (scope2) => _createResolver([
+        scope2,
         ...scopes
       ], prefixes, finalRootScopes, fallback)
     };
@@ -5048,7 +8330,7 @@
       * A trap for setting property values.
       */
       set(target, prop, value) {
-        const storage = target._storage || (target._storage = getTarget());
+        const storage = target._storage || (target._storage = getTarget2());
         target[prop] = storage[prop] = value;
         delete target._keys;
         return true;
@@ -5064,7 +8346,7 @@
       _stack: /* @__PURE__ */ new Set(),
       _descriptors: _descriptors(proxy, descriptorDefaults),
       setContext: (ctx) => _attachContext(proxy, ctx, subProxy, descriptorDefaults),
-      override: (scope) => _attachContext(proxy.override(scope), context, subProxy, descriptorDefaults)
+      override: (scope2) => _attachContext(proxy.override(scope2), context, subProxy, descriptorDefaults)
     };
     return new Proxy(cache, {
       /**
@@ -5132,8 +8414,8 @@
       isIndexable: isFunction(_indexable) ? _indexable : () => _indexable
     };
   }
-  var readKey = (prefix, name) => prefix ? prefix + _capitalize(name) : name;
-  var needsSubResolver = (prop, value) => isObject(value) && prop !== "adapters" && (Object.getPrototypeOf(value) === null || value.constructor === Object);
+  var readKey = (prefix2, name) => prefix2 ? prefix2 + _capitalize(name) : name;
+  var needsSubResolver = (prop, value) => isObject2(value) && prop !== "adapters" && (Object.getPrototypeOf(value) === null || value.constructor === Object);
   function _cached(target, prop, resolve2) {
     if (Object.prototype.hasOwnProperty.call(target, prop) || prop === "constructor") {
       return target[prop];
@@ -5148,7 +8430,7 @@
     if (isFunction(value) && descriptors2.isScriptable(prop)) {
       value = _resolveScriptable(prop, value, target, receiver);
     }
-    if (isArray(value) && value.length) {
+    if (isArray2(value) && value.length) {
       value = _resolveArray(prop, value, target, descriptors2.isIndexable);
     }
     if (needsSubResolver(prop, value)) {
@@ -5173,7 +8455,7 @@
     const { _proxy, _context, _subProxy, _descriptors: descriptors2 } = target;
     if (typeof _context.index !== "undefined" && isIndexable(prop)) {
       return value[_context.index % value.length];
-    } else if (isObject(value[0])) {
+    } else if (isObject2(value[0])) {
       const arr = value;
       const scopes = _proxy._scopes.filter((s2) => s2 !== arr);
       value = [];
@@ -5188,16 +8470,16 @@
     return isFunction(fallback) ? fallback(prop, value) : fallback;
   }
   var getScope = (key, parent) => key === true ? parent : typeof key === "string" ? resolveObjectKey(parent, key) : void 0;
-  function addScopes(set2, parentScopes, key, parentFallback, value) {
+  function addScopes(set4, parentScopes, key, parentFallback, value) {
     for (const parent of parentScopes) {
-      const scope = getScope(key, parent);
-      if (scope) {
-        set2.add(scope);
-        const fallback = resolveFallback(scope._fallback, key, value);
+      const scope2 = getScope(key, parent);
+      if (scope2) {
+        set4.add(scope2);
+        const fallback = resolveFallback(scope2._fallback, key, value);
         if (typeof fallback !== "undefined" && fallback !== key && fallback !== parentFallback) {
           return fallback;
         }
-      } else if (scope === false && typeof parentFallback !== "undefined" && key !== parentFallback) {
+      } else if (scope2 === false && typeof parentFallback !== "undefined" && key !== parentFallback) {
         return null;
       }
     }
@@ -5210,25 +8492,25 @@
       ...parentScopes,
       ...rootScopes
     ];
-    const set2 = /* @__PURE__ */ new Set();
-    set2.add(value);
-    let key = addScopesFromKey(set2, allScopes, prop, fallback || prop, value);
+    const set4 = /* @__PURE__ */ new Set();
+    set4.add(value);
+    let key = addScopesFromKey(set4, allScopes, prop, fallback || prop, value);
     if (key === null) {
       return false;
     }
     if (typeof fallback !== "undefined" && fallback !== prop) {
-      key = addScopesFromKey(set2, allScopes, fallback, key, value);
+      key = addScopesFromKey(set4, allScopes, fallback, key, value);
       if (key === null) {
         return false;
       }
     }
-    return _createResolver(Array.from(set2), [
+    return _createResolver(Array.from(set4), [
       ""
     ], rootScopes, fallback, () => subGetTarget(resolver, prop, value));
   }
-  function addScopesFromKey(set2, allScopes, key, fallback, item) {
+  function addScopesFromKey(set4, allScopes, key, fallback, item) {
     while (key) {
-      key = addScopes(set2, allScopes, key, fallback, item);
+      key = addScopes(set4, allScopes, key, fallback, item);
     }
     return key;
   }
@@ -5238,26 +8520,26 @@
       parent[prop] = {};
     }
     const target = parent[prop];
-    if (isArray(target) && isObject(value)) {
+    if (isArray2(target) && isObject2(value)) {
       return value;
     }
     return target || {};
   }
   function _resolveWithPrefixes(prop, prefixes, scopes, proxy) {
     let value;
-    for (const prefix of prefixes) {
-      value = _resolve(readKey(prefix, prop), scopes);
+    for (const prefix2 of prefixes) {
+      value = _resolve(readKey(prefix2, prop), scopes);
       if (typeof value !== "undefined") {
         return needsSubResolver(prop, value) ? createSubResolver(scopes, proxy, prop, value) : value;
       }
     }
   }
   function _resolve(key, scopes) {
-    for (const scope of scopes) {
-      if (!scope) {
+    for (const scope2 of scopes) {
+      if (!scope2) {
         continue;
       }
-      const value = scope[key];
+      const value = scope2[key];
       if (typeof value !== "undefined") {
         return value;
       }
@@ -5271,22 +8553,22 @@
     return keys;
   }
   function resolveKeysFromAllScopes(scopes) {
-    const set2 = /* @__PURE__ */ new Set();
-    for (const scope of scopes) {
-      for (const key of Object.keys(scope).filter((k2) => !k2.startsWith("_"))) {
-        set2.add(key);
+    const set4 = /* @__PURE__ */ new Set();
+    for (const scope2 of scopes) {
+      for (const key of Object.keys(scope2).filter((k2) => !k2.startsWith("_"))) {
+        set4.add(key);
       }
     }
-    return Array.from(set2);
+    return Array.from(set4);
   }
-  function _parseObjectDataRadialScale(meta, data, start2, count) {
+  function _parseObjectDataRadialScale(meta, data2, start3, count) {
     const { iScale } = meta;
     const { key = "r" } = this._parsing;
     const parsed = new Array(count);
     let i2, ilen, index2, item;
     for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
-      index2 = i2 + start2;
-      item = data[index2];
+      index2 = i2 + start3;
+      item = data2[index2];
       parsed[i2] = {
         r: iScale.parse(resolveObjectKey(item, key), index2)
       };
@@ -5417,7 +8699,7 @@
       }
     }
   }
-  function _updateBezierControlPoints(points, options, area, loop, indexAxis) {
+  function _updateBezierControlPoints(points, options, area, loop2, indexAxis) {
     let i2, ilen, point, controlPoints;
     if (options.spanGaps) {
       points = points.filter((pt) => !pt.skip);
@@ -5425,10 +8707,10 @@
     if (options.cubicInterpolationMode === "monotone") {
       splineCurveMonotone(points, indexAxis);
     } else {
-      let prev = loop ? points[points.length - 1] : points[0];
+      let prev = loop2 ? points[points.length - 1] : points[0];
       for (i2 = 0, ilen = points.length; i2 < ilen; ++i2) {
         point = points[i2];
-        controlPoints = splineCurve(prev, point, points[Math.min(i2 + 1, ilen - (loop ? 0 : 1)) % ilen], options.tension);
+        controlPoints = splineCurve(prev, point, points[Math.min(i2 + 1, ilen - (loop2 ? 0 : 1)) % ilen], options.tension);
         point.cp1x = controlPoints.previous.x;
         point.cp1y = controlPoints.previous.y;
         point.cp2x = controlPoints.next.x;
@@ -5728,11 +9010,11 @@
       normalize: (x2) => x2
     };
   }
-  function normalizeSegment({ start: start2, end, count, loop, style }) {
+  function normalizeSegment({ start: start3, end, count, loop: loop2, style }) {
     return {
-      start: start2 % count,
+      start: start3 % count,
       end: end % count,
-      loop: loop && (end - start2 + 1) % count === 0,
+      loop: loop2 && (end - start3 + 1) % count === 0,
       style
     };
   }
@@ -5740,28 +9022,28 @@
     const { property, start: startBound, end: endBound } = bounds;
     const { between, normalize } = propertyFn(property);
     const count = points.length;
-    let { start: start2, end, loop } = segment;
+    let { start: start3, end, loop: loop2 } = segment;
     let i2, ilen;
-    if (loop) {
-      start2 += count;
+    if (loop2) {
+      start3 += count;
       end += count;
       for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
-        if (!between(normalize(points[start2 % count][property]), startBound, endBound)) {
+        if (!between(normalize(points[start3 % count][property]), startBound, endBound)) {
           break;
         }
-        start2--;
+        start3--;
         end--;
       }
-      start2 %= count;
+      start3 %= count;
       end %= count;
     }
-    if (end < start2) {
+    if (end < start3) {
       end += count;
     }
     return {
-      start: start2,
+      start: start3,
       end,
-      loop,
+      loop: loop2,
       style: segment.style
     };
   }
@@ -5774,7 +9056,7 @@
     const { property, start: startBound, end: endBound } = bounds;
     const count = points.length;
     const { compare, between, normalize } = propertyFn(property);
-    const { start: start2, end, loop, style } = getSegment(segment, points, bounds);
+    const { start: start3, end, loop: loop2, style } = getSegment(segment, points, bounds);
     const result = [];
     let inside = false;
     let subStart = null;
@@ -5783,7 +9065,7 @@
     const endIsBefore = () => compare(endBound, value) === 0 || between(endBound, prevValue, value);
     const shouldStart = () => inside || startIsBefore();
     const shouldStop = () => !inside || endIsBefore();
-    for (let i2 = start2, prev = start2; i2 <= end; ++i2) {
+    for (let i2 = start3, prev = start3; i2 <= end; ++i2) {
       point = points[i2 % count];
       if (point.skip) {
         continue;
@@ -5800,7 +9082,7 @@
         result.push(normalizeSegment({
           start: subStart,
           end: i2,
-          loop,
+          loop: loop2,
           count,
           style
         }));
@@ -5813,7 +9095,7 @@
       result.push(normalizeSegment({
         start: subStart,
         end,
-        loop,
+        loop: loop2,
         count,
         style
       }));
@@ -5831,61 +9113,61 @@
     }
     return result;
   }
-  function findStartAndEnd(points, count, loop, spanGaps) {
-    let start2 = 0;
+  function findStartAndEnd(points, count, loop2, spanGaps) {
+    let start3 = 0;
     let end = count - 1;
-    if (loop && !spanGaps) {
-      while (start2 < count && !points[start2].skip) {
-        start2++;
+    if (loop2 && !spanGaps) {
+      while (start3 < count && !points[start3].skip) {
+        start3++;
       }
     }
-    while (start2 < count && points[start2].skip) {
-      start2++;
+    while (start3 < count && points[start3].skip) {
+      start3++;
     }
-    start2 %= count;
-    if (loop) {
-      end += start2;
+    start3 %= count;
+    if (loop2) {
+      end += start3;
     }
-    while (end > start2 && points[end % count].skip) {
+    while (end > start3 && points[end % count].skip) {
       end--;
     }
     end %= count;
     return {
-      start: start2,
+      start: start3,
       end
     };
   }
-  function solidSegments(points, start2, max, loop) {
+  function solidSegments(points, start3, max, loop2) {
     const count = points.length;
     const result = [];
-    let last = start2;
-    let prev = points[start2];
+    let last = start3;
+    let prev = points[start3];
     let end;
-    for (end = start2 + 1; end <= max; ++end) {
+    for (end = start3 + 1; end <= max; ++end) {
       const cur = points[end % count];
       if (cur.skip || cur.stop) {
         if (!prev.skip) {
-          loop = false;
+          loop2 = false;
           result.push({
-            start: start2 % count,
+            start: start3 % count,
             end: (end - 1) % count,
-            loop
+            loop: loop2
           });
-          start2 = last = cur.stop ? end : null;
+          start3 = last = cur.stop ? end : null;
         }
       } else {
         last = end;
         if (prev.skip) {
-          start2 = end;
+          start3 = end;
         }
       }
       prev = cur;
     }
     if (last !== null) {
       result.push({
-        start: start2 % count,
+        start: start3 % count,
         end: last % count,
-        loop
+        loop: loop2
       });
     }
     return result;
@@ -5897,20 +9179,20 @@
     if (!count) {
       return [];
     }
-    const loop = !!line._loop;
-    const { start: start2, end } = findStartAndEnd(points, count, loop, spanGaps);
+    const loop2 = !!line._loop;
+    const { start: start3, end } = findStartAndEnd(points, count, loop2, spanGaps);
     if (spanGaps === true) {
       return splitByStyles(line, [
         {
-          start: start2,
+          start: start3,
           end,
-          loop
+          loop: loop2
         }
       ], points, segmentOptions);
     }
-    const max = end < start2 ? end + count : end;
-    const completeLoop = !!line._fullLoop && start2 === 0 && end === count - 1;
-    return splitByStyles(line, solidSegments(points, start2, max, completeLoop), points, segmentOptions);
+    const max = end < start3 ? end + count : end;
+    const completeLoop = !!line._fullLoop && start3 === 0 && end === count - 1;
+    return splitByStyles(line, solidSegments(points, start3, max, completeLoop), points, segmentOptions);
   }
   function splitByStyles(line, segments, points, segmentOptions) {
     if (!segmentOptions || !segmentOptions.setContext || !points) {
@@ -5925,8 +9207,8 @@
     const count = points.length;
     const result = [];
     let prevStyle = baseStyle;
-    let start2 = segments[0].start;
-    let i2 = start2;
+    let start3 = segments[0].start;
+    let i2 = start3;
     function addStyle(s2, e2, l4, st2) {
       const dir = spanGaps ? -1 : 1;
       if (s2 === e2) {
@@ -5947,14 +9229,14 @@
           style: st2
         });
         prevStyle = st2;
-        start2 = e2 % count;
+        start3 = e2 % count;
       }
     }
     for (const segment of segments) {
-      start2 = spanGaps ? start2 : segment.start;
-      let prev = points[start2 % count];
+      start3 = spanGaps ? start3 : segment.start;
+      let prev = points[start3 % count];
       let style;
-      for (i2 = start2 + 1; i2 <= segment.end; i2++) {
+      for (i2 = start3 + 1; i2 <= segment.end; i2++) {
         const pt = points[i2 % count];
         style = readStyle(segmentOptions.setContext(createContext(chartContext, {
           type: "segment",
@@ -5965,13 +9247,13 @@
           datasetIndex
         })));
         if (styleChanged(style, prevStyle)) {
-          addStyle(start2, i2 - 1, segment.loop, prevStyle);
+          addStyle(start3, i2 - 1, segment.loop, prevStyle);
         }
         prev = pt;
         prevStyle = style;
       }
-      if (start2 < i2 - 1) {
-        addStyle(start2, i2 - 1, segment.loop, prevStyle);
+      if (start3 < i2 - 1) {
+        addStyle(start3, i2 - 1, segment.loop, prevStyle);
       }
     }
     return result;
@@ -6247,10 +9529,10 @@
       const duration = this._duration;
       const prop = this._prop;
       const from2 = this._from;
-      const loop = this._loop;
+      const loop2 = this._loop;
       const to2 = this._to;
       let factor;
-      this._active = from2 !== to2 && (loop || elapsed < duration);
+      this._active = from2 !== to2 && (loop2 || elapsed < duration);
       if (!this._active) {
         this._target[prop] = to2;
         this._notify(true);
@@ -6261,7 +9543,7 @@
         return;
       }
       factor = elapsed / duration % 2;
-      factor = loop && factor > 1 ? 2 - factor : factor;
+      factor = loop2 && factor > 1 ? 2 - factor : factor;
       factor = this._easing(Math.min(1, Math.max(0, factor)));
       this._target[prop] = this._fn(from2, to2, factor);
     }
@@ -6289,21 +9571,21 @@
       this.configure(config);
     }
     configure(config) {
-      if (!isObject(config)) {
+      if (!isObject2(config)) {
         return;
       }
       const animationOptions = Object.keys(defaults.animation);
       const animatedProps = this._properties;
       Object.getOwnPropertyNames(config).forEach((key) => {
         const cfg = config[key];
-        if (!isObject(cfg)) {
+        if (!isObject2(cfg)) {
           return;
         }
         const resolved = {};
         for (const option of animationOptions) {
           resolved[option] = cfg[option];
         }
-        (isArray(cfg.properties) && cfg.properties || [
+        (isArray2(cfg.properties) && cfg.properties || [
           key
         ]).forEach((prop) => {
           if (prop === key || !animatedProps.has(prop)) {
@@ -6428,7 +9710,7 @@
   }
   function toClip(value) {
     let t2, r2, b3, l4;
-    if (isObject(value)) {
+    if (isObject2(value)) {
       t2 = value.top;
       r2 = value.right;
       b3 = value.bottom;
@@ -6480,18 +9762,18 @@
     }
     return value;
   }
-  function convertObjectDataToArray(data, meta) {
+  function convertObjectDataToArray(data2, meta) {
     const { iScale, vScale } = meta;
     const iAxisKey = iScale.axis === "x" ? "x" : "y";
     const vAxisKey = vScale.axis === "x" ? "x" : "y";
-    const keys = Object.keys(data);
+    const keys = Object.keys(data2);
     const adata = new Array(keys.length);
     let i2, ilen, key;
     for (i2 = 0, ilen = keys.length; i2 < ilen; ++i2) {
       key = keys[i2];
       adata[i2] = {
         [iAxisKey]: key,
-        [vAxisKey]: data[key]
+        [vAxisKey]: data2[key]
       };
     }
     return adata;
@@ -6680,23 +9962,23 @@
     }
     _dataCheck() {
       const dataset = this.getDataset();
-      const data = dataset.data || (dataset.data = []);
+      const data2 = dataset.data || (dataset.data = []);
       const _data = this._data;
-      if (isObject(data)) {
+      if (isObject2(data2)) {
         const meta = this._cachedMeta;
-        this._data = convertObjectDataToArray(data, meta);
-      } else if (_data !== data) {
+        this._data = convertObjectDataToArray(data2, meta);
+      } else if (_data !== data2) {
         if (_data) {
           unlistenArrayEvents(_data, this);
           const meta = this._cachedMeta;
           clearStacks(meta);
           meta._parsed = [];
         }
-        if (data && Object.isExtensible(data)) {
-          listenArrayEvents(data, this);
+        if (data2 && Object.isExtensible(data2)) {
+          listenArrayEvents(data2, this);
         }
         this._syncList = [];
-        this._data = data;
+        this._data = data2;
       }
     }
     addElements() {
@@ -6732,28 +10014,28 @@
       this._parsing = this.options.parsing;
       this._cachedDataOpts = {};
     }
-    parse(start2, count) {
-      const { _cachedMeta: meta, _data: data } = this;
+    parse(start3, count) {
+      const { _cachedMeta: meta, _data: data2 } = this;
       const { iScale, _stacked } = meta;
       const iAxis = iScale.axis;
-      let sorted = start2 === 0 && count === data.length ? true : meta._sorted;
-      let prev = start2 > 0 && meta._parsed[start2 - 1];
+      let sorted = start3 === 0 && count === data2.length ? true : meta._sorted;
+      let prev = start3 > 0 && meta._parsed[start3 - 1];
       let i2, cur, parsed;
       if (this._parsing === false) {
-        meta._parsed = data;
+        meta._parsed = data2;
         meta._sorted = true;
-        parsed = data;
+        parsed = data2;
       } else {
-        if (isArray(data[start2])) {
-          parsed = this.parseArrayData(meta, data, start2, count);
-        } else if (isObject(data[start2])) {
-          parsed = this.parseObjectData(meta, data, start2, count);
+        if (isArray2(data2[start3])) {
+          parsed = this.parseArrayData(meta, data2, start3, count);
+        } else if (isObject2(data2[start3])) {
+          parsed = this.parseObjectData(meta, data2, start3, count);
         } else {
-          parsed = this.parsePrimitiveData(meta, data, start2, count);
+          parsed = this.parsePrimitiveData(meta, data2, start3, count);
         }
         const isNotInOrderComparedToPrev = () => cur[iAxis] === null || prev && cur[iAxis] < prev[iAxis];
         for (i2 = 0; i2 < count; ++i2) {
-          meta._parsed[i2 + start2] = cur = parsed[i2];
+          meta._parsed[i2 + start3] = cur = parsed[i2];
           if (sorted) {
             if (isNotInOrderComparedToPrev()) {
               sorted = false;
@@ -6767,7 +10049,7 @@
         updateStacks(this, parsed);
       }
     }
-    parsePrimitiveData(meta, data, start2, count) {
+    parsePrimitiveData(meta, data2, start3, count) {
       const { iScale, vScale } = meta;
       const iAxis = iScale.axis;
       const vAxis = vScale.axis;
@@ -6776,21 +10058,21 @@
       const parsed = new Array(count);
       let i2, ilen, index2;
       for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
-        index2 = i2 + start2;
+        index2 = i2 + start3;
         parsed[i2] = {
           [iAxis]: singleScale || iScale.parse(labels[index2], index2),
-          [vAxis]: vScale.parse(data[index2], index2)
+          [vAxis]: vScale.parse(data2[index2], index2)
         };
       }
       return parsed;
     }
-    parseArrayData(meta, data, start2, count) {
+    parseArrayData(meta, data2, start3, count) {
       const { xScale, yScale } = meta;
       const parsed = new Array(count);
       let i2, ilen, index2, item;
       for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
-        index2 = i2 + start2;
-        item = data[index2];
+        index2 = i2 + start3;
+        item = data2[index2];
         parsed[i2] = {
           x: xScale.parse(item[0], index2),
           y: yScale.parse(item[1], index2)
@@ -6798,14 +10080,14 @@
       }
       return parsed;
     }
-    parseObjectData(meta, data, start2, count) {
+    parseObjectData(meta, data2, start3, count) {
       const { xScale, yScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const parsed = new Array(count);
       let i2, ilen, index2, item;
       for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
-        index2 = i2 + start2;
-        item = data[index2];
+        index2 = i2 + start3;
+        item = data2[index2];
         parsed[i2] = {
           x: xScale.parse(resolveObjectKey(item, xAxisKey), index2),
           y: yScale.parse(resolveObjectKey(item, yAxisKey), index2)
@@ -6919,14 +10201,14 @@
       const elements2 = meta.data || [];
       const area = chart.chartArea;
       const active = [];
-      const start2 = this._drawStart || 0;
-      const count = this._drawCount || elements2.length - start2;
+      const start3 = this._drawStart || 0;
+      const count = this._drawCount || elements2.length - start3;
       const drawActiveElementsOnTop = this.options.drawActiveElementsOnTop;
       let i2;
       if (meta.dataset) {
-        meta.dataset.draw(ctx, area, start2, count);
+        meta.dataset.draw(ctx, area, start3, count);
       }
-      for (i2 = start2; i2 < start2 + count; ++i2) {
+      for (i2 = start3; i2 < start3 + count; ++i2) {
         const element = elements2[i2];
         if (element.hidden) {
           continue;
@@ -6999,10 +10281,10 @@
       }
       return values;
     }
-    _resolveAnimations(index2, transition, active) {
+    _resolveAnimations(index2, transition2, active) {
       const chart = this.chart;
       const cache = this._cachedDataOpts;
-      const cacheKey = `animation-${transition}`;
+      const cacheKey = `animation-${transition2}`;
       const cached = cache[cacheKey];
       if (cached) {
         return cached;
@@ -7010,9 +10292,9 @@
       let options;
       if (chart.options.animation !== false) {
         const config = this.chart.config;
-        const scopeKeys = config.datasetAnimationScopeKeys(this._type, transition);
+        const scopeKeys = config.datasetAnimationScopeKeys(this._type, transition2);
         const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
-        options = config.createResolver(scopes, this.getContext(index2, active, transition));
+        options = config.createResolver(scopes, this.getContext(index2, active, transition2));
       }
       const animations = new Animations(chart, options && options.animations);
       if (options && options._cacheable) {
@@ -7029,8 +10311,8 @@
     includeOptions(mode, sharedOptions) {
       return !sharedOptions || isDirectUpdateMode(mode) || this.chart._animationsDisabled;
     }
-    _getSharedOptions(start2, mode) {
-      const firstOpts = this.resolveDataElementOptions(start2, mode);
+    _getSharedOptions(start3, mode) {
+      const firstOpts = this.resolveDataElementOptions(start3, mode);
       const previouslySharedOptions = this._sharedOptions;
       const sharedOptions = this.getSharedOptions(firstOpts);
       const includeOptions = this.includeOptions(mode, sharedOptions) || sharedOptions !== previouslySharedOptions;
@@ -7078,14 +10360,14 @@
       }
     }
     _resyncElements(resetNewElements) {
-      const data = this._data;
+      const data2 = this._data;
       const elements2 = this._cachedMeta.data;
       for (const [method, arg1, arg2] of this._syncList) {
         this[method](arg1, arg2);
       }
       this._syncList = [];
       const numMeta = elements2.length;
-      const numData = data.length;
+      const numData = data2.length;
       const count = Math.min(numData, numMeta);
       if (count) {
         this.parse(0, count);
@@ -7096,10 +10378,10 @@
         this._removeElements(numData, numMeta - numData);
       }
     }
-    _insertElements(start2, count, resetNewElements = true) {
+    _insertElements(start3, count, resetNewElements = true) {
       const meta = this._cachedMeta;
-      const data = meta.data;
-      const end = start2 + count;
+      const data2 = meta.data;
+      const end = start3 + count;
       let i2;
       const move = (arr) => {
         arr.length += count;
@@ -7107,29 +10389,29 @@
           arr[i2] = arr[i2 - count];
         }
       };
-      move(data);
-      for (i2 = start2; i2 < end; ++i2) {
-        data[i2] = new this.dataElementType();
+      move(data2);
+      for (i2 = start3; i2 < end; ++i2) {
+        data2[i2] = new this.dataElementType();
       }
       if (this._parsing) {
         move(meta._parsed);
       }
-      this.parse(start2, count);
+      this.parse(start3, count);
       if (resetNewElements) {
-        this.updateElements(data, start2, count, "reset");
+        this.updateElements(data2, start3, count, "reset");
       }
     }
-    updateElements(element, start2, count, mode) {
+    updateElements(element, start3, count, mode) {
     }
-    _removeElements(start2, count) {
+    _removeElements(start3, count) {
       const meta = this._cachedMeta;
       if (this._parsing) {
-        const removed = meta._parsed.splice(start2, count);
+        const removed = meta._parsed.splice(start3, count);
         if (meta._stacked) {
           clearStacks(meta, removed);
         }
       }
-      meta.data.splice(start2, count);
+      meta.data.splice(start3, count);
     }
     _sync(args) {
       if (this._parsing) {
@@ -7165,11 +10447,11 @@
         1
       ]);
     }
-    _onDataSplice(start2, count) {
+    _onDataSplice(start3, count) {
       if (count) {
         this._sync([
           "_removeElements",
-          start2,
+          start3,
           count
         ]);
       }
@@ -7177,7 +10459,7 @@
       if (newCount) {
         this._sync([
           "_insertElements",
-          start2,
+          start3,
           newCount
         ]);
       }
@@ -7228,18 +10510,18 @@
   }
   function computeFitCategoryTraits(index2, ruler, options, stackCount) {
     const thickness = options.barThickness;
-    let size, ratio;
+    let size2, ratio;
     if (isNullOrUndef(thickness)) {
-      size = ruler.min * options.categoryPercentage;
+      size2 = ruler.min * options.categoryPercentage;
       ratio = options.barPercentage;
     } else {
-      size = thickness * stackCount;
+      size2 = thickness * stackCount;
       ratio = 1;
     }
     return {
-      chunk: size / stackCount,
+      chunk: size2 / stackCount,
       ratio,
-      start: ruler.pixels[index2] - size / 2
+      start: ruler.pixels[index2] - size2 / 2
     };
   }
   function computeFlexCategoryTraits(index2, ruler, options, stackCount) {
@@ -7254,12 +10536,12 @@
     if (next === null) {
       next = curr + curr - prev;
     }
-    const start2 = curr - (curr - Math.min(prev, next)) / 2 * percent;
-    const size = Math.abs(next - prev) / 2 * percent;
+    const start3 = curr - (curr - Math.min(prev, next)) / 2 * percent;
+    const size2 = Math.abs(next - prev) / 2 * percent;
     return {
-      chunk: size / stackCount,
+      chunk: size2 / stackCount,
       ratio: options.barPercentage,
-      start: start2
+      start: start3
     };
   }
   function parseFloatBar(entry, item, vScale, i2) {
@@ -7284,22 +10566,22 @@
     };
   }
   function parseValue(entry, item, vScale, i2) {
-    if (isArray(entry)) {
+    if (isArray2(entry)) {
       parseFloatBar(entry, item, vScale, i2);
     } else {
       item[vScale.axis] = vScale.parse(entry, i2);
     }
     return item;
   }
-  function parseArrayOrPrimitive(meta, data, start2, count) {
+  function parseArrayOrPrimitive(meta, data2, start3, count) {
     const iScale = meta.iScale;
     const vScale = meta.vScale;
     const labels = iScale.getLabels();
     const singleScale = iScale === vScale;
     const parsed = [];
     let i2, ilen, item, entry;
-    for (i2 = start2, ilen = start2 + count; i2 < ilen; ++i2) {
-      entry = data[i2];
+    for (i2 = start3, ilen = start3 + count; i2 < ilen; ++i2) {
+      entry = data2[i2];
       item = {};
       item[iScale.axis] = singleScale || iScale.parse(labels[i2], i2);
       parsed.push(parseValue(entry, item, vScale, i2));
@@ -7309,21 +10591,21 @@
   function isFloatBar(custom) {
     return custom && custom.barStart !== void 0 && custom.barEnd !== void 0;
   }
-  function barSign(size, vScale, actualBase) {
-    if (size !== 0) {
-      return sign(size);
+  function barSign(size2, vScale, actualBase) {
+    if (size2 !== 0) {
+      return sign(size2);
     }
     return (vScale.isHorizontal() ? 1 : -1) * (vScale.min >= actualBase ? 1 : -1);
   }
   function borderProps(properties) {
-    let reverse, start2, end, top, bottom;
+    let reverse, start3, end, top, bottom;
     if (properties.horizontal) {
       reverse = properties.base > properties.x;
-      start2 = "left";
+      start3 = "left";
       end = "right";
     } else {
       reverse = properties.base < properties.y;
-      start2 = "bottom";
+      start3 = "bottom";
       end = "top";
     }
     if (reverse) {
@@ -7334,7 +10616,7 @@
       bottom = "end";
     }
     return {
-      start: start2,
+      start: start3,
       end,
       reverse,
       top,
@@ -7357,7 +10639,7 @@
       };
       return;
     }
-    const { start: start2, end, reverse, top, bottom } = borderProps(properties);
+    const { start: start3, end, reverse, top, bottom } = borderProps(properties);
     if (edge === "middle" && stack) {
       properties.enableBorderRadius = true;
       if ((stack._top || 0) === index2) {
@@ -7365,11 +10647,11 @@
       } else if ((stack._bottom || 0) === index2) {
         edge = bottom;
       } else {
-        res[parseEdge(bottom, start2, end, reverse)] = true;
+        res[parseEdge(bottom, start3, end, reverse)] = true;
         edge = top;
       }
     }
-    res[parseEdge(edge, start2, end, reverse)] = true;
+    res[parseEdge(edge, start3, end, reverse)] = true;
     properties.borderSkipped = res;
   }
   function parseEdge(edge, a2, b3, reverse) {
@@ -7384,8 +10666,8 @@
   function swap(orig, v1, v22) {
     return orig === v1 ? v22 : orig === v22 ? v1 : orig;
   }
-  function startEnd(v3, start2, end) {
-    return v3 === "start" ? start2 : v3 === "end" ? end : v3;
+  function startEnd(v3, start3, end) {
+    return v3 === "start" ? start3 : v3 === "end" ? end : v3;
   }
   function setInflateAmount(properties, { inflateAmount }, ratio) {
     properties.inflateAmount = inflateAmount === "auto" ? ratio === 1 ? 0.33 : 0 : inflateAmount;
@@ -7426,21 +10708,21 @@
         }
       }
     };
-    parsePrimitiveData(meta, data, start2, count) {
-      return parseArrayOrPrimitive(meta, data, start2, count);
+    parsePrimitiveData(meta, data2, start3, count) {
+      return parseArrayOrPrimitive(meta, data2, start3, count);
     }
-    parseArrayData(meta, data, start2, count) {
-      return parseArrayOrPrimitive(meta, data, start2, count);
+    parseArrayData(meta, data2, start3, count) {
+      return parseArrayOrPrimitive(meta, data2, start3, count);
     }
-    parseObjectData(meta, data, start2, count) {
+    parseObjectData(meta, data2, start3, count) {
       const { iScale, vScale } = meta;
       const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
       const iAxisKey = iScale.axis === "x" ? xAxisKey : yAxisKey;
       const vAxisKey = vScale.axis === "x" ? xAxisKey : yAxisKey;
       const parsed = [];
       let i2, ilen, item, obj;
-      for (i2 = start2, ilen = start2 + count; i2 < ilen; ++i2) {
-        obj = data[i2];
+      for (i2 = start3, ilen = start3 + count; i2 < ilen; ++i2) {
+        obj = data2[i2];
         item = {};
         item[iScale.axis] = iScale.parse(resolveObjectKey(obj, iAxisKey), i2);
         parsed.push(parseValue(resolveObjectKey(obj, vAxisKey), item, vScale, i2));
@@ -7479,14 +10761,14 @@
       const meta = this._cachedMeta;
       this.updateElements(meta.data, 0, meta.data.length, mode);
     }
-    updateElements(bars, start2, count, mode) {
+    updateElements(bars, start3, count, mode) {
       const reset = mode === "reset";
       const { index: index2, _cachedMeta: { vScale } } = this;
       const base = vScale.getBasePixel();
       const horizontal = vScale.isHorizontal();
       const ruler = this._getRuler();
-      const { sharedOptions, includeOptions } = this._getSharedOptions(start2, mode);
-      for (let i2 = start2; i2 < start2 + count; i2++) {
+      const { sharedOptions, includeOptions } = this._getSharedOptions(start3, mode);
+      for (let i2 = start3; i2 < start3 + count; i2++) {
         const parsed = this.getParsed(i2);
         const vpixels = reset || isNullOrUndef(parsed[vScale.axis]) ? {
           base,
@@ -7595,54 +10877,54 @@
       const custom = parsed._custom;
       const floating = isFloatBar(custom);
       let value = parsed[vScale.axis];
-      let start2 = 0;
+      let start3 = 0;
       let length = _stacked ? this.applyStack(vScale, parsed, _stacked) : value;
-      let head, size;
+      let head, size2;
       if (length !== value) {
-        start2 = length - value;
+        start3 = length - value;
         length = value;
       }
       if (floating) {
         value = custom.barStart;
         length = custom.barEnd - custom.barStart;
         if (value !== 0 && sign(value) !== sign(custom.barEnd)) {
-          start2 = 0;
+          start3 = 0;
         }
-        start2 += value;
+        start3 += value;
       }
-      const startValue = !isNullOrUndef(baseValue) && !floating ? baseValue : start2;
+      const startValue = !isNullOrUndef(baseValue) && !floating ? baseValue : start3;
       let base = vScale.getPixelForValue(startValue);
       if (this.chart.getDataVisibility(index2)) {
-        head = vScale.getPixelForValue(start2 + length);
+        head = vScale.getPixelForValue(start3 + length);
       } else {
         head = base;
       }
-      size = head - base;
-      if (Math.abs(size) < minBarLength) {
-        size = barSign(size, vScale, actualBase) * minBarLength;
+      size2 = head - base;
+      if (Math.abs(size2) < minBarLength) {
+        size2 = barSign(size2, vScale, actualBase) * minBarLength;
         if (value === actualBase) {
-          base -= size / 2;
+          base -= size2 / 2;
         }
         const startPixel = vScale.getPixelForDecimal(0);
         const endPixel = vScale.getPixelForDecimal(1);
         const min = Math.min(startPixel, endPixel);
         const max = Math.max(startPixel, endPixel);
         base = Math.max(Math.min(base, max), min);
-        head = base + size;
+        head = base + size2;
         if (_stacked && !floating) {
           parsed._stacks[vScale.axis]._visualValues[datasetIndex] = vScale.getValueForPixel(head) - vScale.getValueForPixel(base);
         }
       }
       if (base === vScale.getPixelForValue(actualBase)) {
-        const halfGrid = sign(size) * vScale.getLineWidthForValue(actualBase) / 2;
+        const halfGrid = sign(size2) * vScale.getLineWidthForValue(actualBase) / 2;
         base += halfGrid;
-        size -= halfGrid;
+        size2 -= halfGrid;
       }
       return {
-        size,
+        size: size2,
         base,
         head,
-        center: head + size / 2
+        center: head + size2 / 2
       };
     }
     _calculateBarIndexPixels(index2, ruler) {
@@ -7650,7 +10932,7 @@
       const options = this.options;
       const skipNull = options.skipNull;
       const maxBarThickness = valueOrDefault(options.maxBarThickness, Infinity);
-      let center, size;
+      let center, size2;
       const axisCount = this._getAxisCount();
       if (ruler.grouped) {
         const stackCount = skipNull ? this._getStackCount(index2) : ruler.stackCount;
@@ -7659,16 +10941,16 @@
         const axisNumber = this._getAxis().indexOf(valueOrDefault(axisID, this.getFirstScaleIdForIndexAxis()));
         const stackIndex = this._getStackIndex(this.index, this._cachedMeta.stack, skipNull ? index2 : void 0) + axisNumber;
         center = range2.start + range2.chunk * stackIndex + range2.chunk / 2;
-        size = Math.min(maxBarThickness, range2.chunk * range2.ratio);
+        size2 = Math.min(maxBarThickness, range2.chunk * range2.ratio);
       } else {
         center = scale.getPixelForValue(this.getParsed(index2)[scale.axis], index2);
-        size = Math.min(maxBarThickness, ruler.min * ruler.ratio);
+        size2 = Math.min(maxBarThickness, ruler.min * ruler.ratio);
       }
       return {
-        base: center - size / 2,
-        head: center + size / 2,
+        base: center - size2 / 2,
+        head: center + size2 / 2,
         center,
-        size
+        size: size2
       };
     }
     draw() {
@@ -7715,34 +10997,34 @@
       this.enableOptionSharing = true;
       super.initialize();
     }
-    parsePrimitiveData(meta, data, start2, count) {
-      const parsed = super.parsePrimitiveData(meta, data, start2, count);
+    parsePrimitiveData(meta, data2, start3, count) {
+      const parsed = super.parsePrimitiveData(meta, data2, start3, count);
       for (let i2 = 0; i2 < parsed.length; i2++) {
-        parsed[i2]._custom = this.resolveDataElementOptions(i2 + start2).radius;
+        parsed[i2]._custom = this.resolveDataElementOptions(i2 + start3).radius;
       }
       return parsed;
     }
-    parseArrayData(meta, data, start2, count) {
-      const parsed = super.parseArrayData(meta, data, start2, count);
+    parseArrayData(meta, data2, start3, count) {
+      const parsed = super.parseArrayData(meta, data2, start3, count);
       for (let i2 = 0; i2 < parsed.length; i2++) {
-        const item = data[start2 + i2];
-        parsed[i2]._custom = valueOrDefault(item[2], this.resolveDataElementOptions(i2 + start2).radius);
+        const item = data2[start3 + i2];
+        parsed[i2]._custom = valueOrDefault(item[2], this.resolveDataElementOptions(i2 + start3).radius);
       }
       return parsed;
     }
-    parseObjectData(meta, data, start2, count) {
-      const parsed = super.parseObjectData(meta, data, start2, count);
+    parseObjectData(meta, data2, start3, count) {
+      const parsed = super.parseObjectData(meta, data2, start3, count);
       for (let i2 = 0; i2 < parsed.length; i2++) {
-        const item = data[start2 + i2];
-        parsed[i2]._custom = valueOrDefault(item && item.r && +item.r, this.resolveDataElementOptions(i2 + start2).radius);
+        const item = data2[start3 + i2];
+        parsed[i2]._custom = valueOrDefault(item && item.r && +item.r, this.resolveDataElementOptions(i2 + start3).radius);
       }
       return parsed;
     }
     getMaxOverflow() {
-      const data = this._cachedMeta.data;
+      const data2 = this._cachedMeta.data;
       let max = 0;
-      for (let i2 = data.length - 1; i2 >= 0; --i2) {
-        max = Math.max(max, data[i2].size(this.resolveDataElementOptions(i2)) / 2);
+      for (let i2 = data2.length - 1; i2 >= 0; --i2) {
+        max = Math.max(max, data2[i2].size(this.resolveDataElementOptions(i2)) / 2);
       }
       return max > 0 && max;
     }
@@ -7763,13 +11045,13 @@
       const points = this._cachedMeta.data;
       this.updateElements(points, 0, points.length, mode);
     }
-    updateElements(points, start2, count, mode) {
+    updateElements(points, start3, count, mode) {
       const reset = mode === "reset";
       const { iScale, vScale } = this._cachedMeta;
-      const { sharedOptions, includeOptions } = this._getSharedOptions(start2, mode);
+      const { sharedOptions, includeOptions } = this._getSharedOptions(start3, mode);
       const iAxis = iScale.axis;
       const vAxis = vScale.axis;
-      for (let i2 = start2; i2 < start2 + count; i2++) {
+      for (let i2 = start3; i2 < start3 + count; i2++) {
         const point = points[i2];
         const parsed = !reset && this.getParsed(i2);
         const properties = {};
@@ -7874,10 +11156,10 @@
         legend: {
           labels: {
             generateLabels(chart) {
-              const data = chart.data;
+              const data2 = chart.data;
               const { labels: { pointStyle, textAlign, color: color2, useBorderRadius, borderRadius } } = chart.legend.options;
-              if (data.labels.length && data.datasets.length) {
-                return data.labels.map((label, i2) => {
+              if (data2.labels.length && data2.datasets.length) {
+                return data2.labels.map((label, i2) => {
                   const meta = chart.getDatasetMeta(0);
                   const style = meta.controller.getStyle(i2);
                   return {
@@ -7917,19 +11199,19 @@
     }
     linkScales() {
     }
-    parse(start2, count) {
-      const data = this.getDataset().data;
+    parse(start3, count) {
+      const data2 = this.getDataset().data;
       const meta = this._cachedMeta;
       if (this._parsing === false) {
-        meta._parsed = data;
+        meta._parsed = data2;
       } else {
-        let getter = (i3) => +data[i3];
-        if (isObject(data[start2])) {
+        let getter = (i3) => +data2[i3];
+        if (isObject2(data2[start3])) {
           const { key = "value" } = this._parsing;
-          getter = (i3) => +resolveObjectKey(data[i3], key);
+          getter = (i3) => +resolveObjectKey(data2[i3], key);
         }
         let i2, ilen;
-        for (i2 = start2, ilen = start2 + count; i2 < ilen; ++i2) {
+        for (i2 = start3, ilen = start3 + count; i2 < ilen; ++i2) {
           meta._parsed[i2] = getter(i2);
         }
       }
@@ -7990,7 +11272,7 @@
       }
       return this.calculateCircumference(meta._parsed[i2] * circumference / TAU);
     }
-    updateElements(arcs, start2, count, mode) {
+    updateElements(arcs, start3, count, mode) {
       const reset = mode === "reset";
       const chart = this.chart;
       const chartArea = chart.chartArea;
@@ -8001,13 +11283,13 @@
       const animateScale = reset && animationOpts.animateScale;
       const innerRadius = animateScale ? 0 : this.innerRadius;
       const outerRadius = animateScale ? 0 : this.outerRadius;
-      const { sharedOptions, includeOptions } = this._getSharedOptions(start2, mode);
+      const { sharedOptions, includeOptions } = this._getSharedOptions(start3, mode);
       let startAngle = this._getRotation();
       let i2;
-      for (i2 = 0; i2 < start2; ++i2) {
+      for (i2 = 0; i2 < start3; ++i2) {
         startAngle += this._circumference(i2, reset);
       }
-      for (i2 = start2; i2 < start2 + count; ++i2) {
+      for (i2 = start3; i2 < start3 + count; ++i2) {
         const circumference = this._circumference(i2, reset);
         const arc = arcs[i2];
         const properties = {
@@ -8132,11 +11414,11 @@
       const meta = this._cachedMeta;
       const { dataset: line, data: points = [], _dataset } = meta;
       const animationsDisabled = this.chart._animationsDisabled;
-      let { start: start2, count } = _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
-      this._drawStart = start2;
+      let { start: start3, count } = _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
+      this._drawStart = start3;
       this._drawCount = count;
       if (_scaleRangesChanged(meta)) {
-        start2 = 0;
+        start3 = 0;
         count = points.length;
       }
       line._chart = this.chart;
@@ -8152,24 +11434,24 @@
         animated: !animationsDisabled,
         options
       }, mode);
-      this.updateElements(points, start2, count, mode);
+      this.updateElements(points, start3, count, mode);
     }
-    updateElements(points, start2, count, mode) {
+    updateElements(points, start3, count, mode) {
       const reset = mode === "reset";
       const { iScale, vScale, _stacked, _dataset } = this._cachedMeta;
-      const { sharedOptions, includeOptions } = this._getSharedOptions(start2, mode);
+      const { sharedOptions, includeOptions } = this._getSharedOptions(start3, mode);
       const iAxis = iScale.axis;
       const vAxis = vScale.axis;
       const { spanGaps, segment } = this.options;
       const maxGapLength = isNumber(spanGaps) ? spanGaps : Number.POSITIVE_INFINITY;
       const directUpdate = this.chart._animationsDisabled || reset || mode === "none";
-      const end = start2 + count;
+      const end = start3 + count;
       const pointsCount = points.length;
-      let prevParsed = start2 > 0 && this.getParsed(start2 - 1);
+      let prevParsed = start3 > 0 && this.getParsed(start3 - 1);
       for (let i2 = 0; i2 < pointsCount; ++i2) {
         const point = points[i2];
         const properties = directUpdate ? point : {};
-        if (i2 < start2 || i2 >= end) {
+        if (i2 < start3 || i2 >= end) {
           properties.skip = true;
           continue;
         }
@@ -8196,12 +11478,12 @@
       const meta = this._cachedMeta;
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      const data = meta.data || [];
-      if (!data.length) {
+      const data2 = meta.data || [];
+      if (!data2.length) {
         return border;
       }
-      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
     draw() {
@@ -8240,10 +11522,10 @@
         legend: {
           labels: {
             generateLabels(chart) {
-              const data = chart.data;
-              if (data.labels.length && data.datasets.length) {
+              const data2 = chart.data;
+              if (data2.labels.length && data2.datasets.length) {
                 const { labels: { pointStyle, color: color2 } } = chart.legend.options;
-                return data.labels.map((label, i2) => {
+                return data2.labels.map((label, i2) => {
                   const meta = chart.getDatasetMeta(0);
                   const style = meta.controller.getStyle(i2);
                   return {
@@ -8299,8 +11581,8 @@
         value
       };
     }
-    parseObjectData(meta, data, start2, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data, start2, count);
+    parseObjectData(meta, data2, start3, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data2, start3, count);
     }
     update(mode) {
       const arcs = this._cachedMeta.data;
@@ -8337,7 +11619,7 @@
       this.outerRadius = outerRadius - radiusLength * this.index;
       this.innerRadius = this.outerRadius - radiusLength;
     }
-    updateElements(arcs, start2, count, mode) {
+    updateElements(arcs, start3, count, mode) {
       const reset = mode === "reset";
       const chart = this.chart;
       const opts = chart.options;
@@ -8349,10 +11631,10 @@
       let angle = datasetStartAngle;
       let i2;
       const defaultAngle = 360 / this.countVisibleElements();
-      for (i2 = 0; i2 < start2; ++i2) {
+      for (i2 = 0; i2 < start3; ++i2) {
         angle += this._computeAngle(i2, mode, defaultAngle);
       }
-      for (i2 = start2; i2 < start2 + count; i2++) {
+      for (i2 = start3; i2 < start3 + count; i2++) {
         const arc = arcs[i2];
         let startAngle = angle;
         let endAngle = angle + this._computeAngle(i2, mode, defaultAngle);
@@ -8430,8 +11712,8 @@
         value: "" + vScale.getLabelForValue(parsed[vScale.axis])
       };
     }
-    parseObjectData(meta, data, start2, count) {
-      return _parseObjectDataRadialScale.bind(this)(meta, data, start2, count);
+    parseObjectData(meta, data2, start3, count) {
+      return _parseObjectDataRadialScale.bind(this)(meta, data2, start3, count);
     }
     update(mode) {
       const meta = this._cachedMeta;
@@ -8453,10 +11735,10 @@
       }
       this.updateElements(points, 0, points.length, mode);
     }
-    updateElements(points, start2, count, mode) {
+    updateElements(points, start3, count, mode) {
       const scale = this._cachedMeta.rScale;
       const reset = mode === "reset";
-      for (let i2 = start2; i2 < start2 + count; i2++) {
+      for (let i2 = start3; i2 < start3 + count; i2++) {
         const point = points[i2];
         const options = this.resolveDataElementOptions(i2, point.active ? "active" : mode);
         const pointPosition = scale.getPointPositionForValue(i2, this.getParsed(i2).r);
@@ -8510,11 +11792,11 @@
       const meta = this._cachedMeta;
       const { data: points = [] } = meta;
       const animationsDisabled = this.chart._animationsDisabled;
-      let { start: start2, count } = _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
-      this._drawStart = start2;
+      let { start: start3, count } = _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
+      this._drawStart = start3;
       this._drawCount = count;
       if (_scaleRangesChanged(meta)) {
-        start2 = 0;
+        start3 = 0;
         count = points.length;
       }
       if (this.options.showLine) {
@@ -8536,7 +11818,7 @@
         delete meta.dataset;
         this.datasetElementType = false;
       }
-      this.updateElements(points, start2, count, mode);
+      this.updateElements(points, start3, count, mode);
     }
     addElements() {
       const { showLine } = this.options;
@@ -8545,10 +11827,10 @@
       }
       super.addElements();
     }
-    updateElements(points, start2, count, mode) {
+    updateElements(points, start3, count, mode) {
       const reset = mode === "reset";
       const { iScale, vScale, _stacked, _dataset } = this._cachedMeta;
-      const firstOpts = this.resolveDataElementOptions(start2, mode);
+      const firstOpts = this.resolveDataElementOptions(start3, mode);
       const sharedOptions = this.getSharedOptions(firstOpts);
       const includeOptions = this.includeOptions(mode, sharedOptions);
       const iAxis = iScale.axis;
@@ -8556,8 +11838,8 @@
       const { spanGaps, segment } = this.options;
       const maxGapLength = isNumber(spanGaps) ? spanGaps : Number.POSITIVE_INFINITY;
       const directUpdate = this.chart._animationsDisabled || reset || mode === "none";
-      let prevParsed = start2 > 0 && this.getParsed(start2 - 1);
-      for (let i2 = start2; i2 < start2 + count; ++i2) {
+      let prevParsed = start3 > 0 && this.getParsed(start3 - 1);
+      for (let i2 = start3; i2 < start3 + count; ++i2) {
         const point = points[i2];
         const parsed = this.getParsed(i2);
         const properties = directUpdate ? point : {};
@@ -8582,21 +11864,21 @@
     }
     getMaxOverflow() {
       const meta = this._cachedMeta;
-      const data = meta.data || [];
+      const data2 = meta.data || [];
       if (!this.options.showLine) {
         let max = 0;
-        for (let i2 = data.length - 1; i2 >= 0; --i2) {
-          max = Math.max(max, data[i2].size(this.resolveDataElementOptions(i2)) / 2);
+        for (let i2 = data2.length - 1; i2 >= 0; --i2) {
+          max = Math.max(max, data2[i2].size(this.resolveDataElementOptions(i2)) / 2);
         }
         return max > 0 && max;
       }
       const dataset = meta.dataset;
       const border = dataset.options && dataset.options.borderWidth || 0;
-      if (!data.length) {
+      if (!data2.length) {
         return border;
       }
-      const firstPoint = data[0].size(this.resolveDataElementOptions(0));
-      const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+      const firstPoint = data2[0].size(this.resolveDataElementOptions(0));
+      const lastPoint = data2[data2.length - 1].size(this.resolveDataElementOptions(data2.length - 1));
       return Math.max(border, firstPoint, lastPoint) / 2;
     }
   };
@@ -8661,13 +11943,13 @@
     _date: DateAdapterBase
   };
   function binarySearch(metaset, axis, value, intersect) {
-    const { controller, data, _sorted } = metaset;
+    const { controller, data: data2, _sorted } = metaset;
     const iScale = controller._cachedMeta.iScale;
     const spanGaps = metaset.dataset ? metaset.dataset.options ? metaset.dataset.options.spanGaps : null : null;
-    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data.length) {
+    if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data2.length) {
       const lookupMethod = iScale._reversePixels ? _rlookupByKey : _lookupByKey;
       if (!intersect) {
-        const result = lookupMethod(data, axis, value);
+        const result = lookupMethod(data2, axis, value);
         if (spanGaps) {
           const { vScale } = controller._cachedMeta;
           const { _parsed } = metaset;
@@ -8678,13 +11960,13 @@
         }
         return result;
       } else if (controller._sharedOptions) {
-        const el = data[0];
+        const el = data2[0];
         const range2 = typeof el.getRange === "function" && el.getRange(axis);
         if (range2) {
-          const start2 = lookupMethod(data, axis, value - range2);
-          const end = lookupMethod(data, axis, value + range2);
+          const start3 = lookupMethod(data2, axis, value - range2);
+          const end = lookupMethod(data2, axis, value + range2);
           return {
-            lo: start2.lo,
+            lo: start3.lo,
             hi: end.hi
           };
         }
@@ -8692,19 +11974,19 @@
     }
     return {
       lo: 0,
-      hi: data.length - 1
+      hi: data2.length - 1
     };
   }
-  function evaluateInteractionItems(chart, axis, position, handler, intersect) {
+  function evaluateInteractionItems(chart, axis, position, handler4, intersect) {
     const metasets = chart.getSortedVisibleDatasetMetas();
     const value = position[axis];
     for (let i2 = 0, ilen = metasets.length; i2 < ilen; ++i2) {
-      const { index: index2, data } = metasets[i2];
+      const { index: index2, data: data2 } = metasets[i2];
       const { lo, hi } = binarySearch(metasets[i2], axis, value, intersect);
       for (let j2 = lo; j2 <= hi; ++j2) {
-        const element = data[j2];
+        const element = data2[j2];
         if (!element.skip) {
-          handler(element, index2, j2);
+          handler4(element, index2, j2);
         }
       }
     }
@@ -8852,11 +12134,11 @@
         let items = options.intersect ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
         if (items.length > 0) {
           const datasetIndex = items[0].datasetIndex;
-          const data = chart.getDatasetMeta(datasetIndex).data;
+          const data2 = chart.getDatasetMeta(datasetIndex).data;
           items = [];
-          for (let i2 = 0; i2 < data.length; ++i2) {
+          for (let i2 = 0; i2 < data2.length; ++i2) {
             items.push({
-              element: data[i2],
+              element: data2[i2],
               datasetIndex,
               index: i2
             });
@@ -8990,7 +12272,7 @@
   function updateDims(chartArea, params, layout, stacks) {
     const { pos, box } = layout;
     const maxPadding = chartArea.maxPadding;
-    if (!isObject(pos)) {
+    if (!isObject2(pos)) {
       if (layout.size) {
         chartArea[pos] -= layout.size;
       }
@@ -9333,39 +12615,39 @@
   }
   function createAttachObserver(chart, type, listener) {
     const canvas = chart.canvas;
-    const observer = new MutationObserver((entries2) => {
-      let trigger = false;
+    const observer2 = new MutationObserver((entries2) => {
+      let trigger2 = false;
       for (const entry of entries2) {
-        trigger = trigger || nodeListContains(entry.addedNodes, canvas);
-        trigger = trigger && !nodeListContains(entry.removedNodes, canvas);
+        trigger2 = trigger2 || nodeListContains(entry.addedNodes, canvas);
+        trigger2 = trigger2 && !nodeListContains(entry.removedNodes, canvas);
       }
-      if (trigger) {
+      if (trigger2) {
         listener();
       }
     });
-    observer.observe(document, {
+    observer2.observe(document, {
       childList: true,
       subtree: true
     });
-    return observer;
+    return observer2;
   }
   function createDetachObserver(chart, type, listener) {
     const canvas = chart.canvas;
-    const observer = new MutationObserver((entries2) => {
-      let trigger = false;
+    const observer2 = new MutationObserver((entries2) => {
+      let trigger2 = false;
       for (const entry of entries2) {
-        trigger = trigger || nodeListContains(entry.removedNodes, canvas);
-        trigger = trigger && !nodeListContains(entry.addedNodes, canvas);
+        trigger2 = trigger2 || nodeListContains(entry.removedNodes, canvas);
+        trigger2 = trigger2 && !nodeListContains(entry.addedNodes, canvas);
       }
-      if (trigger) {
+      if (trigger2) {
         listener();
       }
     });
-    observer.observe(document, {
+    observer2.observe(document, {
       childList: true,
       subtree: true
     });
-    return observer;
+    return observer2;
   }
   var drpListeningCharts = /* @__PURE__ */ new Map();
   var oldDevicePixelRatio = 0;
@@ -9406,7 +12688,7 @@
         listener();
       }
     }, window);
-    const observer = new ResizeObserver((entries2) => {
+    const observer2 = new ResizeObserver((entries2) => {
       const entry = entries2[0];
       const width = entry.contentRect.width;
       const height = entry.contentRect.height;
@@ -9415,13 +12697,13 @@
       }
       resize(width, height);
     });
-    observer.observe(container);
+    observer2.observe(container);
     listenDevicePixelRatioChanges(chart, resize);
-    return observer;
+    return observer2;
   }
-  function releaseObserver(chart, type, observer) {
-    if (observer) {
-      observer.disconnect();
+  function releaseObserver(chart, type, observer2) {
+    if (observer2) {
+      observer2.disconnect();
     }
     if (type === "resize") {
       unlistenDevicePixelRatioChanges(chart);
@@ -9479,8 +12761,8 @@
         detach: createDetachObserver,
         resize: createResizeObserver
       };
-      const handler = handlers[type] || createProxyAndListen;
-      proxies[type] = handler(chart, type, listener);
+      const handler4 = handlers[type] || createProxyAndListen;
+      proxies[type] = handler4(chart, type, listener);
     }
     removeEventListener(chart, type) {
       const proxies = chart.$proxies || (chart.$proxies = {});
@@ -9493,8 +12775,8 @@
         detach: releaseObserver,
         resize: releaseObserver
       };
-      const handler = handlers[type] || removeListener;
-      handler(chart, type, proxy);
+      const handler4 = handlers[type] || removeListener;
+      handler4(chart, type, proxy);
       proxies[type] = void 0;
     }
     getDevicePixelRatio() {
@@ -9620,7 +12902,7 @@
     }
   }
   function skip(ticks, newTicks, spacing, majorStart, majorEnd) {
-    const start2 = valueOrDefault(majorStart, 0);
+    const start3 = valueOrDefault(majorStart, 0);
     const end = Math.min(valueOrDefault(majorEnd, ticks.length), ticks.length);
     let count = 0;
     let length, i2, next;
@@ -9629,16 +12911,16 @@
       length = majorEnd - majorStart;
       spacing = length / Math.floor(length / spacing);
     }
-    next = start2;
+    next = start3;
     while (next < 0) {
       count++;
-      next = Math.round(start2 + count * spacing);
+      next = Math.round(start3 + count * spacing);
     }
-    for (i2 = Math.max(start2, 0); i2 < end; i2++) {
+    for (i2 = Math.max(start3, 0); i2 < end; i2++) {
       if (i2 === next) {
         newTicks.push(ticks[i2]);
         count++;
-        next = Math.round(start2 + count * spacing);
+        next = Math.round(start3 + count * spacing);
       }
     }
   }
@@ -9671,21 +12953,21 @@
   function getPixelForGridLine(scale, index2, offsetGridLines) {
     const length = scale.ticks.length;
     const validIndex2 = Math.min(index2, length - 1);
-    const start2 = scale._startPixel;
+    const start3 = scale._startPixel;
     const end = scale._endPixel;
     const epsilon = 1e-6;
     let lineValue = scale.getPixelForTick(validIndex2);
     let offset;
     if (offsetGridLines) {
       if (length === 1) {
-        offset = Math.max(lineValue - start2, end - lineValue);
+        offset = Math.max(lineValue - start3, end - lineValue);
       } else if (index2 === 0) {
         offset = (scale.getPixelForTick(1) - lineValue) / 2;
       } else {
         offset = (lineValue - scale.getPixelForTick(validIndex2 - 1)) / 2;
       }
       lineValue += validIndex2 < index2 ? offset : -offset;
-      if (lineValue < start2 - epsilon || lineValue > end + epsilon) {
+      if (lineValue < start3 - epsilon || lineValue > end + epsilon) {
         return;
       }
     }
@@ -9713,7 +12995,7 @@
     }
     const font = toFont(options.font, fallback);
     const padding = toPadding(options.padding);
-    const lines = isArray(options.text) ? options.text.length : 1;
+    const lines = isArray2(options.text) ? options.text.length : 1;
     return lines * font.lineHeight + padding.height;
   }
   function createScaleContext(parent, scale) {
@@ -9745,7 +13027,7 @@
     const width = right - left;
     if (scale.isHorizontal()) {
       titleX = _alignStartEnd(align, left, right);
-      if (isObject(position)) {
+      if (isObject2(position)) {
         const positionAxisID = Object.keys(position)[0];
         const value = position[positionAxisID];
         titleY = scales2[positionAxisID].getPixelForValue(value) + height - offset;
@@ -9756,7 +13038,7 @@
       }
       maxWidth = right - left;
     } else {
-      if (isObject(position)) {
+      if (isObject2(position)) {
         const positionAxisID = Object.keys(position)[0];
         const value = position[positionAxisID];
         titleX = scales2[positionAxisID].getPixelForValue(value) - width + offset;
@@ -9834,8 +13116,8 @@
       this._suggestedMin = this.parse(options.suggestedMin);
       this._suggestedMax = this.parse(options.suggestedMax);
     }
-    parse(raw, index2) {
-      return raw;
+    parse(raw2, index2) {
+      return raw2;
     }
     getUserBounds() {
       let { _userMin, _userMax, _suggestedMin, _suggestedMax } = this;
@@ -9888,8 +13170,8 @@
       return this.ticks;
     }
     getLabels() {
-      const data = this.chart.data;
-      return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+      const data2 = this.chart.data;
+      return this.options.labels || (this.isHorizontal() ? data2.xLabels : data2.yLabels) || data2.labels || [];
     }
     getLabelItems(chartArea = this.chart.chartArea) {
       const items = this._labelItems || (this._labelItems = this._computeLabelItems(chartArea));
@@ -10234,13 +13516,13 @@
         };
         lineHeight = tickFont.lineHeight;
         width = height = 0;
-        if (!isNullOrUndef(label) && !isArray(label)) {
+        if (!isNullOrUndef(label) && !isArray2(label)) {
           width = _measureText(ctx, cache.data, cache.gc, width, label);
           height = lineHeight;
-        } else if (isArray(label)) {
+        } else if (isArray2(label)) {
           for (j2 = 0, jlen = label.length; j2 < jlen; ++j2) {
             nestedLabel = label[j2];
-            if (!isNullOrUndef(nestedLabel) && !isArray(nestedLabel)) {
+            if (!isNullOrUndef(nestedLabel) && !isArray2(nestedLabel)) {
               width = _measureText(ctx, cache.data, cache.gc, width, nestedLabel);
               height += lineHeight;
             }
@@ -10372,7 +13654,7 @@
       } else if (axis === "x") {
         if (position === "center") {
           borderValue = alignBorderValue((chartArea.top + chartArea.bottom) / 2 + 0.5);
-        } else if (isObject(position)) {
+        } else if (isObject2(position)) {
           const positionAxisID = Object.keys(position)[0];
           const value = position[positionAxisID];
           borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
@@ -10384,7 +13666,7 @@
       } else if (axis === "y") {
         if (position === "center") {
           borderValue = alignBorderValue((chartArea.left + chartArea.right) / 2);
-        } else if (isObject(position)) {
+        } else if (isObject2(position)) {
           const positionAxisID = Object.keys(position)[0];
           const value = position[positionAxisID];
           borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
@@ -10472,7 +13754,7 @@
       } else if (axis === "x") {
         if (position === "center") {
           y3 = (chartArea.top + chartArea.bottom) / 2 + tickAndPadding;
-        } else if (isObject(position)) {
+        } else if (isObject2(position)) {
           const positionAxisID = Object.keys(position)[0];
           const value = position[positionAxisID];
           y3 = this.chart.scales[positionAxisID].getPixelForValue(value) + tickAndPadding;
@@ -10481,7 +13763,7 @@
       } else if (axis === "y") {
         if (position === "center") {
           x2 = (chartArea.left + chartArea.right) / 2 - tickAndPadding;
-        } else if (isObject(position)) {
+        } else if (isObject2(position)) {
           const positionAxisID = Object.keys(position)[0];
           const value = position[positionAxisID];
           x2 = this.chart.scales[positionAxisID].getPixelForValue(value);
@@ -10503,7 +13785,7 @@
         pixel = this.getPixelForTick(i2) + optionTicks.labelOffset;
         font = this._resolveTickFontOptions(i2);
         lineHeight = font.lineHeight;
-        lineCount = isArray(label) ? label.length : 1;
+        lineCount = isArray2(label) ? label.length : 1;
         const halfCount = lineCount / 2;
         const color2 = optsAtIndex.color;
         const strokeColor = optsAtIndex.textStrokeColor;
@@ -10838,9 +14120,9 @@
       const padding = toPadding(title.padding);
       const align = title.align;
       let offset = font.lineHeight / 2;
-      if (position === "bottom" || position === "center" || isObject(position)) {
+      if (position === "bottom" || position === "center" || isObject2(position)) {
         offset += padding.bottom;
-        if (isArray(title.text)) {
+        if (isArray2(title.text)) {
           offset += font.lineHeight * (title.text.length - 1);
         }
       } else {
@@ -10930,9 +14212,9 @@
     }
   };
   var TypedRegistry = class {
-    constructor(type, scope, override) {
+    constructor(type, scope2, override) {
       this.type = type;
-      this.scope = scope;
+      this.scope = scope2;
       this.override = override;
       this.items = /* @__PURE__ */ Object.create(null);
     }
@@ -10947,19 +14229,19 @@
       }
       const items = this.items;
       const id2 = item.id;
-      const scope = this.scope + "." + id2;
+      const scope2 = this.scope + "." + id2;
       if (!id2) {
         throw new Error("class does not have id: " + item);
       }
       if (id2 in items) {
-        return scope;
+        return scope2;
       }
       items[id2] = item;
-      registerDefaults(item, scope, parentScope);
+      registerDefaults(item, scope2, parentScope);
       if (this.override) {
         defaults.override(item.id, item.overrides);
       }
-      return scope;
+      return scope2;
     }
     get(id2) {
       return this.items[id2];
@@ -10967,38 +14249,38 @@
     unregister(item) {
       const items = this.items;
       const id2 = item.id;
-      const scope = this.scope;
+      const scope2 = this.scope;
       if (id2 in items) {
         delete items[id2];
       }
-      if (scope && id2 in defaults[scope]) {
-        delete defaults[scope][id2];
+      if (scope2 && id2 in defaults[scope2]) {
+        delete defaults[scope2][id2];
         if (this.override) {
           delete overrides[id2];
         }
       }
     }
   };
-  function registerDefaults(item, scope, parentScope) {
+  function registerDefaults(item, scope2, parentScope) {
     const itemDefaults = merge(/* @__PURE__ */ Object.create(null), [
       parentScope ? defaults.get(parentScope) : {},
-      defaults.get(scope),
+      defaults.get(scope2),
       item.defaults
     ]);
-    defaults.set(scope, itemDefaults);
+    defaults.set(scope2, itemDefaults);
     if (item.defaultRoutes) {
-      routeDefaults(scope, item.defaultRoutes);
+      routeDefaults(scope2, item.defaultRoutes);
     }
     if (item.descriptors) {
-      defaults.describe(scope, item.descriptors);
+      defaults.describe(scope2, item.descriptors);
     }
   }
-  function routeDefaults(scope, routes) {
+  function routeDefaults(scope2, routes) {
     Object.keys(routes).forEach((property) => {
       const propertyParts = property.split(".");
       const sourceName = propertyParts.pop();
       const sourceScope = [
-        scope
+        scope2
       ].concat(propertyParts).join(".");
       const parts = routes[property].split(".");
       const targetName = parts.pop();
@@ -11126,14 +14408,14 @@
     _notify(descriptors2, chart, hook, args) {
       args = args || {};
       for (const descriptor of descriptors2) {
-        const plugin = descriptor.plugin;
-        const method = plugin[hook];
+        const plugin2 = descriptor.plugin;
+        const method = plugin2[hook];
         const params = [
           chart,
           args,
           descriptor.options
         ];
-        if (callback(method, params, plugin) === false && args.cancelable) {
+        if (callback(method, params, plugin2) === false && args.cancelable) {
           return false;
         }
       }
@@ -11176,10 +14458,10 @@
     }
     const local = config.plugins || [];
     for (let i2 = 0; i2 < local.length; i2++) {
-      const plugin = local[i2];
-      if (plugins2.indexOf(plugin) === -1) {
-        plugins2.push(plugin);
-        localIds[plugin.id] = true;
+      const plugin2 = local[i2];
+      if (plugins2.indexOf(plugin2) === -1) {
+        plugins2.push(plugin2);
+        localIds[plugin2.id] = true;
       }
     }
     return {
@@ -11199,27 +14481,27 @@
   function createDescriptors(chart, { plugins: plugins2, localIds }, options, all) {
     const result = [];
     const context = chart.getContext();
-    for (const plugin of plugins2) {
-      const id2 = plugin.id;
+    for (const plugin2 of plugins2) {
+      const id2 = plugin2.id;
       const opts = getOpts(options[id2], all);
       if (opts === null) {
         continue;
       }
       result.push({
-        plugin,
+        plugin: plugin2,
         options: pluginOpts(chart.config, {
-          plugin,
+          plugin: plugin2,
           local: localIds[id2]
         }, opts, context)
       });
     }
     return result;
   }
-  function pluginOpts(config, { plugin, local }, opts, context) {
-    const keys = config.pluginScopeKeys(plugin);
+  function pluginOpts(config, { plugin: plugin2, local }, opts, context) {
+    const keys = config.pluginScopeKeys(plugin2);
     const scopes = config.getOptionScopes(opts, keys);
-    if (local && plugin.defaults) {
-      scopes.push(plugin.defaults);
+    if (local && plugin2.defaults) {
+      scopes.push(plugin2.defaults);
     }
     return config.createResolver(scopes, context, [
       ""
@@ -11296,7 +14578,7 @@
     const scales2 = /* @__PURE__ */ Object.create(null);
     Object.keys(configScales).forEach((id2) => {
       const scaleConf = configScales[id2];
-      if (!isObject(scaleConf)) {
+      if (!isObject2(scaleConf)) {
         return console.error(`Invalid scale configuration for scale: ${id2}`);
       }
       if (scaleConf._proxy) {
@@ -11346,11 +14628,11 @@
     options.plugins = valueOrDefault(options.plugins, {});
     options.scales = mergeScaleConfig(config, options);
   }
-  function initData(data) {
-    data = data || {};
-    data.datasets = data.datasets || [];
-    data.labels = data.labels || [];
-    return data;
+  function initData(data2) {
+    data2 = data2 || {};
+    data2.datasets = data2.datasets || [];
+    data2.labels = data2.labels || [];
+    return data2;
   }
   function initConfig(config) {
     config = config || {};
@@ -11369,10 +14651,10 @@
     }
     return keys;
   }
-  var addIfFound = (set2, obj, key) => {
+  var addIfFound = (set4, obj, key) => {
     const opts = resolveObjectKey(obj, key);
     if (opts !== void 0) {
-      set2.add(opts);
+      set4.add(opts);
     }
   };
   var Config = class {
@@ -11393,8 +14675,8 @@
     get data() {
       return this._config.data;
     }
-    set data(data) {
-      this._config.data = initData(data);
+    set data(data2) {
+      this._config.data = initData(data2);
     }
     get options() {
       return this._config.options;
@@ -11422,11 +14704,11 @@
         ]
       ]);
     }
-    datasetAnimationScopeKeys(datasetType, transition) {
-      return cachedKeys(`${datasetType}.transition.${transition}`, () => [
+    datasetAnimationScopeKeys(datasetType, transition2) {
+      return cachedKeys(`${datasetType}.transition.${transition2}`, () => [
         [
-          `datasets.${datasetType}.transitions.${transition}`,
-          `transitions.${transition}`
+          `datasets.${datasetType}.transitions.${transition2}`,
+          `transitions.${transition2}`
         ],
         [
           `datasets.${datasetType}`,
@@ -11444,13 +14726,13 @@
         ]
       ]);
     }
-    pluginScopeKeys(plugin) {
-      const id2 = plugin.id;
+    pluginScopeKeys(plugin2) {
+      const id2 = plugin2.id;
       const type = this.type;
       return cachedKeys(`${type}-plugin-${id2}`, () => [
         [
           `plugins.${id2}`,
-          ...plugin.additionalOptionScopes || []
+          ...plugin2.additionalOptionScopes || []
         ]
       ]);
     }
@@ -11526,7 +14808,7 @@
       ""
     ], descriptorDefaults) {
       const { resolver } = getResolver(this._resolverCache, scopes, prefixes);
-      return isObject(context) ? _attachContext(resolver, context, void 0, descriptorDefaults) : resolver;
+      return isObject2(context) ? _attachContext(resolver, context, void 0, descriptorDefaults) : resolver;
     }
   };
   function getResolver(resolverCache, scopes, prefixes) {
@@ -11547,14 +14829,14 @@
     }
     return cached;
   }
-  var hasFunction = (value) => isObject(value) && Object.getOwnPropertyNames(value).some((key) => isFunction(value[key]));
+  var hasFunction = (value) => isObject2(value) && Object.getOwnPropertyNames(value).some((key) => isFunction(value[key]));
   function needContext(proxy, names2) {
     const { isScriptable, isIndexable } = _descriptors(proxy);
     for (const prop of names2) {
       const scriptable = isScriptable(prop);
       const indexable = isIndexable(prop);
       const value = (indexable || scriptable) && proxy[prop];
-      if (scriptable && (isFunction(value) || hasFunction(value)) || indexable && isArray(value)) {
+      if (scriptable && (isFunction(value) || hasFunction(value)) || indexable && isArray2(value)) {
         return true;
       }
     }
@@ -11607,14 +14889,14 @@
     const canvas = getCanvas(key);
     return Object.values(instances).filter((c2) => c2.canvas === canvas).pop();
   };
-  function moveNumericKeys(obj, start2, move) {
+  function moveNumericKeys(obj, start3, move) {
     const keys = Object.keys(obj);
     for (const key of keys) {
       const intKey = +key;
-      if (intKey >= start2) {
+      if (intKey >= start3) {
         const value = obj[key];
         delete obj[key];
-        if (move > 0 || intKey > start2) {
+        if (move > 0 || intKey > start3) {
           obj[intKey + move] = value;
         }
       }
@@ -11658,7 +14940,7 @@
       const canvas = context && context.canvas;
       const height = canvas && canvas.height;
       const width = canvas && canvas.width;
-      this.id = uid();
+      this.id = uid2();
       this.ctx = context;
       this.canvas = canvas;
       this.width = width;
@@ -11683,7 +14965,7 @@
       this.attached = false;
       this._animationsDisabled = void 0;
       this.$context = void 0;
-      this._doResize = debounce((mode) => this.update(mode), options.resizeDelay || 0);
+      this._doResize = debounce2((mode) => this.update(mode), options.resizeDelay || 0);
       this._dataChanges = [];
       instances[this.id] = this;
       if (!context || !canvas) {
@@ -11710,8 +14992,8 @@
     get data() {
       return this.config.data;
     }
-    set data(data) {
-      this.config.data = data;
+    set data(data2) {
+      this.config.data = data2;
     }
     get options() {
       return this._options;
@@ -11972,9 +15254,9 @@
     _updateHiddenIndices() {
       const { _hiddenIndices } = this;
       const changes = this._getUniformDataChanges() || [];
-      for (const { method, start: start2, count } of changes) {
+      for (const { method, start: start3, count } of changes) {
         const move = method === "_removeElements" ? -count : count;
-        moveNumericKeys(_hiddenIndices, start2, move);
+        moveNumericKeys(_hiddenIndices, start3, move);
       }
     }
     _getUniformDataChanges() {
@@ -12335,17 +15617,17 @@
       this._responsiveListeners = void 0;
     }
     updateHoverStyle(items, mode, enabled) {
-      const prefix = enabled ? "set" : "remove";
+      const prefix2 = enabled ? "set" : "remove";
       let meta, item, i2, ilen;
       if (mode === "dataset") {
         meta = this.getDatasetMeta(items[0].datasetIndex);
-        meta.controller["_" + prefix + "DatasetHoverStyle"]();
+        meta.controller["_" + prefix2 + "DatasetHoverStyle"]();
       }
       for (i2 = 0, ilen = items.length; i2 < ilen; ++i2) {
         item = items[i2];
         const controller = item && this.getDatasetMeta(item.datasetIndex).controller;
         if (controller) {
-          controller[prefix + "HoverStyle"](item.element, item.datasetIndex, item.index);
+          controller[prefix2 + "HoverStyle"](item.element, item.datasetIndex, item.index);
         }
       }
     }
@@ -12397,7 +15679,7 @@
         cancelable: true,
         inChartArea: this.isPointInArea(e2)
       };
-      const eventFilter = (plugin) => (plugin.options.events || this.options.events).includes(e2.native.type);
+      const eventFilter = (plugin2) => (plugin2.options.events || this.options.events).includes(e2.native.type);
       if (this.notifyPlugins("beforeEvent", args, eventFilter) === false) {
         return;
       }
@@ -12524,11 +15806,11 @@
     };
   }
   function pathArc(ctx, element, offset, spacing, end, circular) {
-    const { x: x2, y: y3, startAngle: start2, pixelMargin, innerRadius: innerR } = element;
+    const { x: x2, y: y3, startAngle: start3, pixelMargin, innerRadius: innerR } = element;
     const outerRadius = Math.max(element.outerRadius + spacing + offset - pixelMargin, 0);
     const innerRadius = innerR > 0 ? innerR + spacing + offset + pixelMargin : 0;
     let spacingOffset = 0;
-    const alpha2 = end - start2;
+    const alpha2 = end - start3;
     if (spacing) {
       const noSpacingInnerRadius = innerR > 0 ? innerR - spacing : 0;
       const noSpacingOuterRadius = outerRadius > 0 ? outerRadius - spacing : 0;
@@ -12538,7 +15820,7 @@
     }
     const beta = Math.max(1e-3, alpha2 * outerRadius - offset / PI) / outerRadius;
     const angleOffset = (alpha2 - beta) / 2;
-    const startAngle = start2 + angleOffset + spacingOffset;
+    const startAngle = start3 + angleOffset + spacingOffset;
     const endAngle = end - angleOffset - spacingOffset;
     const { outerStart, outerEnd, innerStart, innerEnd } = parseBorderRadius$1(element, innerRadius, outerRadius, endAngle - startAngle);
     const outerStartAdjustedRadius = outerRadius - outerStart;
@@ -12774,24 +16056,24 @@
     const count = points.length;
     const { start: paramsStart = 0, end: paramsEnd = count - 1 } = params;
     const { start: segmentStart, end: segmentEnd } = segment;
-    const start2 = Math.max(paramsStart, segmentStart);
+    const start3 = Math.max(paramsStart, segmentStart);
     const end = Math.min(paramsEnd, segmentEnd);
     const outside = paramsStart < segmentStart && paramsEnd < segmentStart || paramsStart > segmentEnd && paramsEnd > segmentEnd;
     return {
       count,
-      start: start2,
+      start: start3,
       loop: segment.loop,
-      ilen: end < start2 && !outside ? count + end - start2 : end - start2
+      ilen: end < start3 && !outside ? count + end - start3 : end - start3
     };
   }
   function pathSegment(ctx, line, segment, params) {
     const { points, options } = line;
-    const { count, start: start2, loop, ilen } = pathVars(points, segment, params);
+    const { count, start: start3, loop: loop2, ilen } = pathVars(points, segment, params);
     const lineMethod = getLineMethod(options);
     let { move = true, reverse } = params || {};
     let i2, point, prev;
     for (i2 = 0; i2 <= ilen; ++i2) {
-      point = points[(start2 + (reverse ? ilen - i2 : i2)) % count];
+      point = points[(start3 + (reverse ? ilen - i2 : i2)) % count];
       if (point.skip) {
         continue;
       } else if (move) {
@@ -12802,20 +16084,20 @@
       }
       prev = point;
     }
-    if (loop) {
-      point = points[(start2 + (reverse ? ilen : 0)) % count];
+    if (loop2) {
+      point = points[(start3 + (reverse ? ilen : 0)) % count];
       lineMethod(ctx, prev, point, reverse, options.stepped);
     }
-    return !!loop;
+    return !!loop2;
   }
   function fastPathSegment(ctx, line, segment, params) {
     const points = line.points;
-    const { count, start: start2, ilen } = pathVars(points, segment, params);
+    const { count, start: start3, ilen } = pathVars(points, segment, params);
     const { move = true, reverse } = params || {};
     let avgX = 0;
     let countX = 0;
     let i2, point, prevX, minY, maxY, lastY;
-    const pointIndex = (index2) => (start2 + (reverse ? ilen - index2 : index2)) % count;
+    const pointIndex = (index2) => (start3 + (reverse ? ilen - index2 : index2)) % count;
     const drawX = () => {
       if (minY !== maxY) {
         ctx.lineTo(avgX, maxY);
@@ -12868,26 +16150,26 @@
     }
     return _pointInLine;
   }
-  function strokePathWithCache(ctx, line, start2, count) {
+  function strokePathWithCache(ctx, line, start3, count) {
     let path = line._path;
     if (!path) {
       path = line._path = new Path2D();
-      if (line.path(path, start2, count)) {
+      if (line.path(path, start3, count)) {
         path.closePath();
       }
     }
     setStyle(ctx, line.options);
     ctx.stroke(path);
   }
-  function strokePathDirect(ctx, line, start2, count) {
+  function strokePathDirect(ctx, line, start3, count) {
     const { segments, options } = line;
     const segmentMethod = _getSegmentMethod(line);
     for (const segment of segments) {
       setStyle(ctx, options, segment.style);
       ctx.beginPath();
       if (segmentMethod(ctx, line, segment, {
-        start: start2,
-        end: start2 + count - 1
+        start: start3,
+        end: start3 + count - 1
       })) {
         ctx.closePath();
       }
@@ -12895,11 +16177,11 @@
     }
   }
   var usePath2D = typeof Path2D === "function";
-  function draw(ctx, line, start2, count) {
+  function draw(ctx, line, start3, count) {
     if (usePath2D && !line.options.segment) {
-      strokePathWithCache(ctx, line, start2, count);
+      strokePathWithCache(ctx, line, start3, count);
     } else {
-      strokePathDirect(ctx, line, start2, count);
+      strokePathDirect(ctx, line, start3, count);
     }
   }
   var LineElement = class extends Element2 {
@@ -12945,8 +16227,8 @@
     updateControlPoints(chartArea, indexAxis) {
       const options = this.options;
       if ((options.tension || options.cubicInterpolationMode === "monotone") && !options.stepped && !this._pointsUpdated) {
-        const loop = options.spanGaps ? this._loop : this._fullLoop;
-        _updateBezierControlPoints(this._points, options, chartArea, loop, indexAxis);
+        const loop2 = options.spanGaps ? this._loop : this._fullLoop;
+        _updateBezierControlPoints(this._points, options, chartArea, loop2, indexAxis);
         this._pointsUpdated = true;
       }
     }
@@ -12989,8 +16271,8 @@
       const _interpolate = _getInterpolationMethod(options);
       let i2, ilen;
       for (i2 = 0, ilen = segments.length; i2 < ilen; ++i2) {
-        const { start: start2, end } = segments[i2];
-        const p1 = points[start2];
+        const { start: start3, end } = segments[i2];
+        const p1 = points[start3];
         const p2 = points[end];
         if (p1 === p2) {
           result.push(p1);
@@ -13007,26 +16289,26 @@
       const segmentMethod = _getSegmentMethod(this);
       return segmentMethod(ctx, this, segment, params);
     }
-    path(ctx, start2, count) {
+    path(ctx, start3, count) {
       const segments = this.segments;
       const segmentMethod = _getSegmentMethod(this);
-      let loop = this._loop;
-      start2 = start2 || 0;
-      count = count || this.points.length - start2;
+      let loop2 = this._loop;
+      start3 = start3 || 0;
+      count = count || this.points.length - start3;
       for (const segment of segments) {
-        loop &= segmentMethod(ctx, this, segment, {
-          start: start2,
-          end: start2 + count - 1
+        loop2 &= segmentMethod(ctx, this, segment, {
+          start: start3,
+          end: start3 + count - 1
         });
       }
-      return !!loop;
+      return !!loop2;
     }
-    draw(ctx, chartArea, start2, count) {
+    draw(ctx, chartArea, start3, count) {
       const options = this.options || {};
       const points = this.points || [];
       if (points.length && options.borderWidth) {
         ctx.save();
-        draw(ctx, this, start2, count);
+        draw(ctx, this, start3, count);
         ctx.restore();
       }
       if (this.animated) {
@@ -13173,7 +16455,7 @@
     const o2 = toTRBLCorners(value);
     const maxR = Math.min(maxW, maxH);
     const skip2 = bar.borderSkipped;
-    const enableBorder = enableBorderRadius || isObject(value);
+    const enableBorder = enableBorderRadius || isObject2(value);
     return {
       topLeft: skipOrLimit(!enableBorder || skip2.top || skip2.left, o2.topLeft, 0, maxR),
       topRight: skipOrLimit(!enableBorder || skip2.top || skip2.right, o2.topRight, 0, maxR),
@@ -13389,60 +16671,60 @@
       datasets.forEach(colorizer);
     }
   };
-  function lttbDecimation(data, start2, count, availableWidth, options) {
+  function lttbDecimation(data2, start3, count, availableWidth, options) {
     const samples = options.samples || availableWidth;
     if (samples >= count) {
-      return data.slice(start2, start2 + count);
+      return data2.slice(start3, start3 + count);
     }
     const decimated = [];
     const bucketWidth = (count - 2) / (samples - 2);
     let sampledIndex = 0;
-    const endIndex = start2 + count - 1;
-    let a2 = start2;
+    const endIndex = start3 + count - 1;
+    let a2 = start3;
     let i2, maxAreaPoint, maxArea, area, nextA;
-    decimated[sampledIndex++] = data[a2];
+    decimated[sampledIndex++] = data2[a2];
     for (i2 = 0; i2 < samples - 2; i2++) {
       let avgX = 0;
       let avgY = 0;
       let j2;
-      const avgRangeStart = Math.floor((i2 + 1) * bucketWidth) + 1 + start2;
-      const avgRangeEnd = Math.min(Math.floor((i2 + 2) * bucketWidth) + 1, count) + start2;
+      const avgRangeStart = Math.floor((i2 + 1) * bucketWidth) + 1 + start3;
+      const avgRangeEnd = Math.min(Math.floor((i2 + 2) * bucketWidth) + 1, count) + start3;
       const avgRangeLength = avgRangeEnd - avgRangeStart;
       for (j2 = avgRangeStart; j2 < avgRangeEnd; j2++) {
-        avgX += data[j2].x;
-        avgY += data[j2].y;
+        avgX += data2[j2].x;
+        avgY += data2[j2].y;
       }
       avgX /= avgRangeLength;
       avgY /= avgRangeLength;
-      const rangeOffs = Math.floor(i2 * bucketWidth) + 1 + start2;
-      const rangeTo = Math.min(Math.floor((i2 + 1) * bucketWidth) + 1, count) + start2;
-      const { x: pointAx, y: pointAy } = data[a2];
+      const rangeOffs = Math.floor(i2 * bucketWidth) + 1 + start3;
+      const rangeTo = Math.min(Math.floor((i2 + 1) * bucketWidth) + 1, count) + start3;
+      const { x: pointAx, y: pointAy } = data2[a2];
       maxArea = area = -1;
       for (j2 = rangeOffs; j2 < rangeTo; j2++) {
-        area = 0.5 * Math.abs((pointAx - avgX) * (data[j2].y - pointAy) - (pointAx - data[j2].x) * (avgY - pointAy));
+        area = 0.5 * Math.abs((pointAx - avgX) * (data2[j2].y - pointAy) - (pointAx - data2[j2].x) * (avgY - pointAy));
         if (area > maxArea) {
           maxArea = area;
-          maxAreaPoint = data[j2];
+          maxAreaPoint = data2[j2];
           nextA = j2;
         }
       }
       decimated[sampledIndex++] = maxAreaPoint;
       a2 = nextA;
     }
-    decimated[sampledIndex++] = data[endIndex];
+    decimated[sampledIndex++] = data2[endIndex];
     return decimated;
   }
-  function minMaxDecimation(data, start2, count, availableWidth) {
+  function minMaxDecimation(data2, start3, count, availableWidth) {
     let avgX = 0;
     let countX = 0;
     let i2, point, x2, y3, prevX, minIndex, maxIndex, startIndex, minY, maxY;
     const decimated = [];
-    const endIndex = start2 + count - 1;
-    const xMin = data[start2].x;
-    const xMax = data[endIndex].x;
+    const endIndex = start3 + count - 1;
+    const xMin = data2[start3].x;
+    const xMax = data2[endIndex].x;
     const dx = xMax - xMin;
-    for (i2 = start2; i2 < start2 + count; ++i2) {
-      point = data[i2];
+    for (i2 = start3; i2 < start3 + count; ++i2) {
+      point = data2[i2];
       x2 = (point.x - xMin) / dx * availableWidth;
       y3 = point.y;
       const truncX = x2 | 0;
@@ -13462,19 +16744,19 @@
           const intermediateIndex2 = Math.max(minIndex, maxIndex);
           if (intermediateIndex1 !== startIndex && intermediateIndex1 !== lastIndex) {
             decimated.push({
-              ...data[intermediateIndex1],
+              ...data2[intermediateIndex1],
               x: avgX
             });
           }
           if (intermediateIndex2 !== startIndex && intermediateIndex2 !== lastIndex) {
             decimated.push({
-              ...data[intermediateIndex2],
+              ...data2[intermediateIndex2],
               x: avgX
             });
           }
         }
         if (i2 > 0 && lastIndex !== startIndex) {
-          decimated.push(data[lastIndex]);
+          decimated.push(data2[lastIndex]);
         }
         decimated.push(point);
         prevX = truncX;
@@ -13487,14 +16769,14 @@
   }
   function cleanDecimatedDataset(dataset) {
     if (dataset._decimated) {
-      const data = dataset._data;
+      const data2 = dataset._data;
       delete dataset._decimated;
       delete dataset._data;
       Object.defineProperty(dataset, "data", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: data
+        value: data2
       });
     }
   }
@@ -13505,20 +16787,20 @@
   }
   function getStartAndCountOfVisiblePointsSimplified(meta, points) {
     const pointCount = points.length;
-    let start2 = 0;
+    let start3 = 0;
     let count;
     const { iScale } = meta;
     const { min, max, minDefined, maxDefined } = iScale.getUserBounds();
     if (minDefined) {
-      start2 = _limitValue(_lookupByKey(points, iScale.axis, min).lo, 0, pointCount - 1);
+      start3 = _limitValue(_lookupByKey(points, iScale.axis, min).lo, 0, pointCount - 1);
     }
     if (maxDefined) {
-      count = _limitValue(_lookupByKey(points, iScale.axis, max).hi + 1, start2, pointCount) - start2;
+      count = _limitValue(_lookupByKey(points, iScale.axis, max).hi + 1, start3, pointCount) - start3;
     } else {
-      count = pointCount - start2;
+      count = pointCount - start3;
     }
     return {
-      start: start2,
+      start: start3,
       count
     };
   }
@@ -13537,7 +16819,7 @@
       chart.data.datasets.forEach((dataset, datasetIndex) => {
         const { _data, indexAxis } = dataset;
         const meta = chart.getDatasetMeta(datasetIndex);
-        const data = _data || dataset.data;
+        const data2 = _data || dataset.data;
         if (resolve([
           indexAxis,
           chart.options.indexAxis
@@ -13554,14 +16836,14 @@
         if (chart.options.parsing) {
           return;
         }
-        let { start: start2, count } = getStartAndCountOfVisiblePointsSimplified(meta, data);
+        let { start: start3, count } = getStartAndCountOfVisiblePointsSimplified(meta, data2);
         const threshold = options.threshold || 4 * availableWidth;
         if (count <= threshold) {
           cleanDecimatedDataset(dataset);
           return;
         }
         if (isNullOrUndef(_data)) {
-          dataset._data = data;
+          dataset._data = data2;
           delete dataset.data;
           Object.defineProperty(dataset, "data", {
             configurable: true,
@@ -13577,10 +16859,10 @@
         let decimated;
         switch (options.algorithm) {
           case "lttb":
-            decimated = lttbDecimation(data, start2, count, availableWidth, options);
+            decimated = lttbDecimation(data2, start3, count, availableWidth, options);
             break;
           case "min-max":
-            decimated = minMaxDecimation(data, start2, count, availableWidth);
+            decimated = minMaxDecimation(data2, start3, count, availableWidth);
             break;
           default:
             throw new Error(`Unsupported decimation algorithm '${options.algorithm}'`);
@@ -13598,14 +16880,14 @@
     const tpoints = target.points;
     const parts = [];
     for (const segment of segments) {
-      let { start: start2, end } = segment;
-      end = _findSegmentEnd(start2, end, points);
-      const bounds = _getBounds(property, points[start2], points[end], segment.loop);
+      let { start: start3, end } = segment;
+      end = _findSegmentEnd(start3, end, points);
+      const bounds = _getBounds(property, points[start3], points[end], segment.loop);
       if (!target.segments) {
         parts.push({
           source: segment,
           target: bounds,
-          start: points[start2],
+          start: points[start3],
           end: points[end]
         });
         continue;
@@ -13630,19 +16912,19 @@
     }
     return parts;
   }
-  function _getBounds(property, first, last, loop) {
-    if (loop) {
+  function _getBounds(property, first, last, loop2) {
+    if (loop2) {
       return;
     }
-    let start2 = first[property];
+    let start3 = first[property];
     let end = last[property];
     if (property === "angle") {
-      start2 = _normalizeAngle(start2);
+      start3 = _normalizeAngle(start3);
       end = _normalizeAngle(end);
     }
     return {
       property,
-      start: start2,
+      start: start3,
       end
     };
   }
@@ -13650,9 +16932,9 @@
     const { x: x2 = null, y: y3 = null } = boundary || {};
     const linePoints = line.points;
     const points = [];
-    line.segments.forEach(({ start: start2, end }) => {
-      end = _findSegmentEnd(start2, end, linePoints);
-      const first = linePoints[start2];
+    line.segments.forEach(({ start: start3, end }) => {
+      end = _findSegmentEnd(start3, end, linePoints);
+      const first = linePoints[start3];
       const last = linePoints[end];
       if (y3 !== null) {
         points.push({
@@ -13676,8 +16958,8 @@
     });
     return points;
   }
-  function _findSegmentEnd(start2, end, points) {
-    for (; end > start2; end--) {
+  function _findSegmentEnd(start3, end, points) {
+    for (; end > start3; end--) {
       const point = points[end];
       if (!isNaN(point.x) && !isNaN(point.y)) {
         break;
@@ -13694,7 +16976,7 @@
   function _createBoundaryLine(boundary, line) {
     let points = [];
     let _loop = false;
-    if (isArray(boundary)) {
+    if (isArray2(boundary)) {
       _loop = true;
       points = boundary;
     } else {
@@ -13740,7 +17022,7 @@
   }
   function _decodeFill(line, index2, count) {
     const fill2 = parseFillOption(line);
-    if (isObject(fill2)) {
+    if (isObject2(fill2)) {
       return isNaN(fill2.value) ? false : fill2;
     }
     let target = parseFloat(fill2);
@@ -13770,7 +17052,7 @@
       pixel = scale.bottom;
     } else if (fill2 === "end") {
       pixel = scale.top;
-    } else if (isObject(fill2)) {
+    } else if (isObject2(fill2)) {
       pixel = scale.getPixelForValue(fill2.value);
     } else if (scale.getBasePixel) {
       pixel = scale.getBasePixel();
@@ -13783,7 +17065,7 @@
       value = startValue;
     } else if (fill2 === "end") {
       value = scale.options.reverse ? scale.min : scale.max;
-    } else if (isObject(fill2)) {
+    } else if (isObject2(fill2)) {
       value = fill2.value;
     } else {
       value = scale.getBaseValue();
@@ -13955,11 +17237,11 @@
     const { scale, fill: fill2 } = source;
     const options = scale.options;
     const length = scale.getLabels().length;
-    const start2 = options.reverse ? scale.max : scale.min;
-    const value = _getTargetValue(fill2, scale, start2);
+    const start3 = options.reverse ? scale.max : scale.min;
+    const value = _getTargetValue(fill2, scale, start3);
     const target = [];
     if (options.grid.circular) {
-      const center = scale.getPointPositionForValue(0, start2);
+      const center = scale.getPointPositionForValue(0, start3);
       return new simpleArc({
         x: center.x,
         y: center.y,
@@ -14046,9 +17328,9 @@
     let lineLoop = false;
     ctx.beginPath();
     for (const segment of segments) {
-      const { start: start2, end } = segment;
-      const firstPoint = points[start2];
-      const lastPoint = points[_findSegmentEnd(start2, end, points)];
+      const { start: start3, end } = segment;
+      const firstPoint = points[start3];
+      const lastPoint = points[_findSegmentEnd(start3, end, points)];
       if (first) {
         ctx.moveTo(firstPoint.x, firstPoint.y);
         first = false;
@@ -14075,9 +17357,9 @@
     let lineLoop = false;
     ctx.beginPath();
     for (const segment of segments) {
-      const { start: start2, end } = segment;
-      const firstPoint = points[start2];
-      const lastPoint = points[_findSegmentEnd(start2, end, points)];
+      const { start: start3, end } = segment;
+      const firstPoint = points[start3];
+      const lastPoint = points[_findSegmentEnd(start3, end, points)];
       if (first) {
         ctx.moveTo(firstPoint.x, firstPoint.y);
         first = false;
@@ -14101,15 +17383,15 @@
   function fill(ctx, cfg) {
     const { line, target, property, color: color2, scale, clip } = cfg;
     const segments = _segments(line, target, property);
-    for (const { source: src, target: tgt, start: start2, end } of segments) {
+    for (const { source: src, target: tgt, start: start3, end } of segments) {
       const { style: { backgroundColor = color2 } = {} } = src;
       const notShape = target !== true;
       ctx.save();
       ctx.fillStyle = backgroundColor;
-      clipBounds(ctx, scale, clip, notShape && _getBounds(property, start2, end));
+      clipBounds(ctx, scale, clip, notShape && _getBounds(property, start3, end));
       ctx.beginPath();
       const lineLoop = !!line.pathSegment(ctx, src);
-      let loop;
+      let loop2;
       if (notShape) {
         if (lineLoop) {
           ctx.closePath();
@@ -14120,29 +17402,29 @@
           move: lineLoop,
           reverse: true
         });
-        loop = lineLoop && targetLoop;
-        if (!loop) {
-          interpolatedLineTo(ctx, target, start2, property);
+        loop2 = lineLoop && targetLoop;
+        if (!loop2) {
+          interpolatedLineTo(ctx, target, start3, property);
         }
       }
       ctx.closePath();
-      ctx.fill(loop ? "evenodd" : "nonzero");
+      ctx.fill(loop2 ? "evenodd" : "nonzero");
       ctx.restore();
     }
   }
   function clipBounds(ctx, scale, clip, bounds) {
     const chartArea = scale.chart.chartArea;
-    const { property, start: start2, end } = bounds || {};
+    const { property, start: start3, end } = bounds || {};
     if (property === "x" || property === "y") {
       let left, top, right, bottom;
       if (property === "x") {
-        left = start2;
+        left = start3;
         top = chartArea.top;
         right = end;
         bottom = chartArea.bottom;
       } else {
         left = chartArea.left;
-        top = start2;
+        top = start3;
         right = chartArea.right;
         bottom = end;
       }
@@ -14587,7 +17869,7 @@
         y3 = this.top + topPaddingPlusHalfFontSize;
         left = _alignStartEnd(opts.align, left, this.right - maxWidth);
       } else {
-        const maxHeight = this.columnSizes.reduce((acc, size) => Math.max(acc, size.height), 0);
+        const maxHeight = this.columnSizes.reduce((acc, size2) => Math.max(acc, size2.height), 0);
         y3 = topPaddingPlusHalfFontSize + _alignStartEnd(opts.align, this.top, this.bottom - maxHeight - opts.labels.padding - this._computeTitleHeight());
       }
       const x2 = _alignStartEnd(position, left, left + maxWidth);
@@ -14811,7 +18093,7 @@
       }
       this.width = this.right = maxWidth;
       this.height = this.bottom = maxHeight;
-      const lineCount = isArray(opts.text) ? opts.text.length : 1;
+      const lineCount = isArray2(opts.text) ? opts.text.length : 1;
       this._padding = toPadding(opts.padding);
       const textSize = lineCount * toFont(opts.font).lineHeight + this._padding.height;
       if (this.isHorizontal()) {
@@ -15024,7 +18306,7 @@
   };
   function pushOrConcat(base, toPush) {
     if (toPush) {
-      if (isArray(toPush)) {
+      if (isArray2(toPush)) {
         Array.prototype.push.apply(base, toPush);
       } else {
         base.push(toPush);
@@ -15104,8 +18386,8 @@
       height
     };
   }
-  function determineYAlign(chart, size) {
-    const { y: y3, height } = size;
+  function determineYAlign(chart, size2) {
+    const { y: y3, height } = size2;
     if (y3 < height / 2) {
       return "top";
     } else if (y3 > chart.height - height / 2) {
@@ -15113,8 +18395,8 @@
     }
     return "center";
   }
-  function doesNotFitWithAlign(xAlign, chart, options, size) {
-    const { x: x2, width } = size;
+  function doesNotFitWithAlign(xAlign, chart, options, size2) {
+    const { x: x2, width } = size2;
     const caret = options.caretSize + options.caretPadding;
     if (xAlign === "left" && x2 + width + caret > chart.width) {
       return true;
@@ -15123,8 +18405,8 @@
       return true;
     }
   }
-  function determineXAlign(chart, options, size, yAlign) {
-    const { x: x2, width } = size;
+  function determineXAlign(chart, options, size2, yAlign) {
+    const { x: x2, width } = size2;
     const { width: chartWidth, chartArea: { left, right } } = chart;
     let xAlign = "center";
     if (yAlign === "center") {
@@ -15134,20 +18416,20 @@
     } else if (x2 >= chartWidth - width / 2) {
       xAlign = "right";
     }
-    if (doesNotFitWithAlign(xAlign, chart, options, size)) {
+    if (doesNotFitWithAlign(xAlign, chart, options, size2)) {
       xAlign = "center";
     }
     return xAlign;
   }
-  function determineAlignment(chart, options, size) {
-    const yAlign = size.yAlign || options.yAlign || determineYAlign(chart, size);
+  function determineAlignment(chart, options, size2) {
+    const yAlign = size2.yAlign || options.yAlign || determineYAlign(chart, size2);
     return {
-      xAlign: size.xAlign || options.xAlign || determineXAlign(chart, options, size, yAlign),
+      xAlign: size2.xAlign || options.xAlign || determineXAlign(chart, options, size2, yAlign),
       yAlign
     };
   }
-  function alignX(size, xAlign) {
-    let { x: x2, width } = size;
+  function alignX(size2, xAlign) {
+    let { x: x2, width } = size2;
     if (xAlign === "right") {
       x2 -= width;
     } else if (xAlign === "center") {
@@ -15155,8 +18437,8 @@
     }
     return x2;
   }
-  function alignY(size, yAlign, paddingAndSize) {
-    let { y: y3, height } = size;
+  function alignY(size2, yAlign, paddingAndSize) {
+    let { y: y3, height } = size2;
     if (yAlign === "top") {
       y3 += paddingAndSize;
     } else if (yAlign === "bottom") {
@@ -15166,13 +18448,13 @@
     }
     return y3;
   }
-  function getBackgroundPoint(options, size, alignment, chart) {
+  function getBackgroundPoint(options, size2, alignment, chart) {
     const { caretSize, caretPadding, cornerRadius } = options;
     const { xAlign, yAlign } = alignment;
     const paddingAndSize = caretSize + caretPadding;
     const { topLeft, topRight, bottomLeft, bottomRight } = toTRBLCorners(cornerRadius);
-    let x2 = alignX(size, xAlign);
-    const y3 = alignY(size, yAlign, paddingAndSize);
+    let x2 = alignX(size2, xAlign);
+    const y3 = alignY(size2, yAlign, paddingAndSize);
     if (yAlign === "center") {
       if (xAlign === "left") {
         x2 += paddingAndSize;
@@ -15185,8 +18467,8 @@
       x2 += Math.max(topRight, bottomRight) + caretSize;
     }
     return {
-      x: _limitValue(x2, 0, chart.width - size.width),
-      y: _limitValue(y3, 0, chart.height - size.height)
+      x: _limitValue(x2, 0, chart.width - size2.width),
+      y: _limitValue(y3, 0, chart.height - size2.height)
     };
   }
   function getAlignedX(tooltip, align, options) {
@@ -15378,7 +18660,7 @@
     }
     _createItems(options) {
       const active = this._active;
-      const data = this.chart.data;
+      const data2 = this.chart.data;
       const labelColors = [];
       const labelPointStyles = [];
       const labelTextColors = [];
@@ -15388,10 +18670,10 @@
         tooltipItems.push(createTooltipItem(this.chart, active[i2]));
       }
       if (options.filter) {
-        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data));
+        tooltipItems = tooltipItems.filter((element, index2, array) => options.filter(element, index2, array, data2));
       }
       if (options.itemSort) {
-        tooltipItems = tooltipItems.sort((a2, b3) => options.itemSort(a2, b3, data));
+        tooltipItems = tooltipItems.sort((a2, b3) => options.itemSort(a2, b3, data2));
       }
       each(tooltipItems, (context) => {
         const scoped = overrideCallbacks(options.callbacks, context);
@@ -15424,8 +18706,8 @@
         this.body = this.getBody(tooltipItems, options);
         this.afterBody = this.getAfterBody(tooltipItems, options);
         this.footer = this.getFooter(tooltipItems, options);
-        const size = this._size = getTooltipSize(this, options);
-        const positionAndSize = Object.assign({}, position, size);
+        const size2 = this._size = getTooltipSize(this, options);
+        const positionAndSize = Object.assign({}, position, size2);
         const alignment = determineAlignment(this.chart, options, positionAndSize);
         const backgroundPoint = getBackgroundPoint(options, positionAndSize, alignment, this.chart);
         this.xAlign = alignment.xAlign;
@@ -15434,8 +18716,8 @@
           opacity: 1,
           x: backgroundPoint.x,
           y: backgroundPoint.y,
-          width: size.width,
-          height: size.height,
+          width: size2.width,
+          height: size2.height,
           caretX: position.x,
           caretY: position.y
         };
@@ -15453,18 +18735,18 @@
         });
       }
     }
-    drawCaret(tooltipPoint, ctx, size, options) {
-      const caretPosition = this.getCaretPosition(tooltipPoint, size, options);
+    drawCaret(tooltipPoint, ctx, size2, options) {
+      const caretPosition = this.getCaretPosition(tooltipPoint, size2, options);
       ctx.lineTo(caretPosition.x1, caretPosition.y1);
       ctx.lineTo(caretPosition.x2, caretPosition.y2);
       ctx.lineTo(caretPosition.x3, caretPosition.y3);
     }
-    getCaretPosition(tooltipPoint, size, options) {
+    getCaretPosition(tooltipPoint, size2, options) {
       const { xAlign, yAlign } = this;
       const { caretSize, cornerRadius } = options;
       const { topLeft, topRight, bottomLeft, bottomRight } = toTRBLCorners(cornerRadius);
       const { x: ptX, y: ptY } = tooltipPoint;
-      const { width, height } = size;
+      const { width, height } = size2;
       let x1, x2, x3, y1, y22, y3;
       if (yAlign === "center") {
         y22 = ptY + height / 2;
@@ -15557,7 +18839,7 @@
         ctx.fillStyle = labelColor.backgroundColor;
         drawPoint(ctx, drawOptions, centerX, centerY);
       } else {
-        ctx.lineWidth = isObject(labelColor.borderWidth) ? Math.max(...Object.values(labelColor.borderWidth)) : labelColor.borderWidth || 1;
+        ctx.lineWidth = isObject2(labelColor.borderWidth) ? Math.max(...Object.values(labelColor.borderWidth)) : labelColor.borderWidth || 1;
         ctx.strokeStyle = labelColor.borderColor;
         ctx.setLineDash(labelColor.borderDash || []);
         ctx.lineDashOffset = labelColor.borderDashOffset || 0;
@@ -15702,15 +18984,15 @@
         if (!position) {
           return;
         }
-        const size = this._size = getTooltipSize(this, options);
+        const size2 = this._size = getTooltipSize(this, options);
         const positionAndSize = Object.assign({}, position, this._size);
         const alignment = determineAlignment(chart, options, positionAndSize);
         const point = getBackgroundPoint(options, positionAndSize, alignment, chart);
         if (animX._to !== point.x || animY._to !== point.y) {
           this.xAlign = alignment.xAlign;
           this.yAlign = alignment.yAlign;
-          this.width = size.width;
-          this.height = size.height;
+          this.width = size2.width;
+          this.height = size2.height;
           this.caretX = position.x;
           this.caretY = position.y;
           this._resolveAnimations().update(this, point);
@@ -15954,24 +19236,24 @@
     Title: plugin_title,
     Tooltip: plugin_tooltip
   });
-  var addIfString = (labels, raw, index2, addedLabels) => {
-    if (typeof raw === "string") {
-      index2 = labels.push(raw) - 1;
+  var addIfString = (labels, raw2, index2, addedLabels) => {
+    if (typeof raw2 === "string") {
+      index2 = labels.push(raw2) - 1;
       addedLabels.unshift({
         index: index2,
-        label: raw
+        label: raw2
       });
-    } else if (isNaN(raw)) {
+    } else if (isNaN(raw2)) {
       index2 = null;
     }
     return index2;
   };
-  function findOrAddLabel(labels, raw, index2, addedLabels) {
-    const first = labels.indexOf(raw);
+  function findOrAddLabel(labels, raw2, index2, addedLabels) {
+    const first = labels.indexOf(raw2);
     if (first === -1) {
-      return addIfString(labels, raw, index2, addedLabels);
+      return addIfString(labels, raw2, index2, addedLabels);
     }
-    const last = labels.lastIndexOf(raw);
+    const last = labels.lastIndexOf(raw2);
     return first !== last ? index2 : first;
   }
   var validIndex = (index2, max) => index2 === null ? null : _limitValue(Math.round(index2), 0, max);
@@ -16008,12 +19290,12 @@
       }
       super.init(scaleOptions);
     }
-    parse(raw, index2) {
-      if (isNullOrUndef(raw)) {
+    parse(raw2, index2) {
+      if (isNullOrUndef(raw2)) {
         return null;
       }
       const labels = this.getLabels();
-      index2 = isFinite(index2) && labels[index2] === raw ? index2 : findOrAddLabel(labels, raw, valueOrDefault(index2, raw), this._addedLabels);
+      index2 = isFinite(index2) && labels[index2] === raw2 ? index2 : findOrAddLabel(labels, raw2, valueOrDefault(index2, raw2), this._addedLabels);
       return validIndex(index2, labels.length - 1);
     }
     determineDataLimits() {
@@ -16190,14 +19472,14 @@
       this._endValue = void 0;
       this._valueRange = 0;
     }
-    parse(raw, index2) {
-      if (isNullOrUndef(raw)) {
+    parse(raw2, index2) {
+      if (isNullOrUndef(raw2)) {
         return null;
       }
-      if ((typeof raw === "number" || raw instanceof Number) && !isFinite(+raw)) {
+      if ((typeof raw2 === "number" || raw2 instanceof Number) && !isFinite(+raw2)) {
         return null;
       }
-      return +raw;
+      return +raw2;
     }
     handleTickRangeOptions() {
       const { beginAtZero } = this.options;
@@ -16281,17 +19563,17 @@
     }
     configure() {
       const ticks = this.ticks;
-      let start2 = this.min;
+      let start3 = this.min;
       let end = this.max;
       super.configure();
       if (this.options.offset && ticks.length) {
-        const offset = (end - start2) / Math.max(ticks.length - 1, 1) / 2;
-        start2 -= offset;
+        const offset = (end - start3) / Math.max(ticks.length - 1, 1) / 2;
+        start3 -= offset;
         end += offset;
       }
-      this._startValue = start2;
+      this._startValue = start3;
       this._endValue = end;
-      this._valueRange = end - start2;
+      this._valueRange = end - start3;
     }
     getLabelForValue(value) {
       return formatNumber(value, this.chart.options.locale, this.options.ticks.format);
@@ -16333,9 +19615,9 @@
   }
   function steps(min, max, rangeExp) {
     const rangeStep = Math.pow(10, rangeExp);
-    const start2 = Math.floor(min / rangeStep);
+    const start3 = Math.floor(min / rangeStep);
     const end = Math.ceil(max / rangeStep);
-    return end - start2;
+    return end - start3;
   }
   function startExp(min, max) {
     const range2 = max - min;
@@ -16356,9 +19638,9 @@
     let precision = exp < 0 ? Math.pow(10, Math.abs(exp)) : 1;
     const stepSize = Math.pow(10, exp);
     const base = minExp > exp ? Math.pow(10, minExp) : 0;
-    const start2 = Math.round((min - base) * precision) / precision;
+    const start3 = Math.round((min - base) * precision) / precision;
     const offset = Math.floor((min - base) / stepSize / 10) * stepSize * 10;
-    let significand = Math.floor((start2 - offset) / Math.pow(10, exp));
+    let significand = Math.floor((start3 - offset) / Math.pow(10, exp));
     let value = finiteOrDefault(generationOptions.min, Math.round((base + offset + significand * Math.pow(10, exp)) * precision) / precision);
     while (value < max) {
       ticks.push({
@@ -16403,9 +19685,9 @@
       this._startValue = void 0;
       this._valueRange = 0;
     }
-    parse(raw, index2) {
+    parse(raw2, index2) {
       const value = LinearScaleBase.prototype.parse.apply(this, [
-        raw,
+        raw2,
         index2
       ]);
       if (value === 0) {
@@ -16474,10 +19756,10 @@
       return value === void 0 ? "0" : formatNumber(value, this.chart.options.locale, this.options.ticks.format);
     }
     configure() {
-      const start2 = this.min;
+      const start3 = this.min;
       super.configure();
-      this._startValue = log10(start2);
-      this._valueRange = log10(this.max) - log10(start2);
+      this._startValue = log10(start3);
+      this._valueRange = log10(this.max) - log10(start3);
     }
     getPixelForValue(value) {
       if (value === void 0 || value === 0) {
@@ -16502,7 +19784,7 @@
     return 0;
   }
   function measureLabelSize(ctx, font, label) {
-    label = isArray(label) ? label : [
+    label = isArray2(label) ? label : [
       label
     ];
     return {
@@ -16510,21 +19792,21 @@
       h: label.length * font.lineHeight
     };
   }
-  function determineLimits(angle, pos, size, min, max) {
+  function determineLimits(angle, pos, size2, min, max) {
     if (angle === min || angle === max) {
       return {
-        start: pos - size / 2,
-        end: pos + size / 2
+        start: pos - size2 / 2,
+        end: pos + size2 / 2
       };
     } else if (angle < min || angle > max) {
       return {
-        start: pos - size,
+        start: pos - size2,
         end: pos
       };
     }
     return {
       start: pos,
-      end: pos + size
+      end: pos + size2
     };
   }
   function fitWithPointLabels(scale) {
@@ -16578,12 +19860,12 @@
   }
   function createPointLabelItem(scale, index2, itemOpts) {
     const outerDistance = scale.drawingArea;
-    const { extra, additionalAngle, padding, size } = itemOpts;
+    const { extra, additionalAngle, padding, size: size2 } = itemOpts;
     const pointLabelPosition = scale.getPointPosition(index2, outerDistance + extra + padding, additionalAngle);
     const angle = Math.round(toDegrees(_normalizeAngle(pointLabelPosition.angle + HALF_PI)));
-    const y3 = yForAngle(pointLabelPosition.y, size.h, angle);
+    const y3 = yForAngle(pointLabelPosition.y, size2.h, angle);
     const textAlign = getTextAlignForAngle(angle);
-    const left = leftForTextAlign(pointLabelPosition.x, size.w, textAlign);
+    const left = leftForTextAlign(pointLabelPosition.x, size2.w, textAlign);
     return {
       visible: true,
       x: pointLabelPosition.x,
@@ -16591,8 +19873,8 @@
       textAlign,
       left,
       top: y3,
-      right: left + size.w,
-      bottom: y3 + size.h
+      right: left + size2.w,
+      bottom: y3 + size2.h
     };
   }
   function isNotOverlapped(item, area) {
@@ -17167,11 +20449,11 @@
       super.init(scaleOpts);
       this._normalized = opts.normalized;
     }
-    parse(raw, index2) {
-      if (raw === void 0) {
+    parse(raw2, index2) {
+      if (raw2 === void 0) {
         return null;
       }
-      return parse(this, raw);
+      return parse(this, raw2);
     }
     beforeLayout() {
       super.beforeLayout();
@@ -17244,15 +20526,15 @@
       }
     }
     initOffsets(timestamps = []) {
-      let start2 = 0;
+      let start3 = 0;
       let end = 0;
       let first, last;
       if (this.options.offset && timestamps.length) {
         first = this.getDecimalForValue(timestamps[0]);
         if (timestamps.length === 1) {
-          start2 = 1 - first;
+          start3 = 1 - first;
         } else {
-          start2 = (this.getDecimalForValue(timestamps[1]) - first) / 2;
+          start3 = (this.getDecimalForValue(timestamps[1]) - first) / 2;
         }
         last = this.getDecimalForValue(timestamps[timestamps.length - 1]);
         if (timestamps.length === 1) {
@@ -17262,12 +20544,12 @@
         }
       }
       const limit = timestamps.length < 3 ? 0.5 : 0.25;
-      start2 = _limitValue(start2, 0, limit);
+      start3 = _limitValue(start3, 0, limit);
       end = _limitValue(end, 0, limit);
       this._offsets = {
-        start: start2,
+        start: start3,
         end,
-        factor: 1 / (start2 + 1 + end)
+        factor: 1 / (start3 + 1 + end)
       };
     }
     _generate() {
@@ -17372,8 +20654,8 @@
       const exampleLabel = this._tickFormatFunction(exampleTime, 0, ticksFromTimestamps(this, [
         exampleTime
       ], this._majorUnit), format);
-      const size = this._getLabelSize(exampleLabel);
-      const capacity = Math.floor(this.isHorizontal() ? this.width / size.w : this.height / size.h) - 1;
+      const size2 = this._getLabelSize(exampleLabel);
+      const capacity = Math.floor(this.isHorizontal() ? this.width / size2.w : this.height / size2.h) - 1;
       return capacity > 0 ? capacity : 1;
     }
     getDataTimestamps() {
@@ -17496,12 +20778,12 @@
       if (timestamps.length) {
         return timestamps;
       }
-      const data = this.getDataTimestamps();
+      const data2 = this.getDataTimestamps();
       const label = this.getLabelTimestamps();
-      if (data.length && label.length) {
-        timestamps = this.normalize(data.concat(label));
+      if (data2.length && label.length) {
+        timestamps = this.normalize(data2.concat(label));
       } else {
-        timestamps = data.length ? data : label;
+        timestamps = data2.length ? data2 : label;
       }
       timestamps = this._cache.all = timestamps;
       return timestamps;
@@ -18658,7 +21940,7 @@
       "diff": "!"
     };
     Object.keys(PREFIXES).forEach(function(name) {
-      var prefix = PREFIXES[name];
+      var prefix2 = PREFIXES[name];
       var alias = [];
       if (!/^\w+$/.test(name)) {
         alias.push(/\w+/.exec(name)[0]);
@@ -18667,7 +21949,7 @@
         alias.push("bold");
       }
       Prism3.languages.diff[name] = {
-        pattern: RegExp("^(?:[" + prefix + "].*(?:\r\n?|\n|(?![\\s\\S])))+", "m"),
+        pattern: RegExp("^(?:[" + prefix2 + "].*(?:\r\n?|\n|(?![\\s\\S])))+", "m"),
         alias,
         inside: {
           "line": {
@@ -18762,10 +22044,10 @@
       return construct(Func, args);
     };
   }
-  function addToSet(set2, array) {
+  function addToSet(set4, array) {
     let transformCaseFunc = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : stringToLowerCase;
     if (setPrototypeOf) {
-      setPrototypeOf(set2, null);
+      setPrototypeOf(set4, null);
     }
     let l4 = array.length;
     while (l4--) {
@@ -18779,9 +22061,9 @@
           element = lcElement;
         }
       }
-      set2[element] = true;
+      set4[element] = true;
     }
-    return set2;
+    return set4;
   }
   function cleanArray(array) {
     for (let index2 = 0; index2 < array.length; index2++) {
@@ -18792,7 +22074,7 @@
     }
     return array;
   }
-  function clone3(object) {
+  function clone4(object) {
     const newObject = create(null);
     for (const [property, value] of entries(object)) {
       const isPropertyExist = objectHasOwnProperty(object, property);
@@ -18800,7 +22082,7 @@
         if (Array.isArray(value)) {
           newObject[property] = cleanArray(value);
         } else if (value && typeof value === "object" && value.constructor === Object) {
-          newObject[property] = clone3(value);
+          newObject[property] = clone4(value);
         } else {
           newObject[property] = value;
         }
@@ -18949,7 +22231,7 @@
       trustedTypes
     } = window2;
     const ElementPrototype = Element3.prototype;
-    const cloneNode = lookupGetter(ElementPrototype, "cloneNode");
+    const cloneNode2 = lookupGetter(ElementPrototype, "cloneNode");
     const remove = lookupGetter(ElementPrototype, "remove");
     const getNextSibling2 = lookupGetter(ElementPrototype, "nextSibling");
     const getChildNodes = lookupGetter(ElementPrototype, "childNodes");
@@ -19077,18 +22359,18 @@
       if (!cfg || typeof cfg !== "object") {
         cfg = {};
       }
-      cfg = clone3(cfg);
+      cfg = clone4(cfg);
       PARSER_MEDIA_TYPE = // eslint-disable-next-line unicorn/prefer-includes
       SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
       transformCaseFunc = PARSER_MEDIA_TYPE === "application/xhtml+xml" ? stringToString : stringToLowerCase;
       ALLOWED_TAGS = objectHasOwnProperty(cfg, "ALLOWED_TAGS") ? addToSet({}, cfg.ALLOWED_TAGS, transformCaseFunc) : DEFAULT_ALLOWED_TAGS;
       ALLOWED_ATTR = objectHasOwnProperty(cfg, "ALLOWED_ATTR") ? addToSet({}, cfg.ALLOWED_ATTR, transformCaseFunc) : DEFAULT_ALLOWED_ATTR;
       ALLOWED_NAMESPACES = objectHasOwnProperty(cfg, "ALLOWED_NAMESPACES") ? addToSet({}, cfg.ALLOWED_NAMESPACES, stringToString) : DEFAULT_ALLOWED_NAMESPACES;
-      URI_SAFE_ATTRIBUTES = objectHasOwnProperty(cfg, "ADD_URI_SAFE_ATTR") ? addToSet(clone3(DEFAULT_URI_SAFE_ATTRIBUTES), cfg.ADD_URI_SAFE_ATTR, transformCaseFunc) : DEFAULT_URI_SAFE_ATTRIBUTES;
-      DATA_URI_TAGS = objectHasOwnProperty(cfg, "ADD_DATA_URI_TAGS") ? addToSet(clone3(DEFAULT_DATA_URI_TAGS), cfg.ADD_DATA_URI_TAGS, transformCaseFunc) : DEFAULT_DATA_URI_TAGS;
+      URI_SAFE_ATTRIBUTES = objectHasOwnProperty(cfg, "ADD_URI_SAFE_ATTR") ? addToSet(clone4(DEFAULT_URI_SAFE_ATTRIBUTES), cfg.ADD_URI_SAFE_ATTR, transformCaseFunc) : DEFAULT_URI_SAFE_ATTRIBUTES;
+      DATA_URI_TAGS = objectHasOwnProperty(cfg, "ADD_DATA_URI_TAGS") ? addToSet(clone4(DEFAULT_DATA_URI_TAGS), cfg.ADD_DATA_URI_TAGS, transformCaseFunc) : DEFAULT_DATA_URI_TAGS;
       FORBID_CONTENTS = objectHasOwnProperty(cfg, "FORBID_CONTENTS") ? addToSet({}, cfg.FORBID_CONTENTS, transformCaseFunc) : DEFAULT_FORBID_CONTENTS;
-      FORBID_TAGS = objectHasOwnProperty(cfg, "FORBID_TAGS") ? addToSet({}, cfg.FORBID_TAGS, transformCaseFunc) : clone3({});
-      FORBID_ATTR = objectHasOwnProperty(cfg, "FORBID_ATTR") ? addToSet({}, cfg.FORBID_ATTR, transformCaseFunc) : clone3({});
+      FORBID_TAGS = objectHasOwnProperty(cfg, "FORBID_TAGS") ? addToSet({}, cfg.FORBID_TAGS, transformCaseFunc) : clone4({});
+      FORBID_ATTR = objectHasOwnProperty(cfg, "FORBID_ATTR") ? addToSet({}, cfg.FORBID_ATTR, transformCaseFunc) : clone4({});
       USE_PROFILES = objectHasOwnProperty(cfg, "USE_PROFILES") ? cfg.USE_PROFILES : false;
       ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
       ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
@@ -19153,7 +22435,7 @@
           EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
         } else {
           if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) {
-            ALLOWED_TAGS = clone3(ALLOWED_TAGS);
+            ALLOWED_TAGS = clone4(ALLOWED_TAGS);
           }
           addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
         }
@@ -19163,7 +22445,7 @@
           EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
         } else {
           if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) {
-            ALLOWED_ATTR = clone3(ALLOWED_ATTR);
+            ALLOWED_ATTR = clone4(ALLOWED_ATTR);
           }
           addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
         }
@@ -19173,13 +22455,13 @@
       }
       if (cfg.FORBID_CONTENTS) {
         if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
-          FORBID_CONTENTS = clone3(FORBID_CONTENTS);
+          FORBID_CONTENTS = clone4(FORBID_CONTENTS);
         }
         addToSet(FORBID_CONTENTS, cfg.FORBID_CONTENTS, transformCaseFunc);
       }
       if (cfg.ADD_FORBID_CONTENTS) {
         if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
-          FORBID_CONTENTS = clone3(FORBID_CONTENTS);
+          FORBID_CONTENTS = clone4(FORBID_CONTENTS);
         }
         addToSet(FORBID_CONTENTS, cfg.ADD_FORBID_CONTENTS, transformCaseFunc);
       }
@@ -19349,9 +22631,9 @@
     const _isNode = function _isNode2(value) {
       return typeof Node2 === "function" && value instanceof Node2;
     };
-    function _executeHooks(hooks2, currentNode, data) {
+    function _executeHooks(hooks2, currentNode, data2) {
       arrayForEach(hooks2, (hook) => {
-        hook.call(DOMPurify, currentNode, data, CONFIG);
+        hook.call(DOMPurify, currentNode, data2, CONFIG);
       });
     }
     const _sanitizeElements = function _sanitizeElements2(currentNode) {
@@ -19393,7 +22675,7 @@
           if (childNodes && parentNode) {
             const childCount = childNodes.length;
             for (let i2 = childCount - 1; i2 >= 0; --i2) {
-              const childClone = cloneNode(childNodes[i2], true);
+              const childClone = cloneNode2(childNodes[i2], true);
               childClone.__removalCount = (currentNode.__removalCount || 0) + 1;
               parentNode.insertBefore(childClone, getNextSibling2(currentNode));
             }
@@ -20181,7 +23463,7 @@
       }
     }
   }
-  function flushMutations(editor, mutations, observer) {
+  function flushMutations(editor, mutations, observer2) {
     isProcessingMutations = true;
     const shouldFlushTextMutations = performance.now() - lastTextEntryTimeStamp > TEXT_MUTATION_VARIANCE;
     try {
@@ -20250,7 +23532,7 @@
             targetNode.reconcileObservedMutation(nodeDOM, editor);
           }
         }
-        const records = observer.takeRecords();
+        const records = observer2.takeRecords();
         if (records.length > 0) {
           for (let i2 = 0; i2 < records.length; i2++) {
             const record = records[i2];
@@ -20264,7 +23546,7 @@
               }
             }
           }
-          observer.takeRecords();
+          observer2.takeRecords();
         }
         if (selection !== null) {
           if (shouldRevertSelection) {
@@ -20280,16 +23562,16 @@
     }
   }
   function flushRootMutations(editor) {
-    const observer = editor._observer;
-    if (observer !== null) {
-      const mutations = observer.takeRecords();
-      flushMutations(editor, mutations, observer);
+    const observer2 = editor._observer;
+    if (observer2 !== null) {
+      const mutations = observer2.takeRecords();
+      flushMutations(editor, mutations, observer2);
     }
   }
   function initMutationObserver(editor) {
     initTextEntryListener(editor);
-    editor._observer = new MutationObserver((mutations, observer) => {
-      flushMutations(editor, mutations, observer);
+    editor._observer = new MutationObserver((mutations, observer2) => {
+      flushMutations(editor, mutations, observer2);
     });
   }
   var StateConfig = class {
@@ -20453,7 +23735,7 @@
     /**
      * @internal
      */
-    constructor(node, sharedNodeState, unknownState = void 0, knownState = /* @__PURE__ */ new Map(), size = void 0) {
+    constructor(node, sharedNodeState, unknownState = void 0, knownState = /* @__PURE__ */ new Map(), size2 = void 0) {
       this.node = node;
       this.sharedNodeState = sharedNodeState;
       this.unknownState = unknownState;
@@ -20461,10 +23743,10 @@
       const {
         sharedConfigMap
       } = this.sharedNodeState;
-      const computedSize = size !== void 0 ? size : computeSize(sharedConfigMap, unknownState, knownState);
+      const computedSize = size2 !== void 0 ? size2 : computeSize(sharedConfigMap, unknownState, knownState);
       {
-        if (!(size === void 0 || computedSize === size)) {
-          formatDevErrorMessage(`NodeState: size != computedSize (${String(size)} != ${String(computedSize)})`);
+        if (!(size2 === void 0 || computedSize === size2)) {
+          formatDevErrorMessage(`NodeState: size != computedSize (${String(size2)} != ${String(computedSize)})`);
         }
         for (const stateConfig of knownState.keys()) {
           if (!sharedConfigMap.has(stateConfig.key)) {
@@ -20675,16 +23957,16 @@
     return !(a2 && hasUnequalMapEntry(keys, a2, b3) || b3 && hasUnequalMapEntry(keys, b3, a2) || a2 && hasUnequalRecordEntry(keys, a2, b3) || b3 && hasUnequalRecordEntry(keys, b3, a2));
   }
   function computeSize(sharedConfigMap, unknownState, knownState) {
-    let size = knownState.size;
+    let size2 = knownState.size;
     if (unknownState) {
       for (const k2 in unknownState) {
         const sharedConfig = sharedConfigMap.get(k2);
         if (!sharedConfig || !knownState.has(sharedConfig)) {
-          size++;
+          size2++;
         }
       }
     }
-    return size;
+    return size2;
   }
   function undefinedIfEmpty(obj) {
     if (obj) {
@@ -21074,12 +24356,12 @@
         const replacementDOM = $createNode(nextFirstChildKey, null);
         try {
           dom.replaceChild(replacementDOM, lastDOM);
-        } catch (error) {
-          if (typeof error === "object" && error != null) {
-            const msg = `${error.toString()} Parent: ${dom.tagName}, new child: {tag: ${replacementDOM.tagName} key: ${nextFirstChildKey}}, old child: {tag: ${lastDOM.tagName}, key: ${prevFirstChildKey}}.`;
+        } catch (error2) {
+          if (typeof error2 === "object" && error2 != null) {
+            const msg = `${error2.toString()} Parent: ${dom.tagName}, new child: {tag: ${replacementDOM.tagName} key: ${nextFirstChildKey}}, old child: {tag: ${lastDOM.tagName}, key: ${prevFirstChildKey}}.`;
             throw new Error(msg);
           } else {
-            throw error;
+            throw error2;
           }
         }
         destroyNode(prevFirstChildKey, null);
@@ -21700,7 +24982,7 @@
       if (!$isRangeSelection(selection)) {
         return;
       }
-      const data = event.data;
+      const data2 = event.data;
       if (unprocessedBeforeInputData !== null) {
         $updateSelectedTextFromDOM(false, editor, unprocessedBeforeInputData);
       }
@@ -21713,21 +24995,21 @@
       const anchorNode = anchor.getNode();
       const focusNode = focus.getNode();
       if (inputType === "insertText" || inputType === "insertTranspose") {
-        if (data === "\n") {
+        if (data2 === "\n") {
           event.preventDefault();
           dispatchCommand(editor, INSERT_LINE_BREAK_COMMAND, false);
-        } else if (data === DOUBLE_LINE_BREAK) {
+        } else if (data2 === DOUBLE_LINE_BREAK) {
           event.preventDefault();
           dispatchCommand(editor, INSERT_PARAGRAPH_COMMAND, void 0);
-        } else if (data == null && event.dataTransfer) {
+        } else if (data2 == null && event.dataTransfer) {
           const text2 = event.dataTransfer.getData("text/plain");
           event.preventDefault();
           selection.insertRawText(text2);
-        } else if (data != null && $shouldPreventDefaultAndInsertText(selection, targetRange, data, event.timeStamp, true)) {
+        } else if (data2 != null && $shouldPreventDefaultAndInsertText(selection, targetRange, data2, event.timeStamp, true)) {
           event.preventDefault();
-          dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data);
+          dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data2);
         } else {
-          unprocessedBeforeInputData = data;
+          unprocessedBeforeInputData = data2;
         }
         lastBeforeInputInsertTextTimeStamp = event.timeStamp;
         return;
@@ -21833,11 +25115,11 @@
         return;
       }
       const selection = $getSelection();
-      const data = event.data;
+      const data2 = event.data;
       const targetRange = getTargetRange(event);
-      if (data != null && $isRangeSelection(selection) && $shouldPreventDefaultAndInsertText(selection, targetRange, data, event.timeStamp, false)) {
+      if (data2 != null && $isRangeSelection(selection) && $shouldPreventDefaultAndInsertText(selection, targetRange, data2, event.timeStamp, false)) {
         if (isFirefoxEndingComposition) {
-          $onCompositionEndImpl(editor, data);
+          $onCompositionEndImpl(editor, data2);
           isFirefoxEndingComposition = false;
         }
         const anchor = selection.anchor;
@@ -21849,10 +25131,10 @@
         const isBackward = selection.isBackward();
         const startOffset = isBackward ? selection.anchor.offset : selection.focus.offset;
         const endOffset = isBackward ? selection.focus.offset : selection.anchor.offset;
-        if (!CAN_USE_BEFORE_INPUT || selection.isCollapsed() || !$isTextNode(anchorNode) || domSelection.anchorNode === null || anchorNode.getTextContent().slice(0, startOffset) + data + anchorNode.getTextContent().slice(startOffset + endOffset) !== getAnchorTextFromDOM(domSelection.anchorNode)) {
-          dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data);
+        if (!CAN_USE_BEFORE_INPUT || selection.isCollapsed() || !$isTextNode(anchorNode) || domSelection.anchorNode === null || anchorNode.getTextContent().slice(0, startOffset) + data2 + anchorNode.getTextContent().slice(startOffset + endOffset) !== getAnchorTextFromDOM(domSelection.anchorNode)) {
+          dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data2);
         }
-        const textLength = data.length;
+        const textLength = data2.length;
         if (IS_FIREFOX && textLength > 1 && event.inputType === "insertCompositionText" && !editor.isComposing()) {
           selection.anchor.offset -= textLength;
         }
@@ -21861,10 +25143,10 @@
           $setCompositionKey(null);
         }
       } else {
-        const characterData = data !== null ? data : void 0;
+        const characterData = data2 !== null ? data2 : void 0;
         $updateSelectedTextFromDOM(false, editor, characterData);
         if (isFirefoxEndingComposition) {
-          $onCompositionEndImpl(editor, data || void 0);
+          $onCompositionEndImpl(editor, data2 || void 0);
           isFirefoxEndingComposition = false;
         }
       }
@@ -21894,11 +25176,11 @@
       }
     });
   }
-  function $onCompositionEndImpl(editor, data) {
+  function $onCompositionEndImpl(editor, data2) {
     const compositionKey = editor._compositionKey;
     $setCompositionKey(null);
-    if (compositionKey !== null && data != null) {
-      if (data === "") {
+    if (compositionKey !== null && data2 != null) {
+      if (data2 === "") {
         const node = $getNodeByKey(compositionKey);
         const textNode = getDOMTextNode(editor.getElementByKey(compositionKey));
         if (textNode !== null && textNode.nodeValue !== null && $isTextNode(node)) {
@@ -21906,7 +25188,7 @@
         }
         return;
       }
-      if (data[data.length - 1] === "\n") {
+      if (data2[data2.length - 1] === "\n") {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
           const focus = selection.focus;
@@ -21916,7 +25198,7 @@
         }
       }
     }
-    $updateSelectedTextFromDOM(true, editor, data);
+    $updateSelectedTextFromDOM(true, editor, data2);
   }
   function onCompositionEnd(event, editor) {
     if (IS_FIREFOX) {
@@ -22981,7 +26263,7 @@
       const key = replaceWith.__key;
       const writableReplaceWith = replaceWith.getWritable();
       const writableParent = this.getParentOrThrow().getWritable();
-      const size = writableParent.__size;
+      const size2 = writableParent.__size;
       removeFromParent(writableReplaceWith);
       const prevSibling = self2.getPreviousSibling();
       const nextSibling = self2.getNextSibling();
@@ -23004,7 +26286,7 @@
       }
       writableReplaceWith.__next = nextKey;
       writableReplaceWith.__parent = parentKey;
-      writableParent.__size = size;
+      writableParent.__size = size2;
       if (includeChildren) {
         if (!($isElementNode(this) && $isElementNode(writableReplaceWith))) {
           formatDevErrorMessage(`includeChildren should only be true for ElementNodes`);
@@ -23940,8 +27222,8 @@
       return this.select(0, 0);
     }
     selectEnd() {
-      const size = this.getTextContentSize();
-      return this.select(size, size);
+      const size2 = this.getTextContentSize();
+      return this.select(size2, size2);
     }
     /**
      * Inserts the provided text into this TextNode at the provided offset, deleting the number of characters
@@ -24016,11 +27298,11 @@
       splitOffsets.push(textLength);
       const parts = [];
       const splitOffsetsLength = splitOffsets.length;
-      for (let start2 = 0, offsetIndex = 0; start2 < textLength && offsetIndex <= splitOffsetsLength; offsetIndex++) {
+      for (let start3 = 0, offsetIndex = 0; start3 < textLength && offsetIndex <= splitOffsetsLength; offsetIndex++) {
         const end = splitOffsets[offsetIndex];
-        if (end > start2) {
-          parts.push(textContent.slice(start2, end));
-          start2 = end;
+        if (end > start3) {
+          parts.push(textContent.slice(start3, end));
+          start3 = end;
         }
       }
       const partsLength = parts.length;
@@ -24530,9 +27812,9 @@
       selectPointOnNode(point, node);
     }
   }
-  function $transferStartingElementPointToTextPoint(start2, end, format, style) {
-    const element = start2.getNode();
-    const placementNode = element.getChildAtIndex(start2.offset);
+  function $transferStartingElementPointToTextPoint(start3, end, format, style) {
+    const element = start3.getNode();
+    const placementNode = element.getChildAtIndex(start3.offset);
     const textNode = $createTextNode();
     textNode.setFormat(format);
     textNode.setStyle(style);
@@ -24546,10 +27828,10 @@
         placementNode.insertBefore(target);
       }
     }
-    if (start2.is(end)) {
+    if (start3.is(end)) {
       end.set(textNode.__key, 0, "text");
     }
-    start2.set(textNode.__key, 0, "text");
+    start3.set(textNode.__key, 0, "text");
   }
   var NodeSelection = class _NodeSelection {
     _nodes;
@@ -26037,17 +29319,17 @@
       if (!$isTextNode(node)) {
         formatDevErrorMessage(`$validatePoint: ${name} key ${point.key} is not a TextNode`);
       }
-      const size = node.getTextContentSize();
-      if (!(point.offset <= size)) {
-        formatDevErrorMessage(`$validatePoint: ${name} point.offset > node.getTextContentSize() (${String(point.offset)} > ${String(size)})`);
+      const size2 = node.getTextContentSize();
+      if (!(point.offset <= size2)) {
+        formatDevErrorMessage(`$validatePoint: ${name} point.offset > node.getTextContentSize() (${String(point.offset)} > ${String(size2)})`);
       }
     } else {
       if (!$isElementNode(node)) {
         formatDevErrorMessage(`$validatePoint: ${name} key ${point.key} is not an ElementNode`);
       }
-      const size = node.getChildrenSize();
-      if (!(point.offset <= size)) {
-        formatDevErrorMessage(`$validatePoint: ${name} point.offset > node.getChildrenSize() (${String(point.offset)} > ${String(size)})`);
+      const size2 = node.getChildrenSize();
+      if (!(point.offset <= size2)) {
+        formatDevErrorMessage(`$validatePoint: ${name} point.offset > node.getChildrenSize() (${String(point.offset)} > ${String(size2)})`);
       }
     }
   }
@@ -26209,9 +29491,9 @@
   function setDOMSelectionBaseAndExtent(domSelection, nextAnchorDOM, nextAnchorOffset, nextFocusDOM, nextFocusOffset) {
     try {
       domSelection.setBaseAndExtent(nextAnchorDOM, nextAnchorOffset, nextFocusDOM, nextFocusOffset);
-    } catch (error) {
+    } catch (error2) {
       {
-        console.warn(error);
+        console.warn(error2);
       }
     }
   }
@@ -26725,9 +30007,9 @@
       {
         handleDEVOnlyPendingUpdateGuarantees(editorState);
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        editor._onError(error);
+    } catch (error2) {
+      if (error2 instanceof Error) {
+        editor._onError(error2);
       }
     } finally {
       editor._dirtyElements = previousDirtyElements;
@@ -26782,11 +30064,11 @@
     const previousReadOnlyMode = isReadOnlyMode;
     const previousActiveEditor = activeEditor;
     const previouslyUpdating = editor._updating;
-    const observer = editor._observer;
+    const observer2 = editor._observer;
     let mutatedNodes2 = null;
     editor._pendingEditorState = null;
     editor._editorState = pendingEditorState;
-    if (!shouldSkipDOM && needsUpdate && observer !== null) {
+    if (!shouldSkipDOM && needsUpdate && observer2 !== null) {
       activeEditor = editor;
       activeEditorState = pendingEditorState;
       isReadOnlyMode = false;
@@ -26795,11 +30077,11 @@
         const dirtyType = editor._dirtyType;
         const dirtyElements2 = editor._dirtyElements;
         const dirtyLeaves2 = editor._dirtyLeaves;
-        observer.disconnect();
+        observer2.disconnect();
         mutatedNodes2 = $reconcileRoot(currentEditorState, pendingEditorState, editor, dirtyType, dirtyElements2, dirtyLeaves2);
-      } catch (error) {
-        if (error instanceof Error) {
-          editor._onError(error);
+      } catch (error2) {
+        if (error2 instanceof Error) {
+          editor._onError(error2);
         }
         if (!isAttemptingToRecoverFromReconcilerError) {
           resetEditor(editor, null, rootElement, pendingEditorState);
@@ -26809,11 +30091,11 @@
           $commitPendingUpdates(editor, currentEditorState);
           isAttemptingToRecoverFromReconcilerError = false;
         } else {
-          throw error;
+          throw error2;
         }
         return;
       } finally {
-        observer.observe(rootElement, observerOptions);
+        observer2.observe(rootElement, observerOptions);
         editor._updating = previouslyUpdating;
         activeEditorState = previousActiveEditorState;
         isReadOnlyMode = previousReadOnlyMode;
@@ -26851,8 +30133,8 @@
       activeEditor = editor;
       activeEditorState = pendingEditorState;
       try {
-        if (observer !== null) {
-          observer.disconnect();
+        if (observer2 !== null) {
+          observer2.disconnect();
         }
         if (needsUpdate || pendingSelection === null || pendingSelection.dirty) {
           const blockCursorElement = editor._blockCursorElement;
@@ -26863,8 +30145,8 @@
         }
         updateDOMBlockCursorElement(editor, rootElement, pendingSelection);
       } finally {
-        if (observer !== null) {
-          observer.observe(rootElement, observerOptions);
+        if (observer2 !== null) {
+          observer2.observe(rootElement, observerOptions);
         }
         activeEditor = previousActiveEditor;
         activeEditorState = previousActiveEditorState;
@@ -27093,9 +30375,9 @@
           pendingEditorState._selection = null;
         }
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        editor._onError(error);
+    } catch (error2) {
+      if (error2 instanceof Error) {
+        editor._onError(error2);
       }
       editor._pendingEditorState = currentEditorState;
       editor._dirtyType = FULL_RECONCILE;
@@ -27496,10 +30778,10 @@
       return lastChild;
     }
     getChildAtIndex(index2) {
-      const size = this.getChildrenSize();
+      const size2 = this.getChildrenSize();
       let node;
       let i2;
-      if (index2 < size / 2) {
+      if (index2 < size2 / 2) {
         node = this.getFirstChild();
         i2 = 0;
         while (node !== null && i2 <= index2) {
@@ -27512,7 +30794,7 @@
         return null;
       }
       node = this.getLastChild();
-      i2 = size - 1;
+      i2 = size2 - 1;
       while (node !== null && i2 >= index2) {
         if (i2 === index2) {
           return node;
@@ -27664,26 +30946,26 @@
       self2.__indent = indentLevel;
       return this;
     }
-    splice(start2, deleteCount, nodesToInsert) {
+    splice(start3, deleteCount, nodesToInsert) {
       if (!!$isEphemeral(this)) {
         formatDevErrorMessage(`ElementNode.splice: Ephemeral nodes can not mutate their children (key ${this.__key} type ${this.__type})`);
       }
       const oldSize = this.getChildrenSize();
       const writableSelf = this.getWritable();
-      if (!(start2 + deleteCount <= oldSize)) {
-        formatDevErrorMessage(`ElementNode.splice: start + deleteCount > oldSize (${String(start2)} + ${String(deleteCount)} > ${String(oldSize)})`);
+      if (!(start3 + deleteCount <= oldSize)) {
+        formatDevErrorMessage(`ElementNode.splice: start + deleteCount > oldSize (${String(start3)} + ${String(deleteCount)} > ${String(oldSize)})`);
       }
       const writableSelfKey = writableSelf.__key;
       const nodesToInsertKeys = [];
       const nodesToRemoveKeys = [];
-      const nodeAfterRange = this.getChildAtIndex(start2 + deleteCount);
+      const nodeAfterRange = this.getChildAtIndex(start3 + deleteCount);
       let nodeBeforeRange = null;
       let newSize = oldSize - deleteCount + nodesToInsert.length;
-      if (start2 !== 0) {
-        if (start2 === oldSize) {
+      if (start3 !== 0) {
+        if (start3 === oldSize) {
           nodeBeforeRange = this.getLastChild();
         } else {
-          const node = this.getChildAtIndex(start2);
+          const node = this.getChildAtIndex(start3);
           if (node !== null) {
             nodeBeforeRange = node.getPreviousSibling();
           }
@@ -27733,7 +31015,7 @@
         nodesToInsertKeys.push(nodeKeyToInsert);
         prevNode = nodeToInsert;
       }
-      if (start2 + deleteCount === oldSize) {
+      if (start3 + deleteCount === oldSize) {
         if (prevNode !== null) {
           const writablePrevNode = prevNode.getWritable();
           writablePrevNode.__next = null;
@@ -28006,13 +31288,13 @@
       return false;
     }
     // Mutate
-    splice(start2, deleteCount, nodesToInsert) {
+    splice(start3, deleteCount, nodesToInsert) {
       for (const node of nodesToInsert) {
         if (!($isElementNode(node) || $isDecoratorNode(node))) {
           formatDevErrorMessage(`rootNode.splice: Only element or decorator nodes can be inserted to the root node`);
         }
       }
-      return super.splice(start2, deleteCount, nodesToInsert);
+      return super.splice(start3, deleteCount, nodesToInsert);
     }
     static importJSON(serializedNode) {
       return $getRoot().updateFromJSON(serializedNode);
@@ -28233,9 +31515,9 @@
     editor._updateTags = /* @__PURE__ */ new Set();
     editor._updates = [];
     editor._blockCursorElement = null;
-    const observer = editor._observer;
-    if (observer !== null) {
-      observer.disconnect();
+    const observer2 = editor._observer;
+    if (observer2 !== null) {
+      observer2.disconnect();
       editor._observer = null;
     }
     if (prevRootElement !== null) {
@@ -29416,7 +32698,7 @@
   function getAnchorTextFromDOM(anchorNode) {
     return isDOMTextNode(anchorNode) ? anchorNode.nodeValue : null;
   }
-  function $updateSelectedTextFromDOM(isCompositionEnd, editor, data) {
+  function $updateSelectedTextFromDOM(isCompositionEnd, editor, data2) {
     const domSelection = getDOMSelection(getWindow(editor));
     if (domSelection === null) {
       return;
@@ -29430,9 +32712,9 @@
       let textContent = getAnchorTextFromDOM(anchorNode);
       const node = $getNearestNodeFromDOMNode(anchorNode);
       if (textContent !== null && $isTextNode(node)) {
-        if (textContent === COMPOSITION_SUFFIX && data) {
-          const offset = data.length;
-          textContent = data;
+        if (textContent === COMPOSITION_SUFFIX && data2) {
+          const offset = data2.length;
+          textContent = data2;
           anchorOffset = offset;
           focusOffset = offset;
         }
@@ -30183,14 +33465,14 @@
     const el = elementDom;
     return el.__lexicalUnmanaged === true;
   }
-  function hasOwn(o2, k2) {
+  function hasOwn2(o2, k2) {
     return Object.prototype.hasOwnProperty.call(o2, k2);
   }
   function hasOwnStaticMethod(klass, k2) {
-    return hasOwn(klass, k2) && klass[k2] !== LexicalNode[k2];
+    return hasOwn2(klass, k2) && klass[k2] !== LexicalNode[k2];
   }
   function hasOwnExportDOM(klass) {
-    return hasOwn(klass.prototype, "exportDOM");
+    return hasOwn2(klass.prototype, "exportDOM");
   }
   function isAbstractNodeClass(klass) {
     if (!(klass === LexicalNode || klass.prototype instanceof LexicalNode)) {
@@ -30555,13 +33837,13 @@
     return origin ? new TEXT_CTOR[direction](origin, $getTextNodeOffset(origin, offset)) : null;
   }
   function $getTextNodeOffset(origin, offset, mode = "error") {
-    const size = origin.getTextContentSize();
-    let numericOffset = offset === "next" ? size : offset === "previous" ? 0 : offset;
-    if (numericOffset < 0 || numericOffset > size) {
+    const size2 = origin.getTextContentSize();
+    let numericOffset = offset === "next" ? size2 : offset === "previous" ? 0 : offset;
+    if (numericOffset < 0 || numericOffset > size2) {
       if (!(mode === "clamp")) {
-        formatDevErrorMessage(`$getTextNodeOffset: invalid offset ${String(offset)} for size ${String(size)} at key ${origin.getKey()}`);
+        formatDevErrorMessage(`$getTextNodeOffset: invalid offset ${String(offset)} for size ${String(size2)} at key ${origin.getKey()}`);
       }
-      numericOffset = numericOffset < 0 ? 0 : size;
+      numericOffset = numericOffset < 0 ? 0 : size2;
     }
     return numericOffset;
   }
@@ -32279,7 +35561,7 @@
   function mlcPositionNodeOnRange(editor, range2, onReposition) {
     let rootDOMNode = null;
     let parentDOMNode = null;
-    let observer = null;
+    let observer2 = null;
     let lastNodes = [];
     const wrapperNode = document.createElement("div");
     wrapperNode.style.position = "relative";
@@ -32340,13 +35622,13 @@
         onReposition(lastNodes);
       }
     }
-    function stop() {
+    function stop2() {
       parentDOMNode = null;
       rootDOMNode = null;
-      if (observer !== null) {
-        observer.disconnect();
+      if (observer2 !== null) {
+        observer2.disconnect();
       }
-      observer = null;
+      observer2 = null;
       wrapperNode.remove();
       for (const node of lastNodes) {
         node.remove();
@@ -32356,16 +35638,16 @@
     function restart() {
       const currentRootDOMNode = editor.getRootElement();
       if (currentRootDOMNode === null) {
-        return stop();
+        return stop2();
       }
       const currentParentDOMNode = currentRootDOMNode.parentElement;
       if (!isHTMLElement2(currentParentDOMNode)) {
-        return stop();
+        return stop2();
       }
-      stop();
+      stop2();
       rootDOMNode = currentRootDOMNode;
       parentDOMNode = currentParentDOMNode;
-      observer = new MutationObserver((mutations) => {
+      observer2 = new MutationObserver((mutations) => {
         const nextRootDOMNode = editor.getRootElement();
         const nextParentDOMNode = nextRootDOMNode && nextRootDOMNode.parentElement;
         if (nextRootDOMNode !== rootDOMNode || nextParentDOMNode !== parentDOMNode) {
@@ -32377,13 +35659,13 @@
           }
         }
       });
-      observer.observe(currentParentDOMNode, mutationObserverConfig);
+      observer2.observe(currentParentDOMNode, mutationObserverConfig);
       position();
     }
     const removeRootListener = editor.registerRootListener(restart);
     return () => {
       removeRootListener();
-      stop();
+      stop2();
     };
   }
   function $getOrderedSelectionPoints(selection) {
@@ -32399,10 +35681,10 @@
       return [slot.element, slot.getFirstChildOffset() + point.offset];
     }
   }
-  function rangeFromPoints(editor, start2, startNode, startDOM, end, endNode, endDOM) {
+  function rangeFromPoints(editor, start3, startNode, startDOM, end, endNode, endDOM) {
     const editorDocument = editor._window ? editor._window.document : document;
     const range2 = editorDocument.createRange();
-    range2.setStart(...rangeTargetFromPoint(start2, startNode, startDOM));
+    range2.setStart(...rangeTargetFromPoint(start3, startNode, startDOM));
     range2.setEnd(...rangeTargetFromPoint(end, endNode, endDOM));
     return range2;
   }
@@ -32428,10 +35710,10 @@
           };
           return;
         }
-        const [start2, end] = $getOrderedSelectionPoints(selection);
-        const currentStartNode = start2.getNode();
+        const [start3, end] = $getOrderedSelectionPoints(selection);
+        const currentStartNode = start3.getNode();
         const currentStartNodeKey = currentStartNode.getKey();
-        const currentStartOffset = start2.offset;
+        const currentStartOffset = start3.offset;
         const currentEndNode = end.getNode();
         const currentEndNodeKey = currentEndNode.getKey();
         const currentEndOffset = end.offset;
@@ -32440,7 +35722,7 @@
         const differentStartDOM = previousAnchorNode === null || currentStartNodeDOM !== previousAnchorNodeDOM || currentStartOffset !== previousAnchorOffset || currentStartNodeKey !== previousAnchorNode.getKey();
         const differentEndDOM = previousFocusNode === null || currentEndNodeDOM !== previousFocusNodeDOM || currentEndOffset !== previousFocusOffset || currentEndNodeKey !== previousFocusNode.getKey();
         if ((differentStartDOM || differentEndDOM) && currentStartNodeDOM !== null && currentEndNodeDOM !== null) {
-          const range2 = rangeFromPoints(editor, start2, currentStartNode, currentStartNodeDOM, end, currentEndNode, currentEndNodeDOM);
+          const range2 = rangeFromPoints(editor, start3, currentStartNode, currentStartNodeDOM, end, currentEndNode, currentEndNodeDOM);
           removeRangeListener();
           removeRangeListener = mlcPositionNodeOnRange(editor, range2, (domNodes) => {
             if (onReposition === void 0) {
@@ -32589,10 +35871,10 @@
   }
   function $dfsCaretIterator(direction, startNode, endNode) {
     const root = $getRoot2();
-    const start2 = startNode || root;
-    const startCaret = $isElementNode2(start2) ? $getChildCaret2(start2, direction) : $getSiblingCaret2(start2, direction);
-    const startDepth = $getDepth(start2);
-    const endCaret = endNode ? $getAdjacentChildCaret2($getChildCaretOrSelf2($getSiblingCaret2(endNode, direction))) : $getEndCaret(start2, direction);
+    const start3 = startNode || root;
+    const startCaret = $isElementNode2(start3) ? $getChildCaret2(start3, direction) : $getSiblingCaret2(start3, direction);
+    const startDepth = $getDepth(start3);
+    const endCaret = endNode ? $getAdjacentChildCaret2($getChildCaretOrSelf2($getSiblingCaret2(endNode, direction))) : $getEndCaret(start3, direction);
     let depth = startDepth;
     return makeStepwiseIterator2({
       hasNext: (state) => state !== null,
@@ -32655,7 +35937,7 @@
     }
     return blockNode;
   }
-  function registerNestedElementResolver(editor, targetNode, cloneNode, handleOverlap) {
+  function registerNestedElementResolver(editor, targetNode, cloneNode2, handleOverlap) {
     const $isTargetNode = (node) => {
       return node instanceof targetNode;
     };
@@ -32694,7 +35976,7 @@
           const nextSiblingsLength = nextSiblings.length;
           parent.insertAfter(child);
           if (nextSiblingsLength !== 0) {
-            const newParent = cloneNode(parent);
+            const newParent = cloneNode2(parent);
             child.insertAfter(newParent);
             for (let i2 = 0; i2 < nextSiblingsLength; i2++) {
               newParent.append(nextSiblings[i2]);
@@ -33308,8 +36590,8 @@
     const initial = {};
     for (const k2 in defaults2) {
       const v3 = opts[k2];
-      const store = d(v3 === void 0 ? defaults2[k2] : v3);
-      initial[k2] = store;
+      const store2 = d(v3 === void 0 ? defaults2[k2] : v3);
+      initial[k2] = store2;
     }
     return initial;
   }
@@ -33323,8 +36605,8 @@
     }),
     name: "@lexical/extension/AutoFocus",
     register(editor, config, state) {
-      const stores = state.getOutput();
-      return E(() => stores.disabled.value ? void 0 : editor.registerRootListener((rootElement) => {
+      const stores2 = state.getOutput();
+      return E(() => stores2.disabled.value ? void 0 : editor.registerRootListener((rootElement) => {
         editor.focus(() => {
           const activeElement = document.activeElement;
           if (rootElement !== null && (activeElement === null || !rootElement.contains(activeElement))) {
@@ -33333,7 +36615,7 @@
             });
           }
         }, {
-          defaultSelection: stores.defaultSelection.peek()
+          defaultSelection: stores2.defaultSelection.peek()
         });
       }));
     }
@@ -33582,7 +36864,7 @@
       if (!(state.id === ExtensionRepStateIds.built)) {
         formatDevErrorMessage4(`ExtensionRep: register called in state id ${String(state.id)} (expected ${String(ExtensionRepStateIds.built)} built)`);
       }
-      const cleanup = this.extension.register && this.extension.register(editor, state.config, state.registerState);
+      const cleanup2 = this.extension.register && this.extension.register(editor, state.config, state.registerState);
       this.state = applyRegisteredState(state);
       return () => {
         const afterRegistrationState = this.state;
@@ -33590,8 +36872,8 @@
           formatDevErrorMessage4(`ExtensionRep: rollbackToBuiltState called in state id ${String(state.id)} (expected ${String(ExtensionRepStateIds.afterRegistration)} afterRegistration)`);
         }
         this.state = rollbackToBuiltState(afterRegistrationState);
-        if (cleanup) {
-          cleanup();
+        if (cleanup2) {
+          cleanup2();
         }
       };
     }
@@ -33971,15 +37253,15 @@
       const cleanups = [() => controller.abort()];
       const signal2 = controller.signal;
       for (const extensionRep of extensionReps) {
-        const cleanup = extensionRep.register(editor, signal2);
-        if (cleanup) {
-          cleanups.push(cleanup);
+        const cleanup2 = extensionRep.register(editor, signal2);
+        if (cleanup2) {
+          cleanups.push(cleanup2);
         }
       }
       for (const extensionRep of extensionReps) {
-        const cleanup = extensionRep.afterRegistration(editor);
-        if (cleanup) {
-          cleanups.push(cleanup);
+        const cleanup2 = extensionRep.afterRegistration(editor);
+        if (cleanup2) {
+          cleanups.push(cleanup2);
         }
       }
       return mergeRegister2(...cleanups);
@@ -34380,7 +37662,7 @@
   var configExtension3 = mod4.configExtension;
   var declarePeerDependency3 = mod4.declarePeerDependency;
   var defineExtension3 = mod4.defineExtension;
-  var effect = mod4.effect;
+  var effect3 = mod4.effect;
   var getExtensionDependencyFromEditor2 = mod4.getExtensionDependencyFromEditor;
   var getKnownTypesAndNodes2 = mod4.getKnownTypesAndNodes;
   var getPeerDependencyFromEditor2 = mod4.getPeerDependencyFromEditor;
@@ -35129,9 +38411,9 @@
   }
   function updateListItemChecked(dom, listItemNode, prevListItemNode) {
     const parent = listItemNode.getParent();
-    const isCheckbox = $isListNode(parent) && parent.getListType() === "check" && // Only add attributes for leaf list items
+    const isCheckbox2 = $isListNode(parent) && parent.getListType() === "check" && // Only add attributes for leaf list items
     !$isListNode(listItemNode.getFirstChild());
-    if (!isCheckbox) {
+    if (!isCheckbox2) {
       dom.removeAttribute("role");
       dom.removeAttribute("tabIndex");
       dom.removeAttribute("aria-checked");
@@ -35211,12 +38493,12 @@
         })
       });
     }
-    constructor(listType = "number", start2 = 1, key) {
+    constructor(listType = "number", start3 = 1, key) {
       super(key);
       const _listType = TAG_TO_LIST_TYPE[listType] || listType;
       this.__listType = _listType;
       this.__tag = _listType === "number" ? "ol" : "ul";
-      this.__start = start2;
+      this.__start = start3;
     }
     afterCloneFrom(prevNode) {
       super.afterCloneFrom(prevNode);
@@ -35239,9 +38521,9 @@
     getStart() {
       return this.getLatest().__start;
     }
-    setStart(start2) {
+    setStart(start3) {
       const self2 = this.getWritable();
-      self2.__start = start2;
+      self2.__start = start3;
       return self2;
     }
     // View
@@ -35293,7 +38575,7 @@
     canIndent() {
       return false;
     }
-    splice(start2, deleteCount, nodesToInsert) {
+    splice(start3, deleteCount, nodesToInsert) {
       let listItemNodesToInsert = nodesToInsert;
       for (let i2 = 0; i2 < nodesToInsert.length; i2++) {
         const node = nodesToInsert[i2];
@@ -35304,7 +38586,7 @@
           listItemNodesToInsert[i2] = $createListItemNode().append($isElementNode2(node) && !($isListNode(node) || node.isInline()) ? $createTextNode2(node.getTextContent()) : node);
         }
       }
-      return super.splice(start2, deleteCount, listItemNodesToInsert);
+      return super.splice(start3, deleteCount, listItemNodesToInsert);
     }
     extractWithChild(child) {
       return $isListItemNode(child);
@@ -35393,8 +38675,8 @@
     const nodeName = domNode.nodeName.toLowerCase();
     let node = null;
     if (nodeName === "ol") {
-      const start2 = domNode.start;
-      node = $createListNode("number", start2);
+      const start3 = domNode.start;
+      node = $createListNode("number", start3);
     } else if (nodeName === "ul") {
       if (isDomChecklist(domNode)) {
         node = $createListNode("check");
@@ -35411,8 +38693,8 @@
     ol: "number",
     ul: "bullet"
   };
-  function $createListNode(listType = "number", start2 = 1) {
-    return $applyNodeReplacement2(new ListNode(listType, start2));
+  function $createListNode(listType = "number", start3 = 1) {
+    return $applyNodeReplacement2(new ListNode(listType, start3));
   }
   function $isListNode(node) {
     return node instanceof ListNode;
@@ -35664,9 +38946,9 @@
       }
     };
     const $processListWithStrictIndent = (listNode) => {
-      const queue = [listNode];
-      while (queue.length > 0) {
-        const node = queue.shift();
+      const queue2 = [listNode];
+      while (queue2.length > 0) {
+        const node = queue2.shift();
         if (!$isListNode(node)) {
           continue;
         }
@@ -35675,7 +38957,7 @@
             $formatListIndentStrict(child);
             const firstChild = child.getFirstChild();
             if ($isListNode(firstChild)) {
-              queue.push(firstChild);
+              queue2.push(firstChild);
             }
           }
         }
@@ -35713,8 +38995,8 @@
     name: "@lexical/list/List",
     nodes: [ListNode, ListItemNode],
     register(editor, config, state) {
-      const stores = state.getOutput();
-      return mergeRegister2(registerList(editor), effect(() => stores.hasStrictIndent.value ? registerListStrictIndentTransform(editor) : void 0));
+      const stores2 = state.getOutput();
+      return mergeRegister2(registerList(editor), effect3(() => stores2.hasStrictIndent.value ? registerListStrictIndentTransform(editor) : void 0));
     }
   });
   var CheckListExtension = defineExtension2({
@@ -36035,8 +39317,8 @@
           const nodes = $generateNodesFromSerializedNodes(payload.nodes);
           return $insertGeneratedNodes(editor, nodes, selection);
         }
-      } catch (error) {
-        console.error(error);
+      } catch (error2) {
+        console.error(error2);
       }
     }
     const htmlString = dataTransfer.getData("text/html");
@@ -36047,8 +39329,8 @@
         const dom = parser.parseFromString(trustHTML(htmlString), "text/html");
         const nodes = $generateNodesFromDOM2(editor, dom);
         return $insertGeneratedNodes(editor, nodes, selection);
-      } catch (error) {
-        console.error(error);
+      } catch (error2) {
+        console.error(error2);
       }
     }
     const text2 = plainString || dataTransfer.getData("text/uri-list");
@@ -36200,14 +39482,14 @@
   }
   var EVENT_LATENCY = 50;
   var clipboardEventTimeout = null;
-  async function copyToClipboard(editor, event, data) {
+  async function copyToClipboard(editor, event, data2) {
     if (clipboardEventTimeout !== null) {
       return false;
     }
     if (event !== null) {
       return new Promise((resolve2, reject) => {
         editor.update(() => {
-          resolve2($copyToClipboardEvent(editor, event, data));
+          resolve2($copyToClipboardEvent(editor, event, data2));
         });
       });
     }
@@ -36235,7 +39517,7 @@
             editorWindow.clearTimeout(clipboardEventTimeout);
             clipboardEventTimeout = null;
           }
-          resolve2($copyToClipboardEvent(editor, secondEvent, data));
+          resolve2($copyToClipboardEvent(editor, secondEvent, data2));
         }
         return true;
       }, COMMAND_PRIORITY_CRITICAL2);
@@ -36248,8 +39530,8 @@
       element.remove();
     });
   }
-  function $copyToClipboardEvent(editor, event, data) {
-    if (data === void 0) {
+  function $copyToClipboardEvent(editor, event, data2) {
+    if (data2 === void 0) {
       const domSelection = getDOMSelection2(editor._window);
       const selection = $getSelection2();
       if (!selection || selection.isCollapsed()) {
@@ -36263,14 +39545,14 @@
       if (anchorDOM !== null && focusDOM !== null && !isSelectionWithinEditor2(editor, anchorDOM, focusDOM)) {
         return false;
       }
-      data = $getClipboardDataFromSelection(selection);
+      data2 = $getClipboardDataFromSelection(selection);
     }
     event.preventDefault();
     const clipboardData = event.clipboardData;
     if (clipboardData === null) {
       return false;
     }
-    setLexicalClipboardDataTransfer(clipboardData, data);
+    setLexicalClipboardDataTransfer(clipboardData, data2);
     return true;
   }
   var clipboardDataFunctions = [["text/html", $getHtmlContent], ["application/x-lexical-editor", $getLexicalContent]];
@@ -36289,14 +39571,14 @@
     }
     return clipboardData;
   }
-  function setLexicalClipboardDataTransfer(clipboardData, data) {
+  function setLexicalClipboardDataTransfer(clipboardData, data2) {
     for (const [k2] of clipboardDataFunctions) {
-      if (data[k2] === void 0) {
+      if (data2[k2] === void 0) {
         clipboardData.setData(k2, "");
       }
     }
-    for (const k2 in data) {
-      const v3 = data[k2];
+    for (const k2 in data2) {
+      const v3 = data2[k2];
       if (v3 !== void 0) {
         clipboardData.setData(k2, v3);
       }
@@ -36324,7 +39606,7 @@
   });
   function registerDragonSupport(editor) {
     const origin = window.location.origin;
-    const handler = (event) => {
+    const handler4 = (event) => {
       if (event.origin !== origin) {
         return;
       }
@@ -36332,11 +39614,11 @@
       if (document.activeElement !== rootElement) {
         return;
       }
-      const data = event.data;
-      if (typeof data === "string") {
+      const data2 = event.data;
+      if (typeof data2 === "string") {
         let parsedData;
         try {
-          parsedData = JSON.parse(data);
+          parsedData = JSON.parse(data2);
         } catch (_e2) {
           return;
         }
@@ -36380,9 +39662,9 @@
         }
       }
     };
-    window.addEventListener("message", handler, true);
+    window.addEventListener("message", handler4, true);
     return () => {
-      window.removeEventListener("message", handler, true);
+      window.removeEventListener("message", handler4, true);
     };
   }
   var DragonExtension = defineExtension2({
@@ -36391,7 +39673,7 @@
       disabled: typeof window === "undefined"
     }),
     name: "@lexical/dragon",
-    register: (editor, config, state) => effect(() => state.getOutput().disabled.value ? void 0 : registerDragonSupport(editor))
+    register: (editor, config, state) => effect3(() => state.getOutput().disabled.value ? void 0 : registerDragonSupport(editor))
   });
 
   // node_modules/@lexical/dragon/LexicalDragon.mjs
@@ -36832,9 +40114,9 @@
         if (dataTransfer != null) {
           $insertDataTransferForRichText2(dataTransfer, selection, editor);
         } else if ($isRangeSelection2(selection)) {
-          const data = eventOrText.data;
-          if (data) {
-            selection.insertText(data);
+          const data2 = eventOrText.data;
+          if (data2) {
+            selection.insertText(data2);
           }
           return true;
         }
@@ -38926,9 +42208,9 @@
     return $getLastMatchingCodeNode(anchor, "next");
   }
   function $getCodeLineDirection(anchor) {
-    const start2 = $getFirstCodeNodeOfLine(anchor);
+    const start3 = $getFirstCodeNodeOfLine(anchor);
     const end = $getLastCodeNodeOfLine(anchor);
-    let node = start2;
+    let node = start3;
     while (node !== null) {
       if ($isCodeHighlightNode(node)) {
         const direction = getTextDirection2(node.getTextContent());
@@ -38941,7 +42223,7 @@
       }
       node = node.getNextSibling();
     }
-    const parent = start2.getParent();
+    const parent = start3.getParent();
     if ($isElementNode2(parent)) {
       const parentDirection = parent.getDirection();
       if (parentDirection === "ltr" || parentDirection === "rtl") {
@@ -39070,7 +42352,7 @@
       "diff": "!"
     };
     Object.keys(PREFIXES).forEach(function(name) {
-      var prefix = PREFIXES[name];
+      var prefix2 = PREFIXES[name];
       var alias = [];
       if (!/^\w+$/.test(name)) {
         alias.push(/\w+/.exec(name)[0]);
@@ -39079,7 +42361,7 @@
         alias.push("bold");
       }
       Prism3.languages.diff[name] = {
-        pattern: RegExp("^(?:[" + prefix + "].*(?:\r\n?|\n|(?![\\s\\S])))+", "m"),
+        pattern: RegExp("^(?:[" + prefix2 + "].*(?:\r\n?|\n|(?![\\s\\S])))+", "m"),
         alias,
         inside: {
           "line": {
@@ -39611,19 +42893,19 @@
       }
       return false;
     }
-    let start2;
+    let start3;
     let end;
     if (anchorNode.isBefore(focusNode)) {
-      start2 = $getFirstCodeNodeOfLine(anchorNode);
+      start3 = $getFirstCodeNodeOfLine(anchorNode);
       end = $getLastCodeNodeOfLine(focusNode);
     } else {
-      start2 = $getFirstCodeNodeOfLine(focusNode);
+      start3 = $getFirstCodeNodeOfLine(focusNode);
       end = $getLastCodeNodeOfLine(anchorNode);
     }
-    if (start2 == null || end == null) {
+    if (start3 == null || end == null) {
       return false;
     }
-    const range2 = start2.getNodesBetween(end);
+    const range2 = start3.getNodesBetween(end);
     for (let i2 = 0; i2 < range2.length; i2++) {
       const node = range2[i2];
       if (!$isCodeHighlightNode(node) && !$isTabNode2(node) && !$isLineBreakNode2(node)) {
@@ -39632,7 +42914,7 @@
     }
     event.preventDefault();
     event.stopPropagation();
-    const linebreak = arrowIsUp ? start2.getPreviousSibling() : end.getNextSibling();
+    const linebreak = arrowIsUp ? start3.getPreviousSibling() : end.getNextSibling();
     if (!$isLineBreakNode2(linebreak)) {
       return true;
     }
@@ -39677,12 +42959,12 @@
     const direction = $getCodeLineDirection(focusLineNode);
     const moveToStart = direction === "rtl" ? !isMoveToStart2 : isMoveToStart2;
     if (moveToStart) {
-      const start2 = $getStartOfCodeInLine(focusLineNode, focus.offset);
-      if (start2 !== null) {
+      const start3 = $getStartOfCodeInLine(focusLineNode, focus.offset);
+      if (start3 !== null) {
         const {
           node,
           offset
-        } = start2;
+        } = start3;
         if ($isLineBreakNode2(node)) {
           node.selectNext(0, 0);
         } else {
@@ -40577,10 +43859,10 @@
     attributes: void 0,
     validateUrl: void 0
   };
-  function registerLink(editor, stores) {
-    return mergeRegister2(effect(() => editor.registerCommand(TOGGLE_LINK_COMMAND, (payload) => {
-      const validateUrl = stores.validateUrl.peek();
-      const attributes = stores.attributes.peek();
+  function registerLink(editor, stores2) {
+    return mergeRegister2(effect3(() => editor.registerCommand(TOGGLE_LINK_COMMAND, (payload) => {
+      const validateUrl = stores2.validateUrl.peek();
+      const attributes = stores2.attributes.peek();
       if (payload === null) {
         $toggleLink(null);
         return true;
@@ -40605,12 +43887,12 @@
         });
         return true;
       }
-    }, COMMAND_PRIORITY_LOW2)), effect(() => {
-      const validateUrl = stores.validateUrl.value;
+    }, COMMAND_PRIORITY_LOW2)), effect3(() => {
+      const validateUrl = stores2.validateUrl.value;
       if (!validateUrl) {
         return;
       }
-      const attributes = stores.attributes.value;
+      const attributes = stores2.attributes.value;
       return editor.registerCommand(PASTE_COMMAND2, (event) => {
         const selection = $getSelection2();
         if (!$isRangeSelection2(selection) || selection.isCollapsed() || !objectKlassEquals2(event, ClipboardEvent)) {
@@ -40663,7 +43945,7 @@
     }
     return null;
   }
-  function registerClickableLink(editor, stores, eventOptions = {}) {
+  function registerClickableLink(editor, stores2, eventOptions = {}) {
     const onClick2 = (event) => {
       const target = event.target;
       if (!isDOMNode2(target)) {
@@ -40679,7 +43961,7 @@
         const clickedNode = $getNearestNodeFromDOMNode2(target);
         if (clickedNode !== null) {
           const maybeLinkNode = $findMatchingParent3(clickedNode, $isElementNode2);
-          if (!stores.disabled.peek()) {
+          if (!stores2.disabled.peek()) {
             if ($isLinkNode(maybeLinkNode)) {
               url = maybeLinkNode.sanitizeUrl(maybeLinkNode.getURL());
               urlTarget = maybeLinkNode.getTarget();
@@ -40702,7 +43984,7 @@
         return;
       }
       const isMiddle = event.type === "auxclick" && event.button === 1;
-      window.open(url, stores.newTab.peek() || isMiddle || event.metaKey || event.ctrlKey || urlTarget === "_blank" ? "_blank" : "_self");
+      window.open(url, stores2.newTab.peek() || isMiddle || event.metaKey || event.ctrlKey || urlTarget === "_blank" ? "_blank" : "_self");
       event.preventDefault();
     };
     const onMouseUp = (event) => {
@@ -40999,8 +44281,8 @@
       changeHandlers
     } = config;
     const onChange = (url, prevUrl) => {
-      for (const handler of changeHandlers) {
-        handler(url, prevUrl);
+      for (const handler4 of changeHandlers) {
+        handler4(url, prevUrl);
       }
     };
     return mergeRegister2(editor.registerNodeTransform(TextNode2, (textNode) => {
@@ -42741,7 +46023,7 @@
       return $getTableAndElementByKey(this.tableNodeKey, this.editor);
     }
     trackTable() {
-      const observer = new MutationObserver((records) => {
+      const observer2 = new MutationObserver((records) => {
         this.editor.getEditorState().read(() => {
           let gridNeedsRedraw = false;
           for (let i2 = 0; i2 < records.length; i2++) {
@@ -42771,7 +46053,7 @@
           tableElement
         } = this.$lookup();
         this.table = getTable(tableNode, tableElement);
-        observer.observe(tableElement, {
+        observer2.observe(tableElement, {
           attributes: true,
           childList: true,
           subtree: true
@@ -44948,16 +48230,16 @@
     name: "@lexical/table/Table",
     nodes: [TableNode, TableRowNode, TableCellNode],
     register(editor, config, state) {
-      const stores = state.getOutput();
-      return mergeRegister2(effect(() => {
-        const hasHorizontalScroll = stores.hasHorizontalScroll.value;
+      const stores2 = state.getOutput();
+      return mergeRegister2(effect3(() => {
+        const hasHorizontalScroll = stores2.hasHorizontalScroll.value;
         const hadHorizontalScroll = $isScrollableTablesActive(editor);
         if (hadHorizontalScroll !== hasHorizontalScroll) {
           setScrollableTablesActive(editor, hasHorizontalScroll);
           editor.registerNodeTransform(TableNode, () => {
           })();
         }
-      }), registerTablePlugin(editor), effect(() => registerTableSelectionObserver(editor, stores.hasTabHandler.value)), effect(() => stores.hasCellMerge.value ? void 0 : registerTableCellUnmergeTransform(editor)), effect(() => stores.hasCellBackgroundColor.value ? void 0 : editor.registerNodeTransform(TableCellNode, (node) => {
+      }), registerTablePlugin(editor), effect3(() => registerTableSelectionObserver(editor, stores2.hasTabHandler.value)), effect3(() => stores2.hasCellMerge.value ? void 0 : registerTableCellUnmergeTransform(editor)), effect3(() => stores2.hasCellBackgroundColor.value ? void 0 : editor.registerNodeTransform(TableCellNode, (node) => {
         if (node.getBackgroundColor() !== null) {
           node.setBackgroundColor(null);
         }
@@ -45058,12 +48340,12 @@
     });
     element.dispatchEvent(event);
   }
-  function dispatch(element, eventName, detail = null, cancelable = false) {
+  function dispatch2(element, eventName, detail = null, cancelable = false) {
     return element.dispatchEvent(new CustomEvent(eventName, { bubbles: true, detail, cancelable }));
   }
-  function generateDomId(prefix) {
+  function generateDomId(prefix2) {
     const randomPart = Math.random().toString(36).slice(2, 10);
-    return `${prefix}-${randomPart}`;
+    return `${prefix2}-${randomPart}`;
   }
 
   // node_modules/@lexical/plain-text/LexicalPlainText.dev.mjs
@@ -45151,9 +48433,9 @@
         if (dataTransfer != null) {
           $insertDataTransferForPlainText2(dataTransfer, selection);
         } else {
-          const data = eventOrText.data;
-          if (data) {
-            selection.insertText(data);
+          const data2 = eventOrText.data;
+          if (data2) {
+            selection.insertText(data2);
           }
         }
       }
@@ -45953,8 +49235,8 @@
         const indent = " ".repeat(depth * LIST_INDENT_SIZE);
         const listType = listNode.getListType();
         const listMarker = $getState2(listNode, listMarkerState);
-        const prefix = listType === "number" ? `${listNode.getStart() + index2}. ` : listType === "check" ? `${listMarker} [${listItemNode.getChecked() ? "x" : " "}] ` : listMarker + " ";
-        output.push(indent + prefix + exportChildren2(listItemNode));
+        const prefix2 = listType === "number" ? `${listNode.getStart() + index2}. ` : listType === "check" ? `${listMarker} [${listItemNode.getChecked() ? "x" : " "}] ` : listMarker + " ";
+        output.push(indent + prefix2 + exportChildren2(listItemNode));
         index2++;
       }
     }
@@ -46407,8 +49689,8 @@
       tag
     }) => tag[tag.length - 1]);
     const textMatchTransformersByTrigger = indexBy(byType.textMatch, ({
-      trigger
-    }) => trigger);
+      trigger: trigger2
+    }) => trigger2);
     for (const transformer of transformers) {
       const type = transformer.type;
       if (type === "element" || type === "text-match" || type === "multiline-element") {
@@ -46778,8 +50060,8 @@
     }),
     name: "@lexical/history/History",
     register: (editor, config, state) => {
-      const stores = state.getOutput();
-      return effect(() => stores.disabled.value ? void 0 : registerHistory(editor, stores.historyState.value, stores.delay));
+      const stores2 = state.getOutput();
+      return effect3(() => stores2.disabled.value ? void 0 : registerHistory(editor, stores2.historyState.value, stores2.delay));
     }
   });
   function getHistoryPeer(editor) {
@@ -46803,7 +50085,7 @@
         };
       }
       const parentOutput = parentPeer.output;
-      return effect(() => batch(() => {
+      return effect3(() => batch(() => {
         output.delay.value = parentOutput.delay.value;
         output.historyState.value = parentOutput.historyState.value;
         output.disabled.value = parentOutput.disabled.value;
@@ -48114,8 +51396,8 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
     }
   }
   purify.addHook("uponSanitizeAttribute", styleFilterHook);
-  purify.addHook("uponSanitizeElement", (node, data) => {
-    if (data.tagName === "strong" || data.tagName === "em") {
+  purify.addHook("uponSanitizeElement", (node, data2) => {
+    if (data2.tagName === "strong" || data2.tagName === "em") {
       node.removeAttribute("class");
     }
   });
@@ -49068,8 +52350,8 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
           });
         }
       };
-      upload.create((error, blob) => {
-        if (error) {
+      upload.create((error2, blob) => {
+        if (error2) {
           this.#handleUploadError(figure);
         } else {
           this.#loadFigurePreviewFromBlob(blob, figure).then(() => {
@@ -49340,13 +52622,13 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
     }
     #registerCommands() {
       for (const command of COMMANDS) {
-        const methodName = `dispatch${capitalize(command)}`;
+        const methodName = `dispatch${capitalize2(command)}`;
         this.#registerCommandHandler(command, 0, this[methodName].bind(this));
       }
       this.#registerCommandHandler(PASTE_COMMAND2, COMMAND_PRIORITY_LOW2, this.dispatchPaste.bind(this));
     }
-    #registerCommandHandler(command, priority, handler) {
-      this.editor.registerCommand(command, handler, priority);
+    #registerCommandHandler(command, priority, handler4) {
+      this.editor.registerCommand(command, handler4, priority);
     }
     #registerKeyboardCommands() {
       this.editor.registerCommand(KEY_TAB_COMMAND2, this.#handleTabKey.bind(this), COMMAND_PRIORITY_NORMAL2);
@@ -49417,7 +52699,7 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
       });
     }
   };
-  function capitalize(str) {
+  function capitalize2(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
   function debounceAsync(fn, wait) {
@@ -50916,7 +54198,7 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
       return htmlNodes[0] || $createParagraphNode2();
     }
     #shouldUploadFile(file) {
-      return dispatch(this.editorElement, "lexxy:file-accept", { file }, true);
+      return dispatch2(this.editorElement, "lexxy:file-accept", { file }, true);
     }
   };
   var Clipboard = class {
@@ -50982,7 +54264,7 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
         replaceLinkWith: (html2, options) => this.contents.replaceNodeWithHTML(nodeKey, html2, options),
         insertBelowLink: (html2, options) => this.contents.insertHTMLBelowNode(nodeKey, html2, options)
       };
-      dispatch(this.editorElement, "lexxy:insert-link", {
+      dispatch2(this.editorElement, "lexxy:insert-link", {
         ...payload,
         ...linkManipulationMethods
       });
@@ -51298,7 +54580,7 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
       this.clipboard = new Clipboard(this);
       CommandDispatcher.configureFor(this);
       this.#initialize();
-      requestAnimationFrame(() => dispatch(this, "lexxy:initialize"));
+      requestAnimationFrame(() => dispatch2(this, "lexxy:initialize"));
       this.toggleAttribute("connected", true);
       this.#handleAutofocus();
       this.valueBeforeDisconnect = null;
@@ -51505,7 +54787,7 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
       this._internalFormValue = html2;
       this.#validationTextArea.value = this.isEmpty ? "" : html2;
       if (changed) {
-        dispatch(this, "lexxy:change");
+        dispatch2(this, "lexxy:change");
       }
     }
     get #internalFormValue() {
@@ -51533,13 +54815,13 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
       this.cachedValue = null;
       this.cachedStringValue = null;
     }
-    #addUnregisterHandler(handler) {
+    #addUnregisterHandler(handler4) {
       this.unregisterHandlers = this.unregisterHandlers || [];
-      this.unregisterHandlers.push(handler);
+      this.unregisterHandlers.push(handler4);
     }
     #unregisterHandlers() {
-      this.unregisterHandlers?.forEach((handler) => {
-        handler();
+      this.unregisterHandlers?.forEach((handler4) => {
+        handler4();
       });
       this.unregisterHandlers = null;
     }
@@ -51602,13 +54884,13 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
     }
     #handleFocusIn(event) {
       if (this.#elementInEditorOrToolbar(event.target) && !this.currentlyFocused) {
-        dispatch(this, "lexxy:focus");
+        dispatch2(this, "lexxy:focus");
         this.currentlyFocused = true;
       }
     }
     #handleFocusOut(event) {
       if (!this.#elementInEditorOrToolbar(event.relatedTarget)) {
-        dispatch(this, "lexxy:blur");
+        dispatch2(this, "lexxy:blur");
         this.currentlyFocused = false;
       }
     }
@@ -52441,8 +55723,8 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
         const html2 = await response.text();
         const promptItems = parseHtml(html2).querySelectorAll("lexxy-prompt-item");
         return Promise.resolve(Array.from(promptItems));
-      } catch (error) {
-        return Promise.reject(error);
+      } catch (error2) {
+        return Promise.reject(error2);
       }
     }
   };
@@ -52984,10 +56266,10 @@ Please report this to https://github.com/markedjs/marked.`, e2) {
   // lib/lesli_assets_js/application.js
   window.dayjs = import_dayjs.default;
   window.debug = import_browser.default;
-  window.Alpine = Alpine;
+  window.Alpine = module_default;
   window.ChartJs = auto_default;
   window.LesliChart = import_lesli_chart.default;
-  Alpine.start();
+  module_default.start();
   import_browser.default.info("Ruby on Rails SaaS Development Framework", "Lesli");
 })();
 /*
