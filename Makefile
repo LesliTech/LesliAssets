@@ -51,23 +51,35 @@ build.icons:
 
 # Build javascript
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+
+# javascript files
+JS_ENTRYPOINTS = \
+	./lib/lesli_assets_js/application.js \
+	./lib/lesli_assets_js/calendar.js
+
+JS_OUTDIR = ./app/assets/javascripts
+
+# esbuild common options
+ESBUILD = npx esbuild
+ESBUILD_COMMON = --bundle --format=esm --outdir=$(JS_OUTDIR)
+ESBUILD_DEV = --sourcemap --define:process.env.NODE_ENV=\"development\"
+ESBUILD_PROD = --minify --tree-shaking=true --define:process.env.NODE_ENV=\"production\"
+
+# build javascript for development
 build.js:
-	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js 
-	npx esbuild ./lib/lesli_assets_js/calendar.js --bundle --outfile=./app/assets/javascripts/lesli_assets/calendar.js 
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_DEV)
 
 
-# Build javascript
+# build javascript for development on every code change
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 watch.js:
-	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --watch 
-	npx esbuild ./lib/lesli_assets_js/calendar.js --bundle --outfile=./app/assets/javascripts/lesli_assets/calendar.js --watch
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_DEV) --watch
 
 
 # Build javascript for production
-# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 prod.js:
-	npx esbuild ./lib/lesli_assets_js/application.js --bundle --outfile=./app/assets/javascripts/lesli_assets/application.js --minify
-	npx esbuild ./lib/lesli_assets_js/calendar.js --bundle --outfile=./app/assets/javascripts/lesli_assets/calendar.js --minify
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_PROD)
+
 
 
 # Compile bulma
@@ -75,7 +87,7 @@ prod.js:
 
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
-	./lib/lesli_assets_styles/templates:./app/assets/stylesheets/lesli_assets/templates/ \
+	./lib/lesli_assets_styles/templates:./app/assets/stylesheets/lesli_assets/ \
 	../../engines/Lesli/lib/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
 	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
 	../../engines/LesliCalendar/lib/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
