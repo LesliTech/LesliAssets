@@ -57,7 +57,7 @@ JS_ENTRYPOINTS = \
 	./lib/lesli_assets_js/application.js \
 	./lib/lesli_assets_js/calendar.js
 
-JS_OUTDIR = ./app/assets/javascripts
+JS_OUTDIR = ./app/assets/javascripts/lesli_assets/
 
 # esbuild common options
 ESBUILD = npx esbuild

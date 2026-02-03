@@ -56,7 +56,7 @@ $primary: lesli.lesli-color(lesli, primary) !default;
 // · Bulma layout components
 @forward "bulma/sass/layout/container";
 //@forward "bulma/sass/layout/section";
-//@forward "bulma/sass/layout/hero";
+@forward "bulma/sass/layout/hero";
 
 
 // · Bulma elements
