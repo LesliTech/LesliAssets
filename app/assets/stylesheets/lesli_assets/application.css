@@ -19491,14 +19491,6 @@ body.layout-expanded :root {
   padding: 0;
   width: 100%;
 }
-.lesli-timelines .lesli-timeline h1,
-.lesli-timelines .lesli-timeline h2,
-.lesli-timelines .lesli-timeline h3,
-.lesli-timelines .lesli-timeline h4,
-.lesli-timelines .lesli-timeline h5,
-.lesli-timelines .lesli-timeline h6 {
-  line-height: inherit;
-}
 .lesli-timelines .lesli-timeline-item {
   padding-left: 40px;
   position: relative;
@@ -19521,7 +19513,7 @@ body.layout-expanded :root {
   left: 0;
   width: 15px;
 }
-.lesli-timelines .lesli-timeline-marker:before {
+.lesli-timelines .lesli-timeline-marker:before2 {
   background: #ff6b6b;
   border: 3px solid transparent;
   border-radius: 100%;
@@ -19536,13 +19528,16 @@ body.layout-expanded :root {
 }
 .lesli-timelines .lesli-timeline-marker:after {
   content: "";
-  width: 3px;
+  width: 2px;
   background: #ccd5db;
   display: block;
   position: absolute;
   top: 24px;
   bottom: 0;
-  left: 6px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 .lesli-timelines .lesli-timeline-item:last-child .lesli-timeline-marker:after {
   content: none;
@@ -19844,7 +19839,7 @@ section.lesli-panel div.lesli-panel-container .lesli-panel-header {
 }
 .lesli-tabs.is-vertical .tabs .tab-content {
   flex-grow: 1;
-  padding: 1rem;
+  padding: 12rem;
 }
 .lesli-tabs.is-vertical .tab-items {
   flex: 1;
@@ -20189,6 +20184,73 @@ Building a better future, one line of code at a time.
 }
 .lesli-items-discussions-comments {
   padding: 1rem;
+}
+
+/*
+
+Lesli
+
+Copyright (c) 2025, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+/*
+
+Lesli
+
+Copyright (c) 2025, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+.lesli-items-activities {
+  background-color: white;
+  padding: 2rem;
 }
 
 /*
