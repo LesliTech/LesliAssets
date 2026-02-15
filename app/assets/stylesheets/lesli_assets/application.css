@@ -19839,7 +19839,7 @@ section.lesli-panel div.lesli-panel-container .lesli-panel-header {
 }
 .lesli-tabs.is-vertical .tabs .tab-content {
   flex-grow: 1;
-  padding: 12rem;
+  padding: 1rem;
 }
 .lesli-tabs.is-vertical .tab-items {
   flex: 1;
@@ -20836,6 +20836,9 @@ header.lesli-application-header .navbar-item [class^=ri-] {
   font-size: 24px;
   padding: 0 0.6rem;
   color: #0e141f;
+}
+header.lesli-application-header .navbar-item a span {
+  transition: all linear 0.2s;
 }
 header.lesli-application-header .navbar-item a:hover span {
   color: var(--lesli-color-primary);

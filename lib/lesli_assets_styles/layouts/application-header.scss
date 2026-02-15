@@ -67,6 +67,10 @@ header.lesli-application-header {
             color: lesli.lesli-color(slate, 900);
         }
 
+        a span {
+            transition: all linear .2s;
+        }
+
         a:hover span {
             color: var(--lesli-color-primary);
         }
