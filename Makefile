@@ -123,7 +123,46 @@ tailwind.production:
     #npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
 
 
-build: build.js build.css
+
+# Compile MJML email templates
+# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+
+MJML_SRC = lib/lesli_assets_mails
+MJML_DEST = app/views/lesli_assets/emails
+
+MJML_FILES = \
+	lesli/welcome \
+	devise/confirmation_instructions \
+	devise/reset_password_instructions
+
+MJML = npx mjml
+
+MJML_OPTIONS_DEV = --config.beautify true --config.minify false --config.filePath $(MJML_SRC)/xyz
+MJML_MINIFY_OPTS = {"removeComments":true,"processConditionalComments":true}
+MJML_OPTIONS_PROD = \
+	--config.beautify=false \
+	--config.minify=true \
+	--config.filePath=$(MJML_SRC)/xyz \
+	--config.minifyOptions='$(MJML_MINIFY_OPTS)'
+
+Then:
+
+
+
+
+# Development
+build.mails:
+	@for file in $(MJML_FILES); do \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS_DEV); \
+	done
+
+# Production build (compressed output)
+prod.mails:
+	@for file in $(MJML_FILES); do \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS_PROD); \
+	done
+
+build: build.js build.css build.mails
 
 
 # Default target
