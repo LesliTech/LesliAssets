@@ -40,10 +40,10 @@ Gem::Specification.new do |spec|
     spec.authors     = ["The Lesli Development Team"]
     spec.email       = ["hello@lesli.tech"]
     spec.homepage    = "https://www.lesli.dev/"
-    spec.summary     = "Shared Frontend Assets for The Lesli Framework"
+    spec.summary     = "A shared frontend asset library for The Lesli Framework"
     spec.description = <<~DESC
-        LesliAssets provides shared frontend assets for the Lesli Framework, 
-        including stylesheets, JavaScript, images, icons, and reusable view partials.
+        LesliAssets provides shared frontend resources for The Lesli Framework, 
+        including stylesheets, JavaScript modules, images, icons, and reusable view partials.
     DESC
 
     # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
@@ -59,8 +59,4 @@ Gem::Specification.new do |spec|
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
         Dir["{app,config,db,lib}/**/*", "license", "Rakefile", "readme.md"]
     end
-
-
-    # Ruby version
-    spec.required_ruby_version = ">= 3.2"
 end

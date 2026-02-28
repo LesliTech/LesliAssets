@@ -10,6 +10,7 @@
         "@hotwired/turbo":"8.0.23",
         "@37signals/lexxy":"0.7.3-beta",
         "@rails/activestorage":"7.1.600",
+        "remixicon": "4.9.1",
         "alpinejs": "3.14.9",
         "chart.js": "4.5.1",
         "dayjs": "1.11.13",
