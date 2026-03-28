@@ -54,8 +54,8 @@ build.icons:
 
 # javascript files
 JS_ENTRYPOINTS = \
-	./lib/lesli_assets_js/application.js \
-	./lib/lesli_assets_js/calendar.js
+	./src/js/application.js \
+	./src/js/calendar.js
 
 JS_OUTDIR = ./app/assets/javascripts/lesli_assets/
 
@@ -87,10 +87,10 @@ prod.js:
 
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
-	./lib/lesli_assets_styles/templates:./app/assets/stylesheets/lesli_assets/ \
-	../../engines/Lesli/lib/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
-	../../engines/LesliShield/lib/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
-	../../engines/LesliCalendar/lib/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
+	./src/scss/templates:./app/assets/stylesheets/lesli_assets/ \
+	../../engines/Lesli/src/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
+	../../engines/LesliShield/src/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
+	../../engines/LesliCalendar/src/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
 
 # Define common SASS options
 SASS_OPTS = --no-source-map --load-path=node_modules --load-path=../ --load-path=../../engines 
@@ -127,7 +127,7 @@ tailwind.production:
 # Compile MJML email templates
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 
-MJML_SRC = lib/lesli_assets_mails
+MJML_SRC = src/mails
 MJML_DEST = app/views/lesli_assets/emails
 
 MJML_FILES = \
@@ -147,9 +147,6 @@ MJML_OPTIONS_PROD = \
 
 Then:
 
-
-
-
 # Development
 build.mails:
 	@for file in $(MJML_FILES); do \
@@ -162,7 +159,23 @@ prod.mails:
 		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS_PROD); \
 	done
 
+
+ROOT := ../..
+
+prod.build:
+	@timestamp=$$(date +%s); \
+	for dir in $(ROOT)/engines $(ROOT)/gems; do \
+		if [ -d "$$dir" ]; then \
+			find "$$dir" -type f -path "*/lib/*/version.rb" | while read file; do \
+				ruby -pi -e "gsub(/BUILD\s*=\s*\"[^\"]*\"/, \"BUILD = \\\"$$timestamp\\\"\")" "$$file"; \
+				echo "Updated $$file -> BUILD = $$timestamp"; \
+			done; \
+		fi; \
+	done
+
+
 build: build.js build.css build.mails
+prod: prod.js prod.css prod.mails prod.build
 
 
 # Default target
