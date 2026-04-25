@@ -117,7 +117,7 @@ clean.css:
 # Compile tailwind
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 tailwind.build:
-    #npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
+    #npx @tailwindcss/cli -i ./src/tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
 
 tailwind.production:
     #npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
@@ -162,7 +162,7 @@ prod.mails:
 
 ROOT := ../..
 
-prod.build:
+prod.version:
 	@timestamp=$$(date +%s); \
 	for dir in $(ROOT)/engines $(ROOT)/gems; do \
 		if [ -d "$$dir" ]; then \
