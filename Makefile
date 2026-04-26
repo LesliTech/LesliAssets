@@ -139,7 +139,7 @@ MJML_FILES = \
 MJML = npx mjml
 
 MJML_OPTIONS_DEV = --config.beautify true --config.minify false --config.filePath $(MJML_SRC)/xyz
-MJML_MINIFY_OPTS = {"removeComments":true,"processConditionalComments":true}
+MJML_MINIFY_OPTS = {"removeComments":true}
 MJML_OPTIONS_PROD = \
 	--config.beautify=false \
 	--config.minify=true \
