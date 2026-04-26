@@ -29,22 +29,44 @@
 
 
 
-include lib/make/js.mk
-include lib/make/css.mk
-include lib/make/icons.mk
-include lib/make/mails.mk
-include lib/make/version.mk
-include lib/make/tailwind.mk
+# Compile MJML email templates
+# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 
+MJML_SRC = source/mails
+MJML_DEST = app/views/lesli_assets/emails
 
-.PHONY: help
+MJML_FILES = \
+	lesli/welcome \
+	devise/confirmation_instructions \
+	devise/reset_password_instructions
 
+MJML = npx mjml
 
-help:
-	@echo "Available commands:"
-	@echo "  make build.css"
-	@echo "  make build.emails"
+MJML_OPTIONS = \
+	--config.allowIncludes true \
+	--config.filePath $(MJML_SRC)/xyz
 
+MJML_OPTIONS_DEV = \
+	--config.minify false \
+	--config.beautify true
 
-build: build.js build.css build.icons build.mails build.tailwind
-prod: prod.js prod.css prod.mails prod.version prod.tailwind
+MJML_OPTIONS_PROD = \
+	--config.minify true \
+	--config.beautify false \
+	--config.minifyOptions='{"removeComments":true}'
+
+Then:
+
+# Development
+build.mails:
+	@for file in $(MJML_FILES); do \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_DEV); \
+	done
+
+# Production build (compressed output)
+prod.mails:
+	@for file in $(MJML_FILES); do \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_PROD); \
+	done

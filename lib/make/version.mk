@@ -29,22 +29,15 @@
 
 
 
-include lib/make/js.mk
-include lib/make/css.mk
-include lib/make/icons.mk
-include lib/make/mails.mk
-include lib/make/version.mk
-include lib/make/tailwind.mk
+ROOT := ../..
 
-
-.PHONY: help
-
-
-help:
-	@echo "Available commands:"
-	@echo "  make build.css"
-	@echo "  make build.emails"
-
-
-build: build.js build.css build.icons build.mails build.tailwind
-prod: prod.js prod.css prod.mails prod.version prod.tailwind
+prod.version:
+	@timestamp=$$(date +%s); \
+	for dir in $(ROOT)/engines $(ROOT)/gems; do \
+		if [ -d "$$dir" ]; then \
+			find "$$dir" -type f -path "*/lib/*/version.rb" | while read file; do \
+				ruby -pi -e "gsub(/BUILD\s*=\s*\"[^\"]*\"/, \"BUILD = \\\"$$timestamp\\\"\")" "$$file"; \
+				echo "Updated $$file -> BUILD = $$timestamp"; \
+			done; \
+		fi; \
+	done

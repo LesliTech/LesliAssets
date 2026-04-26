@@ -29,22 +29,33 @@
 
 
 
-include lib/make/js.mk
-include lib/make/css.mk
-include lib/make/icons.mk
-include lib/make/mails.mk
-include lib/make/version.mk
-include lib/make/tailwind.mk
+# Build javascript
+# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+
+# javascript files
+JS_ENTRYPOINTS = \
+	./source/js/application.js \
+	./source/js/calendar.js
+
+JS_OUTDIR = ./app/assets/javascripts/lesli_assets/
+
+# esbuild common options
+ESBUILD = npx esbuild
+ESBUILD_COMMON = --bundle --format=esm --outdir=$(JS_OUTDIR)
+ESBUILD_DEV = --sourcemap --define:process.env.NODE_ENV=\"development\"
+ESBUILD_PROD = --minify --tree-shaking=true --define:process.env.NODE_ENV=\"production\"
+
+# build javascript for development
+build.js:
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_DEV)
 
 
-.PHONY: help
+# build javascript for development on every code change
+# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+watch.js:
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_DEV) --watch
 
 
-help:
-	@echo "Available commands:"
-	@echo "  make build.css"
-	@echo "  make build.emails"
-
-
-build: build.js build.css build.icons build.mails build.tailwind
-prod: prod.js prod.css prod.mails prod.version prod.tailwind
+# Build javascript for production
+prod.js:
+	$(ESBUILD) $(JS_ENTRYPOINTS) $(ESBUILD_COMMON) $(ESBUILD_PROD)

@@ -29,22 +29,11 @@
 
 
 
-include lib/make/js.mk
-include lib/make/css.mk
-include lib/make/icons.mk
-include lib/make/mails.mk
-include lib/make/version.mk
-include lib/make/tailwind.mk
+# Compile tailwind
+# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+build.tailwind:
+	npx @tailwindcss/cli -i ./source/tailwind/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
+	npx @tailwindcss/cli -i ./source/tailwind/application.reference.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.reference.css --verbose
 
-
-.PHONY: help
-
-
-help:
-	@echo "Available commands:"
-	@echo "  make build.css"
-	@echo "  make build.emails"
-
-
-build: build.js build.css build.icons build.mails build.tailwind
-prod: prod.js prod.css prod.mails prod.version prod.tailwind
+prod.tailwind:
+#npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
