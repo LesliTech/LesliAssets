@@ -1,6 +1,6 @@
 # Lesli
 # 
-# Copyright (c) 2025, Lesli Technologies, S. A.
+# Copyright (c) 2026, Lesli Technologies, S. A.
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
 # @website  https://www.lesli.tech
 # @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 # 
-# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-# · 
+# // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+# // · 
 
 
 
@@ -54,8 +54,8 @@ build.icons:
 
 # javascript files
 JS_ENTRYPOINTS = \
-	./src/js/application.js \
-	./src/js/calendar.js
+	./source/js/application.js \
+	./source/js/calendar.js
 
 JS_OUTDIR = ./app/assets/javascripts/lesli_assets/
 
@@ -87,10 +87,10 @@ prod.js:
 
 # Define source SCSS files and their corresponding CSS output paths
 SASS_FILES = \
-	./src/scss/templates:./app/assets/stylesheets/lesli_assets/ \
-	../../engines/Lesli/src/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
-	../../engines/LesliShield/src/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
-	../../engines/LesliCalendar/src/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
+	./source/scss/templates:./app/assets/stylesheets/lesli_assets/ \
+	../../engines/Lesli/source/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
+	../../engines/LesliShield/source/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
+	../../engines/LesliCalendar/source/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
 
 # Define common SASS options
 SASS_OPTS = --no-source-map --load-path=node_modules --load-path=../ --load-path=../../engines 
@@ -116,18 +116,19 @@ clean.css:
 
 # Compile tailwind
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-tailwind.build:
-    #npx @tailwindcss/cli -i ./src/tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
+build.tailwind:
+	npx @tailwindcss/cli -i ./source/tailwind/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
+	npx @tailwindcss/cli -i ./source/tailwind/application.reference.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.reference.css --verbose
 
-tailwind.production:
-    #npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
+prod.tailwind:
+#npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
 
 
 
 # Compile MJML email templates
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 
-MJML_SRC = src/mails
+MJML_SRC = source/mails
 MJML_DEST = app/views/lesli_assets/emails
 
 MJML_FILES = \
