@@ -138,26 +138,33 @@ MJML_FILES = \
 
 MJML = npx mjml
 
-MJML_OPTIONS_DEV = --config.beautify true --config.minify false --config.filePath $(MJML_SRC)/xyz
-MJML_MINIFY_OPTS = {"removeComments":true}
+MJML_OPTIONS = \
+	--config.allowIncludes true \
+	--config.filePath $(MJML_SRC)/xyz
+
+MJML_OPTIONS_DEV = \
+	--config.minify false \
+	--config.beautify true
+
 MJML_OPTIONS_PROD = \
-	--config.beautify=false \
-	--config.minify=true \
-	--config.filePath=$(MJML_SRC)/xyz \
-	--config.minifyOptions='$(MJML_MINIFY_OPTS)'
+	--config.minify true \
+	--config.beautify false \
+	--config.minifyOptions='{"removeComments":true}'
 
 Then:
 
 # Development
 build.mails:
 	@for file in $(MJML_FILES); do \
-		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS_DEV); \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_DEV); \
 	done
 
 # Production build (compressed output)
 prod.mails:
 	@for file in $(MJML_FILES); do \
-		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS_PROD); \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_PROD); \
 	done
 
 
