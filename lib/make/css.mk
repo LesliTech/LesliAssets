@@ -36,6 +36,7 @@
 SASS_FILES = \
 	./source/scss/templates:./app/assets/stylesheets/lesli_assets/ \
 	../../engines/Lesli/source/scss:../../engines/Lesli/app/assets/stylesheets/lesli \
+	../../engines/LesliBabel/source/scss:../../engines/LesliBabel/app/assets/stylesheets/lesli_babel \
 	../../engines/LesliShield/source/scss:../../engines/LesliShield/app/assets/stylesheets/lesli_shield \
 	../../engines/LesliCalendar/source/scss:../../engines/LesliCalendar/app/assets/stylesheets/lesli_calendar
 
