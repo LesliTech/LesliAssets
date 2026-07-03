@@ -59,4 +59,7 @@ Gem::Specification.new do |spec|
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
         Dir["{app,config,db,lib}/**/*", "license", "Rakefile", "readme.md"]
     end
+
+    # Tailwind stand-alone compiler
+    spec.add_dependency("tailwindcss-ruby", "~> 4.0")
 end

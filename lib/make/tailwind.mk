@@ -28,12 +28,17 @@
 # // · 
 
 
-
 # Compile tailwind
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 build.tailwind:
-	npx @tailwindcss/cli -i ./source/tailwind/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
-	npx @tailwindcss/cli -i ./source/tailwind/application.reference.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.reference.css --verbose
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/profile.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/profile.css --verbose
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/landing.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/landing.css --verbose
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/404.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/404.css --verbose
+# npx @tailwindcss/cli -i ./source/tailwind/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
+# npx @tailwindcss/cli -i ./source/tailwind/application.reference.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.reference.css --verbose
+	
 
 prod.tailwind:
-#npx @tailwindcss/cli -i ./lib/lesli_styles_tailwind/tailwind.app.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --minify --verbose
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/profile.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/profile.css --minify
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/landing.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/landing.css --minify
+	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/404.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/404.css --minify

@@ -33692,6 +33692,7 @@ body {
   scrollbar-color: var(--lesli-color-primary) transparent;
   scrollbar-width: thin;
   font-weight: normal;
+  font-family: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, a {
