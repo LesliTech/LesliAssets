@@ -1,0 +1,84 @@
+/*
+
+Lesli
+
+Copyright (c) 2026, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+
+/* Use tailwind */
+@import "tailwindcss" source(none);
+
+
+/* Vendor */
+/* 
+@import "@37signals/lexxy/dist/stylesheets/lexxy-variables.css";
+@import "@37signals/lexxy/dist/stylesheets/lexxy-content.css";
+@import "@37signals/lexxy/dist/stylesheets/lexxy-editor.css"; 
+*/
+
+
+/* Configuration & variables */
+@import "../settings/variables.css";
+
+
+/* Font families and icons */
+@import "../../scss/fonts/remixicons.scss";
+@import "../../scss/fonts/mdsymbols.scss";
+@import "../../scss/fonts/families.scss";
+
+
+/* Tell Tailwind where to scan for class names */
+@source "../../../../../engines/Lesli/app/views/lesli/partials/*.html.erb";
+@source "../../../../../engines/Lesli/app/helpers/lesli/navigation_helper.rb";
+
+
+html,
+body {
+    background-color: #f9f5f3;
+    scrollbar-width: thin;
+    font-weight: normal;
+    font-family: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+
+/* headings and links */
+h1, h2, h3, h4, h5, h6, a {
+    font-family: "Domine", "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+
+/* Fix display for main app container */
+turbo-frame.lesli-application-container {
+    display: block;
+}
+
+
+/* hide alpine components while starting */
+[x-cloak] {
+    display: none !important;
+}

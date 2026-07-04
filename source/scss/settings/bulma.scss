@@ -50,11 +50,11 @@ $primary: lesli.lesli-color(lesli, primary) !default;
 
 // · Import Bulma framework
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-@forward "bulma/sass/base";
+//@forward "bulma/sass/base";
 
 
 // · Bulma layout components
-@forward "bulma/sass/layout/container";
+//@forward "bulma/sass/layout/container";
 //@forward "bulma/sass/layout/section";
 @forward "bulma/sass/layout/hero";
 
@@ -84,7 +84,7 @@ $primary: lesli.lesli-color(lesli, primary) !default;
 
 // · Bulma columns & grid
 @forward "bulma/sass/grid/columns";
-@forward "bulma/sass/grid/grid";
+//@forward "bulma/sass/grid/grid";
 
 
 // · Layout

@@ -28,17 +28,69 @@
 # // · 
 
 
-# Compile tailwind
-# · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-build.tailwind:
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/profile.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/profile.css --verbose
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/landing.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/landing.css --verbose
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/404.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/404.css --verbose
-# npx @tailwindcss/cli -i ./source/tailwind/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css --verbose
-# npx @tailwindcss/cli -i ./source/tailwind/application.reference.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.reference.css --verbose
-	
+# LesliAssets should always be installed on rails_app/gems
+ROOT ?= ../..
+TAILWIND_EXT ?= css
+TAILWIND_CMD ?= bundle exec tailwindcss
 
+
+# 
+define compile_tailwind
+
+@#	Compile the LesliAssets core styles
+$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
+$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
+
+@# Iterate over every app, engine and gem folder
+@for folder in $(ROOT)/source $(ROOT)/engines/* $(ROOT)/gems/*; do \
+	\
+	: "Get the current engine/gem folder name, example: LesliView"; \
+	folder_name="$$(basename "$$folder")"; \
+	\
+	: "Convert folder name to Rails-style slug, example: LesliView -> lesli_view"; \
+	folder_slug="$$(echo "$$folder_name" | sed -E 's/([a-z0-9])([A-Z])/\1_\2/g' | tr '[:upper:]' '[:lower:]')"; \
+	\
+	: "Build the expected Tailwind source folder path"; \
+	source_folder="$$folder/source/tailwind"; \
+	\
+	: "Only continue if the current folder actually has source/tailwind"; \
+	if [ -d "$$source_folder" ]; then \
+		\
+		: "Find all Tailwind input files directly inside source/tailwind"; \
+		find "$$source_folder" -maxdepth 1 -type f -name "*.$(TAILWIND_EXT)" | while IFS= read -r file; do \
+			\
+			: "Get the CSS file name, example: application.css"; \
+			file_name="$$(basename "$$file")"; \
+			\
+			: "Build the destination folder inside app/assets/stylesheets"; \
+			dist_folder="$$folder/app/assets/stylesheets/$$folder_slug"; \
+			\
+			: "Build the final destination file path"; \
+			dist_file="$$dist_folder/$$file_name"; \
+			\
+			: "Create the destination folder if it does not exist"; \
+			mkdir -p "$$dist_folder"; \
+			\
+			: "Compile the Tailwind source file into the destination CSS file"; \
+			echo "Compiling $$file -> $$dist_file"; \
+			$(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS); \
+		done; \
+	fi; \
+done
+endef
+
+
+.PHONY: build.tailwind prod.tailwind watch.tailwind
+
+
+build.tailwind: TAILWIND_PARAMS =
+build.tailwind:
+	$(compile_tailwind)
+
+prod.tailwind: TAILWIND_PARAMS = --minify
 prod.tailwind:
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/profile.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/profile.css --minify
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/landing.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/landing.css --minify
-	bundle exec tailwindcss -i /Users/ldonis/code/Hola/source/tailwind/404.tailwind.css -o /Users/ldonis/code/Hola/app/assets/stylesheets/404.css --minify
+	$(compile_tailwind)
+
+watch.tailwind: TAILWIND_PARAMS = --watch
+watch.tailwind:
+	$(compile_tailwind)
