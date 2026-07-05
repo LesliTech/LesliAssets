@@ -32,66 +32,7 @@ Building a better future, one line of code at a time.
 */
 @layer properties;
 @layer theme, utilities;
-@layer theme {
-  :root, :host {
-    --color-amber-50: oklch(98.7% 0.022 95.277);
-    --color-amber-300: oklch(87.9% 0.169 91.605);
-    --color-amber-400: oklch(82.8% 0.189 84.429);
-    --color-amber-500: oklch(76.9% 0.188 70.08);
-    --color-amber-600: oklch(66.6% 0.179 58.318);
-    --color-amber-700: oklch(55.5% 0.163 48.998);
-    --color-amber-950: oklch(27.9% 0.077 45.635);
-    --color-emerald-50: oklch(97.9% 0.021 166.113);
-    --color-emerald-300: oklch(84.5% 0.143 164.978);
-    --color-emerald-400: oklch(76.5% 0.177 163.223);
-    --color-emerald-500: oklch(69.6% 0.17 162.48);
-    --color-emerald-600: oklch(59.6% 0.145 163.225);
-    --color-emerald-700: oklch(50.8% 0.118 165.612);
-    --color-sky-50: oklch(97.7% 0.013 236.62);
-    --color-sky-300: oklch(82.8% 0.111 230.318);
-    --color-sky-400: oklch(74.6% 0.16 232.661);
-    --color-sky-500: oklch(68.5% 0.169 237.323);
-    --color-sky-600: oklch(58.8% 0.158 241.966);
-    --color-sky-700: oklch(50% 0.134 242.749);
-    --color-sky-800: oklch(44.3% 0.11 240.79);
-    --color-blue-50: oklch(97% 0.014 254.604);
-    --color-blue-300: oklch(80.9% 0.105 251.813);
-    --color-blue-400: oklch(70.7% 0.165 254.624);
-    --color-blue-500: oklch(62.3% 0.214 259.815);
-    --color-blue-600: oklch(54.6% 0.245 262.881);
-    --color-blue-700: oklch(48.8% 0.243 264.376);
-    --color-rose-50: oklch(96.9% 0.015 12.422);
-    --color-rose-300: oklch(81% 0.117 11.638);
-    --color-rose-400: oklch(71.2% 0.194 13.428);
-    --color-rose-500: oklch(64.5% 0.246 16.439);
-    --color-rose-600: oklch(58.6% 0.253 17.585);
-    --color-rose-700: oklch(51.4% 0.222 16.935);
-    --color-slate-500: oklch(55.4% 0.046 257.417);
-    --color-slate-700: oklch(37.2% 0.044 257.287);
-    --color-white: #fff;
-    --spacing: 0.25rem;
-    --container-2xl: 42rem;
-    --container-7xl: 80rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
-    --text-base: 1rem;
-    --text-base--line-height: calc(1.5 / 1);
-    --text-3xl: 1.875rem;
-    --text-3xl--line-height: calc(2.25 / 1.875);
-    --text-4xl: 2.25rem;
-    --text-4xl--line-height: calc(2.5 / 2.25);
-    --font-weight-medium: 500;
-    --tracking-tight: -0.025em;
-    --radius-md: 0.375rem;
-    --radius-lg: 0.5rem;
-    --radius-2xl: 1rem;
-    --animate-spin: spin 1s linear infinite;
-    --default-transition-duration: 150ms;
-    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
+@layer theme;
 @layer utilities {
   .pointer-events-none {
     pointer-events: none;
@@ -118,13 +59,13 @@ Building a better future, one line of code at a time.
     margin-inline: auto;
   }
   .mt-1 {
-    margin-top: var(--spacing);
+    margin-top: var(--spacing, 0.25rem);
   }
   .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
+    margin-top: calc(var(--spacing, 0.25rem) * 2);
   }
   .mb-8 {
-    margin-bottom: calc(var(--spacing) * 8);
+    margin-bottom: calc(var(--spacing, 0.25rem) * 8);
   }
   .block {
     display: block;
@@ -139,37 +80,37 @@ Building a better future, one line of code at a time.
     display: inline-flex;
   }
   .h-4 {
-    height: calc(var(--spacing) * 4);
+    height: calc(var(--spacing, 0.25rem) * 4);
   }
   .h-8 {
-    height: calc(var(--spacing) * 8);
+    height: calc(var(--spacing, 0.25rem) * 8);
   }
   .h-10 {
-    height: calc(var(--spacing) * 10);
+    height: calc(var(--spacing, 0.25rem) * 10);
   }
   .h-12 {
-    height: calc(var(--spacing) * 12);
+    height: calc(var(--spacing, 0.25rem) * 12);
   }
   .w-4 {
-    width: calc(var(--spacing) * 4);
+    width: calc(var(--spacing, 0.25rem) * 4);
   }
   .w-8 {
-    width: calc(var(--spacing) * 8);
+    width: calc(var(--spacing, 0.25rem) * 8);
   }
   .w-10 {
-    width: calc(var(--spacing) * 10);
+    width: calc(var(--spacing, 0.25rem) * 10);
   }
   .w-12 {
-    width: calc(var(--spacing) * 12);
+    width: calc(var(--spacing, 0.25rem) * 12);
   }
   .w-full {
     width: 100%;
   }
   .max-w-2xl {
-    max-width: var(--container-2xl);
+    max-width: var(--container-2xl, 42rem);
   }
   .max-w-7xl {
-    max-width: var(--container-7xl);
+    max-width: var(--container-7xl, 80rem);
   }
   .min-w-0 {
     min-width: 0;
@@ -178,7 +119,7 @@ Building a better future, one line of code at a time.
     flex-shrink: 0;
   }
   .animate-spin {
-    animation: var(--animate-spin);
+    animation: var(--animate-spin, spin 1s linear infinite);
   }
   .cursor-wait {
     cursor: wait;
@@ -199,28 +140,28 @@ Building a better future, one line of code at a time.
     justify-content: center;
   }
   .gap-2 {
-    gap: calc(var(--spacing) * 2);
+    gap: calc(var(--spacing, 0.25rem) * 2);
   }
   .gap-3 {
-    gap: calc(var(--spacing) * 3);
+    gap: calc(var(--spacing, 0.25rem) * 3);
   }
   .gap-4 {
-    gap: calc(var(--spacing) * 4);
+    gap: calc(var(--spacing, 0.25rem) * 4);
   }
   .gap-5 {
-    gap: calc(var(--spacing) * 5);
+    gap: calc(var(--spacing, 0.25rem) * 5);
   }
   .rounded-2xl {
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-2xl, 1rem);
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
   .rounded-lg {
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-lg, 0.5rem);
   }
   .rounded-md {
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md, 0.375rem);
   }
   .border {
     border-style: var(--tw-border-style);
@@ -231,82 +172,82 @@ Building a better future, one line of code at a time.
     border-width: 2px;
   }
   .border-amber-300 {
-    border-color: var(--color-amber-300);
+    border-color: var(--color-amber-300, oklch(87.9% 0.169 91.605));
   }
   .border-amber-500 {
-    border-color: var(--color-amber-500);
+    border-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
   }
   .border-blue-300 {
-    border-color: var(--color-blue-300);
+    border-color: var(--color-blue-300, oklch(80.9% 0.105 251.813));
   }
   .border-blue-600 {
-    border-color: var(--color-blue-600);
+    border-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
   }
   .border-current {
     border-color: currentcolor;
   }
   .border-emerald-300 {
-    border-color: var(--color-emerald-300);
+    border-color: var(--color-emerald-300, oklch(84.5% 0.143 164.978));
   }
   .border-emerald-600 {
-    border-color: var(--color-emerald-600);
+    border-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
   }
   .border-rose-300 {
-    border-color: var(--color-rose-300);
+    border-color: var(--color-rose-300, oklch(81% 0.117 11.638));
   }
   .border-rose-600 {
-    border-color: var(--color-rose-600);
+    border-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
   }
   .border-sky-300 {
-    border-color: var(--color-sky-300);
+    border-color: var(--color-sky-300, oklch(82.8% 0.111 230.318));
   }
   .border-sky-600 {
-    border-color: var(--color-sky-600);
+    border-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
   }
   .border-r-transparent {
     border-right-color: transparent;
   }
   .bg-amber-500 {
-    background-color: var(--color-amber-500);
+    background-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
   }
   .bg-blue-600 {
-    background-color: var(--color-blue-600);
+    background-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
   }
   .bg-emerald-600 {
-    background-color: var(--color-emerald-600);
+    background-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
   }
   .bg-rose-600 {
-    background-color: var(--color-rose-600);
+    background-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
   }
   .bg-sky-600 {
-    background-color: var(--color-sky-600);
+    background-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
   }
   .bg-transparent {
     background-color: transparent;
   }
   .bg-white {
-    background-color: var(--color-white);
+    background-color: var(--color-white, #fff);
   }
   .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
+    padding-inline: calc(var(--spacing, 0.25rem) * 3);
   }
   .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
+    padding-inline: calc(var(--spacing, 0.25rem) * 4);
   }
   .py-6 {
-    padding-block: calc(var(--spacing) * 6);
+    padding-block: calc(var(--spacing, 0.25rem) * 6);
   }
   .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
+    font-size: var(--text-3xl, 1.875rem);
+    line-height: var(--tw-leading, var(--text-3xl--line-height, calc(2.25 / 1.875)));
   }
   .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
+    font-size: var(--text-sm, 0.875rem);
+    line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
   }
   .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
+    font-size: var(--text-xs, 0.75rem);
+    line-height: var(--tw-leading, var(--text-xs--line-height, calc(1 / 0.75)));
   }
   .text-\[20px\] {
     font-size: 20px;
@@ -315,50 +256,50 @@ Building a better future, one line of code at a time.
     font-size: 26px;
   }
   .leading-6 {
-    --tw-leading: calc(var(--spacing) * 6);
-    line-height: calc(var(--spacing) * 6);
+    --tw-leading: calc(var(--spacing, 0.25rem) * 6);
+    line-height: calc(var(--spacing, 0.25rem) * 6);
   }
   .leading-none {
     --tw-leading: 1;
     line-height: 1;
   }
   .font-medium {
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
+    --tw-font-weight: var(--font-weight-medium, 500);
+    font-weight: var(--font-weight-medium, 500);
   }
   .tracking-tight {
-    --tw-tracking: var(--tracking-tight);
-    letter-spacing: var(--tracking-tight);
+    --tw-tracking: var(--tracking-tight, -0.025em);
+    letter-spacing: var(--tracking-tight, -0.025em);
   }
   .whitespace-nowrap {
     white-space: nowrap;
   }
   .text-amber-700 {
-    color: var(--color-amber-700);
+    color: var(--color-amber-700, oklch(55.5% 0.163 48.998));
   }
   .text-amber-950 {
-    color: var(--color-amber-950);
+    color: var(--color-amber-950, oklch(27.9% 0.077 45.635));
   }
   .text-blue-700 {
-    color: var(--color-blue-700);
+    color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
   }
   .text-emerald-700 {
-    color: var(--color-emerald-700);
+    color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
   }
   .text-rose-700 {
-    color: var(--color-rose-700);
+    color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
   }
   .text-sky-700 {
-    color: var(--color-sky-700);
+    color: var(--color-sky-700, oklch(50% 0.134 242.749));
   }
   .text-slate-500 {
-    color: var(--color-slate-500);
+    color: var(--color-slate-500, oklch(55.4% 0.046 257.417));
   }
   .text-slate-700 {
-    color: var(--color-slate-700);
+    color: var(--color-slate-700, oklch(37.2% 0.044 257.287));
   }
   .text-white {
-    color: var(--color-white);
+    color: var(--color-white, #fff);
   }
   .opacity-80 {
     opacity: 80%;
@@ -369,13 +310,13 @@ Building a better future, one line of code at a time.
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
   }
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
   }
   .duration-150 {
     --tw-duration: 150ms;
@@ -384,147 +325,147 @@ Building a better future, one line of code at a time.
   .hover\:border-amber-400 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-amber-400);
+        border-color: var(--color-amber-400, oklch(82.8% 0.189 84.429));
       }
     }
   }
   .hover\:border-amber-600 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-amber-600);
+        border-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
       }
     }
   }
   .hover\:border-blue-400 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-blue-400);
+        border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
       }
     }
   }
   .hover\:border-blue-700 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-blue-700);
+        border-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
       }
     }
   }
   .hover\:border-emerald-400 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-emerald-400);
+        border-color: var(--color-emerald-400, oklch(76.5% 0.177 163.223));
       }
     }
   }
   .hover\:border-emerald-700 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-emerald-700);
+        border-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
       }
     }
   }
   .hover\:border-rose-400 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-rose-400);
+        border-color: var(--color-rose-400, oklch(71.2% 0.194 13.428));
       }
     }
   }
   .hover\:border-rose-700 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-rose-700);
+        border-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
       }
     }
   }
   .hover\:border-sky-400 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-sky-400);
+        border-color: var(--color-sky-400, oklch(74.6% 0.16 232.661));
       }
     }
   }
   .hover\:border-sky-700 {
     &:hover {
       @media (hover: hover) {
-        border-color: var(--color-sky-700);
+        border-color: var(--color-sky-700, oklch(50% 0.134 242.749));
       }
     }
   }
   .hover\:bg-amber-50 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-amber-50);
+        background-color: var(--color-amber-50, oklch(98.7% 0.022 95.277));
       }
     }
   }
   .hover\:bg-amber-600 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-amber-600);
+        background-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
       }
     }
   }
   .hover\:bg-blue-50 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-blue-50);
+        background-color: var(--color-blue-50, oklch(97% 0.014 254.604));
       }
     }
   }
   .hover\:bg-blue-700 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-blue-700);
+        background-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
       }
     }
   }
   .hover\:bg-emerald-50 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-emerald-50);
+        background-color: var(--color-emerald-50, oklch(97.9% 0.021 166.113));
       }
     }
   }
   .hover\:bg-emerald-700 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-emerald-700);
+        background-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
       }
     }
   }
   .hover\:bg-rose-50 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-rose-50);
+        background-color: var(--color-rose-50, oklch(96.9% 0.015 12.422));
       }
     }
   }
   .hover\:bg-rose-700 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-rose-700);
+        background-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
       }
     }
   }
   .hover\:bg-sky-50 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-sky-50);
+        background-color: var(--color-sky-50, oklch(97.7% 0.013 236.62));
       }
     }
   }
   .hover\:bg-sky-700 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-sky-700);
+        background-color: var(--color-sky-700, oklch(50% 0.134 242.749));
       }
     }
   }
   .hover\:text-sky-800 {
     &:hover {
       @media (hover: hover) {
-        color: var(--color-sky-800);
+        color: var(--color-sky-800, oklch(44.3% 0.11 240.79));
       }
     }
   }
@@ -538,7 +479,7 @@ Building a better future, one line of code at a time.
     &:focus {
       --tw-ring-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 30%, transparent);
       @supports (color: color-mix(in lab, red, red)) {
-        --tw-ring-color: color-mix(in oklab, var(--color-sky-500) 30%, transparent);
+        --tw-ring-color: color-mix(in oklab, var(--color-sky-500, oklch(68.5% 0.169 237.323)) 30%, transparent);
       }
     }
   }
@@ -556,27 +497,27 @@ Building a better future, one line of code at a time.
   }
   .focus-visible\:ring-amber-500 {
     &:focus-visible {
-      --tw-ring-color: var(--color-amber-500);
+      --tw-ring-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
     }
   }
   .focus-visible\:ring-blue-500 {
     &:focus-visible {
-      --tw-ring-color: var(--color-blue-500);
+      --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
     }
   }
   .focus-visible\:ring-emerald-500 {
     &:focus-visible {
-      --tw-ring-color: var(--color-emerald-500);
+      --tw-ring-color: var(--color-emerald-500, oklch(69.6% 0.17 162.48));
     }
   }
   .focus-visible\:ring-rose-500 {
     &:focus-visible {
-      --tw-ring-color: var(--color-rose-500);
+      --tw-ring-color: var(--color-rose-500, oklch(64.5% 0.246 16.439));
     }
   }
   .focus-visible\:ring-sky-500 {
     &:focus-visible {
-      --tw-ring-color: var(--color-sky-500);
+      --tw-ring-color: var(--color-sky-500, oklch(68.5% 0.169 237.323));
     }
   }
   .focus-visible\:ring-offset-2 {
@@ -617,29 +558,120 @@ Building a better future, one line of code at a time.
   }
   .sm\:px-6 {
     @media (width >= 40rem) {
-      padding-inline: calc(var(--spacing) * 6);
+      padding-inline: calc(var(--spacing, 0.25rem) * 6);
     }
   }
   .sm\:py-8 {
     @media (width >= 40rem) {
-      padding-block: calc(var(--spacing) * 8);
+      padding-block: calc(var(--spacing, 0.25rem) * 8);
     }
   }
   .sm\:text-4xl {
     @media (width >= 40rem) {
-      font-size: var(--text-4xl);
-      line-height: var(--tw-leading, var(--text-4xl--line-height));
+      font-size: var(--text-4xl, 2.25rem);
+      line-height: var(--tw-leading, var(--text-4xl--line-height, calc(2.5 / 2.25)));
     }
   }
   .sm\:text-base {
     @media (width >= 40rem) {
-      font-size: var(--text-base);
-      line-height: var(--tw-leading, var(--text-base--line-height));
+      font-size: var(--text-base, 1rem);
+      line-height: var(--tw-leading, var(--text-base--line-height, calc(1.5 / 1)));
     }
   }
   .lg\:px-8 {
     @media (width >= 64rem) {
-      padding-inline: calc(var(--spacing) * 8);
+      padding-inline: calc(var(--spacing, 0.25rem) * 8);
+    }
+  }
+}
+/*!
+
+Lesli
+
+Copyright (c) 2026, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+
+Made with ♥ by LesliTech
+Building a better future, one line of code at a time.
+
+@contact  hello@lesli.tech
+@website  https://www.lesli.tech
+@license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
+
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · 
+*/
+@layer components {
+  .lesli-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing, 0.25rem) * 2);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    --tw-font-weight: var(--font-weight-medium, 500);
+    font-weight: var(--font-weight-medium, 500);
+    white-space: nowrap;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    &:focus-visible {
+      --tw-ring-offset-width: 2px;
+      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    }
+    &:disabled {
+      pointer-events: none;
+    }
+    &:disabled {
+      opacity: 50%;
+    }
+    background-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+    color: var(--color-white, #fff);
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+      }
+    }
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    &:focus {
+      --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    }
+    &:focus {
+      --tw-ring-offset-width: 2px;
+      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    }
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
     }
   }
 }
@@ -728,6 +760,11 @@ Building a better future, one line of code at a time.
 @property --tw-duration {
   syntax: "*";
   inherits: false;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 @keyframes spin {
   to {
