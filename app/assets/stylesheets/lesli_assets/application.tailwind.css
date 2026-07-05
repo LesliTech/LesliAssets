@@ -193,20 +193,11 @@
   .relative {
     position: relative;
   }
-  .sticky {
-    position: sticky;
-  }
-  .top-0 {
-    top: 0;
-  }
   .top-2\.5 {
     top: calc(var(--spacing) * 2.5);
   }
   .right-2\.5 {
     right: calc(var(--spacing) * 2.5);
-  }
-  .z-50 {
-    z-index: 50;
   }
   .mx-auto {
     margin-inline: auto;
