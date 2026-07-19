@@ -44,6 +44,10 @@ Building a better future, one line of code at a time.
 @source "../../../LesliView/lib/lesli_view/components/header.html.erb";
 
 
+/* Import LesliView charts */
+@source "../../../LesliView/lib/lesli_view/charts/general.html.erb";
+
+
 /* Import LesliView elements */
 @source "../../../LesliView/lib/lesli_view/elements/button.rb";
 @import "../../../LesliView/lib/lesli_view/elements/button.css";
@@ -62,4 +66,7 @@ Building a better future, one line of code at a time.
 
 /* Import LesliView widgets */
 @source "../../../LesliView/lib/lesli_view/widgets/calendar.html.erb";
+@source "../../../LesliView/lib/lesli_view/widgets/weather.html.erb";
+@source "../../../LesliView/lib/lesli_view/widgets/chart.html.erb";
+@source "../../../LesliView/lib/lesli_view/widgets/count.html.erb";
 @source "../../../LesliView/lib/lesli_view/widgets/date.html.erb";
