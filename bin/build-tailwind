@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require_relative "../lib/lesli_assets/tailwind_builder"
+
+options = {
+    # LesliAssets lives at <application>/gems/LesliAssets, so the application
+    # root is three directories above this executable by default.
+    root: File.expand_path("../../..", __dir__)
+}
+
+parser = OptionParser.new do |arguments|
+    arguments.banner = "Usage: bin/build-tailwind [options]"
+    arguments.on("--root PATH", "Root directory to scan") { |path| options[:root] = path }
+    arguments.on("--compiler PATH", "Tailwind executable (defaults to tailwindcss-ruby)") do |path|
+        options[:compiler] = path
+    end
+    arguments.on("--minify", "Minify generated stylesheets") { options[:minify] = true }
+    arguments.on("--watch", "Watch every entrypoint for changes") { options[:watch] = true }
+    arguments.on("-h", "--help", "Show this help") do
+        puts arguments
+        exit
+    end
+end
+
+reporter = LesliAssets::TailwindReporter.new
+
+begin
+    parser.parse!
+
+    # Keep command-line parsing in this small executable; discovery, compilation,
+    # output formatting, and process management live in reusable Ruby classes.
+    builder = LesliAssets::TailwindBuilder.new(
+        root: options[:root],
+        compiler: options[:compiler],
+        minify: options[:minify]
+    )
+
+    success = options[:watch] ? builder.watch : builder.build
+    exit(success ? 0 : 1)
+rescue OptionParser::ParseError => error
+    reporter.danger("Invalid command", error: error.message)
+    warn(parser)
+    exit(1)
+rescue StandardError, LoadError => error
+    reporter.danger("Build failed", error: error.message)
+    exit(1)
+end

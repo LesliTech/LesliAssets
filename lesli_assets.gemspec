@@ -57,6 +57,6 @@ Gem::Specification.new do |spec|
     spec.metadata["documentation_uri"]  = "https://www.lesli.dev/gems/assets/"
 
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
-        Dir["{app,config,db,lib}/**/*", "license", "Rakefile", "readme.md"]
+        Dir["{app,config,db,lib}/**/*", "bin/build-tailwind", "license", "Rakefile", "readme.md"]
     end
 end

@@ -83,6 +83,7 @@ GEM
     tailwindcss-ruby (4.3.1-x86_64-darwin)
     tailwindcss-ruby (4.3.1-x86_64-linux-gnu)
     tailwindcss-ruby (4.3.1-x86_64-linux-musl)
+    termline (1.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
@@ -94,7 +95,6 @@ PLATFORMS
   aarch64-linux-gnu
   aarch64-linux-musl
   arm64-darwin
-  ruby
   x86_64-darwin
   x86_64-linux-gnu
   x86_64-linux-musl
@@ -104,6 +104,7 @@ DEPENDENCIES
   puma
   rubocop-rails-omakase
   tailwindcss-ruby (~> 4.0)
+  termline
 
 CHECKSUMS
   activesupport (8.1.3) sha256=21a5e0dfbd4c3ddd9e1317ec6a4d782fa226e7867dc70b0743acda81a1dca20e
@@ -143,6 +144,7 @@ CHECKSUMS
   tailwindcss-ruby (4.3.1-x86_64-darwin) sha256=6443a552bc00581dd8513fc42212b80ea16329f4f89e47a27835edd7bf95888b
   tailwindcss-ruby (4.3.1-x86_64-linux-gnu) sha256=22a208da614b7767cee504ab9dae2ab0d8299fdf633c045c6f8357de81d0506f
   tailwindcss-ruby (4.3.1-x86_64-linux-musl) sha256=1adcb5df5f9a6a85a81dc9e5102ce7e4f7a1415f477f1a6b22b52ee49c351ee6
+  termline (1.1.2)
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (3.2.0) sha256=0cdd96b5681a5949cdbc2c55e7b420facae74c4aaf9a9815eee1087cb1853c42
   unicode-emoji (4.2.0) sha256=519e69150f75652e40bf736106cfbc8f0f73aa3fb6a65afe62fefa7f80b0f80f

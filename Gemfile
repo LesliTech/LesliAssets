@@ -14,3 +14,6 @@ gem "rubocop-rails-omakase", require: false
 
 # Tailwind stand-alone compiler
 gem "tailwindcss-ruby", "~> 4.0"
+
+# Human-friendly terminal logs for the Lesli Platform
+gem "termline"
