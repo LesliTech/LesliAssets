@@ -39,10 +39,13 @@ Building a better future, one line of code at a time.
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 
+@source "../../../../LesliView/lib/lesli_view/components/header.html.erb";
+@source "../../../../LesliView/lib/lesli_view/elements/button.rb";
+@source "../../../../LesliView/lib/lesli_view/elements/button.html.erb";
+
+@import "../../../../LesliView/lib/lesli_view/elements/button.css";
+@import "../../../../LesliView/lib/lesli_view/elements/button.html.erb";
 
 /* Tailwind source files 
-@source "../../../../LesliView/lib/lesli_view/components/header.html.erb";
-@source "../../../../LesliView/lib/lesli_view/components/header.css";
-@source "../../../../LesliView/lib/lesli_view/elements/button.css";
 @source "../../../../LesliView/lib/lesli_view/layout/container.html.erb";
 */
