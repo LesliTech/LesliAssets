@@ -34,9 +34,6 @@ Building a better future, one line of code at a time.
 @layer theme, utilities;
 @layer theme;
 @layer utilities {
-  .pointer-events-none {
-    pointer-events: none;
-  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -73,32 +70,11 @@ Building a better future, one line of code at a time.
   .flex {
     display: flex;
   }
-  .hidden {
-    display: none;
-  }
   .inline-flex {
     display: inline-flex;
   }
-  .h-4 {
-    height: calc(var(--spacing, 0.25rem) * 4);
-  }
-  .h-8 {
-    height: calc(var(--spacing, 0.25rem) * 8);
-  }
-  .h-10 {
-    height: calc(var(--spacing, 0.25rem) * 10);
-  }
   .h-12 {
     height: calc(var(--spacing, 0.25rem) * 12);
-  }
-  .w-4 {
-    width: calc(var(--spacing, 0.25rem) * 4);
-  }
-  .w-8 {
-    width: calc(var(--spacing, 0.25rem) * 8);
-  }
-  .w-10 {
-    width: calc(var(--spacing, 0.25rem) * 10);
   }
   .w-12 {
     width: calc(var(--spacing, 0.25rem) * 12);
@@ -118,12 +94,6 @@ Building a better future, one line of code at a time.
   .shrink-0 {
     flex-shrink: 0;
   }
-  .animate-spin {
-    animation: var(--animate-spin, spin 1s linear infinite);
-  }
-  .cursor-wait {
-    cursor: wait;
-  }
   .flex-col {
     flex-direction: column;
   }
@@ -139,9 +109,6 @@ Building a better future, one line of code at a time.
   .justify-center {
     justify-content: center;
   }
-  .gap-2 {
-    gap: calc(var(--spacing, 0.25rem) * 2);
-  }
   .gap-3 {
     gap: calc(var(--spacing, 0.25rem) * 3);
   }
@@ -154,82 +121,15 @@ Building a better future, one line of code at a time.
   .rounded-2xl {
     border-radius: var(--radius-2xl, 1rem);
   }
-  .rounded-full {
-    border-radius: calc(infinity * 1px);
-  }
-  .rounded-lg {
-    border-radius: var(--radius-lg, 0.5rem);
-  }
-  .rounded-md {
-    border-radius: var(--radius-md, 0.375rem);
-  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
-  .border-amber-300 {
-    border-color: var(--color-amber-300, oklch(87.9% 0.169 91.605));
-  }
-  .border-amber-500 {
-    border-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
-  }
-  .border-blue-300 {
-    border-color: var(--color-blue-300, oklch(80.9% 0.105 251.813));
-  }
-  .border-blue-600 {
-    border-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
-  }
-  .border-current {
-    border-color: currentcolor;
-  }
-  .border-emerald-300 {
-    border-color: var(--color-emerald-300, oklch(84.5% 0.143 164.978));
-  }
-  .border-emerald-600 {
-    border-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
-  }
-  .border-rose-300 {
-    border-color: var(--color-rose-300, oklch(81% 0.117 11.638));
-  }
-  .border-rose-600 {
-    border-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
-  }
-  .border-sky-300 {
-    border-color: var(--color-sky-300, oklch(82.8% 0.111 230.318));
-  }
   .border-sky-600 {
     border-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
   }
-  .border-r-transparent {
-    border-right-color: transparent;
-  }
-  .bg-amber-500 {
-    background-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
-  }
-  .bg-blue-600 {
-    background-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
-  }
-  .bg-emerald-600 {
-    background-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
-  }
-  .bg-rose-600 {
-    background-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
-  }
-  .bg-sky-600 {
-    background-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
-  }
-  .bg-transparent {
-    background-color: transparent;
-  }
   .bg-white {
     background-color: var(--color-white, #fff);
-  }
-  .px-3 {
-    padding-inline: calc(var(--spacing, 0.25rem) * 3);
   }
   .px-4 {
     padding-inline: calc(var(--spacing, 0.25rem) * 4);
@@ -245,13 +145,6 @@ Building a better future, one line of code at a time.
     font-size: var(--text-sm, 0.875rem);
     line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
   }
-  .text-xs {
-    font-size: var(--text-xs, 0.75rem);
-    line-height: var(--tw-leading, var(--text-xs--line-height, calc(1 / 0.75)));
-  }
-  .text-\[20px\] {
-    font-size: 20px;
-  }
   .text-\[26px\] {
     font-size: 26px;
   }
@@ -263,31 +156,9 @@ Building a better future, one line of code at a time.
     --tw-leading: 1;
     line-height: 1;
   }
-  .font-medium {
-    --tw-font-weight: var(--font-weight-medium, 500);
-    font-weight: var(--font-weight-medium, 500);
-  }
   .tracking-tight {
     --tw-tracking: var(--tracking-tight, -0.025em);
     letter-spacing: var(--tracking-tight, -0.025em);
-  }
-  .whitespace-nowrap {
-    white-space: nowrap;
-  }
-  .text-amber-700 {
-    color: var(--color-amber-700, oklch(55.5% 0.163 48.998));
-  }
-  .text-amber-950 {
-    color: var(--color-amber-950, oklch(27.9% 0.077 45.635));
-  }
-  .text-blue-700 {
-    color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
-  }
-  .text-emerald-700 {
-    color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
-  }
-  .text-rose-700 {
-    color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
   }
   .text-sky-700 {
     color: var(--color-sky-700, oklch(50% 0.134 242.749));
@@ -298,12 +169,6 @@ Building a better future, one line of code at a time.
   .text-slate-700 {
     color: var(--color-slate-700, oklch(37.2% 0.044 257.287));
   }
-  .text-white {
-    color: var(--color-white, #fff);
-  }
-  .opacity-80 {
-    opacity: 80%;
-  }
   .shadow-sm {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -313,152 +178,10 @@ Building a better future, one line of code at a time.
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
     transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
   }
-  .transition-colors {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
-    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
-  }
-  .duration-150 {
-    --tw-duration: 150ms;
-    transition-duration: 150ms;
-  }
-  .hover\:border-amber-400 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-amber-400, oklch(82.8% 0.189 84.429));
-      }
-    }
-  }
-  .hover\:border-amber-600 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
-      }
-    }
-  }
-  .hover\:border-blue-400 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
-      }
-    }
-  }
-  .hover\:border-blue-700 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
-      }
-    }
-  }
-  .hover\:border-emerald-400 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-emerald-400, oklch(76.5% 0.177 163.223));
-      }
-    }
-  }
-  .hover\:border-emerald-700 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
-      }
-    }
-  }
-  .hover\:border-rose-400 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-rose-400, oklch(71.2% 0.194 13.428));
-      }
-    }
-  }
-  .hover\:border-rose-700 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
-      }
-    }
-  }
-  .hover\:border-sky-400 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-sky-400, oklch(74.6% 0.16 232.661));
-      }
-    }
-  }
-  .hover\:border-sky-700 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-sky-700, oklch(50% 0.134 242.749));
-      }
-    }
-  }
-  .hover\:bg-amber-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-amber-50, oklch(98.7% 0.022 95.277));
-      }
-    }
-  }
-  .hover\:bg-amber-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
-      }
-    }
-  }
-  .hover\:bg-blue-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-50, oklch(97% 0.014 254.604));
-      }
-    }
-  }
-  .hover\:bg-blue-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
-      }
-    }
-  }
-  .hover\:bg-emerald-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-emerald-50, oklch(97.9% 0.021 166.113));
-      }
-    }
-  }
-  .hover\:bg-emerald-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
-      }
-    }
-  }
-  .hover\:bg-rose-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-rose-50, oklch(96.9% 0.015 12.422));
-      }
-    }
-  }
-  .hover\:bg-rose-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
-      }
-    }
-  }
   .hover\:bg-sky-50 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-sky-50, oklch(97.7% 0.013 236.62));
-      }
-    }
-  }
-  .hover\:bg-sky-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-sky-700, oklch(50% 0.134 242.749));
       }
     }
   }
@@ -487,53 +210,6 @@ Building a better future, one line of code at a time.
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
-    }
-  }
-  .focus-visible\:ring-2 {
-    &:focus-visible {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .focus-visible\:ring-amber-500 {
-    &:focus-visible {
-      --tw-ring-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
-    }
-  }
-  .focus-visible\:ring-blue-500 {
-    &:focus-visible {
-      --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
-    }
-  }
-  .focus-visible\:ring-emerald-500 {
-    &:focus-visible {
-      --tw-ring-color: var(--color-emerald-500, oklch(69.6% 0.17 162.48));
-    }
-  }
-  .focus-visible\:ring-rose-500 {
-    &:focus-visible {
-      --tw-ring-color: var(--color-rose-500, oklch(64.5% 0.246 16.439));
-    }
-  }
-  .focus-visible\:ring-sky-500 {
-    &:focus-visible {
-      --tw-ring-color: var(--color-sky-500, oklch(68.5% 0.169 237.323));
-    }
-  }
-  .focus-visible\:ring-offset-2 {
-    &:focus-visible {
-      --tw-ring-offset-width: 2px;
-      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-    }
-  }
-  .disabled\:pointer-events-none {
-    &:disabled {
-      pointer-events: none;
-    }
-  }
-  .disabled\:opacity-50 {
-    &:disabled {
-      opacity: 50%;
     }
   }
   .sm\:flex-row {
@@ -616,13 +292,19 @@ Building a better future, one line of code at a time.
 // · 
 */
 @layer components {
-  .lesli-button-primary {
+  .lesli-button {
     display: inline-flex;
+    height: calc(var(--spacing, 0.25rem) * 10);
+    cursor: pointer;
     align-items: center;
     justify-content: center;
     gap: calc(var(--spacing, 0.25rem) * 2);
+    border-radius: var(--radius-lg, 0.5rem);
     border-style: var(--tw-border-style);
     border-width: 1px;
+    padding-inline: calc(var(--spacing, 0.25rem) * 4);
+    font-size: var(--text-sm, 0.875rem);
+    line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
     --tw-font-weight: var(--font-weight-medium, 500);
     font-weight: var(--font-weight-medium, 500);
     white-space: nowrap;
@@ -649,30 +331,353 @@ Building a better future, one line of code at a time.
     &:disabled {
       opacity: 50%;
     }
+  }
+  .lesli-button.is-small {
+    height: calc(var(--spacing, 0.25rem) * 8);
+    border-radius: var(--radius-md, 0.375rem);
+    padding-inline: calc(var(--spacing, 0.25rem) * 3);
+    font-size: var(--text-xs, 0.75rem);
+    line-height: var(--tw-leading, var(--text-xs--line-height, calc(1 / 0.75)));
+  }
+  .lesli-button.is-icon-only {
+    width: calc(var(--spacing, 0.25rem) * 10);
+    padding-inline: 0;
+  }
+  .lesli-button.is-icon-only.is-small {
+    width: calc(var(--spacing, 0.25rem) * 8);
+    padding-inline: 0;
+  }
+  .lesli-button.is-loading {
+    pointer-events: none;
+    cursor: wait;
+    opacity: 80%;
+  }
+  .lesli-button.is-primary {
+    border-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
     background-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
     color: var(--color-white, #fff);
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+      }
+    }
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
       }
     }
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-    &:focus {
+    &:focus-visible {
       --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
     }
-    &:focus {
-      --tw-ring-offset-width: 2px;
-      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  }
+  .lesli-button.is-info {
+    border-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
+    background-color: var(--color-sky-600, oklch(58.8% 0.158 241.966));
+    color: var(--color-white, #fff);
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-sky-700, oklch(50% 0.134 242.749));
+      }
     }
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-sky-700, oklch(50% 0.134 242.749));
+      }
     }
+    &:focus-visible {
+      --tw-ring-color: var(--color-sky-500, oklch(68.5% 0.169 237.323));
+    }
+  }
+  .lesli-button.is-success {
+    border-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
+    background-color: var(--color-emerald-600, oklch(59.6% 0.145 163.225));
+    color: var(--color-white, #fff);
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-emerald-500, oklch(69.6% 0.17 162.48));
+    }
+  }
+  .lesli-button.is-warning {
+    border-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+    background-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+    color: var(--color-amber-950, oklch(27.9% 0.077 45.635));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-amber-600, oklch(66.6% 0.179 58.318));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+    }
+  }
+  .lesli-button.is-danger {
+    border-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
+    background-color: var(--color-rose-600, oklch(58.6% 0.253 17.585));
+    color: var(--color-white, #fff);
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-rose-500, oklch(64.5% 0.246 16.439));
+    }
+  }
+  .lesli-button.is-primary.is-light {
+    border-color: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+    background-color: var(--color-blue-50, oklch(97% 0.014 254.604));
+    color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    }
+  }
+  .lesli-button.is-info.is-light {
+    border-color: var(--color-sky-100, oklch(95.1% 0.026 236.824));
+    background-color: var(--color-sky-50, oklch(97.7% 0.013 236.62));
+    color: var(--color-sky-700, oklch(50% 0.134 242.749));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-sky-200, oklch(90.1% 0.058 230.902));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-sky-100, oklch(95.1% 0.026 236.824));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-sky-500, oklch(68.5% 0.169 237.323));
+    }
+  }
+  .lesli-button.is-success.is-light {
+    border-color: var(--color-emerald-100, oklch(95% 0.052 163.051));
+    background-color: var(--color-emerald-50, oklch(97.9% 0.021 166.113));
+    color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-emerald-200, oklch(90.5% 0.093 164.15));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-emerald-100, oklch(95% 0.052 163.051));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-emerald-500, oklch(69.6% 0.17 162.48));
+    }
+  }
+  .lesli-button.is-warning.is-light {
+    border-color: var(--color-amber-100, oklch(96.2% 0.059 95.617));
+    background-color: var(--color-amber-50, oklch(98.7% 0.022 95.277));
+    color: var(--color-amber-700, oklch(55.5% 0.163 48.998));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-amber-200, oklch(92.4% 0.12 95.746));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-amber-100, oklch(96.2% 0.059 95.617));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+    }
+  }
+  .lesli-button.is-danger.is-light {
+    border-color: var(--color-rose-100, oklch(94.1% 0.03 12.58));
+    background-color: var(--color-rose-50, oklch(96.9% 0.015 12.422));
+    color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-rose-200, oklch(89.2% 0.058 10.001));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-rose-100, oklch(94.1% 0.03 12.58));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-rose-500, oklch(64.5% 0.246 16.439));
+    }
+  }
+  .lesli-button.is-primary.is-outlined {
+    border-color: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+    background-color: transparent;
+    color: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-50, oklch(97% 0.014 254.604));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    }
+  }
+  .lesli-button.is-info.is-outlined {
+    border-color: var(--color-sky-300, oklch(82.8% 0.111 230.318));
+    background-color: transparent;
+    color: var(--color-sky-700, oklch(50% 0.134 242.749));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-sky-400, oklch(74.6% 0.16 232.661));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-sky-50, oklch(97.7% 0.013 236.62));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-sky-500, oklch(68.5% 0.169 237.323));
+    }
+  }
+  .lesli-button.is-success.is-outlined {
+    border-color: var(--color-emerald-300, oklch(84.5% 0.143 164.978));
+    background-color: transparent;
+    color: var(--color-emerald-700, oklch(50.8% 0.118 165.612));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-emerald-400, oklch(76.5% 0.177 163.223));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-emerald-50, oklch(97.9% 0.021 166.113));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-emerald-500, oklch(69.6% 0.17 162.48));
+    }
+  }
+  .lesli-button.is-warning.is-outlined {
+    border-color: var(--color-amber-300, oklch(87.9% 0.169 91.605));
+    background-color: transparent;
+    color: var(--color-amber-700, oklch(55.5% 0.163 48.998));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-amber-400, oklch(82.8% 0.189 84.429));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-amber-50, oklch(98.7% 0.022 95.277));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+    }
+  }
+  .lesli-button.is-danger.is-outlined {
+    border-color: var(--color-rose-300, oklch(81% 0.117 11.638));
+    background-color: transparent;
+    color: var(--color-rose-700, oklch(51.4% 0.222 16.935));
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-rose-400, oklch(71.2% 0.194 13.428));
+      }
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-rose-50, oklch(96.9% 0.015 12.422));
+      }
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-rose-500, oklch(64.5% 0.246 16.439));
+    }
+  }
+  .lesli-button.is-light.is-outlined {
+    background-color: transparent;
+  }
+}
+@layer components {
+  .lesli-icon {
+    display: inline-flex;
+    height: calc(var(--spacing, 0.25rem) * 6);
+    width: calc(var(--spacing, 0.25rem) * 6);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    --tw-leading: 1;
+    line-height: 1;
+  }
+  .lesli-icon.is-small {
+    height: calc(var(--spacing, 0.25rem) * 4);
+    width: calc(var(--spacing, 0.25rem) * 4);
+    font-size: 1rem;
+  }
+  .lesli-icon.is-medium {
+    height: calc(var(--spacing, 0.25rem) * 8);
+    width: calc(var(--spacing, 0.25rem) * 8);
+    font-size: 2rem;
+  }
+  .lesli-icon.is-large {
+    height: calc(var(--spacing, 0.25rem) * 12);
+    width: calc(var(--spacing, 0.25rem) * 12);
+    font-size: 3rem;
+  }
+  .lesli-icon .material-symbols, .lesli-icon .material-symbols-outlined, .lesli-icon .material-symbols-rounded, .lesli-icon .material-symbols-sharp {
+    display: block;
+    --tw-leading: 1;
+    line-height: 1;
+    color: inherit;
+  }
+  .lesli-button .lesli-icon {
+    height: calc(var(--spacing, 0.25rem) * 5);
+    width: calc(var(--spacing, 0.25rem) * 5);
+    font-size: 1.25rem;
+  }
+  .lesli-button.is-small .lesli-icon {
+    height: calc(var(--spacing, 0.25rem) * 4);
+    width: calc(var(--spacing, 0.25rem) * 4);
+    font-size: 1rem;
+  }
+  .lesli-button.is-icon-only .lesli-icon {
+    height: calc(var(--spacing, 0.25rem) * 5);
+    width: calc(var(--spacing, 0.25rem) * 5);
+    font-size: 1.25rem;
+  }
+  .lesli-button.is-icon-only.is-small .lesli-icon {
+    height: calc(var(--spacing, 0.25rem) * 4);
+    width: calc(var(--spacing, 0.25rem) * 4);
+    font-size: 1rem;
   }
 }
 @property --tw-border-style {
@@ -681,10 +686,6 @@ Building a better future, one line of code at a time.
   initial-value: solid;
 }
 @property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
@@ -757,26 +758,19 @@ Building a better future, one line of code at a time.
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-duration {
+@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-leading: initial;
-      --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
@@ -792,6 +786,7 @@ Building a better future, one line of code at a time.
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-font-weight: initial;
       --tw-duration: initial;
     }
   }

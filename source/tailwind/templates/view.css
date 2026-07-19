@@ -41,7 +41,11 @@ Building a better future, one line of code at a time.
 
 
 /* Tailwind source files */
+@import "../../../../LesliView/lib/lesli_view/elements/button.css";
+
+
+/* Tailwind source files */
 @source "../../../../LesliView/lib/lesli_view/elements/button*";
 @source "../../../../LesliView/lib/lesli_view/components/header.html.erb";
 @source "../../../../LesliView/lib/lesli_view/layout/container.html.erb";
-@import "../../../../LesliView/lib/lesli_view/elements/button.css";
+
