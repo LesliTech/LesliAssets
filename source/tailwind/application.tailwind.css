@@ -30,6 +30,7 @@ Building a better future, one line of code at a time.
 // · 
 */
 
+
 /* Use tailwind */
 @import "tailwindcss" source(none);
 
@@ -47,9 +48,9 @@ Building a better future, one line of code at a time.
 
 
 /* Font families and icons */
-@import "../scss/fonts/remixicons.scss";
-@import "../scss/fonts/mdsymbols.scss";
-@import "../scss/fonts/families.scss";
+@import "./fonts/remixicons.css";
+@import "./fonts/mdsymbols.css";
+@import "./fonts/families.css";
 
 
 /* Tell Tailwind where to scan for class names */
