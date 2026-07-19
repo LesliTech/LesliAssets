@@ -38,11 +38,11 @@ TAILWIND_CMD ?= bundle exec tailwindcss
 define compile_tailwind
 
 @#	Compile the LesliAssets core styles
-$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
-$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
+@#$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
+@#$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
 
 @# Iterate over every app, engine and gem folder
-@for folder in $(ROOT)/source $(ROOT)/engines/* $(ROOT)/gems/*; do \
+@for folder in $(ROOT); do \
 	\
 	: "Get the current engine/gem folder name, example: LesliView"; \
 	folder_name="$$(basename "$$folder")"; \
@@ -63,7 +63,11 @@ $(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/s
 			file_name="$$(basename "$$file")"; \
 			\
 			: "Build the destination folder inside app/assets/stylesheets"; \
-			dist_folder="$$folder/app/assets/stylesheets/$$folder_slug"; \
+			if [ "$$folder_slug" != ".." ]; then \
+				dist_folder="$$folder/app/assets/stylesheets/$$folder_slug"; \
+			else \
+				dist_folder="$$folder/app/assets/stylesheets"; \
+			fi; \
 			\
 			: "Build the final destination file path"; \
 			dist_file="$$dist_folder/$$file_name"; \
