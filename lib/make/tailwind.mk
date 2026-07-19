@@ -30,8 +30,8 @@
 
 # LesliAssets should always be installed on rails_app/gems
 ROOT ?= ../..
-TAILWIND_EXT ?= css
 TAILWIND_CMD ?= bundle exec tailwindcss
+TAILWIND_PATTERN ?= *.tailwind.css
 
 
 # 
@@ -41,46 +41,34 @@ define compile_tailwind
 $(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
 $(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
 
-@# Iterate over every app, engine and gem folder
-@for folder in $(ROOT); do \
-	\
-	: "Get the current engine/gem folder name, example: LesliView"; \
-	folder_name="$$(basename "$$folder")"; \
-	\
-	: "Convert folder name to Rails-style slug, example: LesliView -> lesli_view"; \
-	folder_slug="$$(echo "$$folder_name" | sed -E 's/([a-z0-9])([A-Z])/\1_\2/g' | tr '[:upper:]' '[:lower:]')"; \
-	\
-	: "Build the expected Tailwind source folder path"; \
-	source_folder="$$folder/source/tailwind"; \
-	\
-	: "Only continue if the current folder actually has source/tailwind"; \
-	if [ -d "$$source_folder" ]; then \
+@# Discover Tailwind entrypoints and map them to Rails asset folders.
+@set -e; \
+root="$$(cd "$(ROOT)" && pwd)"; \
+find "$$root" \
+	\( -type d \( -name node_modules -o -name vendor -o -name tmp -o -name .git -o -path '*/app/assets' \) -prune \) \
+	-o \( -type f -name '$(TAILWIND_PATTERN)' -path '*/source/tailwind/*' -print \) \
+	| sort | while IFS= read -r file; do \
 		\
-		: "Find all Tailwind input files directly inside source/tailwind"; \
-		find "$$source_folder" -maxdepth 1 -type f -name "*.$(TAILWIND_EXT)" | while IFS= read -r file; do \
-			\
-			: "Get the CSS file name, example: application.css"; \
-			file_name="$$(basename "$$file")"; \
-			\
-			: "Build the destination folder inside app/assets/stylesheets"; \
-			if [ "$$folder_slug" != ".." ]; then \
-				dist_folder="$$folder/app/assets/stylesheets/$$folder_slug"; \
-			else \
-				dist_folder="$$folder/app/assets/stylesheets"; \
-			fi; \
-			\
-			: "Build the final destination file path"; \
-			dist_file="$$dist_folder/$$file_name"; \
-			\
-			: "Create the destination folder if it does not exist"; \
-			mkdir -p "$$dist_folder"; \
-			\
-			: "Compile the Tailwind source file into the destination CSS file"; \
-			echo "Compiling $$file -> $$dist_file"; \
-			$(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS); \
-		done; \
-	fi; \
-done
+		: "Everything before /source/tailwind is the Rails app, engine, or gem root"; \
+		package_root="$${file%%/source/tailwind/*}"; \
+		source_folder="$$package_root/source/tailwind"; \
+		relative_file="$${file#$$source_folder/}"; \
+		\
+		: "Rails apps write directly to stylesheets; engines and gems use a namespace"; \
+		if [ "$$package_root" = "$$root" ]; then \
+			dist_folder="$$package_root/app/assets/stylesheets"; \
+		else \
+			package_name="$$(basename "$$package_root")"; \
+			package_slug="$$(printf '%s' "$$package_name" | sed -E 's/([a-z0-9])([A-Z])/\1_\2/g' | tr '[:upper:]' '[:lower:]')"; \
+			dist_folder="$$package_root/app/assets/stylesheets/$$package_slug"; \
+		fi; \
+		\
+		dist_file="$$dist_folder/$$relative_file"; \
+		mkdir -p "$$(dirname "$$dist_file")"; \
+		\
+		echo "Compiling $$file -> $$dist_file"; \
+		$(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS); \
+	done
 endef
 
 

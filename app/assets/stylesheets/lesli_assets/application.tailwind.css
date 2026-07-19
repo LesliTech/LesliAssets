@@ -204,8 +204,11 @@
   .relative {
     position: relative;
   }
-  .-right-0\.5 {
-    right: calc(var(--spacing) * -0.5);
+  .-top-0 {
+    top: 0;
+  }
+  .-right-0 {
+    right: 0;
   }
   .mx-auto {
     margin-inline: auto;
