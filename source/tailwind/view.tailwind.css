@@ -32,7 +32,7 @@ Building a better future, one line of code at a time.
 
 
 /* Define layer priority */
-@layer theme, utilities;
+@layer theme, components, utilities;
 
 
 /* Import tailwind */
@@ -42,6 +42,9 @@ Building a better future, one line of code at a time.
 
 /* Import LesliView components */
 @source "../../../LesliView/lib/lesli_view/components/header.html.erb";
+@source "../../../LesliView/lib/lesli_view/components/toolbar.rb";
+@import "../../../LesliView/lib/lesli_view/components/toolbar.css";
+@source "../../../LesliView/lib/lesli_view/components/toolbar.html.erb";
 
 
 /* Import LesliView charts */
@@ -53,6 +56,9 @@ Building a better future, one line of code at a time.
 @import "../../../LesliView/lib/lesli_view/elements/button.css";
 @source "../../../LesliView/lib/lesli_view/elements/button.html.erb";
 @source "../../../LesliView/lib/lesli_view/elements/empty.html.erb";
+@source "../../../LesliView/lib/lesli_view/elements/table.rb";
+@import "../../../LesliView/lib/lesli_view/elements/table.css";
+@source "../../../LesliView/lib/lesli_view/elements/table.html.erb";
 
 
 /* Import LesliView form builder */
