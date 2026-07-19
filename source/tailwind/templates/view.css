@@ -41,7 +41,7 @@ Building a better future, one line of code at a time.
 
 
 /* Tailwind source files */
-@import "../../../../LesliView/lib/lesli_view/elements/button.css";
+@import "../../../../LesliView/lib/lesli_view/components/header*";
 
 
 /* Tailwind source files */

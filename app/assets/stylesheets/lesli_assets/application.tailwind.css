@@ -217,9 +217,6 @@
   .flex {
     display: flex;
   }
-  .hidden {
-    display: none;
-  }
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
@@ -545,19 +542,9 @@
       outline-style: none;
     }
   }
-  .sm\:block {
-    @media (width >= 40rem) {
-      display: block;
-    }
-  }
   .sm\:px-6 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 6);
-    }
-  }
-  .lg\:block {
-    @media (width >= 64rem) {
-      display: block;
     }
   }
   .lg\:gap-2 {

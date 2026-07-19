@@ -38,8 +38,8 @@ TAILWIND_CMD ?= bundle exec tailwindcss
 define compile_tailwind
 
 @#	Compile the LesliAssets core styles
-@#$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
-@#$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
+$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
+$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
 
 @# Iterate over every app, engine and gem folder
 @for folder in $(ROOT); do \
