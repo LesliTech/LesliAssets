@@ -1,0 +1,11 @@
+/* Use tailwind */
+@import "tailwindcss" source(none);
+
+
+/* Configuration & variables */
+@import "./settings/variables.css";
+
+
+/* Font families and icons */
+@import "../scss/fonts/mdsymbols.scss";
+@import "../scss/fonts/families.scss";

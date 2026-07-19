@@ -32,14 +32,12 @@
 ROOT ?= ../..
 TAILWIND_CMD ?= bundle exec tailwindcss
 TAILWIND_PATTERN ?= *.tailwind.css
+TAILWIND_SILENT ?= --silent
+TAILWIND_CAPTURE ?= 1
 
 
 # 
 define compile_tailwind
-
-@#	Compile the LesliAssets core styles
-$(TAILWIND_CMD) -i ./source/tailwind/templates/view.css -o ./app/assets/stylesheets/lesli_assets/view.tailwind.css $(TAILWIND_PARAMS)
-$(TAILWIND_CMD) -i ./source/tailwind/templates/application.css -o ./app/assets/stylesheets/lesli_assets/application.tailwind.css $(TAILWIND_PARAMS)
 
 @# Discover Tailwind entrypoints and map them to Rails asset folders.
 @set -e; \
@@ -66,8 +64,23 @@ find "$$root" \
 		dist_file="$$dist_folder/$$relative_file"; \
 		mkdir -p "$$(dirname "$$dist_file")"; \
 		\
-		echo "Compiling $$file -> $$dist_file"; \
-		$(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS); \
+		if [ "$(TAILWIND_CAPTURE)" = "1" ]; then \
+			log_file="$$(mktemp "$${TMPDIR:-/tmp}/lesli-tailwind.XXXXXX")"; \
+			if $(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS) $(TAILWIND_SILENT) >"$$log_file" 2>&1; then \
+				file_size="$$(wc -c < "$$dist_file" | tr -d '[:space:]')"; \
+				printf '[tailwind] built %s -> %s (%s bytes)\n' "$$relative_file" "$$dist_file" "$$file_size"; \
+				rm -f "$$log_file"; \
+			else \
+				exit_status=$$?; \
+				printf '[tailwind] ERROR building %s\n' "$$file" >&2; \
+				sed 's/^/  /' "$$log_file" >&2; \
+				rm -f "$$log_file"; \
+				exit $$exit_status; \
+			fi; \
+		else \
+			printf '[tailwind] watching %s -> %s\n' "$$relative_file" "$$dist_file"; \
+			$(TAILWIND_CMD) -i "$$file" -o "$$dist_file" $(TAILWIND_PARAMS) $(TAILWIND_SILENT); \
+		fi; \
 	done
 endef
 
@@ -84,5 +97,6 @@ prod.tailwind:
 	$(compile_tailwind)
 
 watch.tailwind: TAILWIND_PARAMS = --watch
+watch.tailwind: TAILWIND_CAPTURE = 0
 watch.tailwind:
 	$(compile_tailwind)

@@ -43,18 +43,18 @@ Building a better future, one line of code at a time.
 
 
 /* Configuration & variables */
-@import "../settings/variables.css";
+@import "./settings/variables.css";
 
 
 /* Font families and icons */
-@import "../../scss/fonts/remixicons.scss";
-@import "../../scss/fonts/mdsymbols.scss";
-@import "../../scss/fonts/families.scss";
+@import "../scss/fonts/remixicons.scss";
+@import "../scss/fonts/mdsymbols.scss";
+@import "../scss/fonts/families.scss";
 
 
 /* Tell Tailwind where to scan for class names */
-@source "../../../../../engines/Lesli/app/views/lesli/partials/*.html.erb";
-@source "../../../../../engines/Lesli/app/helpers/lesli/navigation_helper.rb";
+@source "../../../../engines/Lesli/app/views/lesli/partials/*.html.erb";
+@source "../../../../engines/Lesli/app/helpers/lesli/navigation_helper.rb";
 
 
 html,
