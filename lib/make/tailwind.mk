@@ -30,7 +30,7 @@
 
 ROOT ?= ../..
 # Make only exposes stable task names; the Ruby runner owns the build logic.
-TAILWIND_RUNNER ?= bundle exec ruby bin/build-tailwind
+TAILWIND_RUNNER ?= bundle exec ruby bin/tailwind
 
 
 .PHONY: build.tailwind prod.tailwind watch.tailwind

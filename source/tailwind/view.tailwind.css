@@ -38,6 +38,12 @@ Building a better future, one line of code at a time.
 /* Import tailwind */
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
+@import "lesli-css/css/colors.css";
+
+
+/* Configuration & variables */
+@import "./settings/variables.css";
+@import "./settings/theme.css";
 
 
 /* Import LesliView components */

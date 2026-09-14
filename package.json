@@ -2,10 +2,10 @@
     "name": "lesli-assets",
     "devDependencies": {
         "lesli-js": "0.5.0",
-        "lesli-css": "3.3.0",
+        "lesli-css": "4.0.0",
 
         "@hotwired/turbo":"8.0.23",
-        "@37signals/lexxy":"0.9.9-beta-preview1",
+        "@37signals/lexxy":"0.9.32",
         "@rails/activestorage":"8.1.300",
         "remixicon": "4.9.1",
         "alpinejs": "3.15.11",

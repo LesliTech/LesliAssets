@@ -33,6 +33,7 @@ Building a better future, one line of code at a time.
 
 /* Use tailwind */
 @import "tailwindcss" source(none);
+@import "lesli-css/css/colors.css";
 
 
 /* Vendor */
@@ -45,6 +46,7 @@ Building a better future, one line of code at a time.
 
 /* Configuration & variables */
 @import "./settings/variables.css";
+@import "./settings/theme.css";
 
 
 /* Font families and icons */
@@ -61,7 +63,7 @@ Building a better future, one line of code at a time.
 
 html,
 body {
-    background-color: #f9f5f3;
+    background-color: var(--lesli-color-background);
     scrollbar-width: thin;
     font-weight: normal;
     font-family: "OpenSans", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;

@@ -56,7 +56,10 @@ Gem::Specification.new do |spec|
     spec.metadata["bug_tracker_uri"]    = "https://github.com/LesliTech/LesliAssets/issues"
     spec.metadata["documentation_uri"]  = "https://www.lesli.dev/gems/assets/"
 
+    spec.bindir      = "bin"
+    spec.executables = ["tailwind"]
+
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
-        Dir["{app,config,db,lib}/**/*", "bin/build-tailwind", "license", "Rakefile", "readme.md"]
+        Dir["{app,config,db,lib}/**/*", "bin/tailwind", "license", "Rakefile", "readme.md"]
     end
 end

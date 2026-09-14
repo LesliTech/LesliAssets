@@ -11,7 +11,7 @@ options = {
 }
 
 parser = OptionParser.new do |arguments|
-    arguments.banner = "Usage: bin/build-tailwind [options]"
+    arguments.banner = "Usage: tailwind [options]"
     arguments.on("--root PATH", "Root directory to scan") { |path| options[:root] = path }
     arguments.on("--compiler PATH", "Tailwind executable (defaults to tailwindcss-ruby)") do |path|
         options[:compiler] = path

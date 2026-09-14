@@ -62,17 +62,17 @@ bundle add lesli_assets
 
 LesliAssets discovers files ending in `.tailwind.css` inside `source/tailwind` directories and writes their compiled output to the corresponding Rails asset directory.
 
-Run the bundled builder from the Rails application root:
+Run the installed executable from the Rails application root:
 
 ```shell
-bundle exec ruby "$(bundle show lesli_assets)/bin/build-tailwind" --root .
+tailwind --root .
 ```
 
 Build minified production assets or start the file watchers:
 
 ```shell
-bundle exec ruby "$(bundle show lesli_assets)/bin/build-tailwind" --root . --minify
-bundle exec ruby "$(bundle show lesli_assets)/bin/build-tailwind" --root . --watch
+tailwind --root . --minify
+tailwind --root . --watch
 ```
 
 ### Tailwind entrypoints
