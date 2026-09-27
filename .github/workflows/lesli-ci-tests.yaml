@@ -49,6 +49,6 @@ on:
 jobs:
   lesli-test-engine-minitest:
     name: Run lesli-test-engine-minitest
-    uses: LesliTech/LesliActions/.github/workflows/lesli-test-engine-minitest.yaml@master
+    uses: LesliTech/LesliActions/.github/workflows/lesli-test-gem-minitest.yaml@master
     with:
       branch: ${{ github.ref_name }}
