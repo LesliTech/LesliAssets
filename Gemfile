@@ -5,6 +5,12 @@ gemspec
 
 gem "puma"
 
+gem "rake", "~> 13.0"
+
+gem "minitest", "~> 6.0"
+
+gem "lesli_testing"
+
 # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 gem "rubocop-rails-omakase", require: false
 
