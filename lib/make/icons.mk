@@ -31,16 +31,22 @@
 
 # Build view partial to render svg icons
 # · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+SVGO ?= ./node_modules/.bin/svgo
+SVGEEZ ?= bundle exec svgeez
+
+.PHONY: build.icons
+
 build.icons:
-	svgo -f ./app/assets/icons/lesli_assets/engines -o ./app/assets/icons/lesli_assets/engines
-	svgo -f ./app/assets/icons/lesli_assets/social -o ./app/assets/icons/lesli_assets/social
-	svgo -f ./app/assets/icons/lesli_assets/flags -o ./app/assets/icons/lesli_assets/flags
-	svgo -f ./app/assets/icons/lesli_assets/gems -o ./app/assets/icons/lesli_assets/gems
+	@test -x "$(SVGO)" || { echo "SVGO is missing. Run: npm ci"; exit 1; }
+	$(SVGO) -f ./app/assets/icons/lesli_assets/engines -o ./app/assets/icons/lesli_assets/engines
+	$(SVGO) -f ./app/assets/icons/lesli_assets/social -o ./app/assets/icons/lesli_assets/social
+	$(SVGO) -f ./app/assets/icons/lesli_assets/flags -o ./app/assets/icons/lesli_assets/flags
+	$(SVGO) -f ./app/assets/icons/lesli_assets/gems -o ./app/assets/icons/lesli_assets/gems
 	
-	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/engines --destination ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg
-	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/social --destination ./app/views/lesli_assets/partials/_application-lesli-icons-social.svg
-	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/flags --destination ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg
-	svgeez build --prefix="" --source ./app/assets/icons/lesli_assets/gems --destination ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg
+	$(SVGEEZ) build --prefix="" --source ./app/assets/icons/lesli_assets/engines --destination ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg
+	$(SVGEEZ) build --prefix="" --source ./app/assets/icons/lesli_assets/social --destination ./app/views/lesli_assets/partials/_application-lesli-icons-social.svg
+	$(SVGEEZ) build --prefix="" --source ./app/assets/icons/lesli_assets/flags --destination ./app/views/lesli_assets/partials/_application-lesli-icons-flags.svg
+	$(SVGEEZ) build --prefix="" --source ./app/assets/icons/lesli_assets/gems --destination ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg
 
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons-engines.svg ./app/views/lesli_assets/partials/_application-lesli-icons-engines.html.erb
 	mv ./app/views/lesli_assets/partials/_application-lesli-icons-social.svg ./app/views/lesli_assets/partials/_application-lesli-icons-social.html.erb

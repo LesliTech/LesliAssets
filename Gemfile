@@ -21,3 +21,6 @@ gem "tailwindcss-ruby", "~> 4.0"
 
 # Human-friendly terminal logs for the Lesli Platform
 gem "termline"
+
+# Build SVG icon sprites
+gem "svgeez", "~> 4.1", require: false
