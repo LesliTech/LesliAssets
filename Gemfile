@@ -14,7 +14,7 @@ gem "rubocop-rails-omakase", require: false
 # gem "debug", ">= 1.0.0"
 
 # Shared testing and coverage configuration for the Lesli Platform.
-gem "lesli_testing", path:"../../gems/LesliTesting"
+gem "lesli_testing"
 
 # Tailwind stand-alone compiler
 gem "tailwindcss-ruby", "~> 4.0"
