@@ -9,7 +9,10 @@ npm install -g svgo
 
 gem install svgeez
 
-svgo -f ./app/assets/icons/lesli -o ./app/assets/icons/lesli
-svgeez build --prefix="" --source ./app/assets/icons/lesli --destination ./app/views/lesli/partials/_application-lesli-icons.svg
-mv ./app/views/lesli/partials/_application-lesli-icons.svg ./app/views/lesli/partials/_application-lesli-icons.html.erb
+svgo -f ./app/assets/icons/lesli_assets/engines -o ./app/assets/icons/lesli_assets/engines
+svgo -f ./app/assets/icons/lesli_assets/gems -o ./app/assets/icons/lesli_assets/gems
+
+svgeez build --prefix="" --source ./app/assets/icons/lesli_assets --destination ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg
+
+mv ./app/views/lesli_assets/partials/_application-lesli-icons-gems.svg ./app/views/lesli/partials/_application-lesli-icons-gems.html.erb
 ```
