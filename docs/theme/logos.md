@@ -2,6 +2,8 @@
 
 LesliAssets packages the default artwork used by the Lesli framework. Rails exposes these files under the `lesli_assets/brand` logical asset namespace.
 
+The artwork uses the approved [Lesli brand color palette](/gems/assets/theme/colors). Do not recolor the wordmark or compact icon; select the standard or negative version appropriate for the background.
+
 ## Wordmark
 
 <div class="columns lesli-css-color-logos">

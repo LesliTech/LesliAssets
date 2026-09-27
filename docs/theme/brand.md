@@ -14,7 +14,7 @@ Lesli applications use the Tailwind interface documented here. The lower-level p
 
 ## Color groups
 
-- [Primary colors](/gems/assets/theme/colors) provide the core Lesli brand scale.
+- [Brand color palette](/gems/assets/theme/colors) provides the stable Lesli brand scale.
 - [Semantic colors](/gems/assets/theme/semantics) communicate status and intent.
 - [Collection colors](/gems/assets/theme/collections) identify product areas and data series.
 

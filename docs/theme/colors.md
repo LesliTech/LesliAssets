@@ -1,8 +1,10 @@
-# Primary colors
+# Brand color palette
 
-Lesli uses a blue primary palette inspired by Maya blue. Use it for brand identity, primary actions, links, focus states, and selected navigation.
+Lesli's stable brand palette is a blue scale inspired by Maya blue. Its technical token name is `primary`, so each shade is available as `primary-50` through `primary-900`.
 
-## Palette
+Use the palette for Lesli brand identity, primary actions, links, focus states, and selected navigation. These colors belong to the shared design system and do not change with an application's runtime theme.
+
+## Brand palette
 
 <div class="columns">
     <div class="br-2 py-4 has-text-centered lesli-background-primary-50">50</div>
@@ -52,12 +54,12 @@ The palette is available to every Tailwind color utility. For example:
 
 Use dark text on Primary 50–400 and white text on Primary 500–900. Primary 400 does not provide enough contrast with white for normal-sized text.
 
-## Stable and runtime colors
+## Brand and runtime colors
 
-Lesli exposes two related kinds of primary color:
+Lesli exposes two related but distinct kinds of primary color:
 
-- `primary-50` through `primary-900` are stable design-system colors.
-- `primary` is the runtime application color and can be customized for an account.
+- `primary-50` through `primary-900` are the stable Lesli brand colors.
+- `primary` is the runtime application color and can be customized for an account without changing the brand palette.
 
 Use `bg-primary-500` when a component must retain the Lesli palette. Use `bg-primary` when it should follow the configured application theme.
 
