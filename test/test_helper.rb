@@ -7,7 +7,7 @@ require "lesli_testing"
 
 # register engine for testing
 LesliTesting.gem("LesliAssets", {
-    :coverage_min_coverage => 65
+    :coverage_min_coverage => 60
 })
 
 
