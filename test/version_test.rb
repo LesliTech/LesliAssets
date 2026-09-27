@@ -5,6 +5,8 @@ require "lesli_assets/version"
 
 class VersionTest < Minitest::Test
     def test_version_is_a_semantic_version
+        reload_version_file
+
         assert_instance_of(String, LesliAssets::VERSION)
         assert_match(/\A\d+\.\d+\.\d+\z/, LesliAssets::VERSION)
         assert(Gem::Version.correct?(LesliAssets::VERSION))
@@ -21,5 +23,15 @@ class VersionTest < Minitest::Test
 
         refute_nil(gemspec)
         assert_equal(Gem::Version.new(LesliAssets::VERSION), gemspec.version)
+    end
+
+    private
+
+    def reload_version_file
+        previous_verbosity = $VERBOSE
+        $VERBOSE = nil
+        load(File.expand_path("../lib/lesli_assets/version.rb", __dir__))
+    ensure
+        $VERBOSE = previous_verbosity
     end
 end
