@@ -125,6 +125,12 @@ LesliAssets organizes its resources into focused groups:
 
 See the [LesliAssets documentation](https://www.lesli.dev/gems/assets/) for the design system, asset catalog, and detailed usage guidance.
 
+- [Installation](https://www.lesli.dev/gems/assets/about/installation)
+- [Theme and brand system](https://www.lesli.dev/gems/assets/theme)
+- [View partials](https://www.lesli.dev/gems/assets/views)
+- [Email templates](https://www.lesli.dev/gems/assets/emails)
+- [Contributor build workflow](https://www.lesli.dev/gems/assets/about/development)
+
 <br />
 
 ## Development

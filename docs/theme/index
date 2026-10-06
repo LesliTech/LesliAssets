@@ -1,1 +1,6 @@
+---
+title: Theme
+---
+
+<!-- This section landing page introduces the Lesli visual identity and theme resources. -->
 <%= partial("brand") %>
