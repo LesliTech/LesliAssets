@@ -48,6 +48,7 @@ Building a better future, one line of code at a time.
 
 /* Import LesliView components */
 @source "../../../LesliView/lib/lesli_view/components/header.html.erb";
+@source "../../../LesliView/lib/lesli_view/components/tabs.html.erb";
 @source "../../../LesliView/lib/lesli_view/components/toolbar.rb";
 @import "../../../LesliView/lib/lesli_view/components/toolbar.css";
 @source "../../../LesliView/lib/lesli_view/components/toolbar.html.erb";
@@ -58,6 +59,8 @@ Building a better future, one line of code at a time.
 
 
 /* Import LesliView elements */
+@source "../../../LesliView/lib/lesli_view/elements/avatar.rb";
+@source "../../../LesliView/lib/lesli_view/elements/avatar.html.erb";
 @source "../../../LesliView/lib/lesli_view/elements/button.rb";
 @import "../../../LesliView/lib/lesli_view/elements/button.css";
 @source "../../../LesliView/lib/lesli_view/elements/button.html.erb";
