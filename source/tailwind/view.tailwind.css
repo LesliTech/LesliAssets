@@ -49,6 +49,7 @@ Building a better future, one line of code at a time.
 /* Import LesliView components */
 @source "../../../LesliView/lib/lesli_view/components/header.html.erb";
 @source "../../../LesliView/lib/lesli_view/components/tabs.html.erb";
+@source "../../../LesliView/lib/lesli_view/components/timeline.html.erb";
 @source "../../../LesliView/lib/lesli_view/components/toolbar.rb";
 @import "../../../LesliView/lib/lesli_view/components/toolbar.css";
 @source "../../../LesliView/lib/lesli_view/components/toolbar.html.erb";

@@ -155,8 +155,35 @@ Building a better future, one line of code at a time.
   .inset-0 {
     inset: 0px;
   }
+  .top-7 {
+    top: calc(var(--spacing) * 7);
+  }
+  .bottom-0 {
+    bottom: 0px;
+  }
   .bottom-1 {
     bottom: var(--spacing);
+  }
+  .left-1\/2 {
+    left: calc(1 / 2 * 100%);
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .col-start-1 {
+    grid-column-start: 1;
+  }
+  .col-start-2 {
+    grid-column-start: 2;
+  }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+  .row-start-1 {
+    grid-row-start: 1;
+  }
+  .row-start-2 {
+    grid-row-start: 2;
   }
   .container {
     width: 100%;
@@ -175,6 +202,9 @@ Building a better future, one line of code at a time.
     @media (width >= 96rem) {
       max-width: 96rem;
     }
+  }
+  .m-0 {
+    margin: 0px;
   }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
@@ -202,6 +232,9 @@ Building a better future, one line of code at a time.
   }
   .-mb-px {
     margin-bottom: -1px;
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
@@ -314,11 +347,24 @@ Building a better future, one line of code at a time.
   .shrink-0 {
     flex-shrink: 0;
   }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .cursor-pointer {
     cursor: pointer;
   }
+  .list-none {
+    list-style-type: none;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+  .grid-cols-\[1\.5rem_minmax\(0\,1fr\)\] {
+    grid-template-columns: 1.5rem minmax(0,1fr);
   }
   .flex-col {
     flex-direction: column;
@@ -352,6 +398,9 @@ Building a better future, one line of code at a time.
   }
   .gap-6 {
     gap: calc(var(--spacing) * 6);
+  }
+  .gap-x-4 {
+    column-gap: calc(var(--spacing) * 4);
   }
   .truncate {
     overflow: hidden;
@@ -487,6 +536,9 @@ Building a better future, one line of code at a time.
   .object-cover {
     object-fit: cover;
   }
+  .p-0 {
+    padding: 0px;
+  }
   .p-3 {
     padding: calc(var(--spacing) * 3);
   }
@@ -508,11 +560,17 @@ Building a better future, one line of code at a time.
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
   }
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
+  }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
   }
   .text-center {
     text-align: center;
@@ -589,6 +647,10 @@ Building a better future, one line of code at a time.
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .tracking-\[0\.2em\] {
+    --tw-tracking: 0.2em;
+    letter-spacing: 0.2em;
+  }
   .tracking-tight {
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
@@ -602,6 +664,9 @@ Building a better future, one line of code at a time.
   }
   .whitespace-nowrap {
     white-space: nowrap;
+  }
+  .text-\[var\(--lesli-color-primary\)\] {
+    color: var(--lesli-color-primary);
   }
   .text-amber-500 {
     color: var(--color-amber-500);
@@ -632,6 +697,9 @@ Building a better future, one line of code at a time.
   }
   .text-slate-700 {
     color: var(--color-slate-700);
+  }
+  .text-slate-800 {
+    color: var(--color-slate-800);
   }
   .text-white {
     color: var(--color-white);
@@ -712,6 +780,9 @@ Building a better future, one line of code at a time.
   .ring-inset {
     --tw-ring-inset: inset;
   }
+  .group-last\:hidden:is(:where(.group):last-child *) {
+    display: none;
+  }
   @media (hover: hover) {
     .hover\:bg-sky-50:hover {
       background-color: var(--color-sky-50);
@@ -774,18 +845,6 @@ Building a better future, one line of code at a time.
     .sm\:w-40 {
       width: calc(var(--spacing) * 40);
     }
-    .sm\:flex-row {
-      flex-direction: row;
-    }
-    .sm\:items-start {
-      align-items: flex-start;
-    }
-    .sm\:justify-between {
-      justify-content: space-between;
-    }
-    .sm\:justify-end {
-      justify-content: flex-end;
-    }
     .sm\:p-4 {
       padding: calc(var(--spacing) * 4);
     }
@@ -810,6 +869,44 @@ Building a better future, one line of code at a time.
     .sm\:text-lg {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:col-start-1 {
+      grid-column-start: 1;
+    }
+    .md\:col-start-2 {
+      grid-column-start: 2;
+    }
+    .md\:col-start-3 {
+      grid-column-start: 3;
+    }
+    .md\:row-start-1 {
+      grid-row-start: 1;
+    }
+    .md\:mb-0 {
+      margin-bottom: 0px;
+    }
+    .md\:grid-cols-\[minmax\(0\,1fr\)_auto\] {
+      grid-template-columns: minmax(0,1fr) auto;
+    }
+    .md\:grid-cols-\[minmax\(8rem\,auto\)_1\.5rem_minmax\(0\,1fr\)\] {
+      grid-template-columns: minmax(8rem,auto) 1.5rem minmax(0,1fr);
+    }
+    .md\:items-start {
+      align-items: flex-start;
+    }
+    .md\:gap-x-6 {
+      column-gap: calc(var(--spacing) * 6);
+    }
+    .md\:justify-self-end {
+      justify-self: flex-end;
+    }
+    .md\:pt-1 {
+      padding-top: var(--spacing);
+    }
+    .md\:text-right {
+      text-align: right;
     }
   }
   @media (width >= 64rem) {
@@ -2346,6 +2443,21 @@ Building a better future, one line of code at a time.
     }
   }
 }
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -2547,21 +2659,6 @@ Building a better future, one line of code at a time.
   syntax: "*";
   inherits: false;
 }
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
 @property --tw-content {
   syntax: "*";
   inherits: false;
@@ -2575,6 +2672,9 @@ Building a better future, one line of code at a time.
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;
@@ -2621,9 +2721,6 @@ Building a better future, one line of code at a time.
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
       --tw-duration: initial;
-      --tw-translate-x: 0;
-      --tw-translate-y: 0;
-      --tw-translate-z: 0;
       --tw-content: "";
     }
   }
