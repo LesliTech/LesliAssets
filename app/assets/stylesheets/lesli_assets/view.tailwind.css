@@ -217,6 +217,9 @@ Building a better future, one line of code at a time.
   .mx-auto {
     margin-inline: auto;
   }
+  .my-6 {
+    margin-block: calc(var(--spacing) * 6);
+  }
   .my-8 {
     margin-block: calc(var(--spacing) * 8);
   }
@@ -362,6 +365,9 @@ Building a better future, one line of code at a time.
     --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -415,6 +421,16 @@ Building a better future, one line of code at a time.
     margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
   }
+  :where(.space-y-3 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  :where(.space-y-6 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+  }
   .gap-x-4 {
     column-gap: calc(var(--spacing) * 4);
   }
@@ -438,13 +454,24 @@ Building a better future, one line of code at a time.
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-0 {
+    border-style: var(--tw-border-style);
+    border-width: 0px;
+  }
   .border-\[0\.1px\] {
     border-style: var(--tw-border-style);
     border-width: 0.1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
   }
   .border-r {
     border-right-style: var(--tw-border-style);
@@ -497,6 +524,9 @@ Building a better future, one line of code at a time.
   }
   .bg-sky-600 {
     background-color: var(--color-sky-600);
+  }
+  .bg-slate-50 {
+    background-color: var(--color-slate-50);
   }
   .bg-slate-100 {
     background-color: var(--color-slate-100);
@@ -564,6 +594,9 @@ Building a better future, one line of code at a time.
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
@@ -575,6 +608,9 @@ Building a better future, one line of code at a time.
   }
   .py-2\.5 {
     padding-block: calc(var(--spacing) * 2.5);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -590,6 +626,9 @@ Building a better future, one line of code at a time.
   }
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
+  }
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
   }
   .pb-10 {
     padding-bottom: calc(var(--spacing) * 10);
@@ -695,6 +734,9 @@ Building a better future, one line of code at a time.
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
   }
+  .break-words {
+    overflow-wrap: break-word;
+  }
   .break-all {
     word-break: break-all;
   }
@@ -749,6 +791,9 @@ Building a better future, one line of code at a time.
   .tabular-nums {
     --tw-numeric-spacing: tabular-nums;
     font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
+  }
+  .line-through {
+    text-decoration-line: line-through;
   }
   .no-underline {
     text-decoration-line: none;
@@ -822,9 +867,22 @@ Building a better future, one line of code at a time.
   .group-last\:hidden:is(:where(.group):last-child *) {
     display: none;
   }
+  .last\:border-b-0:last-child {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 0px;
+  }
+  .last\:pb-0:last-child {
+    padding-bottom: 0px;
+  }
   @media (hover: hover) {
+    .hover\:border-slate-300:hover {
+      border-color: var(--color-slate-300);
+    }
     .hover\:bg-sky-50:hover {
       background-color: var(--color-sky-50);
+    }
+    .hover\:bg-slate-50:hover {
+      background-color: var(--color-slate-50);
     }
     .hover\:text-sky-800:hover {
       color: var(--color-sky-800);
@@ -860,6 +918,9 @@ Building a better future, one line of code at a time.
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .focus-visible\:ring-\[var\(--lesli-color-primary\)\]:focus-visible {
+    --tw-ring-color: var(--lesli-color-primary);
+  }
   .focus-visible\:ring-blue-500:focus-visible {
     --tw-ring-color: var(--color-blue-500);
   }
@@ -873,8 +934,15 @@ Building a better future, one line of code at a time.
   .focus-visible\:outline-\[var\(--lesli-color-primary\)\]:focus-visible {
     outline-color: var(--lesli-color-primary);
   }
+  .focus-visible\:outline-none:focus-visible {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
   .focus-visible\:ring-inset:focus-visible {
     --tw-ring-inset: inset;
+  }
+  .disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
   }
   @media (prefers-reduced-motion: no-preference) {
     .motion-safe\:animate-pulse {
@@ -900,14 +968,26 @@ Building a better future, one line of code at a time.
     .sm\:w-40 {
       width: calc(var(--spacing) * 40);
     }
+    .sm\:flex-row {
+      flex-direction: row;
+    }
+    .sm\:gap-4 {
+      gap: calc(var(--spacing) * 4);
+    }
     .sm\:p-4 {
       padding: calc(var(--spacing) * 4);
+    }
+    .sm\:p-8 {
+      padding: calc(var(--spacing) * 8);
     }
     .sm\:px-6 {
       padding-inline: calc(var(--spacing) * 6);
     }
     .sm\:py-12 {
       padding-block: calc(var(--spacing) * 12);
+    }
+    .sm\:text-right {
+      text-align: right;
     }
     .sm\:text-4xl {
       font-size: var(--text-4xl);

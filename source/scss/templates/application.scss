@@ -51,8 +51,6 @@ Building a better future, one line of code at a time.
 @use "LesliView/lib/lesli_view/components/panel";
 @use "LesliView/lib/lesli_view/elements/table";
 @use "LesliView/lib/lesli_view/forms/form";
-@use "LesliView/lib/lesli_view/items/discussions";
-@use "LesliView/lib/lesli_view/items/activities";
 
 
 // · Font families and icons
@@ -62,11 +60,8 @@ Building a better future, one line of code at a time.
 
 
 // · Lesli application layout 
-@use "../layouts/application-notification";
 @use "../layouts/application-navigation";
 @use "../layouts/application-component";
-@use "../layouts/application-sidebar";
-@use "../layouts/application-app";
 
 
 // · Some home made helpers

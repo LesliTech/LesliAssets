@@ -83,6 +83,14 @@ Building a better future, one line of code at a time.
 @import "../../../LesliView/lib/lesli_view/forms/form.css";
 
 
+/* Import LesliView items */
+@source "../../../LesliView/lib/lesli_view/items/activities.html.erb";
+@source "../../../LesliView/lib/lesli_view/items/discussion.html.erb";
+@source "../../../LesliView/lib/lesli_view/items/discussions.html.erb";
+@source "../../../LesliView/lib/lesli_view/items/task.html.erb";
+@source "../../../LesliView/lib/lesli_view/items/tasks.html.erb";
+
+
 /* Import LesliView form layout */
 @source "../../../LesliView/lib/lesli_view/layout/container.html.erb";
 
