@@ -46,6 +46,13 @@ Building a better future, one line of code at a time.
 @import "./settings/theme.css";
 
 
+/* Vendor */
+/* Lexxy does not expose its CSS through package.json, so use its local files. */
+@import "../../node_modules/@37signals/lexxy/dist/stylesheets/lexxy-variables.css" layer(theme);
+@import "../../node_modules/@37signals/lexxy/dist/stylesheets/lexxy-content.css" layer(components);
+@import "../../node_modules/@37signals/lexxy/dist/stylesheets/lexxy-editor.css" layer(components);
+
+
 /* Import LesliView components */
 @source "../../../LesliView/lib/lesli_view/components/header.html.erb";
 @source "../../../LesliView/lib/lesli_view/components/tabs.html.erb";
@@ -78,6 +85,10 @@ Building a better future, one line of code at a time.
 
 /* Import LesliView form layout */
 @source "../../../LesliView/lib/lesli_view/layout/container.html.erb";
+
+
+/* Import LesliView partials */
+@source "../../../LesliView/lib/lesli_view/partials/engine_spec.html.erb";
 
 
 /* Import LesliView widgets */

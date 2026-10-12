@@ -36,14 +36,6 @@ Building a better future, one line of code at a time.
 @import "lesli-css/css/colors.css";
 
 
-/* Vendor */
-/* 
-@import "@37signals/lexxy/dist/stylesheets/lexxy-variables.css";
-@import "@37signals/lexxy/dist/stylesheets/lexxy-content.css";
-@import "@37signals/lexxy/dist/stylesheets/lexxy-editor.css"; 
-*/
-
-
 /* Configuration & variables */
 @import "./settings/variables.css";
 @import "./settings/theme.css";
