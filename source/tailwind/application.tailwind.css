@@ -50,6 +50,8 @@ Building a better future, one line of code at a time.
 /* Tell Tailwind where to scan for class names */
 @source "../../../../engines/Lesli/app/views/lesli/partials/*.html.erb";
 @source "../../../../engines/Lesli/app/views/lesli/layouts/application-lesli.html.erb";
+@source "../../../../engines/Lesli/app/views/lesli/errors/unauthorized.html.erb";
+@source "../../../../engines/Lesli/app/views/lesli/errors/not_found.html.erb";
 @source "../../../../engines/Lesli/app/helpers/lesli/navigation_helper.rb";
 @source "../../../../engines/LesliDashboard/app/views/lesli_dashboard/dashboards/shared/show.html.erb";
 
