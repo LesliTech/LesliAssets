@@ -33,9 +33,6 @@ Building a better future, one line of code at a time.
 <!--
     Lesli footer
 -->
-
-<!-- <mj-spacer height="30px" /> -->
-<!-- <mj-include path="social.mjml" /> -->
-<!-- <mj-include path="appstore.mjml" /> -->
-<!-- <mj-spacer height="10px" /> -->
+<mj-include path="appstore.mjml" />
+<mj-include path="social.mjml" />
 <mj-include path="copy.mjml" />

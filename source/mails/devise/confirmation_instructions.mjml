@@ -30,40 +30,35 @@ Building a better future, one line of code at a time.
 -->
 
 <mjml>
-    <mj-include path="head.mjml" />
-    <mj-body mj-class="lesli.body">
+    <mj-head>
+        <mj-include path="head.mjml" />
+        <mj-preview>Confirm your email address to finish setting up your Lesli account.</mj-preview>
+    </mj-head>
+    <mj-body>
 
         <!-- Email header -->
         <mj-include path="header.mjml" />
-        
-        <mj-section>
-            <mj-column>
-                <mj-text mj-class="lesli.title">
-                    <h1>Welcome to Lesli</h1>
-                </mj-text>
-            </mj-column>
-        </mj-section>
 
         <!-- Email content -->
-        <mj-section mj-class="lesli.content">
+        <mj-section mj-class="lesli.card" css-class="lesli-card">
             <mj-column>
+
+                <mj-text mj-class="lesli.title">
+                    <h1 style="font: inherit; margin: 0;">Welcome to Lesli</h1>
+                </mj-text>
 
                 <mj-text mj-class="lesli.text">
                     Please take a moment to validate your email address so that we know it's you.
                 </mj-text>
 
-                <mj-spacer height="10px" />
-                <mj-button mj-class="lesli.button-info" href="<%= @params[:url] %>">
+                <mj-button mj-class="lesli.button-primary" href="<%= @params[:url] %>">
                     Confirm my account
                 </mj-button>
-                <mj-spacer height="20px" />
-                <mj-spacer height="1px" container-background-color="#95a3ab" />
-                <mj-spacer height="20px" />
 
-                <mj-text mj-class="lesli.text font-14" align="center">
+                <mj-text mj-class="lesli.note">
                     Please keep in mind that this link is valid for only 3 hours.
                 </mj-text>
-                
+
             </mj-column>
         </mj-section>
 

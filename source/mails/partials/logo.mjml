@@ -33,16 +33,15 @@ Building a better future, one line of code at a time.
 <!--
     Lesli logo
 -->
-<mj-section>
+<mj-section mj-class="lesli.header" css-class="lesli-header">
     <mj-column>
-        <mj-image 
+        <mj-image
             align="center"
-            width="125px"
+            alt="Lesli"
+            width="104px"
             padding="0px"
-            padding-top="60px"
-            padding-left="5px"
-            padding-bottom="0px"
-            src="https://cdn.lesli.tech/leslicloud/brand/app-logo.png" 
+            href="<%= @app[:host] %>"
+            src="https://cdn.lesli.tech/leslicloud/brand/app-logo.png"
         />
     </mj-column>
 </mj-section>

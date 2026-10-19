@@ -34,20 +34,112 @@ Building a better future, one line of code at a time.
     Head of the email.  
     Define CSS classes and styles
 -->
-<mj-head>
-    <mj-attributes>
-        <mj-class name="lesli.body" background-color="#ebecf0" />
-        <mj-class name="lesli.content" background-color="#ffffff" border-radius="15px" padding="40px" max-width="60px" box-shadow="rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;"/> 
+<mj-title>Lesli</mj-title>
 
-        <mj-class name="lesli.title" align="center" color="#4a5056" padding="0px" />
-        <mj-class name="lesli.text" font-size="16px" color="#4a5056" line-height="1.2" />
-        <mj-class name="lesli.separator" height="2px" container-background-color="#DBDBDB" />
+<mj-attributes>
+        <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" />
+        <mj-body width="600px" background-color="#F8FAFC" />
+        <mj-section padding="0px" />
+        <mj-column padding="0px" />
 
-        <mj-class name="lesli.button-success" color="#23D160" background-color="#EFFAF3" border="1px solid #23D160" border-radius="5px" font-size="16px"/>
-        <mj-class name="lesli.button-info"    color="#209cee" background-color="#eef6fc" border="1px solid #209cee" border-radius="5px" font-size="16px"/>
+        <mj-class
+            name="lesli.header"
+            padding="48px 24px 28px"
+        />
+        <mj-class
+            name="lesli.card"
+            background-color="#FFFFFF"
+            border="1px solid #E5EAF0"
+            border-radius="16px"
+            padding="44px 48px"
+        />
+        <mj-class
+            name="lesli.title"
+            align="center"
+            color="#1F2933"
+            font-size="28px"
+            font-weight="700"
+            line-height="1.25"
+            padding="0px 0px 16px"
+        />
+        <mj-class
+            name="lesli.greeting"
+            align="center"
+            color="#34404C"
+            font-size="18px"
+            font-weight="600"
+            line-height="1.45"
+            padding="0px 0px 16px"
+        />
+        <mj-class
+            name="lesli.text"
+            color="#4B5663"
+            font-size="16px"
+            line-height="1.6"
+            padding="0px 0px 16px"
+        />
+        <mj-class
+            name="lesli.text-center"
+            align="center"
+        />
+        <mj-class
+            name="lesli.note"
+            align="center"
+            container-background-color="#F2F7FF"
+            border-radius="8px"
+            color="#34404C"
+            font-size="14px"
+            line-height="1.5"
+            padding="14px 16px"
+        />
+        <mj-class
+            name="lesli.button-primary"
+            background-color="#276AD6"
+            border-radius="8px"
+            color="#FFFFFF"
+            font-size="16px"
+            font-weight="600"
+            inner-padding="14px 24px"
+            padding="8px 0px 24px"
+        />
+        <mj-class
+            name="lesli.footer-heading"
+            align="center"
+            color="#34404C"
+            font-size="14px"
+            font-weight="600"
+            line-height="1.5"
+            padding="0px 0px 12px"
+        />
+        <mj-class
+            name="lesli.footer-text"
+            align="center"
+            color="#667383"
+            font-size="12px"
+            line-height="1.5"
+            padding="0px"
+        />
+        <mj-class
+            name="lesli.footer-divider"
+            border-color="#C7D0DA"
+            border-width="1px"
+            padding="0px 0px 18px"
+            width="64px"
+        />
+</mj-attributes>
 
-        <mj-class name="width-600" width="400" />
-        <mj-class name="font-18" font-size="18px" />
-        <mj-class name="font-14" font-size="14px" />
-    </mj-attributes>
-</mj-head>
+<mj-style>
+    a {
+        color: #276AD6;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .lesli-card > table > tbody > tr > td {
+            padding: 32px 24px !important;
+        }
+
+        .lesli-header > table > tbody > tr > td {
+            padding-top: 32px !important;
+        }
+    }
+</mj-style>

@@ -33,11 +33,16 @@ Building a better future, one line of code at a time.
 <!--
     Copyright
 -->
-<mj-section>
+<mj-section padding="22px 24px 40px">
     <mj-column>
-        <mj-text align="center" color="#666666" padding="4px">Copyright &copy; 2025 Lesli</mj-text>
-        <mj-text align="center" color="#666666" padding="4px">Guatemala.</mj-text>
-        <mj-text align="center" color="#666666" padding="4px">All rights reserved.</mj-text>
-        <!-- <mj-text align="center" color="#666666" padding="4px" padding-top="20px">The Lesli Team</mj-text> -->
+        <mj-divider mj-class="lesli.footer-divider" />
+        <mj-text mj-class="lesli.footer-text">
+            &copy; <%= Time.now.year %> Lesli &middot; Guatemala
+        </mj-text>
+        <mj-text mj-class="lesli.footer-text" padding-top="4px">
+            <a href="https://www.lesli.dev" style="color: #667383; text-decoration: underline;">
+                lesli.dev
+            </a>
+        </mj-text>
     </mj-column>
 </mj-section>

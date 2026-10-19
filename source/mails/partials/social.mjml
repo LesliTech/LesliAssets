@@ -33,17 +33,54 @@ Building a better future, one line of code at a time.
 <!--
     Links to social media
 -->
-<mj-section>
+<mj-section padding="22px 24px 0px">
     <mj-column>
-        <mj-text align="center" font-size="18px" font-weight="600" color="#444444">
-            ¡Siguenos!
+        <mj-text mj-class="lesli.footer-heading">
+            Follow Lesli
         </mj-text>
-        <mj-table align="center" width="300px">
+
+        <mj-table align="center" padding="0px" width="176px">
             <tr>
-                <td align="center"><img width="45px" alt="Facebook" src="https://cdn.lesli.tech/leslicloud/emails/social-facebook.png" /></td>
-                <td align="center"><img width="45px" alt="Twitter" src="https://cdn.lesli.tech/leslicloud/emails/social-twitter.png" /></td>
-                <td align="center"><img width="45px" alt="Instagram" src="https://cdn.lesli.tech/leslicloud/emails/social-instagram.png" /></td>
-                <td align="center"><img width="45px" alt="Linkedin" src="https://cdn.lesli.tech/leslicloud/emails/social-linkedin.png" /></td>
+                <td style="padding: 0 8px; text-align: center;">
+                    <a href="https://www.facebook.com/LesliTech" rel="noopener noreferrer" target="_blank">
+                        <img
+                            alt="Lesli on Facebook"
+                            src="https://cdn.lesli.tech/leslicloud/emails/social-facebook.png"
+                            style="border: 0; display: block; height: auto; width: 28px;"
+                            width="28"
+                        />
+                    </a>
+                </td>
+                <td style="padding: 0 8px; text-align: center;">
+                    <a href="https://x.com/LesliTech" rel="noopener noreferrer" target="_blank">
+                        <img
+                            alt="Lesli on X"
+                            src="https://cdn.lesli.tech/leslicloud/emails/social-twitter.png"
+                            style="border: 0; display: block; height: auto; width: 28px;"
+                            width="28"
+                        />
+                    </a>
+                </td>
+                <td style="padding: 0 8px; text-align: center;">
+                    <a href="https://www.instagram.com/LesliTech" rel="noopener noreferrer" target="_blank">
+                        <img
+                            alt="Lesli on Instagram"
+                            src="https://cdn.lesli.tech/leslicloud/emails/social-instagram.png"
+                            style="border: 0; display: block; height: auto; width: 28px;"
+                            width="28"
+                        />
+                    </a>
+                </td>
+                <td style="padding: 0 8px; text-align: center;">
+                    <a href="https://www.linkedin.com/company/leslitech/" rel="noopener noreferrer" target="_blank">
+                        <img
+                            alt="Lesli on LinkedIn"
+                            src="https://cdn.lesli.tech/leslicloud/emails/social-linkedin.png"
+                            style="border: 0; display: block; height: auto; width: 28px;"
+                            width="28"
+                        />
+                    </a>
+                </td>
             </tr>
         </mj-table>
     </mj-column>

@@ -33,28 +33,39 @@ Building a better future, one line of code at a time.
 <!--
     Links to the appstores
 -->
-<mj-section>
+<mj-section padding="28px 24px 0px">
     <mj-column>
-        <mj-text align="center" font-size="18px" font-weight="600" color="#444444">
-            Download our app
+        <mj-text mj-class="lesli.footer-heading">
+            Take Lesli with you
         </mj-text>
-        <mj-table align="center">
+
+        <mj-table align="center" padding="0px" width="280px">
             <tr>
-                <td style="text-align: right; padding: 5px;">
-                    <a target="blank" href="https://apps.apple.com/us/app/lesli/id1595893730">
+                <td style="padding: 0 5px; text-align: right; vertical-align: middle;">
+                    <a
+                        href="https://apps.apple.com/us/app/lesli/id1595893730"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         <img
-                            width="130px"
-                            alt="Appstore badge"
+                            alt="Download Lesli on the App Store"
                             src="https://cdn.lesli.tech/leslicloud/emails/appstore.png"
+                            style="border: 0; display: block; height: auto; margin-left: auto; width: 125px;"
+                            width="125"
                         />
                     </a>
                 </td>
-                <td style="text-align: left; padding: 5px;">
-                    <a target="blank" href="https://apps.apple.com/us/app/lesli/id1595893730">
+                <td style="padding: 0 5px; text-align: left; vertical-align: middle;">
+                    <a
+                        href="https://play.google.com/store/apps"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         <img
-                            width="130px"
-                            alt="Playstore badge"
+                            alt="Get Lesli on Google Play"
                             src="https://cdn.lesli.tech/leslicloud/emails/playstore.png"
+                            style="border: 0; display: block; height: auto; margin-right: auto; width: 125px;"
+                            width="125"
                         />
                     </a>
                 </td>

@@ -30,49 +30,47 @@ Building a better future, one line of code at a time.
 -->
 
 <mjml>
-    <mj-include path="head.mjml" />
-    <mj-body mj-class="lesli.body">
+    <mj-head>
+        <mj-include path="head.mjml" />
+        <mj-preview>Welcome to Lesli. Your workspace is ready.</mj-preview>
+    </mj-head>
+    <mj-body>
 
         <!-- Email header -->
         <mj-include path="header.mjml" />
-        
-        <mj-section>
-            <mj-column>
-                <mj-text mj-class="lesli.title">
-                    <h1>Welcome to The Lesli Family!</h1>
-                </mj-text>
-            </mj-column>
-        </mj-section>
 
         <!-- Email content -->
-        <mj-section mj-class="lesli.content">
+        <mj-section mj-class="lesli.card" css-class="lesli-card">
             <mj-column>
-                <mj-image 
-                    width="90px"
-                    src="https://cdn.lesli.tech/leslicloud/emails/celebration.png" 
+
+                <mj-image
+                    alt=""
+                    width="72px"
+                    padding="0px 0px 24px"
+                    src="https://cdn.lesli.tech/leslicloud/emails/celebration.png"
                 />
 
                 <mj-text mj-class="lesli.title">
-                    <h2>
-                        <% name = @params.dig(:user).full_name.to_s.strip %>
-                        <%= "Hi #{name}." unless name.empty? %>
-                    </h2>
+                    <h1 style="font: inherit; margin: 0;">Welcome to Lesli</h1>
                 </mj-text>
 
-                <mj-spacer height="2px" container-background-color="#95a3ab" />
-                <mj-spacer height="5px" />
-
-                <mj-text mj-class="lesli.text font-18" align="center">
-                    <p>
-                        Lesli will help you work with your team on your ideas, projects, and business.
-                    </p>
-                    <p>
-                        We're excited to have you on board!
-                    </p>
+                <mj-text mj-class="lesli.greeting">
+                    <% name = @params.dig(:user).full_name.to_s.strip %>
+                    <%= "Hi #{name}." unless name.empty? %>
                 </mj-text>
-                <mj-button mj-class="lesli.button-info" href="<%= @app[:host] %>" font-size="17px">
+
+                <mj-text mj-class="lesli.text lesli.text-center">
+                    Lesli will help you work with your team on your ideas, projects, and business.
+                </mj-text>
+
+                <mj-text mj-class="lesli.text lesli.text-center">
+                    We're excited to have you on board!
+                </mj-text>
+
+                <mj-button mj-class="lesli.button-primary" href="<%= @app[:host] %>">
                     Go to your Lesli account
                 </mj-button>
+
             </mj-column>
         </mj-section>
 
