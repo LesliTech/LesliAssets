@@ -45,7 +45,7 @@ make prod.mails
 
 The HTML ERB files under `app/views/lesli_assets/emails` are generated artifacts. Make lasting changes in the MJML source or shared includes, then rebuild.
 
-Both build modes compile every template into a temporary directory before replacing any generated Rails view. If one template fails, the existing generated views remain unchanged.
+The compiler expects the source and destination folders tracked by the repository to exist. Add any new template folder before adding its path to `MJML_FILES`.
 
 ## Validation
 
@@ -55,9 +55,9 @@ Run the complete email build validation with:
 make test.mails
 ```
 
-This command compiles every template in development and production modes, validates the generated ERB syntax, rejects malformed ERB or residual MJML `<raw>` elements, and verifies that the committed Rails views match the production build.
+This command compiles every template in development and production modes. The production build runs last, leaving the committed Rails views in their release format.
 
-The Ruby test suite renders each generated view with representative user and URL data:
+The Ruby test suite handles template syntax and renders each generated view with representative user and URL data:
 
 ```shell
 bundle exec rake test
