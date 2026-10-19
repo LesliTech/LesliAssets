@@ -54,8 +54,8 @@ Building a better future, one line of code at a time.
 
                 <mj-text mj-class="lesli.title">
                     <h2>
-                        <raw><% name = @params.dig(:user).full_name %></raw>
-                        <raw><%= !name.blank? ? "Hi #{name.strip}." : nil %></raw>
+                        <% name = @params.dig(:user).full_name.to_s.strip %>
+                        <%= "Hi #{name}." unless name.empty? %>
                     </h2>
                 </mj-text>
 

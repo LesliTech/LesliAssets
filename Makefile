@@ -43,7 +43,9 @@ include lib/make/tailwind.mk
 help:
 	@echo "Available commands:"
 	@echo "  make build.css"
-	@echo "  make build.emails"
+	@echo "  make build.mails"
+	@echo "  make prod.mails"
+	@echo "  make test.mails"
 
 
 build: build.js build.css build.icons build.mails build.tailwind

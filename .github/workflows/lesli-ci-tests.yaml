@@ -47,6 +47,30 @@ on:
   pull_request:         # Execute this workflow automatic on any new PR
 
 jobs:
+  lesli-test-email-templates:
+    name: Validate email templates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.5"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Compile and validate email templates
+        run: make test.mails
+
   lesli-test-engine-minitest:
     name: Run lesli-test-engine-minitest
     uses: LesliTech/LesliActions/.github/workflows/lesli-test-gem-minitest.yaml@master

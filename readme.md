@@ -172,6 +172,7 @@ Run the default test task from the LesliAssets directory:
 
 ```shell
 bundle exec rake
+make test.mails
 ```
 
 ### Code quality

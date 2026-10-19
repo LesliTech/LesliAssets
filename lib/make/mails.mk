@@ -34,39 +34,84 @@
 
 MJML_SRC = source/mails
 MJML_DEST = app/views/lesli_assets/emails
+MJML_PARTIALS = $(MJML_SRC)/partials
 
 MJML_FILES = \
 	lesli/welcome \
 	devise/confirmation_instructions \
 	devise/reset_password_instructions
 
-MJML = npx mjml
+MJML = ./node_modules/.bin/mjml
 
 MJML_OPTIONS = \
 	--config.allowIncludes true \
-	--config.filePath $(MJML_SRC)/xyz
+	--config.filePath $(MJML_PARTIALS)
 
 MJML_OPTIONS_DEV = \
 	--config.minify false \
-	--config.beautify true
+	--config.beautify false
 
 MJML_OPTIONS_PROD = \
 	--config.minify true \
 	--config.beautify false \
 	--config.minifyOptions='{"removeComments":true}'
 
-Then:
 
-# Development
-build.mails:
-	@for file in $(MJML_FILES); do \
-		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
-		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_DEV); \
+.PHONY: build.mails prod.mails test.mails
+
+
+build.mails: MJML_BUILD_OPTIONS = $(MJML_OPTIONS_DEV)
+prod.mails: MJML_BUILD_OPTIONS = $(MJML_OPTIONS_PROD)
+
+
+# Compile every template before replacing any generated Rails view.
+build.mails prod.mails:
+	@set -eu; \
+	if [ ! -x "$(MJML)" ]; then \
+		echo "MJML is not installed. Run npm install before compiling emails." >&2; \
+		exit 1; \
+	fi; \
+	mkdir -p "$(MJML_DEST)"; \
+	temp_dir=$$(mktemp -d "$(MJML_DEST)/.mails.XXXXXX"); \
+	cleanup() { rm -rf "$$temp_dir"; }; \
+	trap cleanup EXIT; \
+	trap 'exit 1' HUP INT TERM; \
+	for file in $(MJML_FILES); do \
+		source_file="$(MJML_SRC)/$$file.mjml"; \
+		temp_file="$$temp_dir/$$file.html.erb"; \
+		mkdir -p "$${temp_file%/*}"; \
+		echo "Compiling email: $$source_file"; \
+		$(MJML) "$$source_file" -o "$$temp_file" $(MJML_OPTIONS) $(MJML_BUILD_OPTIONS); \
+		ruby -pi -e 'sub(/[ \t]+$$/, "")' "$$temp_file"; \
+		if grep -q '< %' "$$temp_file"; then \
+			echo "Compilation produced invalid ERB in $$source_file" >&2; \
+			exit 1; \
+		fi; \
+		if grep -q '<raw' "$$temp_file"; then \
+			echo "Compilation left an MJML <raw> tag in $$source_file" >&2; \
+			exit 1; \
+		fi; \
+		ruby -rerb -e 'RubyVM::InstructionSequence.compile(ERB.new(File.read(ARGV.fetch(0))).src, ARGV.fetch(0))' "$$temp_file"; \
+	done; \
+	for file in $(MJML_FILES); do \
+		temp_file="$$temp_dir/$$file.html.erb"; \
+		destination_file="$(MJML_DEST)/$$file.html.erb"; \
+		mkdir -p "$${destination_file%/*}"; \
+		mv "$$temp_file" "$$destination_file"; \
 	done
 
-# Production build (compressed output)
-prod.mails:
-	@for file in $(MJML_FILES); do \
-		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
-		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_PROD); \
-	done
+
+# Compile both modes in isolation and ensure committed views match production.
+test.mails:
+	@set -eu; \
+	temp_root=$$(mktemp -d "$${TMPDIR:-/tmp}/lesli-assets-mails.XXXXXX"); \
+	cleanup() { rm -rf "$$temp_root"; }; \
+	trap cleanup EXIT; \
+	trap 'exit 1' HUP INT TERM; \
+	$(MAKE) --no-print-directory build.mails MJML_DEST="$$temp_root/development"; \
+	$(MAKE) --no-print-directory prod.mails MJML_DEST="$$temp_root/production"; \
+	if ! diff -ru "$(MJML_DEST)" "$$temp_root/production"; then \
+		echo "Generated email views are stale. Run make prod.mails and commit the result." >&2; \
+		exit 1; \
+	fi; \
+	echo "Email templates compile correctly and generated views are current."
