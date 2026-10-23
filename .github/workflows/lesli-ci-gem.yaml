@@ -38,7 +38,7 @@
 
 # Specs for The Lesli Framework
 # -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-   -·-
-name: "Lesli Tests Workflow"
+name: "Lesli CI"
 on:
   push:
     branches: [master]  # Execute when push only for the master branch
@@ -71,6 +71,10 @@ jobs:
       - name: Compile and validate email templates
         run: make test.mails
 
-  lesli-test-engine-minitest:
-    name: Run lesli-test-engine-minitest
-    uses: LesliTech/LesliActions/.github/workflows/lesli-test-gem-minitest.yaml@master
+  ci:
+    name: "Test and build Ruby gem"
+    uses: LesliTech/LesliActions/.github/workflows/lesli-ci-gem.yaml@master
+    with:
+      ruby-version: "3.3.5"
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
