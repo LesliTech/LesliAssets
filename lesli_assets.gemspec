@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
     spec.email       = ["hello@lesli.tech"]
     spec.homepage    = "https://www.lesli.dev/"
     spec.summary     = "A shared frontend asset library for The Lesli Framework"
+    spec.required_ruby_version = ">= 3.3", "< 4.0"
     spec.description = <<~DESC
         LesliAssets provides shared frontend resources for The Lesli Framework, 
         including stylesheets, JavaScript modules, images, icons, and reusable view partials.
