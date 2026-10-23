@@ -30,7 +30,6 @@
 
 
 include lib/make/js.mk
-include lib/make/css.mk
 include lib/make/icons.mk
 include lib/make/mails.mk
 include lib/make/version.mk
@@ -42,11 +41,11 @@ include lib/make/tailwind.mk
 
 help:
 	@echo "Available commands:"
-	@echo "  make build.css"
+	@echo "  make build.tailwind"
 	@echo "  make build.mails"
 	@echo "  make prod.mails"
 	@echo "  make test.mails"
 
 
-build: build.js build.css build.icons build.mails build.tailwind
-prod: prod.js prod.css prod.mails prod.version prod.tailwind
+build: build.js build.icons build.mails build.tailwind
+prod: prod.js prod.mails prod.version prod.tailwind

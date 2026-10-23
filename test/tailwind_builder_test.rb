@@ -7,24 +7,6 @@ require "tmpdir"
 require "lesli_assets/tailwind_builder"
 
 class TailwindBuilderTest < Minitest::Test
-    class RecordingReporter
-        attr_reader :events
-
-        def initialize
-            @events = []
-        end
-
-        %i[info success warning danger].each do |level|
-            define_method(level) do |message, **data|
-                @events << { level: level, message: message, data: data }
-            end
-        end
-
-        def error_detail(message)
-            @events << { level: :error_detail, message: message, data: {} }
-        end
-    end
-
     class RecordingWatchBuilder < LesliAssets::TailwindBuilder
         attr_reader :spawned, :monitored
 
@@ -48,7 +30,6 @@ class TailwindBuilderTest < Minitest::Test
 
     def setup
         @root = Pathname(Dir.mktmpdir("lesli-assets-tailwind-builder"))
-        @reporter = RecordingReporter.new
     end
 
     def teardown
@@ -56,15 +37,17 @@ class TailwindBuilderTest < Minitest::Test
     end
 
     def test_discovers_entrypoints_and_maps_destinations
-        write("source/tailwind/application.tailwind.css")
-        write("engines/LesliAdmin/source/tailwind/components/admin.tailwind.css")
-        write("gems/LesliDate/source/tailwind/date.tailwind.css")
+        write("source/tailwind/application.css")
+        write("engines/LesliAdmin/source/tailwind/admin.css")
+        write("gems/LesliDate/source/tailwind/date.css")
+        write("source/tailwind/settings/theme.css")
+        write("engines/LesliAdmin/source/tailwind/components/card.css")
 
-        write("node_modules/package/source/tailwind/ignored.tailwind.css")
-        write("vendor/package/source/tailwind/ignored.tailwind.css")
-        write("tmp/package/source/tailwind/ignored.tailwind.css")
-        write(".git/package/source/tailwind/ignored.tailwind.css")
-        write("example/app/assets/source/tailwind/generated.tailwind.css")
+        write("node_modules/package/source/tailwind/ignored.css")
+        write("vendor/package/source/tailwind/ignored.css")
+        write("tmp/package/source/tailwind/ignored.css")
+        write(".git/package/source/tailwind/ignored.css")
+        write("example/app/assets/source/tailwind/generated.css")
         write("source/stylesheets/not-an-entrypoint.css")
 
         entries = builder.entrypoints
@@ -74,12 +57,12 @@ class TailwindBuilderTest < Minitest::Test
 
         assert_equal(
             {
-                "engines/LesliAdmin/source/tailwind/components/admin.tailwind.css" =>
-                    "engines/LesliAdmin/app/assets/stylesheets/lesli_admin/components/admin.tailwind.css",
-                "gems/LesliDate/source/tailwind/date.tailwind.css" =>
-                    "gems/LesliDate/app/assets/stylesheets/lesli_date/date.tailwind.css",
-                "source/tailwind/application.tailwind.css" =>
-                    "app/assets/stylesheets/application.tailwind.css"
+                "engines/LesliAdmin/source/tailwind/admin.css" =>
+                    "engines/LesliAdmin/app/assets/stylesheets/lesli_admin/admin.css",
+                "gems/LesliDate/source/tailwind/date.css" =>
+                    "gems/LesliDate/app/assets/stylesheets/lesli_date/date.css",
+                "source/tailwind/application.css" =>
+                    "app/assets/stylesheets/application.css"
             },
             paths
         )
@@ -87,12 +70,14 @@ class TailwindBuilderTest < Minitest::Test
     end
 
     def test_build_invokes_compiler_and_creates_output
-        source = write("source/tailwind/application.tailwind.css", "@import 'tailwindcss';")
+        source = write("source/tailwind/application.css", "@import 'tailwindcss';")
         compiler, log = fake_compiler
 
-        assert builder(compiler: compiler, minify: true).build
+        output = capture_termline do
+            assert builder(compiler: compiler, minify: true).build
+        end
 
-        destination = @root.join("app/assets/stylesheets/application.tailwind.css")
+        destination = @root.join("app/assets/stylesheets/application.css")
         arguments = destination.readlines(chomp: true)
 
         assert destination.file?
@@ -104,15 +89,14 @@ class TailwindBuilderTest < Minitest::Test
         assert_includes(arguments, "--silent")
         assert_equal(1, log.readlines.size)
 
-        event = event_for(:success)
-        assert_match(/Compiled/, event.fetch(:message))
-        assert_match(/application\.tailwind\.css/, event.fetch(:message))
-        assert(event.fetch(:data).key?(:size))
+        assert_includes(output, "TAILWIND: Compiled")
+        assert_includes(output, "application.css")
+        assert_includes(output, "size=")
     end
 
     def test_build_stops_after_first_compiler_failure_and_reports_diagnostics
-        write("source/tailwind/first.tailwind.css")
-        write("source/tailwind/second.tailwind.css")
+        write("source/tailwind/first.css")
+        write("source/tailwind/second.css")
         compiler, log = fake_compiler(
             exit_status: 7,
             stdout: "compiler stdout\n",
@@ -120,58 +104,46 @@ class TailwindBuilderTest < Minitest::Test
             create_output: false
         )
 
-        refute builder(compiler: compiler).build
+        output = capture_termline do
+            refute builder(compiler: compiler).build
+        end
 
         assert_equal(1, log.readlines.size)
-        assert_equal(
-            {
-                level: :danger,
-                message: "Compilation failed for #{@root.basename}/first.tailwind.css",
-                data: { exit: 7 }
-            },
-            event_for(:danger)
-        )
-        assert_equal(
-            [ "compiler stdout", "compiler stderr" ],
-            @reporter.events
-                .select { |event| event.fetch(:level) == :error_detail }
-                .map { |event| event.fetch(:message) }
-        )
+        assert_includes(output, "Compilation failed for #{@root.basename}/first.css")
+        assert_match(/exit\D+7/, output)
+        assert_includes(output, "compiler stdout")
+        assert_includes(output, "compiler stderr")
     end
 
     def test_build_reports_an_unavailable_compiler
-        write("source/tailwind/application.tailwind.css")
+        write("source/tailwind/application.css")
 
-        refute builder(compiler: @root.join("missing-tailwind").to_s).build
+        output = capture_termline do
+            refute builder(compiler: @root.join("missing-tailwind").to_s).build
+        end
 
-        assert_match(/Unable to compile/, event_for(:danger).fetch(:message))
-        assert_match(/No such file or directory/, event_for(:error_detail).fetch(:message))
+        assert_includes(output, "Unable to compile")
+        assert_includes(output, "No such file or directory")
     end
 
     def test_build_with_no_entrypoints_is_successful_and_warns
-        assert builder.build
+        output = capture_termline { assert builder.build }
 
-        assert_equal(
-            {
-                level: :warning,
-                message: "No *.tailwind.css entrypoints found",
-                data: { root: @root.to_s }
-            },
-            event_for(:warning)
-        )
+        assert_includes(output, "No Tailwind entrypoints found")
+        assert_includes(output, "root")
+        assert_includes(output, @root.to_s)
     end
 
     def test_watch_starts_every_entrypoint_before_monitoring
-        write("source/tailwind/application.tailwind.css")
-        write("gems/LesliDate/source/tailwind/date.tailwind.css")
+        write("source/tailwind/application.css")
+        write("gems/LesliDate/source/tailwind/date.css")
         tailwind_builder = RecordingWatchBuilder.new(
             root: @root,
-            compiler: "/fake/tailwind",
-            reporter: @reporter
+            compiler: "/fake/tailwind"
         )
 
         assert tailwind_builder.watch
-        assert_equal([ "date.tailwind.css", "application.tailwind.css" ], tailwind_builder.spawned)
+        assert_equal([ "date.css", "application.css" ], tailwind_builder.spawned)
         assert_equal([ 1_001, 1_002 ], tailwind_builder.monitored.keys)
         assert_equal(
             tailwind_builder.spawned,
@@ -185,8 +157,7 @@ class TailwindBuilderTest < Minitest::Test
         LesliAssets::TailwindBuilder.new(
             root: @root,
             compiler: compiler,
-            minify: minify,
-            reporter: @reporter
+            minify: minify
         )
     end
 
@@ -201,8 +172,9 @@ class TailwindBuilderTest < Minitest::Test
         Pathname(path).relative_path_from(@root).to_s
     end
 
-    def event_for(level)
-        @reporter.events.find { |event| event.fetch(:level) == level }
+    def capture_termline(&block)
+        output, = capture_io(&block)
+        output.gsub(/\e\[[0-9;]*m/, "")
     end
 
     def fake_compiler(exit_status: 0, stdout: "", stderr: "", create_output: true)

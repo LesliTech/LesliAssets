@@ -18,13 +18,12 @@ The asset builders expect Node.js 20.x, npm, and the standard Lesli workspace la
 | Command | Source | Generated output |
 | --- | --- | --- |
 | `make build.js` | `source/js` | `app/assets/javascripts/lesli_assets` |
-| `make build.css` | `source/scss` and engine SCSS | Rails stylesheets |
 | `make build.icons` | `app/assets/icons/lesli_assets` | SVG sprite partials under `app/views` |
 | `make build.mails` | `source/mails` | Email views under `app/views/lesli_assets/emails` |
 | `make build.tailwind` | workspace templates and Tailwind sources | Compiled Tailwind stylesheets |
 | `make build` | All development targets | All generated development assets |
 
-Production targets use the `prod.*` names and enable minification where supported.
+Tailwind CSS is the only stylesheet pipeline. Production targets use the `prod.*` names and enable minification where supported.
 
 `make build.icons` uses the repository-local `node_modules/.bin/svgo`. If it reports that SVGO is missing, run `npm ci` from the LesliAssets directory before rebuilding.
 

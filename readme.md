@@ -160,7 +160,6 @@ Individual build targets are also available:
 
 ```shell
 make build.js
-make build.css
 make build.icons
 make build.mails
 make build.tailwind

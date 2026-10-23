@@ -24,8 +24,6 @@ parser = OptionParser.new do |arguments|
     end
 end
 
-reporter = LesliAssets::TailwindReporter.new
-
 begin
     parser.parse!
 
@@ -40,10 +38,10 @@ begin
     success = options[:watch] ? builder.watch : builder.build
     exit(success ? 0 : 1)
 rescue OptionParser::ParseError => error
-    reporter.danger("Invalid command", error: error.message)
+    Termline.danger("Invalid command", tag: "TAILWIND:", error: error.message)
     warn(parser)
     exit(1)
 rescue StandardError, LoadError => error
-    reporter.danger("Build failed", error: error.message)
+    Termline.danger("Build failed", tag: "TAILWIND:", error: error.message)
     exit(1)
 end

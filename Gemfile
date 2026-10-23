@@ -16,11 +16,5 @@ gem "rubocop-rails-omakase", require: false
 # Shared testing and coverage configuration for the Lesli Platform.
 gem "lesli_testing"
 
-# Tailwind stand-alone compiler
-gem "tailwindcss-ruby", "~> 4.0"
-
-# Human-friendly terminal logs for the Lesli Platform
-gem "termline"
-
 # Build SVG icon sprites
 gem "svgeez", "~> 4.1", require: false

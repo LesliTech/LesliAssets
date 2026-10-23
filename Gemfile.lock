@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     lesli_assets (1.1.5)
+      tailwindcss-ruby (~> 4.0)
+      termline (~> 1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -144,8 +146,6 @@ DEPENDENCIES
   rake (~> 13.0)
   rubocop-rails-omakase
   svgeez (~> 4.1)
-  tailwindcss-ruby (~> 4.0)
-  termline
 
 CHECKSUMS
   activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df

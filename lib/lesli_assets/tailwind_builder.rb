@@ -4,11 +4,11 @@ require "fileutils"
 require "find"
 require "open3"
 require "pathname"
-require_relative "tailwind_reporter"
+require "termline"
 
 module LesliAssets
-    # Discovers Tailwind entrypoints across the Rails application and its packages,
-    # then compiles each source into the package's Rails asset directory.
+    # Compiles every CSS entrypoint placed directly under a source/tailwind
+    # directory into the corresponding package's Rails asset directory.
     class TailwindBuilder
         # Keeps the source and its calculated output metadata together throughout
         # build and watch operations.
@@ -18,20 +18,15 @@ module LesliAssets
         # content and must not be searched for Tailwind sources.
         EXCLUDED_DIRECTORIES = %w[.git node_modules tmp vendor].freeze
 
-        # Compiler and reporter injection makes the builder reusable from the CLI
-        # and independently testable without executing the real Tailwind binary.
-        def initialize(root:, compiler: nil, minify: false, output: $stdout, errors: $stderr, reporter: nil)
+        def initialize(root:, compiler: nil, minify: false)
             @root = Pathname(root).expand_path.cleanpath
             @compiler = compiler
             @minify = minify
-            @output = output
-            @errors = errors
-            @reporter = reporter || TailwindReporter.new(output: output, errors: errors)
         end
 
         def build
             entries = entrypoints
-            return report_empty if entries.empty?
+            return warn_no_entrypoints if entries.empty?
 
             # Stop after the first failure so Make receives a failure immediately.
             entries.all? { |entry| compile(entry) }
@@ -39,7 +34,7 @@ module LesliAssets
 
         def watch
             entries = entrypoints
-            return report_empty if entries.empty?
+            return warn_no_entrypoints if entries.empty?
 
             # Every Tailwind entrypoint needs its own long-running watcher. Starting
             # them all before monitoring prevents the first watcher from blocking the rest.
@@ -47,7 +42,7 @@ module LesliAssets
             entries.each { |entry| processes[spawn_watcher(entry)] = entry }
             monitor(processes)
         rescue StandardError, LoadError => error
-            @reporter.danger("Unable to start watchers", error: error.message)
+            Termline.danger("Unable to start watchers", tag: "TAILWIND:", error: error.message)
             processes&.each_key { |pid| terminate(pid, "TERM") }
             reap(processes) unless processes.nil? || processes.empty?
             false
@@ -82,7 +77,9 @@ module LesliAssets
         end
 
         def tailwind_entrypoint?(path)
-            path.basename.to_s.end_with?(".tailwind.css") && path.to_s.include?("/source/tailwind/")
+            path.extname == ".css" &&
+                path.dirname.basename.to_s == "tailwind" &&
+                path.dirname.parent.basename.to_s == "source"
         end
 
         def entrypoint_for(source)
@@ -145,8 +142,9 @@ module LesliAssets
             stdout, stderr, status = Open3.capture3(environment, compiler, *arguments(entry))
 
             if status.success?
-                @reporter.success(
+                Termline.success(
                     "Compiled #{display_path(entry)}",
+                    tag: "TAILWIND:",
                     size: human_size(entry.destination.size)
                 )
                 true
@@ -155,28 +153,30 @@ module LesliAssets
                 false
             end
         rescue StandardError, LoadError => error
-            @reporter.danger("Unable to compile #{display_path(entry)}")
-            @reporter.error_detail(error.message)
+            Termline.danger(
+                "Unable to compile #{display_path(entry)}",
+                tag: "TAILWIND:",
+                error: error.message
+            )
             false
         end
 
         def report_failure(entry, status, stdout, stderr)
-            @reporter.danger(
+            Termline.danger(
                 "Compilation failed for #{display_path(entry)}",
+                tag: "TAILWIND:",
                 exit: status.exitstatus
             )
-            [stdout, stderr].reject(&:empty?).each do |stream|
-                stream.each_line do |line|
-                    detail = line.rstrip
-                    @reporter.error_detail(detail) unless detail.empty?
-                end
-            end
+
+            diagnostics = [stdout, stderr].flat_map(&:lines).map(&:strip).reject(&:empty?)
+            Termline.m(*diagnostics)
         end
 
         def spawn_watcher(entry)
             FileUtils.mkdir_p(entry.destination.dirname)
-            @reporter.info(
+            Termline.info(
                 "Watching #{display_path(entry)}",
+                tag: "TAILWIND:",
                 output: relative_path(entry.destination)
             )
             Process.spawn(environment, compiler, *arguments(entry, watch: true), out: $stdout, err: $stderr)
@@ -201,8 +201,9 @@ module LesliAssets
 
                 # A dead watcher would leave the generated CSS partially stale, so
                 # terminate the remaining group and return a failing exit status.
-                @reporter.danger(
+                Termline.danger(
                     "Watcher stopped for #{display_path(entry)}",
+                    tag: "TAILWIND:",
                     exit: status.exitstatus
                 )
                 processes.each_key { |watcher_pid| terminate(watcher_pid, "TERM") }
@@ -231,8 +232,8 @@ module LesliAssets
             processes.clear
         end
 
-        def report_empty
-            @reporter.warning("No *.tailwind.css entrypoints found", root: @root.to_s)
+        def warn_no_entrypoints
+            Termline.warning("No Tailwind entrypoints found", tag: "TAILWIND:", root: @root.to_s)
             true
         end
 

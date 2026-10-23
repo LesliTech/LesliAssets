@@ -84,4 +84,4 @@ The Collection color is an identity accent, not a guaranteed text/background pai
 
 ## Historical palette aliases
 
-`lesli-css` 4.1.0 preserves the historical Ruby, Ember, Maize, Agave, Jade, Cenote, Quetzal, Bugambilia, Cacao, and Obsidian token values for backward compatibility. They are deprecated and should not be used when implementing new Collection identities.
+LesliAssets preserves the historical Ruby, Ember, Maize, Agave, Jade, Cenote, Quetzal, Bugambilia, Cacao, and Obsidian token values for backward compatibility. They are deprecated and should not be used when implementing new Collection identities.

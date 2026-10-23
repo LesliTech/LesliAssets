@@ -2,7 +2,7 @@
 
 Lesli
 
-Copyright (c) 2025, Lesli Technologies, S. A.
+Copyright (c) 2026, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,5 +27,20 @@ Building a better future, one line of code at a time.
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
-// · 
+// ·
 */
+
+
+/* Use Tailwind CSS */
+@import "tailwindcss" source(none);
+
+
+/* Configuration & variables */
+@import "./settings/colors.css";
+@import "./settings/variables.css";
+@import "./settings/theme.css";
+
+
+/* Font families and icons */
+@import "./fonts/mdsymbols.css";
+@import "./fonts/families.css";

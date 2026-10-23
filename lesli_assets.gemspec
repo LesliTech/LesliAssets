@@ -59,6 +59,9 @@ Gem::Specification.new do |spec|
     spec.bindir      = "bin"
     spec.executables = ["tailwind"]
 
+    spec.add_dependency("tailwindcss-ruby", "~> 4.0")
+    spec.add_dependency("termline", "~> 1.1.0")
+
     spec.files = Dir.chdir(File.expand_path(__dir__)) do
         Dir["{app,config,db,lib}/**/*", "bin/tailwind", "license", "Rakefile", "readme.md"]
     end
