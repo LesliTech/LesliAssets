@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lesli_assets (1.1.5)
+    lesli_assets (1.1.6)
       tailwindcss-ruby (~> 4.0)
       termline (~> 1.1.0)
 
@@ -39,12 +39,11 @@ GEM
       concurrent-ruby (~> 1.0)
     json (3.1.0)
     language_server-protocol (3.17.0.6)
-    lesli_testing (1.4.1)
+    lesli_testing (1.4.2)
       minitest (~> 6.0.0)
       simplecov (~> 1.3.2)
       simplecov-cobertura (~> 4.0.0)
       simplecov-console (~> 0.9.0)
-      simplecov-html (~> 0.13.2)
       termline (~> 1.1.0)
     lint_roller (1.1.0)
     listen (3.10.1)
@@ -111,7 +110,6 @@ GEM
       ansi
       simplecov
       terminal-table
-    simplecov-html (0.13.2)
     svgeez (4.1.0)
       listen (~> 3.5)
       mercenary (~> 0.4.0)
@@ -123,7 +121,7 @@ GEM
     tailwindcss-ruby (4.3.3-x86_64-linux-musl)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
-    termline (1.1.2)
+    termline (1.1.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.3.0)
@@ -166,8 +164,8 @@ CHECKSUMS
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
-  lesli_assets (1.1.5)
-  lesli_testing (1.4.1) sha256=05dfa613bf5b8f34e5880d9e54d99f9bb7bc8287f95ed5e344aaa543c1451742
+  lesli_assets (1.1.6)
+  lesli_testing (1.4.2) sha256=961f439a50a8a7174cbf58e51bf83dd4dc41c438d57afa7a976378c7577a66a6
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   listen (3.10.1) sha256=4c3f32855657f348747da4dd2372ff3790d90a6b1d3e4f21a3706adb2d04783c
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
@@ -196,7 +194,6 @@ CHECKSUMS
   simplecov (1.3.2) sha256=2a22ec1759f1b8db60881a2e038758956fc69ef93ed669be0bde0678de6d0e85
   simplecov-cobertura (4.0.0) sha256=e4fb3159b1ecea545b44f5452a8611305323e78ad23eae8aed35924d072e01ea
   simplecov-console (0.9.5) sha256=b1108bcfff5f210143e2b8301698c367b01586f20d25a73e95475a5df6fc6ff6
-  simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   svgeez (4.1.0) sha256=1f5d4b2b8caa6714271c9df3da6f587cf0bd5efbb66ef11c29576a167b0e13e7
   tailwindcss-ruby (4.3.3-aarch64-linux-gnu) sha256=c86d6dd3eccc85fe0d792a832b06f2bf3c0a7a83b399308aeb9d8f5725f42a6a
   tailwindcss-ruby (4.3.3-aarch64-linux-musl) sha256=72b77ca9edea82383dd09510ab520a122e3cb9f9864ca5b38e27698098d2b899
@@ -205,7 +202,7 @@ CHECKSUMS
   tailwindcss-ruby (4.3.3-x86_64-linux-gnu) sha256=2337017ff8b02698480eae1e9637cf01faa0e4824db89d067a13c5a5ee38c9b2
   tailwindcss-ruby (4.3.3-x86_64-linux-musl) sha256=27d478c417bcf73828e5b544744c5bdfd5b5cb54f1a266fc4f185281c32efe6c
   terminal-table (4.0.0) sha256=f504793203f8251b2ea7c7068333053f0beeea26093ec9962e62ea79f94301d2
-  termline (1.1.2) sha256=9bbde4c50ce96af1a80ce6c02aa1220a826d7806974ae61b62b2dc91a2cc3776
+  termline (1.1.3) sha256=0290ed3de2e1944bb977f0bbf56edbff6cadb93673b0742209a890792112b280
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (3.3.0) sha256=4b7aa66a4b11db50f6f7e98411215cd0dd10eaecb665d36eec5bcacb3fa0b613
   unicode-emoji (4.3.0) sha256=11c02fa73290378c066bb0562cd4c87d8e1b706fbbe0059ca12746a4244de8ce
