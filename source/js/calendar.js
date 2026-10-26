@@ -31,8 +31,9 @@ Building a better future, one line of code at a time.
 
 
 // · 
-import { Calendar } from "@fullcalendar/core";
-import dayGridPlugin from "@fullcalendar/daygrid";
+import { Calendar } from "fullcalendar";
+import dayGridPlugin from "fullcalendar/daygrid";
+import classicThemePlugin from "fullcalendar/themes/classic";
 
 
 // Keep names, fallbacks and breakpoints in one place so future layout
@@ -66,6 +67,37 @@ function getCalendarView(viewportWidth = window.innerWidth) {
  */
 function handleEventsFailure(error) {
     console.error("Lesli Calendar could not load its events.", error);
+}
+
+
+/**
+ * Add stable Lesli classes without depending on FullCalendar's private DOM classes.
+ */
+function decorateDayCell({ el, isToday }) {
+    el.classList.add("lesli-calendar-day");
+    el.classList.toggle("is-today", isToday);
+}
+
+
+function decorateDayHeader({ el }) {
+    el.classList.add("lesli-calendar-day-header");
+}
+
+
+function decorateEvent({ el }) {
+    el.classList.add("lesli-calendar-event");
+}
+
+
+/**
+ * FullCalendar accepts DOM nodes, which keeps server-provided text escaped.
+ */
+function renderTextContent(className, text) {
+    const element = document.createElement("span");
+    element.className = className;
+    element.textContent = text;
+
+    return { domNodes: [element] };
 }
 
 
@@ -127,12 +159,29 @@ class LesliCalendarElement extends HTMLElement {
      */
     getCalendarOptions() {
         return {
-            plugins: [dayGridPlugin],
+            plugins: [dayGridPlugin, classicThemePlugin],
             firstDay: 1,
             headerToolbar: false,
             initialView: getCalendarView(),
             showNonCurrentDates: true,
             dayMaxEvents: true,
+            borderless: true,
+            displayEventTime: false,
+            dayCellDidMount: decorateDayCell,
+            dayHeaderDidMount: decorateDayHeader,
+            eventDidMount: decorateEvent,
+            dayCellTopContent: (info) => renderTextContent(
+                "lesli-calendar-day-number",
+                info.dayNumberText
+            ),
+            dayHeaderContent: (info) => renderTextContent(
+                "lesli-calendar-day-header-label",
+                info.text
+            ),
+            eventContent: (info) => renderTextContent(
+                "lesli-calendar-event-title",
+                info.event.title
+            ),
             windowResize: this.handleCalendarResize,
             events: {
                 url: this.dataset.eventsUrl || DEFAULT_EVENTS_URL,
