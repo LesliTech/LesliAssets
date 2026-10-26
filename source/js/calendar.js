@@ -35,67 +35,153 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
 
-function getCalendarInitialView() {
-    if (window.innerWidth < 768) return "dayGridDay";
-    if (window.innerWidth < 1024) return "dayGridWeek";
-    return "dayGridMonth";
-};
-
-
-// · 
-function buildCalendar() {
-    console.log("buildCalendar")
-    let calendarEl = document.getElementById("lesli-calendar-engine");
-    if (!calendarEl) return;
-
-    console.log("buildingCalendar")
-    var calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin ],
-        firstDay: 1,
-        headerToolbar: false,
-        initialView: getCalendarInitialView(),
-        showNonCurrentDates: true,
-        dayMaxEvents: true,
-        editable: true,
-        events: {
-            url: '/calendar/events.json',
-            method: 'GET',
-            extraParams: function() {
-                return {
-                    authenticity_token: document.querySelector('meta[name="csrf-token"]').content
-                };
-            },
-            failure: function() {
-                alert('There was an error while fetching events!');
-            }
-        },
-    });
-
-    console.log("renderCalendar")
-    calendar.render();
-
-    window.addEventListener('resize', () => {
-        const newView = getCalendarInitialView();
-        if (calendar.view.type !== newView) {
-            calendar.changeView(newView);
-        }
-    });
-}
-
-
-// · 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded");
-    buildCalendar()
+// Keep names, fallbacks and breakpoints in one place so future layout
+// changes do not require searching through the rendering lifecycle.
+const CALENDAR_ELEMENT_NAME = "lesli-calendar";
+const DEFAULT_EVENTS_URL = "/calendar/events.json";
+const VIEWPORT_BREAKPOINTS = Object.freeze({
+    tablet: 768,
+    desktop: 1024
 });
 
 
-// · 
-document.addEventListener("turbo:load", () => {
-    console.log("turbo:load")
-    buildCalendar()
-})
+/**
+ * Select the most useful calendar view for the available viewport width.
+ *
+ * Accepting the width as an argument keeps this function deterministic and
+ * makes it easy to test or update the responsive rules later.
+ */
+function getCalendarView(viewportWidth = window.innerWidth) {
+    if (viewportWidth < VIEWPORT_BREAKPOINTS.tablet) return "dayGridDay";
+    if (viewportWidth < VIEWPORT_BREAKPOINTS.desktop) return "dayGridWeek";
+
+    return "dayGridMonth";
+}
 
 
-// · 
-buildCalendar()
+/**
+ * Report event-loading errors without blocking the interface with an alert.
+ * This function is intentionally isolated so it can be connected to Lesli's
+ * notification system later without changing the calendar configuration.
+ */
+function handleEventsFailure(error) {
+    console.error("Lesli Calendar could not load its events.", error);
+}
+
+
+/**
+ * Own one FullCalendar instance and its complete browser lifecycle.
+ *
+ * A Custom Element is used instead of global Turbo callbacks because this
+ * asset belongs only to calendar pages. If Turbo evaluates the asset again,
+ * the element registration guard below prevents duplicate event listeners.
+ */
+class LesliCalendarElement extends HTMLElement {
+    constructor() {
+        super();
+
+        this.calendar = null;
+        this.lifecycleController = null;
+
+        // These methods are passed as callbacks and must retain this element
+        // as their context when FullCalendar or Turbo invokes them.
+        this.destroyCalendar = this.destroyCalendar.bind(this);
+        this.handleCalendarResize = this.handleCalendarResize.bind(this);
+    }
+
+    /**
+     * Render when the element becomes part of the document.
+     */
+    connectedCallback() {
+        this.registerLifecycleEvents();
+        this.renderCalendar();
+    }
+
+    /**
+     * Release resources when Turbo or the browser removes the element.
+     */
+    disconnectedCallback() {
+        this.lifecycleController?.abort();
+        this.lifecycleController = null;
+        this.destroyCalendar();
+    }
+
+    /**
+     * Ensure Turbo caches the original empty container instead of generated
+     * FullCalendar markup. AbortController also makes listener cleanup clear.
+     */
+    registerLifecycleEvents() {
+        this.lifecycleController?.abort();
+        this.lifecycleController = new AbortController();
+
+        document.addEventListener(
+            "turbo:before-cache",
+            this.destroyCalendar,
+            { signal: this.lifecycleController.signal }
+        );
+    }
+
+    /**
+     * Build the FullCalendar options separately from rendering.
+     * New features can be added here without changing lifecycle behavior.
+     */
+    getCalendarOptions() {
+        return {
+            plugins: [dayGridPlugin],
+            firstDay: 1,
+            headerToolbar: false,
+            initialView: getCalendarView(),
+            showNonCurrentDates: true,
+            dayMaxEvents: true,
+            windowResize: this.handleCalendarResize,
+            events: {
+                url: this.dataset.eventsUrl || DEFAULT_EVENTS_URL,
+                method: "GET",
+                failure: handleEventsFailure
+            }
+        };
+    }
+
+    /**
+     * Keep the active view synchronized with the responsive breakpoint.
+     * FullCalendar owns this resize callback and removes it on destroy().
+     */
+    handleCalendarResize(resizeInfo) {
+        const nextView = getCalendarView();
+
+        if (resizeInfo.view.type !== nextView) {
+            this.calendar?.changeView(nextView);
+        }
+    }
+
+    /**
+     * Render exactly one calendar for this element.
+     *
+     * replaceChildren() removes markup from a restored Turbo snapshot before
+     * FullCalendar starts, while destroyCalendar() makes repeated calls safe.
+     */
+    renderCalendar() {
+        this.destroyCalendar();
+        this.replaceChildren();
+
+        this.calendar = new Calendar(this, this.getCalendarOptions());
+        this.calendar.render();
+    }
+
+    /**
+     * Release FullCalendar's DOM, network and resize resources.
+     * Calling this method repeatedly is safe.
+     */
+    destroyCalendar() {
+        this.calendar?.destroy();
+        this.calendar = null;
+    }
+}
+
+
+// Turbo can load this page-specific asset more than once. Registering only
+// when necessary makes repeated evaluations harmless and preserves one clear
+// lifecycle owner for every calendar element.
+if (!customElements.get(CALENDAR_ELEMENT_NAME)) {
+    customElements.define(CALENDAR_ELEMENT_NAME, LesliCalendarElement);
+}
