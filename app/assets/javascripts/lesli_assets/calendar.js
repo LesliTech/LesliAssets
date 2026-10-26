@@ -12930,6 +12930,11 @@ var LesliCalendarElement = class extends HTMLElement {
       dayMaxEvents: true,
       borderless: true,
       displayEventTime: false,
+      views: {
+        dayGrid: {
+          listItemEventBeforeClass: "lesli-calendar-event-dot"
+        }
+      },
       dayCellDidMount: decorateDayCell,
       dayHeaderDidMount: decorateDayHeader,
       eventDidMount: decorateEvent,
