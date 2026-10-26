@@ -3,6 +3,7 @@
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 //= link lesli_assets/application.js
 //= link lesli_assets/calendar.js
+//= link lesli_assets/calendar.css
 
 
 // · Framework asssets
