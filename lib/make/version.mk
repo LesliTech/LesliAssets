@@ -31,13 +31,43 @@
 
 ROOT := ../..
 
+
+define SYNC_VERSION_BUILD
+file_path = ARGV.fetch(0)
+accessed_at = File.atime(file_path)
+modified_at = File.mtime(file_path)
+modification_timestamp = modified_at.to_i.to_s
+content = File.read(file_path)
+
+# Capture the assignment separately from its value so the existing indentation
+# and formatting remain unchanged when BUILD is replaced.
+build_pattern = /^(?<assignment>\s*BUILD\s*=\s*)"(?<value>[^"]*)"/
+build_match = content.match(build_pattern)
+
+abort("BUILD constant not found in #{file_path}") unless build_match
+exit if build_match[:value] == modification_timestamp
+
+new_assignment = %(#{build_match[:assignment]}"#{modification_timestamp}")
+updated_content = content.sub(build_pattern, new_assignment)
+File.write(file_path, updated_content)
+
+# Updating BUILD is metadata synchronization, so retain the source modification
+# time. This keeps the task idempotent: the next run sees BUILD == mtime.
+File.utime(accessed_at, modified_at, file_path)
+
+puts "Updated #{file_path} -> BUILD = #{modification_timestamp}"
+endef
+export SYNC_VERSION_BUILD
+
+
+.PHONY: prod.version
+
+# Run the synchronization once per file so an unchanged file can exit early
+# without preventing the remaining version files from being checked.
 prod.version:
-	@timestamp=$$(date +%s); \
-	for dir in $(ROOT)/engines $(ROOT)/gems; do \
+	@for dir in $(ROOT)/engines $(ROOT)/gems; do \
 		if [ -d "$$dir" ]; then \
-			find "$$dir" -type f -path "*/lib/*/version.rb" | while read file; do \
-				ruby -pi -e "gsub(/BUILD\s*=\s*\"[^\"]*\"/, \"BUILD = \\\"$$timestamp\\\"\")" "$$file"; \
-				echo "Updated $$file -> BUILD = $$timestamp"; \
-			done; \
+			find "$$dir" -type f -path "*/lib/*/version.rb" \
+				-exec ruby -e "$$SYNC_VERSION_BUILD" {} \;; \
 		fi; \
 	done
