@@ -34,7 +34,7 @@ Use the compact icon when horizontal space is limited, including application nav
 
 ## Lesli Blue
 
-Lesli Blue is the official brand color. Its canonical token is `primary-500` (`#276AD6`). Use Primary for Lesli identity, primary actions, links, focus states, and selected navigation.
+**Lesli Blue** is the official name of the Lesli brand color. Its canonical token is `primary-500` (`#276AD6`). Use Primary for Lesli identity, primary actions, links, focus states, and selected navigation.
 
 Primary is not a synonym for Info, and it is separate from the Sky and Indigo categorical families.
 
@@ -58,7 +58,7 @@ Primary is not a synonym for Info, and it is separate from the Sky and Indigo ca
 | Primary 200 | `#C6DCFF` |
 | Primary 300 | `#8FB5F5` |
 | Primary 400 | `#4C83EA` |
-| Primary 500 | `#276AD6` |
+| **Lesli Blue / Primary 500** | `#276AD6` |
 | Primary 600 | `#1F5BBB` |
 | Primary 700 | `#194A99` |
 | Primary 800 | `#133A78` |
