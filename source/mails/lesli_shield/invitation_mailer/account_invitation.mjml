@@ -1,0 +1,67 @@
+<!--
+Lesli
+
+Copyright (c) 2026, Lesli Technologies, S. A.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Lesli · Ruby on Rails SaaS Development Framework.
+-->
+
+<mjml>
+    <mj-head>
+        <mj-include path="head.mjml" />
+        <mj-preview>You have been invited to join an account on Lesli.</mj-preview>
+    </mj-head>
+    <mj-body>
+
+        <!-- Email header -->
+        <mj-include path="header.mjml" />
+
+        <!-- Email content -->
+        <mj-section mj-class="lesli.card" css-class="lesli-card">
+            <mj-column>
+
+                <mj-text mj-class="lesli.title">
+                    <h1 style="font: inherit; margin: 0;"><%= @params[:title] %></h1>
+                </mj-text>
+
+                <mj-text mj-class="lesli.text lesli.text-center">
+                    <%= @params[:description] %>
+                </mj-text>
+
+                <mj-text mj-class="lesli.greeting">
+                    <%= @params[:invited_by] %>
+                </mj-text>
+
+                <% if @params[:message].present? %>
+                    <mj-text mj-class="lesli.note">
+                        <%= @params[:message] %>
+                    </mj-text>
+                <% end %>
+
+                <mj-button
+                    mj-class="lesli.button-primary"
+                    href="<%= @params[:acceptance_url] %>"
+                >
+                    <%= @params[:action] %>
+                </mj-button>
+
+                <mj-text mj-class="lesli.note">
+                    <%= @params[:expiration] %>
+                </mj-text>
+
+                <mj-text mj-class="lesli.text lesli.text-center" padding="20px 0px 0px">
+                    <%= @params[:ignore_notice] %>
+                </mj-text>
+
+            </mj-column>
+        </mj-section>
+
+        <!-- Email footer -->
+        <mj-include path="footer.mjml" />
+    </mj-body>
+</mjml>

@@ -40,6 +40,11 @@ MJML_FILES = \
 	devise/confirmation_instructions \
 	devise/reset_password_instructions
 
+# These templates use Action Mailer's conventional lookup path. Their source
+# remains in LesliAssets, while the generated view is namespaced by mailer.
+MJML_MAILER_FILES = \
+	lesli_shield/invitation_mailer/account_invitation
+
 MJML = npx mjml
 
 MJML_OPTIONS = \
@@ -65,6 +70,10 @@ build.mails:
 	for file in $(MJML_FILES); do \
 		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
 		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_DEV); \
+	done; \
+	for file in $(MJML_MAILER_FILES); do \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o app/views/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_DEV); \
 	done
 
 
@@ -74,6 +83,10 @@ prod.mails:
 	for file in $(MJML_FILES); do \
 		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
 		$(MJML) $(MJML_SRC)/$$file.mjml -o $(MJML_DEST)/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_PROD); \
+	done; \
+	for file in $(MJML_MAILER_FILES); do \
+		echo Compiling email: $(MJML_SRC)/$$file.mjml; \
+		$(MJML) $(MJML_SRC)/$$file.mjml -o app/views/$$file.html.erb $(MJML_OPTIONS) $(MJML_OPTIONS_PROD); \
 	done
 
 

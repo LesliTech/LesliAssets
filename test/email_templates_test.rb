@@ -8,15 +8,17 @@ class EmailTemplatesTest < Minitest::Test
     ROOT = Pathname(__dir__).join("..").expand_path
 
     TEMPLATES = {
-        confirmation: "devise/confirmation_instructions.html.erb",
-        password_reset: "devise/reset_password_instructions.html.erb",
-        welcome: "lesli/welcome.html.erb"
+        confirmation: "lesli_assets/emails/devise/confirmation_instructions.html.erb",
+        password_reset: "lesli_assets/emails/devise/reset_password_instructions.html.erb",
+        welcome: "lesli_assets/emails/lesli/welcome.html.erb",
+        account_invitation: "lesli_shield/invitation_mailer/account_invitation.html.erb"
     }.freeze
 
     PREHEADERS = {
         confirmation: "Confirm your email address to finish setting up your Lesli account.",
         password_reset: "Use this secure link to reset your Lesli password.",
-        welcome: "Welcome to Lesli. Your workspace is ready."
+        welcome: "Welcome to Lesli. Your workspace is ready.",
+        account_invitation: "You have been invited to join an account on Lesli."
     }.freeze
 
     RenderContext = Struct.new(:params, :app) do
@@ -133,10 +135,36 @@ class EmailTemplatesTest < Minitest::Test
         assert_fully_rendered html
     end
 
+    def test_account_invitation_renders_every_required_detail
+        url = "https://example.test/invitation?invitation_token=invite-123"
+        html = render(
+            :account_invitation,
+            params: {
+                title: "You have been invited",
+                description: "You have been invited to join Acme.",
+                invited_by: "Invited by Ada Lovelace.",
+                message: "We would love to have you on the team.",
+                expiration: "This invitation expires on November 18, 2026.",
+                action: "Accept invitation",
+                ignore_notice: "If you did not expect this invitation, you can safely ignore this email.",
+                acceptance_url: url
+            }
+        )
+
+        assert_includes html, "Acme"
+        assert_includes html, "Ada Lovelace"
+        assert_includes html, "We would love to have you on the team."
+        assert_includes html, "November 18, 2026"
+        assert_includes html, "Accept invitation"
+        assert_includes html, "safely ignore this email"
+        assert_includes html, %(href="#{url}")
+        assert_fully_rendered html
+    end
+
     private
 
     def generated_views_path
-        ROOT.join("app/views/lesli_assets/emails")
+        ROOT.join("app/views")
     end
 
     def partials_path
