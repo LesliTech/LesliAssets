@@ -294,9 +294,6 @@
   .w-16 {
     width: calc(var(--spacing) * 16);
   }
-  .w-\[50px\] {
-    width: 50px;
-  }
   .w-\[90\%\] {
     width: 90%;
   }
@@ -332,9 +329,6 @@
   }
   .animate-lesli-notification {
     animation: lesli-notification-fade-out 5s forwards;
-  }
-  .\[scrollbar-width\:none\] {
-    scrollbar-width: none;
   }
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -376,9 +370,6 @@
   }
   .overflow-x-auto {
     overflow-x: auto;
-  }
-  .overflow-y-scroll {
-    overflow-y: scroll;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -500,21 +491,6 @@
   }
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
-  }
-  .pt-12 {
-    padding-top: calc(var(--spacing) * 12);
-  }
-  .pt-\[\.8rem\] {
-    padding-top: .8rem;
-  }
-  .pb-4 {
-    padding-bottom: calc(var(--spacing) * 4);
-  }
-  .pl-4 {
-    padding-left: calc(var(--spacing) * 4);
-  }
-  .pl-12 {
-    padding-left: calc(var(--spacing) * 12);
   }
   .text-center {
     text-align: center;
@@ -677,10 +653,6 @@
     --tw-duration: 200ms;
     transition-duration: 200ms;
   }
-  .ease-linear {
-    --tw-ease: linear;
-    transition-timing-function: linear;
-  }
   .ease-out {
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
@@ -773,26 +745,6 @@
     --tw-outline-style: none;
     outline-style: none;
   }
-  @media (width >= 769px) {
-    .min-\[769px\]\:w-\[100px\] {
-      width: 100px;
-    }
-  }
-  @media (width >= 1024px) {
-    .min-\[1024px\]\:w-\[200px\] {
-      width: 200px;
-    }
-  }
-  @media (width >= 1216px) {
-    .min-\[1216px\]\:w-\[225px\] {
-      width: 225px;
-    }
-  }
-  @media (width >= 1408px) {
-    .min-\[1408px\]\:w-\[328px\] {
-      width: 328px;
-    }
-  }
   @media (width >= 40rem) {
     .sm\:justify-center {
       justify-content: center;
@@ -810,51 +762,7 @@
       padding-block: calc(var(--spacing) * 36);
     }
   }
-  @media (width >= 48rem) {
-    .md\:col-span-6 {
-      grid-column: span 6 / span 6;
-    }
-    .md\:col-span-12 {
-      grid-column: span 12 / span 12;
-    }
-  }
   @media (width >= 64rem) {
-    .lg\:col-span-1 {
-      grid-column: span 1 / span 1;
-    }
-    .lg\:col-span-2 {
-      grid-column: span 2 / span 2;
-    }
-    .lg\:col-span-3 {
-      grid-column: span 3 / span 3;
-    }
-    .lg\:col-span-4 {
-      grid-column: span 4 / span 4;
-    }
-    .lg\:col-span-5 {
-      grid-column: span 5 / span 5;
-    }
-    .lg\:col-span-6 {
-      grid-column: span 6 / span 6;
-    }
-    .lg\:col-span-7 {
-      grid-column: span 7 / span 7;
-    }
-    .lg\:col-span-8 {
-      grid-column: span 8 / span 8;
-    }
-    .lg\:col-span-9 {
-      grid-column: span 9 / span 9;
-    }
-    .lg\:col-span-10 {
-      grid-column: span 10 / span 10;
-    }
-    .lg\:col-span-11 {
-      grid-column: span 11 / span 11;
-    }
-    .lg\:col-span-12 {
-      grid-column: span 12 / span 12;
-    }
     .lg\:gap-2 {
       gap: calc(var(--spacing) * 2);
     }
@@ -900,9 +808,6 @@
   }
   .\[\&_svg_path\]\:fill-\[var\(--lesli-color-primary\)\] svg path {
     fill: var(--lesli-color-primary);
-  }
-  .\[\&\:\:-webkit-scrollbar\]\:hidden::-webkit-scrollbar {
-    display: none;
   }
   .\[\&\>\*\]\:h-full > * {
     height: 100%;
