@@ -53,6 +53,7 @@ Building a better future, one line of code at a time.
 @source "../../../../engines/Lesli/app/views/lesli/errors/unauthorized.html.erb";
 @source "../../../../engines/Lesli/app/views/lesli/errors/not_found.html.erb";
 @source "../../../../engines/Lesli/app/helpers/lesli/navigation_helper.rb";
+@source "../../../../engines/Lesli/app/helpers/lesli/announcements_helper.rb";
 @source "../../../../engines/LesliDashboard/app/views/lesli_dashboard/dashboards/shared/show.html.erb";
 
 
