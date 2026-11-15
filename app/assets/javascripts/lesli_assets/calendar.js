@@ -12849,9 +12849,45 @@ function minusSquare(className) {
   return u2("svg", { xmlns: "http://www.w3.org/2000/svg", className, width: "20", height: "20", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [u2("rect", { x: "3", y: "3", width: "18", height: "18", rx: "2", ry: "2" }), u2("line", { x1: "8", y1: "12", x2: "16", y2: "12" })] });
 }
 
+// node_modules/fullcalendar/chunks/59ff284f.js
+var l25 = {
+  code: "es",
+  week: {
+    dow: 1,
+    // Monday is the first day of the week.
+    doy: 4
+    // The week that contains Jan 4th is the first week of the year.
+  },
+  prevText: "Ant",
+  nextText: "Sig",
+  todayText: "Hoy",
+  yearText: "A\xF1o",
+  monthText: "Mes",
+  weekTextLong: "Semana",
+  weekTextShort: "Sm",
+  dayText: "D\xEDa",
+  listText: "Agenda",
+  prevHint: "$0 antes",
+  nextHint: "$0 siguiente",
+  todayHint(unitText, unit) {
+    return unit === "day" ? "Hoy" : (unit === "week" ? "Esta" : "Este") + " " + unitText.toLocaleLowerCase();
+  },
+  viewHint(unitText, unit) {
+    return "Vista " + (unit === "week" ? "de la" : "del") + " " + unitText.toLocaleLowerCase();
+  },
+  allDayText: "Todo\nel d\xEDa",
+  moreLinkText: "m\xE1s",
+  moreLinkHint(eventCnt) {
+    return `Mostrar ${eventCnt} eventos m\xE1s`;
+  },
+  noEventsText: "No hay eventos para mostrar",
+  navLinkHint: "Ir al $0",
+  closeHint: "Cerrar",
+  eventsHint: "Eventos"
+};
+
 // source/js/calendar.js
 var CALENDAR_ELEMENT_NAME = "lesli-calendar";
-var DEFAULT_EVENTS_URL = "/calendar/events.json";
 var VIEWPORT_BREAKPOINTS = Object.freeze({
   tablet: 768,
   desktop: 1024
@@ -12860,9 +12896,6 @@ function getCalendarView(viewportWidth = window.innerWidth) {
   if (viewportWidth < VIEWPORT_BREAKPOINTS.tablet) return "dayGridDay";
   if (viewportWidth < VIEWPORT_BREAKPOINTS.desktop) return "dayGridWeek";
   return "dayGridMonth";
-}
-function handleEventsFailure(error) {
-  console.error("Lesli Calendar could not load its events.", error);
 }
 function decorateDayCell({ el, isToday }) {
   el.classList.add("lesli-calendar-day");
@@ -12886,43 +12919,45 @@ var LesliCalendarElement = class extends HTMLElement {
     this.calendar = null;
     this.lifecycleController = null;
     this.destroyCalendar = this.destroyCalendar.bind(this);
-    this.handleCalendarResize = this.handleCalendarResize.bind(this);
   }
-  /**
-   * Render when the element becomes part of the document.
-   */
   connectedCallback() {
     this.registerLifecycleEvents();
     this.renderCalendar();
   }
-  /**
-   * Release resources when Turbo or the browser removes the element.
-   */
   disconnectedCallback() {
     this.lifecycleController?.abort();
     this.lifecycleController = null;
     this.destroyCalendar();
   }
-  /**
-   * Ensure Turbo caches the original empty container instead of generated
-   * FullCalendar markup. AbortController also makes listener cleanup clear.
-   */
   registerLifecycleEvents() {
     this.lifecycleController?.abort();
     this.lifecycleController = new AbortController();
-    document.addEventListener(
-      "turbo:before-cache",
-      this.destroyCalendar,
-      { signal: this.lifecycleController.signal }
-    );
+    const options = { signal: this.lifecycleController.signal };
+    document.addEventListener("turbo:before-cache", this.destroyCalendar, options);
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-calendar-action]");
+      if (!button || button.dataset.calendarTarget !== this.id) return;
+      const action = button.dataset.calendarAction;
+      if (["prev", "today", "next"].includes(action)) {
+        this.calendar?.[action]();
+      }
+    }, options);
+    document.addEventListener("turbo:submit-end", (event) => {
+      if (event.detail.success && event.target.closest("#calendar-event-detail")) {
+        this.calendar?.refetchEvents();
+      }
+    }, options);
   }
-  /**
-   * Build the FullCalendar options separately from rendering.
-   * New features can be added here without changing lifecycle behavior.
-   */
   getCalendarOptions() {
     return {
       plugins: [dayGridPlugin, index],
+      timeZone: "UTC",
+      locales: [l25],
+      locale: this.dataset.locale || "en",
+      datesSet: ({ view }) => {
+        const title = document.getElementById(this.dataset.titleId);
+        if (title) title.textContent = view.title;
+      },
       firstDay: 1,
       headerToolbar: false,
       initialView: getCalendarView(),
@@ -12937,6 +12972,8 @@ var LesliCalendarElement = class extends HTMLElement {
       },
       dayCellDidMount: decorateDayCell,
       dayHeaderDidMount: decorateDayHeader,
+      eventInteractive: true,
+      eventClick: (info) => this.openEvent(info),
       eventDidMount: decorateEvent,
       dayCellTopContent: (info) => renderTextContent(
         "lesli-calendar-day-number",
@@ -12950,40 +12987,31 @@ var LesliCalendarElement = class extends HTMLElement {
         "lesli-calendar-event-title",
         info.event.title
       ),
-      windowResize: this.handleCalendarResize,
-      events: {
-        url: this.dataset.eventsUrl || DEFAULT_EVENTS_URL,
-        method: "GET",
-        failure: handleEventsFailure
-      }
+      // FullCalendar supplies the visible range as start/end query parameters.
+      events: this.dataset.eventsUrl
     };
   }
-  /**
-   * Keep the active view synchronized with the responsive breakpoint.
-   * FullCalendar owns this resize callback and removes it on destroy().
-   */
-  handleCalendarResize(resizeInfo) {
-    const nextView = getCalendarView();
-    if (resizeInfo.view.type !== nextView) {
-      this.calendar?.changeView(nextView);
+  // Calendar owns local event details; other engines keep their destination links.
+  openEvent({ event, jsEvent }) {
+    if (event.extendedProps.source !== "calendar") return;
+    const frame = document.getElementById("calendar-event-detail");
+    if (!frame || !this.dataset.eventUrl) return;
+    jsEvent.preventDefault();
+    frame.replaceChildren();
+    const url = this.dataset.eventUrl.replace("__EVENT_ID__", event.extendedProps.record_id);
+    if (frame.getAttribute("src") === url) {
+      frame.reload();
+    } else {
+      frame.src = url;
     }
+    this.dispatchEvent(new CustomEvent("calendar-event", { bubbles: true }));
   }
-  /**
-   * Render exactly one calendar for this element.
-   *
-   * replaceChildren() removes markup from a restored Turbo snapshot before
-   * FullCalendar starts, while destroyCalendar() makes repeated calls safe.
-   */
   renderCalendar() {
     this.destroyCalendar();
     this.replaceChildren();
     this.calendar = new Calendar(this, this.getCalendarOptions());
     this.calendar.render();
   }
-  /**
-   * Release FullCalendar's DOM, network and resize resources.
-   * Calling this method repeatedly is safe.
-   */
   destroyCalendar() {
     this.calendar?.destroy();
     this.calendar = null;
@@ -12995,7 +13023,7 @@ if (!customElements.get(CALENDAR_ELEMENT_NAME)) {
 /*
 Lesli
 
-Copyright (c) 2025, Lesli Technologies, S. A.
+Copyright (c) 2026, Lesli Technologies, S. A.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
