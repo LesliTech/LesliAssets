@@ -65,6 +65,8 @@ function decorateDayHeader({ el }) {
 
 function decorateEvent({ el }) {
     el.classList.add("lesli-calendar-event");
+    // External destinations must leave the application's current Turbo Frame.
+    el.dataset.turboFrame = "_top";
 }
 
 
@@ -127,7 +129,7 @@ class LesliCalendarElement extends HTMLElement {
     getCalendarOptions() {
         return {
             plugins: [dayGridPlugin, classicThemePlugin],
-            timeZone: "UTC",
+            timeZone: "local",
             locales: [spanishLocale],
             locale: this.dataset.locale || "en",
             datesSet: ({ view }) => {

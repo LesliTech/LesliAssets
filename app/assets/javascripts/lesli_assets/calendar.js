@@ -12906,6 +12906,7 @@ function decorateDayHeader({ el }) {
 }
 function decorateEvent({ el }) {
   el.classList.add("lesli-calendar-event");
+  el.dataset.turboFrame = "_top";
 }
 function renderTextContent(className, text) {
   const element = document.createElement("span");
