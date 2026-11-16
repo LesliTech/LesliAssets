@@ -12952,7 +12952,7 @@ var LesliCalendarElement = class extends HTMLElement {
   getCalendarOptions() {
     return {
       plugins: [dayGridPlugin, index],
-      timeZone: "UTC",
+      timeZone: this.dataset.timeZone,
       locales: [l25],
       locale: this.dataset.locale || "en",
       datesSet: ({ view }) => {

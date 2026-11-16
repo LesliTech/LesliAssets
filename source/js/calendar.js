@@ -129,7 +129,7 @@ class LesliCalendarElement extends HTMLElement {
     getCalendarOptions() {
         return {
             plugins: [dayGridPlugin, classicThemePlugin],
-            timeZone: "local",
+            timeZone: this.dataset.timeZone,
             locales: [spanishLocale],
             locale: this.dataset.locale || "en",
             datesSet: ({ view }) => {
