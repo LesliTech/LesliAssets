@@ -170,9 +170,12 @@ make build.tailwind
 Run the default test task from the LesliAssets directory:
 
 ```shell
-bundle exec rake
+bundle exec rake test
 make test.mails
 ```
+
+Run the Ruby suite with Rake, not `rails test`: this gem's standalone test
+bundle does not include the Rails test runner.
 
 ### Code quality
 
