@@ -66,12 +66,18 @@ package releases and can change CSS cascade behavior. The shared theme remains
 the source of global values; each package owns the utilities and component rules
 needed by its interface.
 
-Keep shared components' responsive spacing and typography in their own CSS rules
-using `@apply`, instead of combining base and responsive utility classes in their
-markup. For example, a later engine's `px-4` rule can override `lg:px-8` from an
+Keep shared components' responsive layout, spacing, sizing, and typography in
+their own CSS rules using `@apply`, instead of combining base and responsive
+utility classes in their markup. For example, a later engine's `px-4` rule can override `lg:px-8` from an
 earlier stylesheet; `text-3xl` can similarly override `sm:text-4xl`. Changing link
 order only moves the conflict to another package. A dedicated component class
 keeps its responsive rules together while retaining separate package builds.
+
+Move both the base and responsive declarations for a property into that component
+rule, then remove those utility classes from its markup. Leaving a base utility
+such as `p-4` on the element would still override a rule in `@layer components`.
+Unrelated utilities can stay in the template. LesliView keeps these rules beside
+its component templates and imports them from `source/tailwind/view.css`.
 
 The documentation website uses Bulma. Keep its HTML previews and documentation
 styling separate from the Tailwind styles shipped by the application packages.
