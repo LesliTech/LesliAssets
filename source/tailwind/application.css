@@ -32,7 +32,8 @@ Building a better future, one line of code at a time.
 
 
 /* Use tailwind */
-@import "tailwindcss" source(none);
+/* Emit the complete theme: other packages only reference these variables. */
+@import "tailwindcss" source(none) theme(static);
 
 
 /* Configuration & variables */
@@ -93,6 +94,13 @@ h1, h2, h3, h4, h5, h6, a {
 /* Fix display for main app container */
 turbo-frame.lesli-application-container {
     display: block;
+}
+
+@layer components {
+    /* Shared shell spacing must stay independent of each engine's utility bundle. */
+    .lesli-shell-container {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
 }
 
 

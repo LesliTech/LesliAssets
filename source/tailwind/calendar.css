@@ -1,7 +1,8 @@
 /* FullCalendar base styles and Lesli-specific calendar presentation. */
 @layer theme, components, utilities;
 
-@import "tailwindcss/theme.css" layer(theme);
+/* Theme values are loaded once by LesliAssets. */
+@reference "tailwindcss/theme.css";
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "../../node_modules/fullcalendar/skeleton.css" layer(components);
 @import "../../node_modules/fullcalendar/themes/classic/theme.css" layer(components);

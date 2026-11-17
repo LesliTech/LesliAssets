@@ -32,7 +32,8 @@ Building a better future, one line of code at a time.
 
 
 /* Use Tailwind CSS */
-@import "tailwindcss" source(none);
+/* Emit the complete theme: other packages only reference these variables. */
+@import "tailwindcss" source(none) theme(static);
 
 
 /* Configuration & variables */

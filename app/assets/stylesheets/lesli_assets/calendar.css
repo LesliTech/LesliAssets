@@ -1,16 +1,6 @@
-/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.4 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, components, utilities;
-@layer theme {
-  :root, :host {
-    --color-slate-800: oklch(27.9% 0.041 260.031);
-    --spacing: 0.25rem;
-    --font-weight-normal: 400;
-    --font-weight-semibold: 600;
-    --font-weight-extrabold: 800;
-    --radius-sm: 0.25rem;
-  }
-}
 @layer utilities;
 @layer components {
   :root {
@@ -1108,13 +1098,13 @@
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day-header {
     border-inline-style: var(--tw-border-style);
     border-inline-width: 0px;
-    padding-block: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing, 0.25rem) * 3);
     text-align: center;
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day-header-label {
-    --tw-font-weight: var(--font-weight-semibold);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-slate-800);
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-slate-800, oklch(27.9% 0.041 260.031));
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day {
     border-style: var(--tw-border-style);
@@ -1122,27 +1112,27 @@
     border-color: var(--lesli-color-background);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day-number {
-    padding-inline: calc(var(--spacing) * 2.5);
+    padding-inline: calc(var(--spacing, 0.25rem) * 2.5);
     padding-block: 5px;
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day.is-today .lesli-calendar-day-number {
-    --tw-font-weight: var(--font-weight-extrabold);
-    font-weight: var(--font-weight-extrabold);
+    --tw-font-weight: var(--font-weight-extrabold, 800);
+    font-weight: var(--font-weight-extrabold, 800);
     color: var(--lesli-color-primary);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event {
-    margin-bottom: calc(var(--spacing) * 0.5);
-    margin-left: calc(var(--spacing) * 2);
+    margin-bottom: calc(var(--spacing, 0.25rem) * 0.5);
+    margin-left: calc(var(--spacing, 0.25rem) * 2);
     display: block;
     overflow: hidden;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-sm, 0.25rem);
     border-style: var(--tw-border-style);
     border-width: 0px;
     border-left-style: var(--tw-border-style);
     border-left-width: 5px;
-    padding-block: calc(var(--spacing) * 1.5);
-    padding-right: calc(var(--spacing) * 1.5);
-    padding-left: calc(var(--spacing) * 1.5);
+    padding-block: calc(var(--spacing, 0.25rem) * 1.5);
+    padding-right: calc(var(--spacing, 0.25rem) * 1.5);
+    padding-left: calc(var(--spacing, 0.25rem) * 1.5);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event-dot {
     display: none !important;
@@ -1153,8 +1143,8 @@
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-calendar .lesli-calendar-event-title {
     font-family: 'OpenSans';
-    --tw-font-weight: var(--font-weight-normal);
-    font-weight: var(--font-weight-normal);
+    --tw-font-weight: var(--font-weight-normal, 400);
+    font-weight: var(--font-weight-normal, 400);
     color: #0e3f75;
     text-transform: capitalize;
   }
@@ -1183,7 +1173,7 @@
   inherits: false;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;

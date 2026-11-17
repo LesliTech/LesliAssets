@@ -35,9 +35,11 @@ Tailwind v4 theme tokens.
 `inline` makes utilities reference the runtime Lesli variables directly. This
 is important because account settings can replace the `--lesli-theme-*`
 values after this stylesheet has been compiled.
+`static` emits every token in the shared application and public stylesheets,
+including tokens used only by engines that compile independently.
 */
 
-@theme inline {
+@theme inline static {
     /* Account-customizable brand color. */
     --color-primary: var(--lesli-color-primary);
 
