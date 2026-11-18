@@ -35,13 +35,13 @@ icons to explain the meaning.
 | Role | Background | Foreground | Contrast |
 | --- | --- | --- | --- |
 | Default primary (700) | `#194A99` | White | 8.46:1 |
-| `info-600` | `#087EAE` | White | 4.56:1 |
-| `success-600` | `#09855E` | White | 4.64:1 |
+| `info-500` | `#087EAE` | White | 4.56:1 |
+| `success-500` | `#09855E` | White | 4.64:1 |
 | `warning-500` | `#F0A51B` | `warning-900` (`#452B08`) | 6.31:1 |
-| `danger-600` | `#D73554` | White | 4.64:1 |
+| `danger-500` | `#D73554` | White | 4.64:1 |
 
 These opaque pairs exceed 4.5:1 for normal text. Info, success and danger buttons
-use shade `700` on hover; warning uses `600` with the same dark foreground.
+use shade `600` on hover; warning uses `600` with the same dark foreground.
 Those hover pairs also exceed 4.5:1. Do not use white text on warning buttons.
 
 Announcements and notifications use shade `50` for backgrounds, `300` for
@@ -82,7 +82,7 @@ component or engine styles.
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-200); color: #1F2933;">200</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-300); color: #1F2933;">300</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-400); color: #1F2933;">400</div>
-    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-500); color: #1F2933;">500</div>
+    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-500); color: #ffffff;">500</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-600); color: #ffffff;">600</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-700); color: #ffffff;">700</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-info-800); color: #ffffff;">800</div>
@@ -97,7 +97,7 @@ component or engine styles.
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-200); color: #1F2933;">200</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-300); color: #1F2933;">300</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-400); color: #1F2933;">400</div>
-    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-500); color: #1F2933;">500</div>
+    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-500); color: #ffffff;">500</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-600); color: #ffffff;">600</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-700); color: #ffffff;">700</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-success-800); color: #ffffff;">800</div>
@@ -127,7 +127,7 @@ component or engine styles.
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-200); color: #1F2933;">200</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-300); color: #1F2933;">300</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-400); color: #1F2933;">400</div>
-    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-500); color: #1F2933;">500</div>
+    <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-500); color: #ffffff;">500</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-600); color: #ffffff;">600</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-700); color: #ffffff;">700</div>
     <div class="br-2 py-4 has-text-centered" style="background-color: var(--lesli-color-danger-800); color: #ffffff;">800</div>
@@ -151,13 +151,19 @@ component or engine styles.
 
 ## Canonical values
 
+The semantic scales use perceptually spaced OKLab transitions around the fixed
+`500` identity colors. Shades `50–100` remain soft backgrounds, while `600` is
+the hover tone. Warning preserves its `600` for contrast with dark labels.
+Use shades `200–300` for decorative borders; functional boundaries and focus
+indicators need their own contrast check.
+
 | Palette | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Neutral | `#F8FAFC` | `#F1F4F8` | `#E5EAF0` | `#C7D0DA` | `#8F9BAA` | `#667383` | `#4B5663` | `#34404C` | `#28323D` | `#1F2933` |
-| Info | `#F0F9FF` | `#DEF2FC` | `#B6E5FA` | `#80D1F3` | `#3DB6E5` | `#129ACC` | `#087EAE` | `#09658E` | `#105274` | `#14445E` |
-| Success | `#EDFCF5` | `#D5F7E7` | `#A9EDD0` | `#72DCB4` | `#35C18E` | `#11A575` | `#09855E` | `#0B6D4F` | `#105840` | `#124936` |
-| Warning | `#FFFBED` | `#FFF1C6` | `#FFE397` | `#FBD05B` | `#F6BB2E` | `#F0A51B` | `#D18B10` | `#A66A10` | `#7D4D0F` | `#452B08` |
-| Danger | `#FFF1F4` | `#FFE1E8` | `#FDC1CE` | `#F99AAD` | `#F56B87` | `#EE466B` | `#D73554` | `#B52A46` | `#94273D` | `#792637` |
+| Info | `#F0F9FF` | `#DEF2FC` | `#B0D5E9` | `#82B7D5` | `#529BC2` | `#087EAE` | `#0F6F99` | `#136085` | `#145271` | `#14445E` |
+| Success | `#EDFCF5` | `#D5F7E7` | `#A9DAC3` | `#7DBDA0` | `#4FA17E` | `#09855E` | `#0E7554` | `#11664A` | `#125740` | `#124936` |
+| Warning | `#FFFBED` | `#FFF1C6` | `#FCDEA4` | `#F9CC80` | `#F5B858` | `#F0A51B` | `#D18B10` | `#9F690F` | `#71490C` | `#452B08` |
+| Danger | `#FFF1F4` | `#FFE1E8` | `#FABAC1` | `#F1929C` | `#E56877` | `#D73554` | `#BF324D` | `#A72E45` | `#902A3E` | `#792637` |
 | Black | `#F5F5F5` | `#E0E0E0` | `#C2C2C2` | `#A3A3A3` | `#525252` | `#333333` | `#1F1F1F` | `#141414` | `#0A0A0A` | `#000000` |
 
 Every palette is available through generated variables such as `--lesli-color-success-500` and through the corresponding LesliAssets color utilities.
@@ -174,7 +180,7 @@ Every palette is available through generated variables such as `--lesli-color-su
 
 - Prefer shades 50–100 for message backgrounds and 700–900 for text.
 - Use a dark foreground on Warning 50–600; white is appropriate at Warning 700 and darker.
-- Use dark text on the lighter semantic shades, including 500. For solid info, success and danger actions, use shade 600 with white text.
+- Use dark text on semantic shades 50–400. For solid info, success and danger actions, use the default shade 500 with white text.
 - Do not communicate status with color alone. Pair it with text, an icon, or both.
 
 Semantic and categorical palettes are independent. Do not substitute Cyan for Info, Teal for Success, Gold for Warning, or Rose for Danger.
