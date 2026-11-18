@@ -42,6 +42,9 @@ including tokens used only by engines that compile independently.
 @theme inline static {
     /* Account-customizable brand color. */
     --color-primary: var(--lesli-color-primary);
+    --color-primary-soft: var(--lesli-color-primary-soft);
+    --color-primary-muted: var(--lesli-color-primary-muted);
+    --color-primary-strong: var(--lesli-color-primary-strong);
 
     /* Lesli design-system palette. */
     --color-primary-50: var(--lesli-color-primary-50);

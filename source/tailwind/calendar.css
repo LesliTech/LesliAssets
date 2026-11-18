@@ -2,12 +2,12 @@
 @layer theme, components, utilities;
 
 /* Theme values are loaded once by LesliAssets. */
-@reference "tailwindcss/theme.css";
+@import "tailwindcss/theme.css" theme(reference);
+@reference "./settings/theme.css";
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "../../node_modules/fullcalendar/skeleton.css" layer(components);
 @import "../../node_modules/fullcalendar/themes/classic/theme.css" layer(components);
 @import "../../node_modules/fullcalendar/themes/classic/palette.css" layer(components);
-@reference "./settings/theme.css";
 
 @layer components {
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-day-header {
@@ -39,26 +39,26 @@
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-calendar {
-        @apply border-l-[#3689e6] bg-[#bed8f7];
+        @apply border-l-primary bg-primary-muted;
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-calendar .lesli-calendar-event-title {
-        @apply text-[#0e3f75] font-['OpenSans'] font-normal capitalize;
+        @apply text-primary-strong font-['OpenSans'] font-normal capitalize;
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-support {
-        @apply border-l-[#a56de2] bg-[#f4edfb];
+        @apply border-l-bugambilia-500 bg-bugambilia-100;
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-support .lesli-calendar-event-title {
-        @apply text-[#581e98];
+        @apply text-bugambilia-700;
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-tasks {
-        @apply border-l-[#28bca3] bg-[#95e8da];
+        @apply border-l-jade-500 bg-jade-100;
     }
 
     body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-tasks .lesli-calendar-event-title {
-        @apply text-[#0d3e36];
+        @apply text-jade-900;
     }
 }

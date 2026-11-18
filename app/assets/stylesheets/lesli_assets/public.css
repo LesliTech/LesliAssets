@@ -414,6 +414,9 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-primary: var(--lesli-color-primary);
+    --color-primary-soft: var(--lesli-color-primary-soft);
+    --color-primary-muted: var(--lesli-color-primary-muted);
+    --color-primary-strong: var(--lesli-color-primary-strong);
     --color-primary-50: var(--lesli-color-primary-50);
     --color-primary-100: var(--lesli-color-primary-100);
     --color-primary-200: var(--lesli-color-primary-200);
@@ -706,6 +709,7 @@
   }
 }
 @layer utilities;
+@charset "UTF-8";
 :root {
   --lesli-color-primary-50: #F2F7FF;
   --lesli-color-primary-100: #E3EEFF;
@@ -730,46 +734,46 @@
   --lesli-color-neutral-700: #34404C;
   --lesli-color-neutral-800: #28323D;
   --lesli-color-neutral-900: #1F2933;
-  --lesli-color-info-50: #F0FAFC;
-  --lesli-color-info-100: #DDF3F7;
-  --lesli-color-info-200: #BCE7EF;
-  --lesli-color-info-300: #8AD4E1;
-  --lesli-color-info-400: #4FB5C8;
-  --lesli-color-info-500: #167D9A;
-  --lesli-color-info-600: #126B84;
-  --lesli-color-info-700: #11586D;
-  --lesli-color-info-800: #124957;
-  --lesli-color-info-900: #123D49;
-  --lesli-color-success-50: #F1FAF6;
-  --lesli-color-success-100: #DDF4E8;
-  --lesli-color-success-200: #BDE7D2;
-  --lesli-color-success-300: #8CD4B3;
-  --lesli-color-success-400: #52B88D;
-  --lesli-color-success-500: #23845D;
-  --lesli-color-success-600: #1D704F;
-  --lesli-color-success-700: #195C43;
-  --lesli-color-success-800: #174B38;
-  --lesli-color-success-900: #143E30;
-  --lesli-color-warning-50: #FFF9EB;
-  --lesli-color-warning-100: #FEF0C7;
-  --lesli-color-warning-200: #FDE19A;
-  --lesli-color-warning-300: #F8CB60;
-  --lesli-color-warning-400: #EAA934;
-  --lesli-color-warning-500: #C98518;
-  --lesli-color-warning-600: #AA6C12;
-  --lesli-color-warning-700: #8A560F;
-  --lesli-color-warning-800: #714611;
-  --lesli-color-warning-900: #5E3B12;
-  --lesli-color-danger-50: #FFF4F3;
-  --lesli-color-danger-100: #FFE5E2;
-  --lesli-color-danger-200: #FDCBC6;
-  --lesli-color-danger-300: #F5A69F;
-  --lesli-color-danger-400: #E8756C;
-  --lesli-color-danger-500: #C44A42;
-  --lesli-color-danger-600: #A93D37;
-  --lesli-color-danger-700: #8C332F;
-  --lesli-color-danger-800: #742D2B;
-  --lesli-color-danger-900: #612927;
+  --lesli-color-info-50: #F0F9FF;
+  --lesli-color-info-100: #DEF2FC;
+  --lesli-color-info-200: #B6E5FA;
+  --lesli-color-info-300: #80D1F3;
+  --lesli-color-info-400: #3DB6E5;
+  --lesli-color-info-500: #129ACC;
+  --lesli-color-info-600: #087EAE;
+  --lesli-color-info-700: #09658E;
+  --lesli-color-info-800: #105274;
+  --lesli-color-info-900: #14445E;
+  --lesli-color-success-50: #EDFCF5;
+  --lesli-color-success-100: #D5F7E7;
+  --lesli-color-success-200: #A9EDD0;
+  --lesli-color-success-300: #72DCB4;
+  --lesli-color-success-400: #35C18E;
+  --lesli-color-success-500: #11A575;
+  --lesli-color-success-600: #09855E;
+  --lesli-color-success-700: #0B6D4F;
+  --lesli-color-success-800: #105840;
+  --lesli-color-success-900: #124936;
+  --lesli-color-warning-50: #FFFBED;
+  --lesli-color-warning-100: #FFF1C6;
+  --lesli-color-warning-200: #FFE397;
+  --lesli-color-warning-300: #FBD05B;
+  --lesli-color-warning-400: #F6BB2E;
+  --lesli-color-warning-500: #F0A51B;
+  --lesli-color-warning-600: #D18B10;
+  --lesli-color-warning-700: #A66A10;
+  --lesli-color-warning-800: #7D4D0F;
+  --lesli-color-warning-900: #452B08;
+  --lesli-color-danger-50: #FFF1F4;
+  --lesli-color-danger-100: #FFE1E8;
+  --lesli-color-danger-200: #FDC1CE;
+  --lesli-color-danger-300: #F99AAD;
+  --lesli-color-danger-400: #F56B87;
+  --lesli-color-danger-500: #EE466B;
+  --lesli-color-danger-600: #D73554;
+  --lesli-color-danger-700: #B52A46;
+  --lesli-color-danger-800: #94273D;
+  --lesli-color-danger-900: #792637;
   --lesli-color-black-50: #F5F5F5;
   --lesli-color-black-100: #E0E0E0;
   --lesli-color-black-200: #C2C2C2;
@@ -1019,7 +1023,19 @@
   --lesli-color-banana-500: #B2852D;
   --lesli-color-banana-700: #926F25;
   --lesli-color-banana-900: #5C4217;
-  --lesli-color-primary: var(--lesli-theme-color-primary, #193d8d);
+  --lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-500));
+  --lesli-color-primary-soft: var(--lesli-color-primary);
+  @supports (color: color-mix(in lab, red, red)) {
+    --lesli-color-primary-soft: color-mix(in srgb, var(--lesli-color-primary) 8%, white);
+  }
+  --lesli-color-primary-muted: var(--lesli-color-primary);
+  @supports (color: color-mix(in lab, red, red)) {
+    --lesli-color-primary-muted: color-mix(in srgb, var(--lesli-color-primary) 25%, white);
+  }
+  --lesli-color-primary-strong: var(--lesli-color-primary);
+  @supports (color: color-mix(in lab, red, red)) {
+    --lesli-color-primary-strong: color-mix(in srgb, var(--lesli-color-primary) 80%, black);
+  }
   --lesli-color-background: var(--lesli-theme-color-background, #f9f5f3);
   --lesli-header-color: var(--lesli-theme-header-color, white);
   --lesli-footer-color: var(--lesli-theme-footer-color, white);

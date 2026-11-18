@@ -1138,29 +1138,29 @@
     display: none !important;
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-calendar {
-    border-left-color: #3689e6;
-    background-color: #bed8f7;
+    border-left-color: var(--lesli-color-primary);
+    background-color: var(--lesli-color-primary-muted);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-calendar .lesli-calendar-event-title {
     font-family: 'OpenSans';
     --tw-font-weight: var(--font-weight-normal, 400);
     font-weight: var(--font-weight-normal, 400);
-    color: #0e3f75;
+    color: var(--lesli-color-primary-strong);
     text-transform: capitalize;
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-support {
-    border-left-color: #a56de2;
-    background-color: #f4edfb;
+    border-left-color: var(--lesli-color-bugambilia-500);
+    background-color: var(--lesli-color-bugambilia-100);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-support .lesli-calendar-event-title {
-    color: #581e98;
+    color: var(--lesli-color-bugambilia-700);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-tasks {
-    border-left-color: #28bca3;
-    background-color: #95e8da;
+    border-left-color: var(--lesli-color-jade-500);
+    background-color: var(--lesli-color-jade-100);
   }
   body.lesli-calendar.calendars #lesli-calendar-engine .lesli-calendar-event.lesli-tasks .lesli-calendar-event-title {
-    color: #0d3e36;
+    color: var(--lesli-color-jade-900);
   }
 }
 @property --tw-border-style {

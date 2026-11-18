@@ -35,8 +35,8 @@ theme with `theme(static)`. The Lesli mappings in `settings/theme.css` use
 used only by an independently compiled engine.
 
 Engines, LesliView, and the optional Calendar stylesheet use `@reference` for the
-theme and import only the utilities they need. They do not emit global theme
-variables. Tailwind's internal `--tw-*` properties and generated animation rules
+theme. Engines generate utility selectors; LesliView applies utilities inside
+its own component selectors. These consumers do not emit global theme variables. Tailwind's internal `--tw-*` properties and generated animation rules
 remain part of the utilities and should not be removed manually.
 
 Every layout must load either `lesli_assets/application` or `lesli_assets/public`
@@ -47,40 +47,54 @@ compiled CSS; updating the source files alone does not change installed gems.
 `test/tailwind_theme_test.rb` compiles both shared entrypoints and an independent
 consumer to verify that global tokens remain available without being duplicated.
 
-## Utilities are compiled per package
+## Style ownership and compilation
 
-Global theme variables are centralized in LesliAssets, but utility classes are
-generated separately for LesliAssets, LesliView, and each engine. Each package's
-entrypoint scans its own declared `@source` paths and ships its compiled CSS.
-`@reference` shares theme information during compilation; it does not deduplicate
-utility classes across separate stylesheets.
+Install build dependencies with `npm ci`. The pinned `lesli-css` package supplies
+`css/colors.css`, imported by both global entrypoints. Only its compiled color
+variables are imported, not its Bulma or Sass styles. The published gem ships
+the compiled CSS and does not need Node or lesli-css at runtime.
 
-Common utilities such as `flex`, `grid`, `items-center`, and `text-sm` can therefore
-appear in more than one package. This small duplication is intentional and
-accepted: it preserves independent package builds and lets Rails hosts use the
-published CSS without compiling a single utility bundle for all installed engines.
+Keep account overrides in `settings/variables.css` and Tailwind mappings in
+`settings/theme.css`; update the palette in lesli-css instead of duplicating it here.
 
-Keep this arrangement simple. Do not maintain manual lists of shared utility
-classes or remove repeated rules from compiled output. Those approaches couple
-package releases and can change CSS cascade behavior. The shared theme remains
-the source of global values; each package owns the utilities and component rules
-needed by its interface.
+| Package | Responsibility | Published selectors |
+| --- | --- | --- |
+| LesliAssets | Global theme, reset, fonts, icons and shared application styles | Standard utilities and shared rules |
+| LesliView | Reusable components, partials, layouts, widgets and charts | Component classes such as `lesli-button` and `lesli-error` |
+| Core and other engines | Their own pages and feature-specific presentation | Standard utilities and engine-specific rules |
 
-Keep shared components' responsive layout, spacing, sizing, and typography in
-their own CSS rules using `@apply`, instead of combining base and responsive
-utility classes in their markup. For example, a later engine's `px-4` rule can override `lg:px-8` from an
-earlier stylesheet; `text-3xl` can similarly override `sm:text-4xl`. Changing link
-order only moves the conflict to another package. A dedicated component class
-keeps its responsive rules together while retaining separate package builds.
+LesliAssets and engines use unprefixed Tailwind classes, including variants such
+as `sm:flex-row` and `hover:bg-slate-50`. No package uses Tailwind's package-prefix
+option. Names such as `lesli-button` are ordinary component classes, and
+`--lesli-color-primary` is a shared CSS variable; neither is a Tailwind prefix.
 
-Move both the base and responsive declarations for a property into that component
-rule, then remove those utility classes from its markup. Leaving a base utility
-such as `p-4` on the element would still override a rule in `@layer components`.
-Unrelated utilities can stay in the template. LesliView keeps these rules beside
-its component templates and imports them from `source/tailwind/view.css`.
+Every package keeps its own build. LesliAssets and engine entrypoints scan their
+declared `@source` paths. LesliView disables utility discovery and explicitly
+imports component stylesheets; those use `@apply` without publishing global
+selectors such as `.flex` or `.text-sm`.
 
-The documentation website uses Bulma. Keep its HTML previews and documentation
-styling separate from the Tailwind styles shipped by the application packages.
+Common utility rules may appear in both LesliAssets and engine bundles. This
+small duplication is intentional. Do not deduplicate generated CSS or create
+manual lists of shared utility classes.
+
+Every consumer imports Tailwind's default theme with `theme(reference)` and
+references `settings/theme.css` for Lesli's semantic tokens. This single Lesli
+mapping keeps `text-primary`, `bg-header` and semantic palettes available to
+every independently compiled package without emitting global variables again.
+
+Tailwind may include default fallbacks or compiled values for its standard
+utilities, such as shadows. Lesli semantic colors reference the runtime
+`--lesli-*` variables directly. Breakpoints remain compile-time values.
+
+LesliAssets' `source/tailwind/application.css` defines the global theme, reset,
+shared source discovery and application-shell rules in one entrypoint. They
+compile into `lesli_assets/application.css`; no separate shared utility stylesheet
+is loaded. Core loads that shared stylesheet, LesliView, and the active engine
+stylesheet through the existing asset mechanism. Component sidecar files
+are compiled into LesliView's single stylesheet, not loaded separately.
+
+The documentation website still uses Bulma. Keep its previews and styling
+separate from the Tailwind styles shipped by application packages.
 
 ## Rules for generated files
 

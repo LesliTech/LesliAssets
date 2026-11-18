@@ -37,7 +37,7 @@ Building a better future, one line of code at a time.
 
 
 /* Configuration & variables */
-@import "./settings/colors.css";
+@import "lesli-css/css/colors.css";
 @import "./settings/variables.css";
 @import "./settings/theme.css";
 
