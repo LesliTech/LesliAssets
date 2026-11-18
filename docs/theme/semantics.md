@@ -162,7 +162,7 @@ indicators need their own contrast check.
 | Neutral | `#F8FAFC` | `#F1F4F8` | `#E5EAF0` | `#C7D0DA` | `#8F9BAA` | `#667383` | `#4B5663` | `#34404C` | `#28323D` | `#1F2933` |
 | Info | `#F0F9FF` | `#DEF2FC` | `#B0D5E9` | `#82B7D5` | `#529BC2` | `#087EAE` | `#0F6F99` | `#136085` | `#145271` | `#14445E` |
 | Success | `#EDFCF5` | `#D5F7E7` | `#A9DAC3` | `#7DBDA0` | `#4FA17E` | `#09855E` | `#0E7554` | `#11664A` | `#125740` | `#124936` |
-| Warning | `#FFFBED` | `#FFF1C6` | `#FCDEA4` | `#F9CC80` | `#F5B858` | `#F0A51B` | `#D18B10` | `#9F690F` | `#71490C` | `#452B08` |
+| Warning | `#FFFBED` | `#FFF1C6` | `#FCDEA4` | `#F9CC80` | `#F5B858` | `#F0A51B` | `#D18B10` | `#97620E` | `#71490C` | `#452B08` |
 | Danger | `#FFF1F4` | `#FFE1E8` | `#FABAC1` | `#F1929C` | `#E56877` | `#D73554` | `#BF324D` | `#A72E45` | `#902A3E` | `#792637` |
 | Black | `#F5F5F5` | `#E0E0E0` | `#C2C2C2` | `#A3A3A3` | `#525252` | `#333333` | `#1F1F1F` | `#141414` | `#0A0A0A` | `#000000` |
 
