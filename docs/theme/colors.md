@@ -110,11 +110,11 @@ Lesli exposes two related but distinct concepts:
 
 Use `primary-500` when a component must retain Lesli Blue. Use unnumbered `primary` when the component should follow the configured application theme.
 
-Without an account override, unnumbered `primary` also uses Lesli Blue
-(`primary-500`, `#276AD6`). Its fallback references the canonical token:
+Without an account override, unnumbered `primary` uses the darker interface shade
+(`primary-700`, `#194A99`). The brand color remains `primary-500` (`#276AD6`). Its fallback references the canonical token:
 
 ```css
---lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-500));
+--lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-700));
 ```
 
 Core's application layout accepts account colors through `@lesli`:
@@ -188,7 +188,7 @@ setting.update!(value: "#7C3AED")
 Core applies this preference on subsequent authenticated page requests. Three-
 and six-digit hexadecimal colors are supported. A missing administration
 workspace, a missing or blank setting, or an invalid color emits no override;
-LesliAssets then uses official Lesli Blue (`#276AD6`). Core also works without
+LesliAssets then uses the interface default, Primary 700 (`#194A99`). Core also works without
 LesliAdmin or an authenticated user. No database default or CSS rebuild is needed.
 Set the value to `nil` to return to the default color. Account administrators can also use the Appearance tab at `/admin/settings`
-to select a color or restore the official default.
+to select a color or restore the interface default.

@@ -14,7 +14,7 @@ Semantic colors communicate state consistently across Lesli applications. Choose
 ## Choosing primary or a semantic color
 
 Primary expresses action hierarchy and follows the account's configured color,
-falling back to Lesli Blue. Semantic colors express a state and stay consistent
+falling back to Primary 700 (`#194A99`). Primary 500 (`#276AD6`) remains the brand color. Semantic colors express a state and stay consistent
 across accounts. The final palette uses sky, emerald, amber and rose inspired
 tones; these are Lesli tokens, not aliases for Tailwind's built-in scales.
 
@@ -34,7 +34,7 @@ icons to explain the meaning.
 
 | Role | Background | Foreground | Contrast |
 | --- | --- | --- | --- |
-| Default primary | `#276AD6` | White | 5.10:1 |
+| Default primary (700) | `#194A99` | White | 8.46:1 |
 | `info-600` | `#087EAE` | White | 4.56:1 |
 | `success-600` | `#09855E` | White | 4.64:1 |
 | `warning-500` | `#F0A51B` | `warning-900` (`#452B08`) | 6.31:1 |

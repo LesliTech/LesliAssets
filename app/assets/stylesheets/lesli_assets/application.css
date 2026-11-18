@@ -1303,7 +1303,7 @@
   --lesli-color-banana-500: #B2852D;
   --lesli-color-banana-700: #926F25;
   --lesli-color-banana-900: #5C4217;
-  --lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-500));
+  --lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-700));
   --lesli-color-primary-soft: var(--lesli-color-primary);
   @supports (color: color-mix(in lab, red, red)) {
     --lesli-color-primary-soft: color-mix(in srgb, var(--lesli-color-primary) 8%, white);

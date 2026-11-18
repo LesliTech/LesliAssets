@@ -19,8 +19,9 @@ class TailwindThemeTest < Minitest::Test
                 assert_match(/--color-rose-950\s*:/, css)
                 assert_match(/--spacing\s*:/, css)
                 assert_match(/--radius-xl\s*:/, css)
+                assert_match(/--lesli-color-primary-700:\s*#194a99/i, css)
                 assert_match(/--lesli-color-primary-500:\s*#276ad6/i, css)
-                assert_includes css, "--lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-500))"
+                assert_includes css, "--lesli-color-primary: var(--lesli-theme-color-primary, var(--lesli-color-primary-700))"
                 assert_includes css, "--lesli-color-primary-soft: color-mix(in srgb, var(--lesli-color-primary) 8%, white)"
                 assert_includes css, "--lesli-color-primary-strong: color-mix(in srgb, var(--lesli-color-primary) 80%, black)"
                 assert_match(/--color-primary\s*:/, css)
