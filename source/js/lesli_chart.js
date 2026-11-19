@@ -32,6 +32,16 @@ class LesliChart {
         
         // Global color defaults
         ChartJs.defaults.color = "#4a4a4a";
+
+        // Release our charts before Turbo caches or replaces the page.
+        const destroyCharts = () => {
+            document.querySelectorAll("canvas[data-lesli-chart]").forEach((canvas) => {
+                ChartJs.getChart(canvas)?.destroy();
+            });
+        };
+
+        document.addEventListener("turbo:before-cache", destroyCharts);
+        document.addEventListener("turbo:before-render", destroyCharts);
     }
 
     /**
@@ -40,7 +50,7 @@ class LesliChart {
      * @param {Object} config
      * @param {String} config.id        DOM id
      * @param {String} config.type      "bar" | "line"
-     * @param {Array}  config.series    Apex-style series
+     * @param {Array}  config.datasets Chart.js datasets
      * @param {Array}  config.labels    X-axis labels
      * @param {Boolean} config.compact  Sparkline mode
      */
@@ -56,13 +66,15 @@ class LesliChart {
 
         const hasMultipleDatasets = config.datasets.length > 1;
 
-        // Clear any previous chart instance.
-        // Important when Turbo re-renders the page.
+        // Removing a canvas alone does not release Chart.js listeners.
+        const previousCanvas = container.querySelector("canvas");
+        if (previousCanvas) ChartJs.getChart(previousCanvas)?.destroy();
         container.innerHTML = "";
 
         // Chart.js requires a <canvas> element to render charts.
         // We dynamically create it so Turbo reloads remain clean.
         const canvas = document.createElement("canvas");
+        canvas.dataset.lesliChart = "";
 
         // Attach the canvas to the container
         container.appendChild(canvas);
@@ -159,11 +171,14 @@ class LesliChart {
                     // Get the first clicked element
                     const element = elements[0];
 
-                    // Emit a custom event (Rails / Stimulus / ViewComponent)
-                    emit("markerClick", {
-                        seriesIndex: element.datasetIndex,
-                        dataPointIndex: element.index
-                    });
+                    // Bubble the event so callers can listen on the chart or a parent.
+                    container.dispatchEvent(new CustomEvent("markerClick", {
+                        bubbles: true,
+                        detail: {
+                            seriesIndex: element.datasetIndex,
+                            dataPointIndex: element.index
+                        }
+                    }));
                 }
             }
         };

@@ -41,7 +41,8 @@ JS_OUTDIR = ./app/assets/javascripts/lesli_assets/
 
 # esbuild common options
 ESBUILD = npx esbuild
-ESBUILD_COMMON = --bundle --format=esm --outdir=$(JS_OUTDIR)
+# Rails loads these bundles as deferred classic scripts; isolate their internal variables.
+ESBUILD_COMMON = --bundle --format=iife --outdir=$(JS_OUTDIR)
 ESBUILD_DEV = --sourcemap --define:process.env.NODE_ENV=\"development\"
 ESBUILD_PROD = --minify --tree-shaking=true --define:process.env.NODE_ENV=\"production\"
 
