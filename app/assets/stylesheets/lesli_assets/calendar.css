@@ -7,274 +7,298 @@
     --fc-sticky-header-footer-z: 3;
     --fc-popover-z: 4;
   }
-  .fc-pj {
+  .fc-5r {
+    z-index: 0 !important;
+  }
+  .fc-de {
+    z-index: 1 !important;
+  }
+  .fc-h9 {
+    z-index: 2 !important;
+  }
+  .fc-Ox {
+    z-index: 3 !important;
+  }
+  .fc-4g {
+    z-index: 4 !important;
+  }
+  .fc-zk {
+    z-index: 5 !important;
+  }
+  .fc-a0 {
+    z-index: 1000 !important;
+  }
+  .fc-ql {
+    z-index: 9999 !important;
+  }
+  .fc-RJ:focus-visible {
+    z-index: 2 !important;
+  }
+  .fc-7k {
     z-index: var(--fc-popover-z) !important;
   }
-  .fc-L2 {
-    isolation: isolate;
+  .fc-tX {
+    isolation: isolate !important;
   }
-  .fc-oK, .fc-oK *, .fc-oK *:before, .fc-oK *:after {
+  .fc-Wz, .fc-Wz *, .fc-Wz *:before, .fc-Wz *:after {
     box-sizing: border-box !important;
   }
-  .fc-Nr, .fc-Nr * {
+  .fc-NA, .fc-NA * {
     cursor: not-allowed !important;
   }
-  .fc-h3 {
+  .fc-vt {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
   }
-  .fc-h3::-webkit-scrollbar {
+  .fc-vt::-webkit-scrollbar {
     display: none !important;
   }
-  .fc-s2 {
+  .fc-YA {
     flex-shrink: 0 !important;
   }
-  .fc-Qd .fc-j1 {
+  .fc-uw .fc-De {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
   }
-  .fc-Fn .fc-j1 > * {
+  .fc-ZA .fc-De > * {
     float: left !important;
   }
-  [dir=rtl] .fc-Fn .fc-j1 > *, .fc-Fn[dir=rtl] .fc-j1 > * {
+  [dir=rtl] .fc-ZA .fc-De > *, .fc-ZA[dir=rtl] .fc-De > * {
     float: right !important;
   }
-  .fc-Fn .fc-j1::after {
+  .fc-ZA .fc-De::after {
     content: "" !important;
     display: block !important;
     clear: both !important;
   }
-  .fc-3A {
+  .fc-jF {
     cursor: pointer !important;
   }
-  .fc-3Z {
+  .fc-TD {
     cursor: n-resize !important;
   }
-  .fc-Bn {
+  .fc-3Z {
     cursor: s-resize !important;
   }
-  .fc-Bs {
+  .fc-dx {
     cursor: w-resize !important;
   }
-  [dir=rtl] .fc-Bs {
+  [dir=rtl] .fc-dx {
     cursor: e-resize !important;
   }
-  .fc-mJ {
+  .fc-ec {
     cursor: e-resize !important;
   }
-  [dir=rtl] .fc-mJ {
+  [dir=rtl] .fc-ec {
     cursor: w-resize !important;
   }
-  .fc-xg {
+  .fc-AA {
     cursor: col-resize !important;
   }
-  .fc-B6, .fc-If, .fc-uS {
+  .fc-ai, .fc-bx, .fc-i9 {
     position: absolute !important;
     box-sizing: content-box !important;
     width: 100% !important;
     height: 100% !important;
   }
-  .fc-B6 {
+  .fc-ai {
     padding: 10px !important;
     margin: -10px !important;
   }
-  .fc-If {
+  .fc-bx {
     padding-left: 10px !important;
     padding-right: 10px !important;
     margin-left: -10px !important;
     margin-right: -10px !important;
   }
-  .fc-uS {
+  .fc-i9 {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
     margin-top: -10px !important;
     margin-bottom: -10px !important;
   }
-  .fc-gw {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -5px;
-    right: -5px;
+  .fc-hx {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -5px !important;
+    right: -5px !important;
   }
-  .fc-Qx {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+  .fc-fg {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
   }
-  .fc-DP {
-    visibility: hidden;
-  }
-  .fc-m0 {
+  .fc-4z {
     border: 0 !important;
   }
-  .fc-lH {
+  .fc-ca {
     border-left: 0 !important;
     border-right: 0 !important;
   }
-  .fc-T4 {
+  .fc-Zq {
     border-top: 0 !important;
     border-bottom: 0 !important;
   }
-  .fc-7v {
+  .fc-Im {
     border-top: 0 !important;
   }
-  .fc-C1 {
+  .fc-67 {
     border-bottom: 0 !important;
   }
-  .fc-QG {
+  .fc-MR {
     border-inline-start: 0 !important;
   }
-  .fc-N5 {
+  .fc-Y4 {
     border-inline-end: 0 !important;
   }
-  .fc-4L {
+  .fc-lJ {
     display: flex !important;
     flex-direction: row !important;
   }
-  .fc-Ir {
+  .fc-Xt {
     display: flex !important;
     flex-direction: column !important;
   }
-  .fc-o7 {
+  .fc-0U {
     flex-grow: 1 !important;
   }
-  .fc-bx {
+  .fc-6W {
     flex-grow: 1 !important;
     flex-basis: 0 !important;
     min-width: 0 !important;
     min-height: 0 !important;
   }
-  .fc-PC {
+  .fc-jx {
     min-height: 0 !important;
   }
-  .fc-rJ {
+  .fc-p5 {
     flex-grow: 1 !important;
     flex-basis: 0 !important;
     min-width: 0 !important;
   }
-  .fc-2n {
+  .fc-wU {
     width: 100% !important;
     table-layout: fixed !important;
     border: 0 !important;
     border-collapse: separate !important;
     border-spacing: 0 !important;
   }
-  .fc-2n > thead {
+  .fc-wU > thead {
     -moz-column-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
-  .fc-2n > tbody {
+  .fc-wU > tbody {
     background: transparent !important;
   }
-  .fc-2n > thead > tr > th, .fc-2n > tbody > tr > th, .fc-2n > tbody > tr > td {
+  .fc-wU > thead > tr > th, .fc-wU > tbody > tr > th, .fc-wU > tbody > tr > td {
     vertical-align: top !important;
-    font-weight: inherit;
-    text-align: inherit;
+    font-weight: inherit !important;
+    text-align: inherit !important;
   }
-  .fc-Ib {
+  .fc-jj {
     padding: 0 !important;
   }
-  .fc-ho {
+  .fc-jf {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
-  .fc-Yg {
+  .fc-Kp {
     margin: 0 !important;
   }
-  .fc-4U {
+  .fc-G5 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
-  .fc-mC {
+  .fc-Ut {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  .fc-XZ {
+  .fc-Eu {
     white-space: nowrap !important;
   }
-  .fc-5Z {
+  .fc-Ex {
     white-space: pre !important;
   }
-  .fc-0T {
-    overflow-anchor: none;
+  .fc-FS {
+    overflow-anchor: none !important;
   }
-  .fc-8Y {
+  .fc-A2 {
     pointer-events: none !important;
   }
-  .fc-Zz {
+  .fc-ip {
     overflow: hidden !important;
   }
-  .fc-Sr {
+  .fc-i0 {
     white-space: nowrap !important;
     overflow: hidden !important;
   }
-  .fc-7Q {
+  .fc-hC {
     position: relative !important;
   }
-  .fc-Rs {
+  .fc-My {
     position: absolute !important;
   }
-  .fc-Hv {
+  .fc-X7 {
     inset-inline-start: 0 !important;
   }
-  .fc-97 {
+  .fc-WB {
     inset-inline-end: 0 !important;
   }
-  .fc-ou {
+  .fc-YR {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
   }
-  .fc-b1, .fc-7k {
+  .fc-dz, .fc-Db {
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
   }
-  .fc-5V, .fc-Z6 {
+  .fc-QB, .fc-3q {
     position: absolute !important;
     top: 0 !important;
     bottom: 0 !important;
   }
-  .fc-b1 {
+  .fc-dz {
     top: 0 !important;
   }
-  .fc-Z6 {
+  .fc-3q {
     left: 0 !important;
     right: 0 !important;
     width: 0 !important;
   }
   @media not print {
-    .fc-TI {
+    .fc-Jx {
       position: sticky !important;
     }
-    .fc-G7 {
+    .fc-Gm {
       position: sticky !important;
       top: 0 !important;
     }
-    .fc-lC {
+    .fc-HK {
       position: sticky !important;
       inset-inline-start: 0 !important;
     }
-    .fc-hw {
+    .fc-cF {
       position: sticky !important;
       top: 0 !important;
       z-index: var(--fc-sticky-header-footer-z) !important;
     }
   }
-  .fc-Ap {
+  .fc-KX {
     box-sizing: content-box !important;
   }
-  .fc-hI {
+  .fc-Gb {
     position: absolute !important;
     left: -10000px !important;
     visibility: hidden !important;
   }
-  .fc-GR {
+  .fc-8Z {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -285,63 +309,36 @@
     clip-path: inset(50%) !important;
     white-space: nowrap !important;
   }
-  .fc-Hi {
+  .fc-Id {
     align-items: center !important;
   }
-  .fc-Yj {
+  .fc-PS {
     align-items: flex-start !important;
   }
-  .fc-io {
+  .fc-Ot {
     align-items: flex-end !important;
   }
-  .fc-4I {
+  .fc-Sm {
     position: sticky !important;
     bottom: 0 !important;
     z-index: var(--fc-sticky-header-footer-z) !important;
   }
-  .fc-Nd > * {
+  .fc-Rw > * {
     margin-top: -1px !important;
   }
-  .fc-Nd > * > * {
+  .fc-Rw > * > * {
     height: 1px !important;
   }
-  .fc-Gu {
+  .fc-AH {
     -moz-column-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
-  .fc-2s {
+  .fc-Xq {
     min-height: 4em !important;
   }
-  .fc-es {
+  .fc-sr {
     display: flow-root !important;
-  }
-  .fc-QB {
-    z-index: 0;
-  }
-  .fc-eY {
-    z-index: 1;
-  }
-  .fc-qd {
-    z-index: 2;
-  }
-  .fc-9p {
-    z-index: 3;
-  }
-  .fc-65 {
-    z-index: 4;
-  }
-  .fc-Hy {
-    z-index: 5;
-  }
-  .fc-T7 {
-    z-index: 1000;
-  }
-  .fc-mO {
-    z-index: 9999;
-  }
-  .fc-zL:focus-visible {
-    z-index: 2;
   }
   .fc-classic-n5m {
     font-size: 16px;
