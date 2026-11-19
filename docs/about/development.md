@@ -27,6 +27,40 @@ Tailwind CSS is the only stylesheet pipeline. Production targets use the `prod.*
 
 `make build.icons` uses the repository-local `node_modules/.bin/svgo`. If it reports that SVGO is missing, run `npm ci` from the LesliAssets directory before rebuilding.
 
+## JavaScript compilation
+
+`lib/make/js.mk` bundles two entrypoints with esbuild:
+
+- `source/js/application.js`: shared dependencies and Alpine initialization.
+- `source/js/calendar.js`: the calendar custom element and FullCalendar integration.
+
+Both use `--bundle --format=iife`. An IIFE (Immediately Invoked Function
+Expression) wraps each bundle in its own function scope. Rails loads these
+files as deferred classic scripts, so this wrapper prevents their internal
+variables from colliding, including names shortened during minification.
+Do not use `--format=esm` with the current classic script tags: module output
+does not provide module isolation when loaded as a classic script.
+
+The globals explicitly assigned to `window` in `application.js` remain
+available outside the wrapper. Engines reuse those globals instead of bundling
+another copy of Alpine or Turbo.
+
+Run these commands from the LesliAssets directory:
+
+```shell
+make build.js
+make watch.js
+make prod.js
+```
+
+`build.js` and `watch.js` include source maps. `prod.js` enables minification,
+tree shaking, and the production environment. All three use IIFE isolation
+and write to `app/assets/javascripts/lesli_assets`.
+
+After changing the shared bundle, verify both a full page load and Turbo
+navigation with Calendar loaded. Open an event panel to confirm that Alpine
+and the independently compiled calendar bundle work together.
+
 ## Shared theme
 
 `source/tailwind/application.css` and `public.css` emit the complete Tailwind

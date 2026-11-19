@@ -79,6 +79,20 @@ Then use Rails asset and rendering helpers to include the resources required by 
 
 ## Usage
 
+### Shared JavaScript
+
+Core loads the shared application bundle in the layout's head with `defer`
+and `data-turbo-track="reload"`. It provides Turbo, Lexxy, and a single global
+Alpine instance for reactive components. Engines reuse `window.Alpine` and
+must not start it again during Turbo navigation.
+
+JavaScript bundles compile with esbuild's `--format=iife` to isolate internal
+variables between the application and calendar scripts, including minified
+builds. Explicit `window` APIs remain globally available.
+
+See [global JavaScript usage](./docs/about/installation.md#global-javascript-and-alpine)
+and [JavaScript compilation](./docs/about/development.md#javascript-compilation).
+
 ### Use a packaged image
 
 Assets are exposed under the `lesli_assets` logical namespace:
