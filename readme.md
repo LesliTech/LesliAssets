@@ -188,6 +188,16 @@ bundle exec rake test
 make test.mails
 ```
 
+Run the JavaScript browser regression tests separately:
+
+```shell
+npx playwright install chromium
+make test.js
+```
+
+These tests compile isolated production bundles and run in Chromium without
+a Rails server or database. See the [test workflow](./docs/about/development.md#javascript-regression-tests).
+
 Run the Ruby suite with Rake, not `rails test`: this gem's standalone test
 bundle does not include the Rails test runner.
 

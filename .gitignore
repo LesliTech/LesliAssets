@@ -37,6 +37,8 @@ node_modules
 
 # Test folders
 coverage
+/test-results/
+/playwright-report/
 
 # Ignore Lesli gems
 lesli*.gem

@@ -42,6 +42,18 @@ class LesliChart {
 
         document.addEventListener("turbo:before-cache", destroyCharts);
         document.addEventListener("turbo:before-render", destroyCharts);
+
+        // Frames and Streams can remove a chart without navigating the page.
+        // Check after DOM changes so moving a connected canvas does not destroy it.
+        new MutationObserver((mutations) => {
+            if (!mutations.some((mutation) => mutation.removedNodes.length)) return;
+
+            Object.values(ChartJs.instances).forEach((chart) => {
+                if (chart.canvas.hasAttribute("data-lesli-chart") && !chart.canvas.isConnected) {
+                    chart.destroy();
+                }
+            });
+        }).observe(document.documentElement, { childList: true, subtree: true });
     }
 
     /**

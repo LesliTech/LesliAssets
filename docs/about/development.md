@@ -61,6 +61,35 @@ After changing the shared bundle, verify both a full page load and Turbo
 navigation with Calendar loaded. Open an event panel to confirm that Alpine
 and the independently compiled calendar bundle work together.
 
+`LesliChart` releases its Chart.js instances before Turbo caches or replaces
+the page. A single DOM observer also releases detached chart canvases when a
+Frame or Stream removes their content. Moving a canvas within the document
+keeps its instance alive; charts created outside LesliChart are not affected.
+
+### JavaScript regression tests
+
+Install the development dependencies and Playwright's Chromium once:
+
+```shell
+npm ci
+npx playwright install chromium
+make test.js
+```
+
+The browser tests in `test/javascript` compile both entrypoints through
+`make prod.js` into a temporary directory. They load the minified bundles as
+classic scripts, matching the Rails layout, and serve fixture responses through
+Playwright. No Rails server, database, or changes to shipped assets are needed.
+
+Coverage includes chart replacement, bubbling `markerClick` events, cleanup
+after Frame and Stream updates, canvas moves, and repeated Turbo navigation.
+The bundle integration tests verify that FullCalendar opens an Alpine panel
+both on initial load and when Calendar is loaded after the shared bundle.
+JavaScript page errors fail the tests. GitHub Actions runs this suite in Chromium.
+
+These tests are separate from the Ruby/Minitest suite. Failed runs retain
+Playwright traces under `test-results`, which is ignored by Git.
+
 ## Shared theme
 
 `source/tailwind/application.css` and `public.css` emit the complete Tailwind
